@@ -1,0 +1,172 @@
+{% block element_rhweb_cta_banner %}
+    {% set config = element.fieldConfig.elements %}
+    {% set elementType = config.elementType.value %}
+    {% set mediaActive = config.mediaActive.value %}
+    {% set videoActive = config.videoActive.value %}
+
+    {% block element_rhweb_cta_banner_element %}
+        <div class="cms-element-{{ element.type }}
+            {% block element_rhweb_cta_banner_element_classes %}
+                {% if element.config.backgroundFixed.value %}
+                    bg-fixed
+                {% endif %}
+                {% if isInSidebar %}
+                    rhweb-sidebar-element
+                {% endif %}
+                {% if mediaActive and videoActive %}
+                    video-active
+                {% else %}
+                    video-inactive
+                {% endif %}
+                {% if elementType == 'usp' %}
+                    usp-active
+                {% endif %}"
+                 style="display:flex;
+                 {% block element_rhweb_cta_banner_element_classes_media %}
+                     {% if mediaActive and not videoActive and element.data.media %}
+                         {% if elementType == 'usp' or elementType == 'custom' %}
+                            background-image: unset;
+                         {% else %}
+                             {% block element_rhweb_cta_banner_element_classes_bgimage_cta %}
+                                 background-image: url({{ element.data.media.url }});
+                                 background-size: cover;
+                                 background-position: center;
+                             {% endblock %}
+                         {% endif %}
+                     {% elseif elementType == 'category' and not videoActive %}
+                         {% block element_rhweb_cta_banner_element_classes_bgimage_category %}
+                             background-image: url({{ element.data.category.media.url }});
+                             background-size: cover;
+                             background-position: center;
+                         {% endblock %}
+                     {% endif %}
+                         height: {{ config.elementHeight.value }};
+                         min-height: {{ config.elementHeight.value }};
+                         align-items: {{ config.boxVerticalAlign.value }};
+                         justify-content: {{ config.boxHorizontalAlign.value }};
+                 {% endblock %}
+             {% endblock %}
+             ">
+
+            {% block rhweb_element_rhweb_cta_banner_inner %}
+
+                {% if elementType == 'category' or elementType == 'cta' %}
+                    {% block rhweb_element_rhweb_cta_banner_video %}
+                        {% if mediaActive and videoActive %}
+                            <video id="video-{{ element.id }}" class="video"
+                                    {% block rhweb_element_rhweb_cta_banner_video_settings %}
+                                       {% if element.config.videoAutoplay.value %}autoplay playsinline{% endif %}
+                                       {% if element.config.videoMute.value %}muted{% endif %}
+                                       {% if element.config.videoLoop.value %}loop{% endif %}
+                                    {% endblock %}
+                            >
+                                {% block rhweb_element_rhweb_cta_banner_video_source %}
+                                    <source src="{{ element.data.media.url }}" type="{{ element.data.media.mimeType }}">
+                                {% endblock %}
+                            </video>
+                            {% block rhweb_element_rhweb_cta_banner_video_script %}
+                                <script>
+                                    document.getElementById('video-{{ element.id }}').play();
+                                </script>
+                            {% endblock %}
+                        {% endif %}
+                    {% endblock %}
+                {% endif %}
+
+                {% block rhweb_element_rhweb_cta_banner_overlay %}
+                    <div class="overlay"
+                         style="
+                        {% block rhweb_element_rhweb_cta_banner_overlay_style %}
+                             background: {{ config.elementBackground.value }};
+                             max-width: {{ config.captionMaxWidth.value }};
+                             height: {{ config.boxHeight.value }};
+                             {% if config.boxVerticalAlign.value == 'center' %}
+                                 display:flex;
+                                 align-items: center;
+                             {% endif %}
+                        {% endblock %}
+                                 ">
+                        {% block rhweb_element_rhweb_cta_banner_overlay_inner %}
+                            <div class="rhweb-cta-banner-inner" style="color: {{ config.boxColor.value }};
+                                    text-align: {{ config.boxTextAlign.value }};">
+                                {% if elementType == 'cta' %}
+                                    {% block rhweb_element_rhweb_cta_banner_content_cta %}
+                                        <div class="container-content">
+                                            {% if element.config.title.value %}
+                                                <h3 style="color: {{ config.boxHeadlineColor.value }};{% if element.config.headlineSize.value %}font-size:{{ element.config.headlineSize.value }}{% endif %}">{{ config.title.value }}</h3>
+                                            {% endif %}
+                                            {% if element.config.quote.value %}
+                                                <p{% if element.config.textSize.value %} style="font-size:{{ element.config.textSize.value }}"{% endif %}>{{ config.quote.value }}</p>
+                                            {% endif %}
+                                            {% if config.btnActive.value %}
+                                                <a class="btn btn-{% if config.btnType.value != 'link' %}{% if config.btnOutline.value %}outline-{% endif %}{% endif %}{{ config.btnType.value }} btn-{{ config.btnSize.value }}{% if config.btnBlock.value %} btn-block{% endif %}" href="{{ config.btnUrl.value }}"
+                                                        {% if config.newTab.value %}
+                                                            target="_blank"
+                                                        {% endif %}
+                                                >{{ config.btnText.value }}</a>
+                                            {% endif %}
+                                        </div>
+                                    {% endblock %}
+                                {% elseif elementType == 'custom' %}
+                                    {% block rhweb_element_rhweb_cta_banner_content_custom %}
+                                        <div class="container-content">
+                                            {{ config.content.value|raw }}
+                                        </div>
+                                    {% endblock %}
+                                {% elseif elementType == 'category' %}
+                                    {% block rhweb_element_rhweb_cta_banner_content_category %}
+                                        <div class="container-content">
+                                            {% block rhweb_element_rhweb_cta_banner_content_category_headline %}
+                                                {% if element.data.category.translated.name %}
+                                                    <h3 style="color: {{ config.boxHeadlineColor.value }};{% if element.config.headlineSize.value %}font-size:{{ element.config.headlineSize.value }}{% endif %}">{{ element.data.category.translated.name }}</h3>
+                                                {% endif %}
+                                            {% endblock %}
+                                            {% block rhweb_element_rhweb_cta_banner_content_category_description %}
+                                                {% if element.data.category.translated.description and config.categoryDescritpionActive.value %}
+                                                    <p{% if element.config.textSize.value %} style="font-size:{{ element.config.textSize.value }}"{% endif %}>{{ element.data.category.translated.description|length > config.contentLength.value ? element.data.category.translated.description | striptags | slice(0, config.contentLength.value) ~ '...' | raw : element.data.category.translated.description | raw  }}</p>
+                                                {% endif %}
+                                            {% endblock %}
+                                            {% block rhweb_element_rhweb_cta_banner_content_category_button %}
+                                                {% if config.btnActive.value and element.data.category.id %}
+                                                    <a class="btn btn-{% if config.btnType.value != 'link' %}{% if config.btnOutline.value %}outline-{% endif %}{% endif %}{{ config.btnType.value }} btn-{{ config.btnSize.value }}{% if config.btnBlock.value %} btn-block{% endif %}" href="{{ seoUrl('frontend.navigation.page', { navigationId: element.data.category.id }) }}">{{ config.btnText.value }}</a>
+                                                {% endif %}
+                                            {% endblock %}
+                                        </div>
+                                    {% endblock %}
+                                {% elseif elementType == 'usp' %}
+                                    {% block element_rhweb_cta_banner_usp %}
+                                        <div class="container-content {{ config.boxTextAlign.value }}{% if not element.config.quote.value %} usp-no-text{% endif%}">
+                                            {% block element_rhweb_cta_banner_usp_icon %}
+                                                {% if element.config.iconActive.value %}
+                                                    {% block element_rhweb_cta_banner_usp_icon_value %}
+                                                        <i class="{{ element.config.iconClass.value }}"></i>
+                                                    {% endblock %}
+                                                {% endif %}
+                                            {% endblock %}
+                                            <div>
+                                                {% block element_rhweb_cta_banner_usp_title %}
+                                                    {% if element.config.title.value %}
+                                                        {% block element_rhweb_cta_banner_usp_title_value %}
+                                                            <h4 style="color: {{ config.boxHeadlineColor.value }};">{{ config.title.value }}</h4>
+                                                        {% endblock %}
+                                                    {% endif %}
+                                                {% endblock %}
+                                                {% block element_rhweb_cta_banner_usp_text %}
+                                                    {% if element.config.quote.value %}
+                                                        {% block element_rhweb_cta_banner_usp_text_value %}
+                                                            <p>{{ config.quote.value }}</p>
+                                                        {% endblock %}
+                                                    {% endif %}
+                                                {% endblock %}
+                                            </div>
+                                        </div>
+                                    {% endblock %}
+                                {% endif %}
+                            </div>
+                        {% endblock %}
+                    </div>
+                {% endblock %}
+            {% endblock %}
+        </div>
+    {% endblock %}
+{% endblock %}

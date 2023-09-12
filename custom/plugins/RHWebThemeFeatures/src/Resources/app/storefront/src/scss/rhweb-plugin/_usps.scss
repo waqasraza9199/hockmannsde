@@ -1,0 +1,42 @@
+.rhweb-usp-bar{
+
+    .rhweb-usp-container{
+        display: flex;
+        justify-content: space-between;
+
+        .rhweb-usp-content{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            .usp-icon{
+                font-size: 1.5em;
+                margin-right: 15px;
+            }
+
+            .usp-title{
+                font-size: 1.1em;
+            }
+        }
+
+        .rhweb-usp-box{
+
+            &:first-child{
+                .rhweb-usp-content{
+                    @include media-breakpoint-up(lg){
+                        justify-content: flex-start;
+                    }
+
+                }
+            }
+
+            &:last-child{
+                .rhweb-usp-content{
+                    @include media-breakpoint-up(lg){
+                        justify-content: flex-end;
+                    }
+                }
+            }
+        }
+    }
+}

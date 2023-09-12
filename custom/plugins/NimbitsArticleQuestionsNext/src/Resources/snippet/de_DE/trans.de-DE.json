@@ -1,0 +1,46 @@
+{
+  "nimbits-articlequestions": {
+    "tab": {
+      "headline": "Fragen zum Artikel"
+    },
+    "form": {
+      "optional": "(optional)",
+      "formTitle": "Stellen Sie eine Frage",
+      "salutation": "Anrede",
+      "genderw": "Frau",
+      "genderm": "Herr",
+      "gendern": "N/A",
+      "company": "Firma",
+      "name": "Vorname",
+      "surname": "Nachname",
+      "mail": "E-Mail Adresse",
+      "required": "*",
+      "question": "Ihre Frage",
+      "entervalidmail": "Bitte geben Sie eine valide E-Mail Adresse ein.",
+      "entervalidquestion": "Bitte geben Sie eine valide Frage ein.",
+      "dataprivacytext": "Ich stimme zu, dass meine Daten für die Beantwortung der Frage verarbeitet werden. Die <a href=\"/datenschutz\" target=\"blank\">Datenschutzerklärung</a> habe ich zur Kenntnis genommen und stimme den darin beschriebenen Angaben zu.",
+      "requiredtext": "Mit * gekennzeichnete Felder sind Pflichtfelder.",
+      "closebutton": "Schließen",
+      "askquestionbutton": "Frage stellen"
+    },
+    "list": {
+      "headline": "Fragen von anderen Kunden",
+      "questiontime": "Datum",
+      "questionsender": "Von",
+      "questionowner": "einem Kunden",
+      "question": "Frage",
+      "answer": "Antwort des Shopbetreibers",
+      "none": "Es sind noch keine Fragen zu diesem Artikel vorhanden."
+    },
+    "finish": {
+      "alert": "Frage erfolgreich gestellt",
+      "alerterror": "Frage konnte nicht gesendet werden",
+      "buttonBack": "Zurück zum Shop"
+    },
+    "mail": {
+      "sendername": "Fragen zum Artikel",
+      "sendernamecustomer": "Fragen zum Artikel",
+      "sendernamecustomeranswer": "Fragen zum Artikel"
+    }
+  }
+}

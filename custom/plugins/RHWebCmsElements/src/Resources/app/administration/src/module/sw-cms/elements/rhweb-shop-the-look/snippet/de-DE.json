@@ -1,0 +1,24 @@
+{
+    "sw-cms": {
+        "elements": {
+            "rhweb-shop-the-look": {
+                "config": {
+                    "tab": {
+                        "products": "Produkte",
+                        "image": "Background"
+                    },
+                    "label": {
+                        "selectProducts": "Produkt(e) auswählen",
+                        "leftMargin": "Abstand links (in px or %)",
+                        "topMargin": "Abstand oben (in px or %)"
+                    },
+                    "helpText": {
+                        "selectProducts": "Wählen Sie die Produkte, die als Anzeigepunkte über dem Bild liegen sollen.",
+                        "leftMargin": "Wählen Sie hier den Abstand des Anzeigepunkts vom linken Rand des Bildes.",
+                        "topMargin": "Wählen Sie hier den Abstand des Anzeigepunkts vom oberen Rand des Bildes."
+                    }
+                }
+            }
+        }
+    }
+}

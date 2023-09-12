@@ -1,0 +1,234 @@
+{% sw_extends '@Storefront/storefront/layout/header/header.html.twig' %}
+
+{# TODO: prüfen... #}
+
+{# ---------------- START: SET TEMPLATE VARS ---------------- #}
+
+{# ThemeWare: Set theme variables #}
+{% set twtHeaderSearchShow = theme_config('twt-header-search-show') %}
+{% set twtHeaderSearchType = theme_config('twt-header-search-type') %}
+{% set twtHeaderTopBarShow = theme_config('twt-header-top-bar-show') %}
+{% set twtHeaderType = theme_config('twt-header-type') %}
+{% set twtNavMainShow = theme_config('twt-nav-main-show') %}
+
+{% set twtHeaderTypeCompatibility = theme_config('twt-header-type-compatibility') %}
+
+{% set twtNavMainShow = theme_config('twt-nav-main-show') %}
+{% set twtUspBarHeaderLayout = theme_config('twt-usp-bar-header-layout') %}
+
+{# ---------------- END: SET TEMPLATE VARS ---------------- #}
+
+{# TODO: Add "twtHeaderTypeCompatibility"-if to disable all header-adjustments #}
+
+{# TODO: HC-Architecture... #}
+{# ThemeWare: "Top-Bar" entfernen falls diese über die Theme-Konfiguration deaktiviert wurde. #}
+{% block layout_top_bar %}
+	{% if twtHeaderTopBarShow == 1 %}
+		{# ThemeWare: Remove top bar #}
+	{% else %}
+
+		{# Default block #}
+		{{ parent() }}
+	{% endif %}
+{% endblock %}
+
+
+{# TODO: HC-Architecture... #}
+{# ThemeWare: Such-Input entfernen falls...
+	- ... "Header 2.1" (twt-header-type 4) aktiv ist. (Info: Header 2.1 unterstützt derzeit lediglich die "Flyout-" bzw. "Fullscreen-Suche")
+	- ... die "Flyout-Suche" in der Theme-Konfiguration aktiviert wurde.
+	- ... die "Fullscreen-Suche" in der Theme-Konfiguration aktiviert wurde.
+#}
+{% block layout_header_search %}
+	{% if twtHeaderSearchType == 2 or twtHeaderSearchType == 4 or twtHeaderType == 4 %}
+		{# ThemeWare: Remove search input #}
+	{% else %}
+
+		{# Default block #}
+		{{ parent() }}
+	{% endif %}
+{% endblock %}
+
+
+{# TODO: HC-Architecture... #}
+{# ThemeWare: Anpassungen am Toggle-Button der "Top-Navigation" #}
+{% block layout_header_navigation_toggle %}
+	{# ThemeWare: Klassen modifizieren um den Toggle-Button ein-/auszublenden. #}
+	{% set blockClassesMenuButton = ['col'] %}
+	
+	{# ThemeWare: 'Top navigation' => hidden #}
+	{# "Top-Navigation" nur mobil anzeigen wenn Sie über die Theme-Konfiguration deaktiviert wurde #}
+	{% if twtNavMainShow == 1 %}
+		{% set blockClassesMenuButton = ['d-block d-lg-none']|merge(blockClassesMenuButton) %}
+	{% endif %}
+	
+	{# ThemeWare: 'Top navigation' => list #}
+	{# Anpassungen falls die "Top-Navigation" als "Liste" dargestellt werden soll #}
+	{% if twtNavMainShow == 2  %}
+		{% if twtHeaderType == 4 %}
+			{# ThemeWare: Klassen für "Header 2.1" hinzufügen #}
+			{% set blockClassesMenuButton = ['d-block d-lg-none']|merge(blockClassesMenuButton) %}
+
+		{% elseif twtHeaderType == 10 %}
+			{# ThemeWare: Klassen für "Header 10" hinzufügen   #customHeader #}
+			{% set blockClassesMenuButton = ['d-none twt-sticky-header-menu-button']|merge(blockClassesMenuButton) %}
+
+		{% else %}
+			{# ThemeWare: Klassen für alle anderen Header hinzufügen #}
+			{% if twtHeaderSearchType == 2 or twtHeaderSearchType == 4 %}
+				{# ThemeWare: "Flyout search" (twt-header-search-type 2) oder "Fullscreen search" (twt-header-search-type 4) aktiv #}
+				{% set blockClassesMenuButton = ['d-block d-lg-none']|merge(blockClassesMenuButton) %}
+			{% else %}
+				{% set blockClassesMenuButton = ['d-block d-sm-none']|merge(blockClassesMenuButton) %}
+			{% endif %}
+		{% endif %}
+	{% endif %}
+	
+	{# ThemeWare: 'Top navigation' => button #}
+	{# Anpassungen falls die "Top-Navigation" als "Button" (default) dargestellt werden soll... #}
+	{% if twtNavMainShow == 3 %}
+		{# ThemeWare: Klassen für die "Flyout-Suche" oder die "Fullscreen-Suche" hinzufügen #}
+		{% if twtHeaderSearchType == 2 or twtHeaderSearchType == 4 %}
+			{% set blockClassesMenuButton = ['d-block']|merge(blockClassesMenuButton) %}
+
+		{% else %}
+			{# ThemeWare: Klassen für "Header 2.1" hinzufügen #}
+			{% if twtHeaderType == 4 %}
+				{% set blockClassesMenuButton = ['d-sm-block']|merge(blockClassesMenuButton) %}
+			{% else %}
+				{% set blockClassesMenuButton = ['d-sm-none d-lg-block']|merge(blockClassesMenuButton) %}
+			{% endif %}
+		{% endif %}
+	{% endif %}
+
+	{# ThemeWare: Anpassungen am Toggle-Button der "Top-Navigation" #}
+	{# Klassen (siehe oben) hinzufügen und Label 'Navigation' ergänzen #}
+	<div class="{{ blockClassesMenuButton|join(' ') }}">
+		<div class="menu-button">
+			{% block layout_header_navigation_toggle_button %}
+				<button class="btn nav-main-toggle-btn header-actions-btn"
+						type="button"
+						title="{{ "twt.header.offcanvasMenuText"|trans }}"
+						data-offcanvas-menu="true"
+						aria-label="{{ "general.menuLink"|trans|striptags }}">
+					{% block layout_header_navigation_toggle_button_icon %}
+						{% sw_icon 'stack' %}
+					{% endblock %}
+					{# ThemeWare: Label 'Navigation' zum Toggle-Button hinzufügen #}
+					<span class="header-nav-main-toggle-label">
+						{{ "twt.header.offcanvasMenuText"|trans }}
+					</span>
+				</button>
+			{% endblock %}
+		</div>
+	</div>
+{% endblock %}
+
+
+{# ThemeWare: Anpassungen am Toggle-Button der "Top-Navigation" @tablet #}
+{#
+{% block layout_header_navigation_toggle_tablet  %}{% endblock %}
+#}
+
+
+{# TODO: HC-Architecture... #}
+{# ThemeWare: Anpassungen am Icon vom Toggle-Button der "Top-Navigation" @tablet #}
+{# TODO: Default-Konfiguration ergänzen... #}
+{# TODO: Mit toggle button (siehe oben) abgleichen... #}
+{% block layout_header_navigation_toggle_tablet_button_icon %}
+	{% sw_icon 'stack' %}
+	{# ThemeWare: Label 'Navigation' zum Toggle-Button hinzufügen #}
+	<span class="header-nav-main-toggle-label">
+		{{ "twt.header.offcanvasMenuText"|trans }}
+	</span>
+{% endblock %}
+
+
+{# TODO: HC-Architecture... #}
+{# ThemeWare: Anpassungen am Toggle-Button der Suche
+	- $twt-header-search-show: 1 don't, 2 show > d-none
+	- $twt-header-search-type: 1 input, 2 flyout > d-sm-none
+#}
+{# TODO:
+	- Default-Konfiguration ergänzen...
+	- "Header 2.1" (twt-header-type 4) ggf. berücksichtigen ?!
+#}
+{% block layout_header_search_toggle %}
+	{# ThemeWare: Klassen modifizieren um den Toggle-Button ein-/auszublenden. #}
+	{% set blockClassesSearchToggle = ['col-auto'] %}
+
+	{# ThemeWare: 'Search' => hidden #}
+	{% if twtHeaderSearchShow == 1 %}
+		{% set blockClassesSearchToggle = ['d-none']|merge(blockClassesSearchToggle) %}
+	{% endif %}
+
+	{# ThemeWare: Klassen hinzufpgen falls nicht die "Flyout search" (twt-header-search-type 2) oder "Fullscreen search" (twt-header-search-type 4) aktiv ist. #}
+	{% if twtHeaderSearchType != 2 and twtHeaderSearchType != 4 %}
+		{% set blockClassesSearchToggle = ['d-sm-none']|merge(blockClassesSearchToggle) %}
+	{% endif %}
+
+	{#  ThemeWare: Toggle-Button ausblenden im "Header 2.1" (twt-header-type 4) oder falls die "Flyout search" bzw. die "Fullscreen search" aktiv sind. #}
+	{% if twtHeaderSearchType != 2 and twtHeaderSearchType != 4 %}
+		{% if twtHeaderType == 4 %}
+			{% set blockClassesSearchToggle = ['d-none'] %}
+		{% endif %}
+	{% endif %}
+
+	<div class="{{ blockClassesSearchToggle|join(' ') }}">
+		  <div class="search-toggle">
+				<button class="btn header-actions-btn search-toggle-btn js-search-toggle-btn collapsed"
+						  type="button"
+						  data-toggle="collapse"
+						  data-target="#searchCollapse"
+						  aria-expanded="false"
+						  aria-controls="searchCollapse"
+						  aria-label="{{ "header.searchButton"|trans|striptags }}">
+
+					{# ThemeWare: Wrapper um Icon ergänzen und 'x'-Icon hinzufügen. #}
+					 <span class="header-search-toggle-icon">
+						 {% sw_icon 'search' %}
+						 {% sw_icon 'x' %}
+					 </span>
+
+					{# ThemeWare: Label zum Toggle-Button hinzufügen. #}
+					 <span class="header-search-toggle-name">
+						{{ "twt.header.searchText"|trans }}
+					 </span>
+				</button>
+		  </div>
+	 </div>
+{% endblock %}
+
+
+{# TODO: HC-Architecture... #}
+{# ThemeWare: "Header 10" (twt-header-type 10)   #customHeader #}
+{# Aufbau für den Custom-Header modifizieren. #}
+{% block layout_header_navigation %}
+	{% if twtHeaderType == 10 %}
+		<div class="nav-header {{ navHeaderClasses|join(' ') }}">
+			<div class="container">
+				<div class="header-row row no-gutters align-items-center {{ headerRowClasses }}">
+
+					{{ block('layout_header_logo') }}
+
+					{% block twt_layout_header_main_navigation %}
+						<div class="header-nav-col nav-main d-none col-lg">
+							{% block twt_layout_header_main_navigation_inner %}
+								{% sw_include '@Storefront/storefront/layout/navigation/navigation.html.twig' %}
+							{% endblock %}
+						</div>
+					{% endblock %}
+
+					{{ block('layout_header_search') }}
+
+					{{ block('layout_header_actions') }}
+
+				</div>
+			</div>
+		</div>
+	{% else %}
+
+		{# Default block #}
+		{{ parent() }}
+	{% endif %}
+{% endblock %}

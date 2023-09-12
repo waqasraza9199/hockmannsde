@@ -1,0 +1,13 @@
+{% sw_extends '@Storefront/storefront/page/account/order/index.html.twig' %}
+
+{% block base_header %}
+    {% if config('RHWebThemeFeatures.config.rhwebActivateCustomCheckout') != 'custom' %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}
+
+{% block base_footer %}
+    {% if config('RHWebThemeFeatures.config.rhwebActivateCustomCheckout') != 'custom' %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}

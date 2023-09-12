@@ -1,0 +1,41 @@
+.lzyt-text-primary {
+    color: #189eff;
+}
+
+.lzyt-text-no-bottom-space {
+    margin-bottom:0;
+}
+
+.lzyt-text-no-top-space {
+    margin-top:0;
+}
+
+.lzyt-text-bold {
+    font-weight: bold;
+}
+
+.lzyt-relative {
+    position:relative;
+}
+
+.lzyt-w-100 {
+    width:100%;
+}
+
+.lzyt-isValid {
+    color:#37d046;
+}
+
+.lzyt-isInvalid {
+    color:#de294c !important;
+}
+
+.lzyt-state-container {
+    display: flex;
+    align-items: center;
+    margin-top: 14px;
+}
+
+.lzyt-space-left {
+    margin-left:10px;
+}

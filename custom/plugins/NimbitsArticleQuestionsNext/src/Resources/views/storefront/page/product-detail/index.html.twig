@@ -1,0 +1,19 @@
+{% sw_extends '@parent/storefront/page/product-detail/index.html.twig' %}
+
+{% block page_product_detail_headline %}
+
+    {% if app.request.get('nb_aq_success') == 1 %}
+        <div class="alert alert-success" role="alert" style="padding: .75rem 1.25rem;">
+            {{ 'nimbits-articlequestions.finish.alert'|trans }}
+        </div>
+    {% endif %}
+
+    {% if app.request.get('nb_aq_success') == 2 %}
+        <div class="alert alert-warning" role="alert" style="padding: .75rem 1.25rem;">
+            {{ 'nimbits-articlequestions.finish.alerterror'|trans }}
+        </div>
+    {% endif %}
+
+    {{ parent() }}
+
+{% endblock %}

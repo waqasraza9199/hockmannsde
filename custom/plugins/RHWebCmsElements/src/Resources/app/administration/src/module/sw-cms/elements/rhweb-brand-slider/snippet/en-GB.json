@@ -1,0 +1,30 @@
+{
+    "sw-cms": {
+        "elements": {
+            "rhweb-brand-slider": {
+                "config": {
+                    "tab": {
+                        "brands": "Manufacturer",
+                        "layout": "Layout"
+                    },
+                    "label": {
+                        "select": "Choose manufacturer",
+                        "rotate": "Random sort",
+                        "minWidth": "Min. width of the manufacturer (in px)",
+                        "height": "Manufacturer height (in px)",
+                        "useLink": "Activate URL of the manufacturer",
+                        "onlyImages": "Show only manufacturer with images"
+                    },
+                    "helpText": {
+                        "select": "The selected manufacturers are displayed in the slider.",
+                        "rotate": "If this option is active, the manufacturers are sorted randomly.",
+                        "minWidth": "Set the minimum width for the manufacturer. The higher the value, the fewer manufacturers will be displayed per slide.",
+                        "height": "Set this value to control the height of the slider. If the manufacturer images are active, the images with this value will all be set to the same height. <br><br><b>'auto' for automatic calculation</b>",
+                        "useLink": "The manufacturers can be provided with a URL in the Shopware 6 Core settings. Check this option to enable the links.",
+                        "onlyImages": "If this option is active, only manufacturers to which no image is assigned will be output."
+                    }
+                }
+            }
+        }
+    }
+}

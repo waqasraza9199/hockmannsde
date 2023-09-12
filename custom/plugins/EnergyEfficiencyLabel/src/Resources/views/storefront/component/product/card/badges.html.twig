@@ -1,0 +1,18 @@
+{% sw_extends '@Storefront/storefront/component/product/card/badges.html.twig' %}
+
+{% block component_product_badges_discount %}
+    {% if product.extensions.lzytEnev %}
+        {% block component_product_badges_lzyt_enev_arrow %}
+            <div class="badge badge-lzyt-enev">
+                {% for lzytEnev in  product.extensions.lzytEnev %}
+                    {% block component_product_badges_lzyt_enev_arrow_inner %}
+                        <div class="lzyt-enev minimal lzyt-enev-arrow2021">
+                            {% sw_include '@Storefront/storefront/component/lzyt-enev/arrow-minimal.html.twig' with {enev: lzytEnev, showMedia: true} %}
+                        </div>
+                    {% endblock %}
+                {% endfor %}
+            </div>
+        {% endblock %}
+    {% endif %}
+    {{ parent() }}
+{% endblock %}

@@ -1,0 +1,50 @@
+/*
+   _____ _  _ ___ __  __ _____      ___   ___ ___  (R)
+  |_   _| || | __|  \/  | __\ \    / /_\ | _ \ __|
+    | | | __ | _|| |\/| | _| \ \/\/ / _ \|   / _|
+    |_| |_||_|___|_|  |_|___| \_/\_/_/ \_\_|_\___|
+
+    Copyright (c) TC-Innovations GmbH
+
+	ThemeWare SCSS-Iconset
+	==================================================
+    Credit: https://github.com/FortAwesome/Font-Awesome
+    Credit: https://github.com/atisawd/boxicons
+*/
+
+// Note: Add new icons also to /base/_ie11-fixes.scss
+
+// TODO: Check import via variable in hot-proxy mode...
+//@import '_#{$twt-iconset}.scss';
+
+// Note: Workaround as above import isn't working in hot-proxy mode
+@import '_default.scss';
+@import '_bx.scss';
+@import '_bx-alt.scss';
+@import '_bxs.scss';
+@import '_bxs-alt.scss';
+@import '_fa-free.scss';
+@import '_fa-free-alt.scss';
+@import '_twt-light.scss';
+@import '_twt-one-outline.scss';
+@import '_twt-one-solid.scss';
+@import '_twt-one-thin.scss';
+@import '_twt-six.scss';
+@import '_twt-six-solid.scss';
+
+/* ThemeWare: Fix some icon spacings */
+@if $twt-iconset != "default" {
+  .nav-main-toggle,
+  .header-search-icon,
+  .header-actions-col {
+    span.icon {
+      margin-bottom: 2px;
+    }
+  }
+
+  .footer-column-newsletter {
+    span.icon {
+      margin-bottom: 2px;
+    }
+  }
+}

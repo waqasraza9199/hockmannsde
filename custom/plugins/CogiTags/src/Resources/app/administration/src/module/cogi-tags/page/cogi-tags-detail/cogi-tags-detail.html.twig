@@ -1,0 +1,26 @@
+{% block cogi_tags_detail %}
+    <sw-page class="cogi-tags-detail">
+        <template slot="smart-bar-actions">
+            <sw-button :routerLink="{ name: 'cogi.tags.list' }">
+                {{ $t('cogi-tags.detail.cancelButtonText') }}
+            </sw-button>
+
+            <sw-button-process
+                :isLoading="isLoading"
+                :processSuccess="processSuccess"
+                variant="primary"
+                @process-finish="saveFinish"
+                @click="onClickSave">
+                {{ $t('cogi-tags.detail.saveButtonText') }}
+            </sw-button-process>
+        </template>
+
+        <template slot="content">
+            <sw-card-view>
+                <sw-card v-if="tag" :isLoading="isLoading">
+                    <sw-field :label="$t('cogi-tags.detail.nameLabel')" v-model="tag.name"></sw-field>
+                </sw-card>
+            </sw-card-view>
+        </template>
+    </sw-page>
+{% endblock %}

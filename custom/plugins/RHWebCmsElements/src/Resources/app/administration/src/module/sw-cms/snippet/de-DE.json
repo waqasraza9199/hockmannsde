@@ -1,0 +1,172 @@
+{
+    "rhweb-cms": {
+        "sidebar": {
+            "cta": {
+                "label": "+ CMS Bundle - Call to Action"
+            },
+            "ctaSlider": {
+                "label": "+ CMS Bundle - Call to Action - Slider"
+            },
+            "ctaGrid": {
+                "label": "+ CMS Bundle - Call to Action - Grid"
+            },
+            "testimonial": {
+                "label": "+ CMS Bundle - Testimonial"
+            },
+            "testimonialSlider": {
+                "label": "+ CMS Bundle - Testimonial - Slider"
+            },
+            "usps": {
+                "label": "+ CMS Bundle - USPs"
+            },
+            "shopthelook": {
+                "label": "+ CMS Bundle - Shop the Look"
+            },
+            "socialfeeds": {
+                "label": "+ CMS Bundle - Social Feeds"
+            },
+            "additional": {
+                "label": "+ CMS Bundle - Zusätzlich"
+            },
+            "columns": {
+                "label": "+ CMS Bundle - Spalten (Vorlagen)"
+            }
+        },
+
+        "blocks": {
+            "brandSlider": {
+                "label": "Markenslider"
+            },
+            "ctaBannerbasic": {
+                "label": "Basic - Call to Action Banner"
+            },
+            "ctaBannerVideo": {
+                "label": "Video - Call to Action Banner"
+            },
+            "ctaBannerCategoryTwoColumns": {
+                "label": "Call to Action Banner - Zwei Spalten"
+            },
+            "ctaBannerCategoryThreeColumns": {
+                "label": "Call to Action Banner - Drei Spalten"
+            },
+            "ctaBannerCategoryFourColumns": {
+                "label": "Call to Action Banner - Vier Spalten"
+            },
+            "ctaBannerCategoryFiveColumns": {
+                "label": "Call to Action Banner - Fünf Spalten"
+            },
+            "ctaBannerGridVersionOne": {
+                "label": "CTA Grid - Version Eins"
+            },
+            "ctaBannerGridVersionTwo": {
+                "label": "CTA Grid - Version Zwei"
+            },
+            "ctaBannerGridVersionThree": {
+                "label": "CTA Grid - Version Drei"
+            },
+            "ctaBannerGridVersionFour": {
+                "label": "CTA Grid - Version Vier"
+            },
+            "ctaBannerGridVersionFive": {
+                "label": "CTA Grid - Version Fünf"
+            },
+            "multiSliderTwo": {
+                "label": "Slider - 2 Slides"
+            },
+            "multiSliderThree": {
+                "label": "Slider - 3 Slides"
+            },
+            "multiSliderFour": {
+                "label": "Slider - 4 Slides"
+            },
+            "multiSliderFive": {
+                "label": "Slider - 5 Slides"
+            },
+            "testimonialOneColumn": {
+                "label": "Testimonial - Eine Spalte"
+            },
+            "testimonialTwoColumn": {
+                "label": "Testimonial - Zwei Spalten"
+            },
+            "testimonialThreeColumn": {
+                "label": "Testimonial - Drei Spalten"
+            },
+            "testimonialFourColumn": {
+                "label": "Testimonial - Vier Spalten"
+            },
+            "multiSliderTwoTestimonials": {
+                "label": "Slider - 2 Testimonials"
+            },
+            "multiSliderThreeTestimonials": {
+                "label": "Slider - 3 Testimonials"
+            },
+            "multiSliderFourTestimonials": {
+                "label": "Slider - 4 Testimonials"
+            },
+            "multiSliderFiveTestimonials": {
+                "label": "Slider - 5 Testimonials"
+            },
+            "servicAreaOneColumn": {
+                "label": "USP - Eine Spalte"
+            },
+            "servicAreaTwoColumns": {
+                "label": "USP - Zwei Spalten"
+            },
+            "servicAreaThreeColumns": {
+                "label": "USP - Drei Spalten"
+            },
+            "servicAreaFourColumns": {
+                "label": "USP - Vier Spalten"
+            },
+            "shopTheLook": {
+                "label": "Shop the Look"
+            },
+            "productsList": {
+                "label": "Produktliste"
+            },
+            "manufacturerList": {
+                "label": "Hersteller Liste"
+            },
+            "accordeon": {
+                "label": "Akkordeon"
+            },
+            "columns": {
+                "label": {
+                    "1-1": "2 Spalten (Vorlage)",
+                    "1-1-1": "3 Spalten (Vorlage)",
+                    "1-1-1-1": "4 Spalten (Vorlage)",
+                    "1-1-1-1-1": "5 Spalten (Vorlage)",
+                    "1-1-1-1-1-1": "6 Spalten (Vorlage)",
+                    "c-1-2": "1/2 Spalten (Vorlage)",
+                    "c-2-1": "2/1 Spalten (Vorlage)",
+                    "c-1-1-2": "1/1/2 Spalten (Vorlage)",
+                    "c-1-2-1": "1/2/1 Spalten (Vorlage)",
+                    "c-2-1-1": "2/1/1 Spalten (Vorlage)"
+                }
+            }
+        },
+        "elements": {
+            "brandslider": {
+                "label": "Markenslider"
+            },
+            "ctaBannerBasic": {
+                "label": "Call to Action"
+            },
+            "dealCounter": {
+                "label": "Deal Counter"
+            },
+            "shopTheLook": {
+                "label": "Shop The Look"
+            },
+            "testimonial": {
+                "label": "Testimonial"
+            },
+            "manufacturerList": {
+                "label": "Hersteller Liste"
+            },
+            "accordeon": {
+                "label": "Akkordeon"
+            }
+        }
+    }
+}

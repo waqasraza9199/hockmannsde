@@ -1,0 +1,10 @@
+{% block element_rhweb_placeholder %}
+    <div class="cms-element-{{ element.type }}">
+        <div class="rhweb-preview-dashed-box">
+            {% sw_icon 'plus-circle' %}
+            <div class="label">
+                {{ "CmsElements.placeholder.label" | trans }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,27 @@
+{
+  "rhweb-theme-features": {
+    "navigation": {
+      "demoData": "Theme Features - Import"
+    },
+    "notification": {
+      "demoDataNotFound": "No Demo Data found. Please install any RH-Webdesign Theme with Demo Data to continue.",
+      "demoDataHint": "In some Cases Demo Data will add a CMS Page to your main Category - if you are installing Demo Data in Live System, please do not forget to remove/hide the Demo CMS Page. Please also make sure that you replace the supplied images, because some of them are copyrighted.",
+      "demoDataInstalled": "Demo Data has been Installed",
+      "demoDataRemoved": "Demo Data has been Removed",
+      "errorTitle": "Error notification"
+    },
+    "properties": {
+      "type": "Select Demo package",
+      "salesChannel": "Select Sales channel"
+    },
+    "helptext": {
+      "type": "Here you can find a list of all available demo packages. Demo packages are located in the respective extensions. So make sure that the corresponding extension is active.",
+      "salesChannel": "You can install the demo packages on a sales channel-specific basis. Make sure you select a sales channel before installing the package."
+    },
+    "buttons": {
+      "startButtonText": "Install Demo package",
+      "removeButtonText": "Remove Demo data"
+    },
+    "credits": "Much <span>❤</span> to <a href=\"https://store.shopware.com/en/moori.html\" target=\"_blank\">Moori</a>"
+  }
+}

@@ -1,0 +1,74 @@
+{# ThemeWare "Product videos" on product pages via custom fileds #}
+{#
+    Create container and add product videos
+
+    @Storefront/storefront/themeware/product-detail/twt-product-videos.html.twig
+#}
+
+{# ThemeWare: Add product videos #}
+{% block twt_product_detail_videos %}
+    <div class="twt-product-detail-videos twt-videos">
+        {% block twt_product_detail_videos_inside %}
+
+            {# ThemeWare: Add title (only in tab "Description") #}
+            {% block twt_product_detail_videos_title %}
+                {% if position == "description" %}
+                    {% if twtCustomFields.product.twt_electric_pro_custom_field__product__youtube_video is not empty or twtCustomFields.product.twt_electric_pro_custom_field__product__vimeo_video is not empty %}
+                        <div class="h5 twt-product-detail-product-videos-title">
+                            {{ 'twt.detail.customFields.productVideos.title'|trans }}
+                        </div>
+                    {% endif %}
+                {% endif %}
+            {% endblock %}
+
+            {# ThemeWare: YouTube-Video(s) #}
+            {# TODO: Add configuration (Steuerelemente, Erweiterter Datenschutz, ...) #}
+            {# <iframe width="560" height="315" src="https://www.youtube.com/embed/aVw60mnS21o?controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> #}
+            {# Standard         <iframe src="https://www.youtube.com/embed/aVw60mnS21o?controls=0" ...> #}
+            {# +Steuerelemente  <iframe src="https://www.youtube.com/embed/aVw60mnS21o" ... #}
+            {# +Datenschutz     <iframe src="https://www.youtube-nocookie.com/embed/aVw60mnS21o?controls=0" ... #}
+            {% block twt_product_detail_videos_youtube %}
+                {% if twtCustomFields.product.twt_electric_pro_custom_field__product__youtube_video is not empty %}
+                    {% set youtubeIDs = twtCustomFields.product.twt_electric_pro_custom_field__product__youtube_video|split(',') %}
+
+                    <div class="twt-product-detail-product-videos-container">
+                        {% for youtubeID in youtubeIDs %}
+                            {% block twt_product_detail_videos_youtube_embed %}
+                                <div class="twt-product-video is-youtube embed-responsive embed-responsive-16by9" itemprop="video"> {# 16:9 aspect ratio #}
+                                    <div class="responsive-video">
+                                        <iframe class="embed-responsive-item" src="https://www.youtube-nocookie.com/embed/{{ youtubeID|trim }}" frameborder="0" allowfullscreen></iframe>
+                                    </div>
+                                </div>
+                            {% endblock %}
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            {% endblock %}
+
+            {# ThemeWare: Vimeo-Video(s) #}
+            {# TODO: Add configuration (Autoplay, ...) #}
+            {# <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/213807531?color=ffffff&byline=0&portrait=0" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div><script src="https://player.vimeo.com/api/player.js"></script> #}
+            {# Standard:	<iframe src="https://player.vimeo.com/video/213807531?... #}
+            {# Autoplay:	<iframe src="https://player.vimeo.com/video/213807531?autoplay=1... #}
+            {% block twt_product_detail_videos_vimeo %}
+                {% if twtCustomFields.product.twt_electric_pro_custom_field__product__vimeo_video is not empty %}
+                    {% set vimeoIDs = twtCustomFields.product.twt_electric_pro_custom_field__product__vimeo_video|split(',') %}
+
+                    <div class="twt-product-detail-product-videos-container">
+                        {% for vimeoID in vimeoIDs %}
+                            {% block twt_product_detail_videos_vimeo_embed %}
+                                <div class="twt-product-video is-vimeo embed-responsive embed-responsive-16by9" itemprop="video"> {# 16:9 aspect ratio #}
+                                    <div class="responsive-video">
+                                        <iframe class="embed-responsive-item" src="https://player.vimeo.com/video/{{ vimeoID|trim }}?color=ffffff&byline=0&portrait=0" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+                                        {#<script src="https://player.vimeo.com/api/player.js"></script>#}
+                                    </div>
+                                </div>
+                            {% endblock %}
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            {% endblock %}
+
+        {% endblock %}
+    </div>
+{% endblock %}

@@ -1,0 +1,30 @@
+{# ThemeWare "Announcement banner" (Extension container) #}
+{#
+    Create container and include banner
+
+    @Storefront/storefront/themeware/extensions/twt-announcement-banner.html.twig
+#}
+
+{# TODO: Blöcke prüfen... #}
+
+{# ---------------- START: SET TEMPLATE VARS ---------------- #}
+
+{# ThemeWare: Set theme variables #}
+{% set twtAnnouncementBannerEndDate = theme_config('twt-announcement-banner-end-date') %}
+{% set twtAnnouncementBannerStartDate = theme_config('twt-announcement-banner-start-date') %}
+
+{# ---------------- END: SET TEMPLATE VARS ---------------- #}
+
+{% block twt_announcement_banner %}
+    {# ThemeWare: Announcement banner in Header #}
+    {% if (twtAnnouncementBannerStartDate is null and twtAnnouncementBannerEndDate is null) or
+        ((twtAnnouncementBannerStartDate is null or twtAnnouncementBannerStartDate|date("Y-m-d H:i:s", false) <= "now"|date("Y-m-d H:i:s", false)) and
+        (twtAnnouncementBannerEndDate is null or twtAnnouncementBannerEndDate|date("Y-m-d H:i:s", false) >= "now"|date("Y-m-d H:i:s", false)))
+    %}
+        <section class="twt-announcement-banner is-{% if type %}{{ type }}{% endif %}{% if alignment %} {{ alignment }}{% endif %}{% if close == 'true' %} has-close{% endif %}" id="twt-announcement-banner">
+            <div class="container">
+                {% sw_include '@Storefront/storefront/themeware/includes/twt-announcement-banner-include.html.twig' ignore missing %}
+            </div>
+        </section>
+    {% endif %}
+{% endblock %}

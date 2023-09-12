@@ -1,0 +1,48 @@
+{% sw_extends "@Storefront/storefront/page/product-detail/buy-widget-form.html.twig" %}
+
+{# Show Buy Form on master product #}
+{% block page_product_detail_buy_form_inner %}
+    {% if page.product.extensions.EmcgnNoVariantPreselection.masterProduct %}
+        {% set product = page.product %}
+
+        <form
+            id="productDetailPageBuyProductForm"
+            action="{% block page_product_detail_buy_form_action %}{{ parent() }}{% endblock %}"
+            method="post"
+            class="buy-widget"
+            data-add-to-cart="true">
+
+            {% block page_product_detail_buy_form_inner_csrf %}
+                {{ parent() }}
+            {% endblock %}
+
+            {% set buyable = product.available and product.calculatedMaxPurchase > 0 %}
+
+            {% block page_product_detail_buy_container %}
+                {{ parent() }}
+            {% endblock %}
+        </form>
+    {% else %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}
+
+{# Disable Buy Button on master Product #}
+{% block page_product_detail_buy_button_container %}
+    <div class="col-8">
+        {% if page.product.extensions.EmcgnNoVariantPreselection.masterProduct %}
+            {% block emcgn_nvp_page_product_detail_buy_button %}
+                <button class="btn btn-primary btn-block btn-buy"
+                        title="{{ "detail.addProduct"|trans|striptags }}"
+                        aria-label="{{ "detail.addProduct"|trans|striptags }}"
+                        disabled>
+                    {{ "detail.addProduct"|trans|sw_sanitize }}
+                </button>
+            {% endblock %}
+        {% else %}
+            {% block page_product_detail_buy_button %}
+                {{ parent() }}
+            {% endblock %}
+        {% endif %}
+    </div>
+{% endblock %}

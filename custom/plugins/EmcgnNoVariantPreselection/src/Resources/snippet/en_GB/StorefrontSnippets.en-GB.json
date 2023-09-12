@@ -1,0 +1,13 @@
+{
+    "emcgn": {
+        "noVariantPreselection": {
+            "product-detail": {
+                "configurator": {
+                    "select": "Please select"
+                },
+                "resetSelection": "Reset selection",
+                "customProductsHint": "Please select a product variant first and then personalize it."
+            }
+        }
+    }
+}

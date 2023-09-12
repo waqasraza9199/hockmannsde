@@ -1,0 +1,15 @@
+{% sw_extends '@Storefront/storefront/component/checkout/offcanvas-item.html.twig' %}
+
+{% block component_offcanvas_product_label %}
+    {{ parent() }}
+
+    {% block component_checkout_lzyt_enev %}
+        {% for lzytEnev in  lineItem.extensions.lzytEnev %}
+            {% block component_checkout_lzyt_enev_arrow %}
+                <div class="lzyt-enev minimal">
+                    {% sw_include '@Storefront/storefront/component/lzyt-enev/arrow-minimal.html.twig' with {enev: lzytEnev} %}
+                </div>
+            {% endblock %}
+        {% endfor %}
+    {% endblock %}
+{% endblock %}

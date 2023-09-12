@@ -1,0 +1,59 @@
+{% block lzyt_drop_page_list %}
+    <sw-page class="lzyt-drop-list">
+        {% block lzyt_drop_page_list_header %}
+            <template slot="smart-bar-header">
+                <h2>{{ $tc('lzyt-drop.list.title') }}</h2>
+            </template>
+        {% endblock %}
+
+        {% block lzyt_drop_page_list_search %}
+            <template slot="search-bar">
+                <sw-search-bar :initialSearchType="$tc('lzyt-drop.general.searchBar')"
+                               :initialSearch="term"
+                               :placeholder="$tc('lzyt-drop.general.placeholderSearchBar')"
+                               @search="onSearch">
+                </sw-search-bar>
+            </template>
+        {% endblock %}
+
+        {% block lzyt_drop_page_list_actions %}
+            <template slot="smart-bar-actions">
+                <sw-button variant="primary"
+                           :routerLink="{ name: 'lzyt.drop.create' }">{{ $tc('lzyt-drop.buttons.create') }}</sw-button>
+            </template>
+        {% endblock %}
+
+        {% block lzyt_drop_page_list_content %}
+            <template slot="content">
+                <sw-entity-listing
+                    v-if="records"
+                    :items="records"
+                    :repository="repository"
+                    :columns="columns"
+                    detailRoute="lzyt.drop.detail"
+                    :sortBy="sortBy"
+                >
+
+                    {% block lzyt_enev_page_list_content_enabled %}
+                        <template #column-enabled="{ item, isInlineEdit }">
+                            {% block lzyt_drop_page_list_content_enabled_inline_edit %}
+                                <template v-if="isInlineEdit">
+                                    <sw-checkbox-field v-model="item.enabled"></sw-checkbox-field>
+                                </template>
+                            {% endblock %}
+
+                            {% block lzyt_drop_page_list_content_enabled_content %}
+                                <template v-else>
+                                    <sw-icon v-if="item.enabled" name="small-default-checkmark-line-medium" small
+                                             class="is--active"></sw-icon>
+                                    <sw-icon v-else name="small-default-x-line-medium" small
+                                             class="is--inactive"></sw-icon>
+                                </template>
+                            {% endblock %}
+                        </template>
+                    {% endblock %}
+                </sw-entity-listing>
+            </template>
+        {% endblock %}
+    </sw-page>
+{% endblock %}

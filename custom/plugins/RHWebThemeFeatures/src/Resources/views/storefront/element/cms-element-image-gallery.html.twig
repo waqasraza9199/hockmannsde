@@ -1,0 +1,17 @@
+{% sw_extends '@Storefront/storefront/element/cms-element-image-gallery.html.twig' %}
+
+{% block element_image_gallery %}
+    {% set rhwebAnimation = element.config.rhwebAnimation.value %}
+
+    {% if rhwebAnimation %}
+        {% if rhwebAnimation.in.active or rhwebAnimation.out.active or rhwebAnimation.hover.active %}
+            <div data-rhweb-animation='{{ rhwebAnimation|json_encode|raw }}'>
+                {{ parent() }}
+            </div>
+        {% else %}
+            {{ parent() }}
+        {% endif %}
+    {% else %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,52 @@
+.rhweb-custom-checkout-active{
+  .rhweb-custom-logout-cta{
+    a{
+      @extend .btn;
+      @extend .btn-outline-primary;
+      @extend .btn-sm;
+      display: inline-flex;
+      align-items: center;
+
+      .icon{
+        color:$primary;
+        width: 15px;
+        height: 15px;
+        margin-right: 10px;
+        padding-right: 0;
+        transition: $transition-base;
+
+        svg{
+          top:0;
+        }
+      }
+
+      &:hover{
+        .icon{
+          color:color-yiq($primary);
+        }
+      }
+    }
+  }
+
+
+  .offcanvas-content-container{
+    .account-menu{
+        .account-aside-footer{
+          > p{
+            display: none;
+          }
+
+          .rhweb-custom-logout-cta{
+            a{
+              display: flex;
+              justify-content: center;
+
+              .icon{
+                display: none;
+              }
+            }
+          }
+        }
+    }
+  }
+}

@@ -1,0 +1,64 @@
+{
+    "rhweb-section": {
+        "tab": {
+            "content": "Inhalt",
+            "background": "Hintergrund",
+            "transition": "Übergänge",
+            "offset": "Versatz"
+        },
+        "title": "Erweiterte Einstellungen (Beta)",
+        "label": {
+            "none": "Keine",
+            "scratch": "Kratzer",
+            "waves": "Wellen",
+            "toothed": "Gezahnt",
+            "papercut": "Papierschnitt",
+            "paper-ripped": "Papier Riss",
+            "clouds": "Wolken",
+            "primary": "Primärfarbe",
+            "secondary": "Sekundärfarbe",
+            "light": "Hell",
+            "white": "Weiß",
+            "dark": "Dunkel",
+            "text-color": "Allgemeine Textfarbe",
+            "background-color": "Body-Hintergrundfarbe",
+            "primary-top-secondary-bottom": "Primär- zu Sekundärfarbe",
+            "primary-top-dark-bottom": "Primärfarbe zu Dunkel",
+            "primary-top-light-bottom": "Primärfarbe zu Light",
+            "primary-top-background-bottom": "Primärfarbe zu Body-Hintergrundfarbe",
+            "primary-top-text-bottom": "Primärfarbe zu Text",
+            "primary-top-indigo-bottom": "Primärfarbe zu Indigo",
+            "indigo-top-primary-bottom": "Indigo zu Primärfarbe",
+            "light-top-primary-bottom": "Light zu Primärfarbe",
+            "dark-top-primary-bottom": "Dunkel zu Primärfarbe",
+            "background-top-text-bottom": "Body-Hintergrundfarbe zu Text",
+            "background-top-primary-bottom": "Body-Hintergrundfarbe zu Primärfarbe",
+            "grayscale": "Grayscale",
+            "blur": "Blur",
+            "fixedBackground": "Fixer Hintergrund",
+            "backgroundFilter": "Hintergrund Filter",
+            "top": "Übergang Oben",
+            "bottom": "Übergang Unten",
+            "color": "Schriftfarbe",
+            "backgroundColor": "Sektion Hintergrundfarbe",
+            "offsetTop": "Negativ-Versatz Oben",
+            "offsetBottom": "Negativ-Versatz Unten",
+            "50": "50px",
+            "100": "100px",
+            "150": "150px",
+            "200": "200px",
+            "separatorBackground": "Übergang Hintergrundfarbe"
+        },
+        "helpText": {
+            "color": "Überschreibe die Schriftfarbe des gesamten Inhalts der Sektion mit dieser Einstellung.",
+            "backgroundColor": "Setze eine Hintergrundfarbe anhand vorgegebener Tamplate-Variablen. Auch Verläufe sind möglich.",
+            "fixedBackground": "Wenn du der Sektion ein Hintergrundbild zugewiesen hast, wirkt dieser Effekt super!",
+            "offsetTop": "Mit dieser Einstellung stellst du einen Negativ-Versatz ein. Elemente der Sektion schieben sich um die Pixelanzahl über die <b>darüberliegende</b> Sektion.",
+            "offsetBottom": "Mit dieser Einstellung stellst du einen Negativ-Versatz ein. Elemente der Sektion schieben sich um die Pixelanzahl über die <b>darunterliegende</b> Sektion.",
+            "top": "Mit dieser Einstellung kannst du ein Pseudo-Element <b>über</b> der Sektion erzeugen, die einen Übergang zwischen Sektionen darstellt. (Bspw. eine 'Welle' oder ein 'gezackter Rand')",
+            "bottom": "Mit dieser Einstellung kannst du ein Pseudo-Element <b>unter</b> der Sektion erzeugen, die einen Übergang zwischen Sektionen darstellt. (Bspw. eine 'Welle' oder ein 'gezackter Rand')",
+            "separatorBackground": "Setze eine Hintergrundfarbe für das Pseudo-Element."
+        }
+    }
+}
+

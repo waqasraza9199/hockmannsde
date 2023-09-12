@@ -1,0 +1,7 @@
+{% block sw_product_detail_content_tabs_advanced_variants %}
+    {% parent %}
+
+    <sw-tabs-item :route="lzytenevRoute" :title="$tc('lzyt-enev.menu.description')">
+        {{ $tc('lzyt-enev.search.list') }}
+    </sw-tabs-item>
+{% endblock %}

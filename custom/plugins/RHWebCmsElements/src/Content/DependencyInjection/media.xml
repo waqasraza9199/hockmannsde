@@ -1,0 +1,29 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+
+        <service id="RHWeb\CmsElements\Content\RHWebCtaBannerTypeDataResolver"
+                 parent="Shopware\Core\Content\Media\Cms\ImageCmsElementResolver">
+            <tag name="shopware.cms.data_resolver"/>
+        </service>
+
+        <service id="RHWeb\CmsElements\Content\RHWebTestimonialTypeDataResolver"
+                 parent="Shopware\Core\Content\Media\Cms\ImageCmsElementResolver">
+            <tag name="shopware.cms.data_resolver"/>
+        </service>
+
+        <service id="RHWeb\CmsElements\Content\RHWebShopTheLookTypeDataResolver">
+            <tag name="shopware.cms.data_resolver"/>
+        </service>
+
+        <service id="RHWeb\CmsElements\Content\RHWebDealCounterTypeDataResolver"
+                 parent="Shopware\Core\Content\Product\Cms\ProductBoxCmsElementResolver">
+            <argument type="service" id="Shopware\Core\System\SystemConfig\SystemConfigService"/>
+            <tag name="shopware.cms.data_resolver"/>
+        </service>
+
+    </services>
+</container>

@@ -1,0 +1,63 @@
+{% sw_extends '@Storefront/storefront/page/checkout/finish/index.html.twig' %}
+
+{% block base_header %}
+    {% if config('RHWebThemeFeatures.config.rhwebActivateCustomCheckout') != 'custom' %}
+        {{ parent() }}
+    {% else %}
+        {% if config('core.cart.wishlistEnabled') %}
+            {% block layout_header_minimal_wishlist %}
+                {% sw_include '@Storefront/storefront/layout/header/actions/wishlist-widget.html.twig' with {
+                    showCounter: false
+                } %}
+            {% endblock %}
+        {% endif %}
+    {% endif %}
+{% endblock %}
+
+{% block page_checkout_main_content %}
+    {% if config('RHWebThemeFeatures.config.rhwebActivateCustomCheckout') != 'custom' %}
+        {{ parent() }}
+    {% else %}
+        <div class="rhweb-checkout-content-main">
+            <div class="container">
+                {% sw_include "@Storefront/storefront/layout/header/header-minimal.html.twig" with {
+                    customCheckout:true,
+                    customCheckoutFinish:true
+                } %}
+
+                {% block base_flashbags_checkout %}
+                    {{ block("base_flashbags_checkout", "@Storefront/storefront/page/checkout/finish/index.html.twig") }}
+                {% endblock %}
+
+
+                <div class="rhweb-checkout-content-finish-check">
+                    <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                        <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/>
+                        <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+                    </svg>
+                </div>
+
+                {% block page_checkout_finish_details %}
+                    {{ block("page_checkout_finish_details", "@Storefront/storefront/page/checkout/finish/index.html.twig") }}
+                {% endblock %}
+
+                {% block page_checkout_additional %}
+                    {{ block("page_checkout_additional", "@Storefront/storefront/page/checkout/finish/index.html.twig") }}
+                {% endblock %}
+            </div>
+        </div>
+        <div class="rhweb-checkout-content-aside">
+            <div class="container">
+                {% block page_checkout_finish_product_table %}
+                    {{ block("page_checkout_finish_product_table", "@Storefront/storefront/page/checkout/finish/index.html.twig") }}
+                {% endblock %}
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}
+
+{% block base_footer %}
+    {% if config('RHWebThemeFeatures.config.rhwebActivateCustomCheckout') != 'custom' %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}

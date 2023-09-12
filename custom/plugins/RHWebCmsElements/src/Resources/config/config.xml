@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/shopware/platform/master/src/Core/System/SystemConfig/Schema/config.xsd">
+    <card>
+        <title>Custom CSS</title>
+        <title lang="de-DE">Eigenes CSS</title>
+
+        <input-field type="bool">
+            <name>rhwebCmsBundleCustomCssActivate</name>
+            <label>Enable Custom CSS</label>
+            <label lang="de-DE">Aktivieren Sie eignes CSS</label>
+        </input-field>
+
+        <input-field type="textarea">
+            <name>rhwebCmsBundleCustomCss</name>
+            <label>Enter CSS</label>
+            <label lang="de-DE">CSS eingeben</label>
+            <placeholder>Enter CSS ...</placeholder>
+            <placeholder lang="de-DE">CSS eingeben ...</placeholder>
+            <helpText>Enter your CSS code. This will be loaded after all other CSS settings.</helpText>
+            <helpText lang="de-DE">Geben Sie Ihren CSS - Code ein. Dieser wird nach allen anderen CSS Einstellungen geladen.</helpText>
+        </input-field>
+    </card>
+</config>

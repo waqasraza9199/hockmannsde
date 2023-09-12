@@ -1,0 +1,38 @@
+{
+    "sw-cms": {
+        "elements": {
+            "rhweb-accordeon": {
+                "config": {
+                    "tab": {
+                        "general": "General",
+                        "content": "Content"
+                    },
+                    "label": {
+                        "headline": "Headline",
+                        "description": "Description above the entries",
+                        "displayMode": "Display mode",
+                        "displayModeSingle": "Only one entry expandable",
+                        "displayModeMulti": "Multiple entries expandable",
+                        "entry": {
+                            "add": "New entry",
+                            "remove": "Delete entry",
+                            "headline": "Headline of the entry",
+                            "content": "Content of the entry"
+                        }
+                    },
+                    "helpText": {
+                        "headline": "Set the heading of the accordion here.<br><br>If you leave this field blank, no heading will be displayed.",
+                        "displayMode": "Here you can choose how the accordion should be played out.",
+                        "verticalAlign" : "Here you can set how the vertical alignment of the element should be calculated in the storefront.<br><br><b>Tip:</b><br>If you place the accordion next to another, higher element, it usually looks nicer if the accordion is centered vertically.",
+                        "entry": {
+                            "headline": "This is the clickable headline of the entry.<br><br><b>Tip:</b><br>This headline should encourage 'read more' as the content will not be visible until clicked."
+                        }
+                    },
+                    "placeholder": {
+                        "displayMode": "Display mode"
+                    }
+                }
+            }
+        }
+    }
+}

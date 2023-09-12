@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/shopware/platform/master/src/Core/System/SystemConfig/Schema/config.xsd">
+
+
+    <card>
+        <title>E-Mail Settings</title>
+        <title lang="de-DE">E-Mail Einstellungen</title>
+
+        <input-field>
+            <name>nbArticlequestionsRequestmail</name>
+            <label>E-mail address for request notification</label>
+            <label lang="de-DE">Mailadresse für Benachrichtigung über Anfragen</label>
+        </input-field>
+
+        <input-field type="bool">
+            <name>senderSameAsShop</name>
+            <label>Sender email is the same as request email</label>
+            <label lang="de-DE">Die Sendeadresse ist die selbe wie die für Anfragen</label>
+            <defaultValue>false</defaultValue>
+        </input-field>
+
+
+    </card>
+
+    <card>
+        <title>Visibility</title>
+        <title lang="de-DE">Sichtbarkeit</title>
+
+        <input-field type="bool">
+            <name>onlyShowCurrentLanguage</name>
+            <label>Show asked questions in original language only</label>
+            <label lang="de-DE">Gestellte Fragen nur in der originalen Sprache anzeigen</label>
+            <helpText>If a user asks a question in English, it will also be displayed only in the English-speaking store
+                and hidden in the others.
+            </helpText>
+            <helpText lang="de-DE">Wenn ein Nutzer eine Frage auf Deutsch stellt, wird diese auch nur im
+                deutschsprachigen Shop angezeigt und in den anderen ausgeblendet.
+            </helpText>
+            <defaultValue>false</defaultValue>
+        </input-field>
+
+        <component name="sw-entity-multi-id-select">
+            <name>defaultQuestionVisibilities</name>
+            <entity>sales_channel</entity>
+            <label>Default sales channels for article questions</label>
+            <label lang="de-DE">Standardsichtbarkeit für Fragen zum Artikel</label>
+        </component>
+    </card>
+</config>

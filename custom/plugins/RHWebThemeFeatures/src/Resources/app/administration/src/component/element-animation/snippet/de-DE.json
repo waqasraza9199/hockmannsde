@@ -1,0 +1,22 @@
+{
+  "rhweb-element-animation": {
+    "title": "Element Animation",
+    "label": {
+      "active": "Aktiv",
+      "name": {
+        "in": "Einblenden",
+        "out": "Ausblenden",
+        "hover": "Maus-Hover"
+      },
+      "duration": "Zeit (ms)",
+      "delay": "Verzögerung (ms)",
+      "condition": "Bedingung",
+      "isLoaded": "Beim Laden",
+      "isOverBottom": "Unterer Rand",
+      "isInViewport": "Auf Bildfläche"
+    },
+    "helpText": {
+      "name": "Aktiviere die Animationen in den Theme-Features App Einstellungen"
+    }
+  }
+}

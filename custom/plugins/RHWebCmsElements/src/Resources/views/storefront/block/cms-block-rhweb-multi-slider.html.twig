@@ -1,0 +1,45 @@
+{% block rhweb_cms_block_rhweb_multi_slider %}
+    {% set id = element.id %}
+    <div class="col" data-cms-element-id="{{ id }}">
+        <div class="base-slider image-slider"
+             data-base-slider="true"
+             data-base-slider-options='{
+                        "slider": {
+                            "navPosition": "bottom",
+                            "speed": 500,
+                            "nav": true,
+                            "controls": true,
+                            "autoHeight": false,
+                            "autoplay": true,
+                            "autoplayButtonOutput": false
+                        }
+                    }'>
+            <div class="image-slider-container"
+                 data-base-slider-container="true">
+                {% for element in block.slots.elements %}
+                    <div class="image-slider-item">
+                        {% sw_include "@Storefront/storefront/element/cms-element-" ~ element.type ~ ".html.twig" ignore missing %}
+                    </div>
+                {% endfor %}
+            </div>
+
+            <div class="image-slider-controls-container">
+                <div class="base-slider-controls"
+                     data-base-slider-controls="true">
+                    {% block rhweb_cms_block_rhweb_multi_slider_button_prev %}
+                        <button title="Previous" class="base-slider-controls-prev image-slider-controls-previs-nav-prev-inside">
+                            {% sw_icon 'arrow-head-left' %}
+                        </button>
+                    {% endblock %}
+                    {% block rhweb_cms_block_rhweb_multi_slider_button_next %}
+                        <button title="Next" class="base-slider-controls-next image-slider-controls-next is-nav-next-inside">
+                            {% sw_icon 'arrow-head-right' %}
+                        </button>
+                    {% endblock %}
+                </div>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}
+

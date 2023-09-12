@@ -1,0 +1,34 @@
+{
+    "cogi-tags": {
+        "general": {
+            "mainMenuItemGeneral": "Tags",
+            "descriptionTextModule": "Edit tags"
+        },
+        "list": {
+            "addButtonText": "Add tag",
+            "id": "ID",
+            "labelName": "Name",
+            "labelCreatedAt": "Created at",
+            "contextMenuEdit": "Edit",
+            "contextMenuDelete": "Delete",
+            "messageAddedSuccess": "Tag has been added.",
+            "messageDeleteSuccess": "Tag has been deleted.",
+            "messageAlreadyExistsError": "A tag with this name already exists.",
+            "messageDeleteError": "The tag is still linked to elements.",
+            "refreshButtonText": "Refresh",
+            "exportCSVButtonText": "Export to CSV"
+        },
+        "modal": {
+            "confirmTitle": "Delete tag",
+            "confirmText" : "Do you really want to delete this tag?",
+            "buttonCancel": "Cancel",
+            "buttonDelete": "Delete"
+        },
+        "detail": {
+            "nameLabel": "Name",
+            "cancelButtonText": "Cancel",
+            "saveButtonText": "Save",
+            "errorTitle": "Error saving the tag"
+        }
+    }
+}

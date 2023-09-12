@@ -1,0 +1,35 @@
+{% sw_extends '@parent/storefront/element/cms-element-product-description-reviews.html.twig' %}
+
+{% block element_product_desciption_reviews_tabs_navigation_review %}
+    {{ parent() }}
+
+    <li class="nav-item">
+        <a class="nav-link product-detail-tab-navigation-link"
+           id="articlequestions-tab{{ i }}"
+           data-toggle="tab"
+           data-offcanvas-tabs="true"
+           href="#articlequestions-tab-pane{{ i }}"
+           role="tab"
+           aria-controls="articlequestions-tab-pane{{ i }}"
+           aria-selected="true">
+
+            {{ 'nimbits-articlequestions.tab.headline'|trans }}
+
+            <span class="product-detail-tab-navigation-icon">
+				{% sw_icon 'arrow-medium-right' style {'pack':'solid'} %}
+			</span>
+        </a>
+    </li>
+
+{% endblock %}
+
+{% block element_product_desciption_reviews_tabs_content_review %}
+    {{ parent() }}
+    <div class="tab-pane fade show"
+         id="articlequestions-tab-pane{{ i }}"
+         role="tabpanel"
+         aria-labelledby="articlequestions-tab{{ i }}">
+
+        {% sw_include '@Storefront/storefront/page/product-detail/articlequestions/articlequestions.html.twig' %}
+    </div>
+{% endblock %}

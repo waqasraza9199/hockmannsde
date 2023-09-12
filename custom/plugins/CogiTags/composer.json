@@ -1,0 +1,59 @@
+{
+    "name": "cogi/tags",
+    "description": "Dieses Plugin ermöglicht das unkomplizierte Verwalten und Bearbeiten von Tags, die in der Shopware Administration für Produkte, Kunden, Bestellungen, Medien etc. gesetzt werden können. Außerdem können die Tags auf der Produktdetailseite in der Storefront angezeigt werden.",
+    "version": "v1.3.3",
+    "type": "shopware-platform-plugin",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "codegiganten GmbH",
+            "homepage": "https://www.codegiganten.de",
+            "email": "support@codegiganten.de"
+        }
+    ],
+    "require": {
+        "shopware/core": "6.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Cogi\\Tags\\": "src/"
+        }
+    },
+    "extra": {
+        "shopware-plugin-class": "Cogi\\Tags\\CogiTags",
+        "plugin-icon": "src/Resources/config/plugin.png",
+        "copyright": "(c) by codegiganten GmbH",
+        "label": {
+            "de-DE": "Tags bearbeiten und anzeigen",
+            "en-GB": "Edit and show tags",
+            "es-ES": "Editar y mostrar etiquetas",
+            "it-IT": "Modifica e visualizza i tag",
+            "nl-NL": "Tags bewerken en weergeven",
+            "fr-FR": "Modifier et afficher les balises"
+        },
+        "description": {
+            "de-DE": "Dieses Plugin ermöglicht das unkomplizierte Verwalten und Bearbeiten von Tags, die in der Shopware Administration für Produkte, Kunden, Bestellungen, Medien etc. gesetzt werden können. Außerdem können die Tags auf der Produktdetailseite in der Storefront angezeigt werden.",
+            "en-GB": "This plugin allows you to easily manage and edit tags that can be set in the shopware administration for products, customers, orders, media and many more. Tags can also be displayed on the product detail page in the storefront.",
+            "es-ES": "Este plugin le permite gestionar y editar fácilmente las etiquetas que se pueden establecer en la administración de Shopware para los productos, clientes, pedidos, medios de comunicación, etc. Además, las etiquetas pueden mostrarse en la página de detalles del producto en el escaparate.",
+            "it-IT": "Questo plugin ti permette di gestire e modificare facilmente i tag che possono essere impostati nell'amministrazione di Shopware per prodotti, clienti, ordini, media, ecc. Inoltre, i tag possono essere visualizzati sulla pagina dei dettagli del prodotto nella vetrina.",
+            "nl-NL": "Met deze plugin kunt u eenvoudig tags beheren en bewerken die ingesteld kunnen worden in de Shopware administratie voor producten, klanten, orders, media, enz. Bovendien kunnen de tags worden weergegeven op de productdetailpagina in de storefront.",
+            "fr-FR": "Ce plugin vous permet de gérer et de modifier facilement les balises qui peuvent être définies dans l'administration de Shopware pour les produits, les clients, les commandes, les médias, etc. En outre, les étiquettes peuvent être affichées sur la page de détail du produit dans la vitrine."
+        },
+        "manufacturerLink": {
+            "de-DE": "https://www.codegiganten.de",
+            "en-GB": "https://www.codegiganten.com",
+            "es-ES": "https://www.codegiganten.com",
+            "it-IT": "https://www.codegiganten.com",
+            "nl-NL": "https://www.codegiganten.com",
+            "fr-FR": "https://www.codegiganten.com"
+        },
+        "supportLink": {
+            "de-DE": "https://codegiganten.de/kontakt/",
+            "en-GB": "https://codegiganten.de/kontakt/",
+            "es-ES": "https://codegiganten.de/kontakt/",
+            "it-IT": "https://codegiganten.de/kontakt/",
+            "nl-NL": "https://codegiganten.de/kontakt/",
+            "fr-FR": "https://codegiganten.de/kontakt/"
+        }
+    }
+}

@@ -1,0 +1,57 @@
+.dummy-content{
+  padding: 10px;
+  width: 100%;
+  height: 100%;
+  border: 2px dashed $secondary;
+  border-radius: $border-radius;
+
+  .dummy-content-inner{
+    padding: 15px;
+    background-color: #f2f2f2;
+    border-radius: $border-radius;
+    min-height: 150px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
+
+.rhweb-card{
+  background-color: $sw-background-color;
+  color:$sw-text-color;
+  border-radius: $border-radius;
+  padding:25px;
+  box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 15%);
+  font-size: 1.1em;
+
+  h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6{
+    color:$sw-headline-color !important;
+  }
+
+  .badge{
+    font-size: .7em;
+    padding: 5px 10px;
+    margin-bottom: 5px;
+  }
+}
+
+.rhweb-list-checked{
+  list-style-type: none;
+  padding:0;
+
+  li{
+    position: relative;
+    padding-left: 25px;
+
+    i{
+      position: absolute;
+      left:0;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: .8em;
+      color:$sw-color-success;
+    }
+  }
+}

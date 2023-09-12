@@ -1,0 +1,30 @@
+{% sw_extends '@Storefront/storefront/layout/header/search.html.twig' %}
+{# ThemeWare® HC-Architecture® ready #}
+
+{# ---------------- START: SET TEMPLATE VARS ---------------- #}
+
+{# ThemeWare: Set theme variables #}
+{% set twtHeaderSearchType = theme_config('twt-header-search-type') %}
+
+{# ---------------- END: SET TEMPLATE VARS ---------------- #}
+
+{# ThemeWare: Adjustments on the header search #}
+{% block layout_header_search_input_group %}
+  {# Default search #}
+  {{ parent() }}
+
+  {# ThemeWare: Button für 'Vollbildsuche' ergänzen #}
+  {% block twt_layout_header_search_toggle %}
+    {% if twtHeaderSearchType == 4 %}
+    	<button class="btn header-actions-btn search-toggle-btn js-search-toggle-btn collapsed d-none"
+                type="button"
+                data-toggle="collapse"
+                data-target="#searchCollapse"
+                aria-expanded="false"
+                aria-controls="searchCollapse"
+                aria-label="{{ "header.searchButton"|trans|striptags }}">
+            {% sw_icon 'x' %}
+        </button>
+    {% endif %}
+  {% endblock %}
+{% endblock %}

@@ -1,0 +1,37 @@
+{% set columns = 4 %}
+{% set id = element.id %}
+
+{% if isInSidebar %}
+    <div class="bg-light py-4 px-2 text-center">
+        {{ "CmsElements.callToAction.elementError"|trans|sw_sanitize }}
+    </div>
+{% else %}
+    <div class="cta-banner-category-grid version-two col-12">
+        <div class="row">
+
+            {% set element = block.slots.getSlot('one') %}
+            <div class="col-lg-4 mb-3 mb-lg-0 pr-lg-2" data-cms-element-id="{{ id }}">
+                {% sw_include "@Storefront/storefront/element/cms-element-" ~ element.type ~ ".html.twig" ignore missing %}
+            </div>
+            <div class="col-lg-8 pl-lg-2">
+                <div class="row">
+                    {% set element = block.slots.getSlot('two') %}
+                    <div class="col-12 mb-md-3" data-cms-element-id="{{ id }}">
+                        {% sw_include "@Storefront/storefront/element/cms-element-" ~ element.type ~ ".html.twig" ignore missing %}
+                    </div>
+                    {% set element = block.slots.getSlot('three') %}
+                    <div class="mt-3 mt-md-0 col-md-6 pr-md-2" data-cms-element-id="{{ id }}">
+                        {% sw_include "@Storefront/storefront/element/cms-element-" ~ element.type ~ ".html.twig" ignore missing %}
+                    </div>
+                    {% set element = block.slots.getSlot('four') %}
+                    <div class="mt-3 mt-md-0 col-md-6 pl-md-2" data-cms-element-id="{{ id }}">
+                        {% sw_include "@Storefront/storefront/element/cms-element-" ~ element.type ~ ".html.twig" ignore missing %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endif %}
+
+
+

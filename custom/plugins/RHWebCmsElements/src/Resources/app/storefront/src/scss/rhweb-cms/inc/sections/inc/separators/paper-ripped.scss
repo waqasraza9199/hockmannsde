@@ -1,0 +1,34 @@
+.rhweb-separator-paper-ripped-both,
+.rhweb-separator-paper-ripped-top,
+.rhweb-separator-paper-ripped-bottom {
+  position: relative;
+}
+
+.rhweb-separator-paper-ripped-both, .rhweb-separator-paper-ripped-top{
+  padding-top: 60px;
+
+  &:before{
+    top:0;
+    position: absolute;
+    content: "";
+    height: 7px;
+    width: 100%;
+    z-index: 10;
+    background-image: url("/bundles/rhwebcmselements/assets/feature/paper-ripped.png");
+  }
+}
+
+.rhweb-separator-paper-ripped-both, .rhweb-separator-paper-ripped-bottom{
+  padding-bottom: 60px;
+
+  &:after{
+    bottom: 0;
+    transform: rotate(180deg);
+    position: absolute;
+    content: "";
+    height: 7px;
+    width: 100%;
+    z-index: 10;
+    background-image: url("/bundles/rhwebcmselements/assets/feature/paper-ripped.png");
+  }
+}

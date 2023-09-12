@@ -1,0 +1,28 @@
+{% sw_extends '@Storefront/storefront/element/cms-element-buy-box.html.twig' %}
+
+{% block element_buy_box %}
+    {% set rhwebAnimation = element.config.rhwebAnimation.value %}
+
+    {% if rhwebAnimation %}
+        {% if rhwebAnimation.in.active or rhwebAnimation.out.active or rhwebAnimation.hover.active %}
+            <div data-rhweb-animation='{{ rhwebAnimation|json_encode|raw }}'>
+                {{ parent() }}
+            </div>
+        {% else %}
+            {{ parent() }}
+        {% endif %}
+    {% else %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}
+
+{% block element_buy_box_inner %}
+    {{ parent() }}
+
+    {% if page.product.active and config('RHWebThemeFeatures.config.rhwebActivateStickyCart') %}
+        {% sw_include '@Storefront/rhweb-theme-features/snippets/fixed-cart/index.html.twig' %}
+    {% endif %}
+{% endblock %}
+
+
+

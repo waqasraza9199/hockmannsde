@@ -1,0 +1,19 @@
+{% sw_extends '@Storefront/storefront/component/buy-widget/buy-widget-form-customized-products.html.twig' %}
+
+{# Force user to select a variant before the custom products boxes become visible #}
+{% block swag_customized_products_buy_widget_form %}
+    {% if page.product.extensions.EmcgnNoVariantPreselection.masterProduct %}
+        {% block emcgn_no_variant_preselection_customized_products_buy_widget_form %}
+            <div role="alert" class="alert alert-info alert-has-icon">
+                {% sw_icon 'info' %}
+                <div class="alert-content-container">
+                    <div class="alert-content">
+                        {{ 'emcgn.noVariantPreselection.product-detail.customProductsHint'|trans }}
+                    </div>
+                </div>
+            </div>
+        {% endblock %}
+    {% else %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}

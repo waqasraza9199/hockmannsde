@@ -1,0 +1,96 @@
+{% block lzyt_drop_page_detail %}
+    <sw-page class="lzyt-drop-detail">
+
+        {% block lzyt_drop_page_detail_header %}
+            <template slot="smart-bar-header">
+                <h2 v-if="bundle && !createPage">
+                    {{ bundle.iban }}
+                </h2>
+                <h2 v-else-if="createPage">
+                    {{ $tc('lzyt-drop.create.title') }}
+                </h2>
+            </template>
+        {% endblock %}
+
+        {% block lzyt_drop_page_detail_language_switch %}
+            <template slot="language-switch">
+                <sw-language-switch
+                    @on-change="onChangeLanguage"
+                    :saveChangesFunction="saveOnLanguageChange">
+                </sw-language-switch>
+            </template>
+        {% endblock %}
+
+        {% block lzyt_drop_page_detail_actions %}
+            <template slot="smart-bar-actions">
+
+                {% block lzyt_drop_page_detail_actions_cancel %}
+                    <sw-button
+                        :routerLink="{ name: 'lzyt.drop.list' }">{{ $tc('lzyt-drop.buttons.cancel') }}</sw-button>
+                {% endblock %}
+
+                {% block lzyt_drop_page_detail_actions_save %}
+                    <sw-button-process
+                        :isLoading="isLoading"
+                        :processSuccess="isSaveSuccessful"
+                        variant="primary"
+                        @process-finish="saveFinish"
+                        @click.prevent="onClickSave">
+                        {{ $tc('lzyt-drop.buttons.save') }}
+                    </sw-button-process>
+                {% endblock %}
+            </template>
+        {% endblock %}
+
+        {% block lzyt_drop_page_detail_content %}
+            <template slot="content">
+                <sw-card-view>
+                    <sw-card v-if="bundle" :title="$tc('lzyt-drop.create.fieldsets.general')" :isLoading="isLoading">
+                        <sw-container columns="1fr 1fr" gap="0px 15px">
+                            
+                            <sw-field
+                                v-model="bundle.bank"
+                                required
+                                :label="$tc('lzyt-drop.create.elements.bank')" />
+
+                            <sw-field
+                                v-model="bundle.iban"
+                                required
+                                :label="$tc('lzyt-drop.create.elements.iban')" />
+
+                            <sw-field
+                                v-model="bundle.bic"
+                                required
+                                :label="$tc('lzyt-drop.create.elements.bic')" />
+
+                            <sw-number-field :label="$tc('lzyt-drop.create.elements.priority')" required :digits="0"
+                                                 v-model="bundle.priority"></sw-number-field>
+
+                            <sw-container columns="1fr 1fr" gap="0px 15px">
+                                <sw-switch-field :label="$tc('lzyt-drop.create.elements.enabled')"
+                                                    :bordered="true"
+                                                    v-model="bundle.enabled"></sw-switch-field>
+                            </sw-container>
+                        </sw-container>
+                    </sw-card>
+
+                    <sw-card v-if="bundle" :title="$tc('lzyt-drop.create.fieldsets.rule')" :isLoading="isLoading">
+                        <sw-container>
+                            
+                            <sw-select-rule-create
+                                :rule-id="bundle.ruleId"
+                                required
+                                :label="$tc('lzyt-drop.create.elements.rule')"
+                                :placeholder="$tc('lzyt-drop.create.elements.rule-placeholder')"
+                                class="sw-settings-shipping-detail__top-rule"
+                                rule-aware-group-key="drops"
+                                @save-rule="onSaveRule" />
+
+                        </sw-container>
+                    </sw-card>
+
+                </sw-card-view>
+            </template>
+        {% endblock %}
+    </sw-page>
+{% endblock %}

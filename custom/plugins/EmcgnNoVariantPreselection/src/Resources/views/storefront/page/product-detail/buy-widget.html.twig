@@ -1,0 +1,22 @@
+{% sw_extends "@Storefront/storefront/page/product-detail/buy-widget.html.twig" %}
+
+{# Show configuration and reset button on master product #}
+{% block page_product_detail_configurator_include %}
+    {% if page.configuratorSettings|length > 0 %}
+        <div class="product-detail-configurator-container">
+            {% sw_include '@Storefront/storefront/page/product-detail/configurator.html.twig' %}
+        </div>
+        <div class="emcgn-no-variant-preselection-reset">
+            <a href="{% if page.product.extensions.EmcgnNoVariantPreselection.resetUrl %}{{ page.product.extensions.EmcgnNoVariantPreselection.resetUrl }}{% else %}#{% endif %}">
+                <button class="btn btn-outline-secondary" {% if page.product.extensions.EmcgnNoVariantPreselection.masterProduct %}disabled{% endif %}>{{ 'emcgn.noVariantPreselection.product-detail.resetSelection'|trans }}</button>
+            </a>
+        </div>
+    {% endif %}
+{% endblock %}
+
+{# Remove rich snippet price range for master product #}
+{% block page_product_detail_data_rich_snippet_price_range %}
+    {% if not page.product.extensions.EmcgnNoVariantPreselection.masterProduct %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}

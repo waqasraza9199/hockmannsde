@@ -1,0 +1,26 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+        <!-- Services -->
+        <service id="RHWeb\ThemeFeatures\Core\Service\DataService" public="true">
+            <argument type="service" id="Doctrine\DBAL\Connection"/>
+            <argument type="service" id="Shopware\Core\Framework\DataAbstractionLayer\DefinitionInstanceRegistry"/>
+            <argument type="service" id="Shopware\Core\System\SystemConfig\SystemConfigService"/>
+            <argument type="service" id="Shopware\Core\Content\Media\MediaService"/>
+            <argument type="service" id="Shopware\Core\Content\Media\File\FileSaver"/>
+            <argument type="service" id="shopware.filesystem.asset"/>
+            <argument type="service" id="Shopware\Storefront\Theme\ThemeService"/>
+            <argument>%kernel.project_dir%</argument>
+
+            <argument type="tagged" tag="rhweb.theme_features.data" />
+        </service>
+
+        <!-- Administration -->
+        <service id="RHWeb\ThemeFeatures\Administration\Controller\SettingsController" public="true">
+            <argument type="service" id="RHWeb\ThemeFeatures\Core\Service\DataService"/>
+        </service>
+    </services>
+</container>

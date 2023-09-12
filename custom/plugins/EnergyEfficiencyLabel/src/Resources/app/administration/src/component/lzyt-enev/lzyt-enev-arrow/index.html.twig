@@ -1,0 +1,14 @@
+{% block lzyt_enev_arrow %}
+    <div class="lzyt-enev-arrow" :style="arrow.color|style" :data-color="arrow.color|prefix">
+        {% block lzyt_enev_arrow_class %}
+            <div class="lzyt-enev-arrow-class">
+                {{ arrow.class }}
+                {% block lzyt_enev_arrow_spectrum %}
+                    <span class="lzyt-enev-arrow-spectrum" v-if="arrow.spectrumFrom">
+                         {{ $tc('lzyt-enev.component.spectrum') }}: {{ arrow.spectrumFrom }} {{ $tc('lzyt-enev.component.to') }} {{ arrow.spectrumTo }}
+                    </span>
+                {% endblock %}
+            </div>
+        {% endblock %}
+    </div>
+{% endblock %}

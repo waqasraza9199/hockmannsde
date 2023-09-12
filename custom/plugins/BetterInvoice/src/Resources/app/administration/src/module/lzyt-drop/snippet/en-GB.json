@@ -1,0 +1,39 @@
+{
+    "lzyt-drop": {
+        "general": {
+            "headline": "Drops",
+            "searchBar": "Drop",
+            "placeholderSearchBar": "Search ..."
+        },
+        "buttons": {
+            "create": "Create",
+            "cancel": "Cancel",
+            "save": "Save"
+        },
+        "list": {
+            "title": "Drops",
+            "columnBank": "Bank",
+            "columnIban": "Iban",
+            "columnBic": "Bic",
+            "columnRule": "Available",
+            "columnEnabled": "Activ",
+            "columnPriority": "Priority"
+        },
+        "create": {
+            "title": "Create",
+            "fieldsets": {
+                "general": "General",
+                "rule": "Avaibility Rule"
+            },
+            "elements": {
+                "enabled": "Activ",
+                "priority": "Priority",
+                "rule": "Rule",
+                "rule-placeholder": "Search ...",
+                "bank": "Bank",
+                "iban": "Iban",
+                "bic": "Bic"
+            }
+        }
+    }
+}

@@ -1,0 +1,42 @@
+{
+    "name": "lenz/shopware-plugin-google-shopping",
+    "description": "LenzPlatformGoogleShopping",
+    "version": "v1.0.13",
+    "type": "shopware-platform-plugin",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "LENZ eBusiness GmbH",
+            "homepage": "https://lenz-ebusiness.de"
+        }
+    ],
+    "require": {
+        "shopware/core": ">=6.4.10.0"
+    },
+    "extra": {
+        "shopware-plugin-class": "Lenz\\GoogleShopping\\LenzPlatformGoogleShopping",
+        "plugin-icon": "src/Resources/config/plugin.png",
+        "copyright": "(c) by LENZ eBusiness GmbH",
+        "label": {
+            "de-DE": "Google Shopping PRO",
+            "en-GB": "Google Shopping PRO"
+        },
+        "description": {
+            "de-DE": "Google Shopping Plugin für Shopware 6",
+            "en-GB": "Google Shopping plugin for Shopware 6"
+        },
+        "manufacturerLink": {
+            "de-DE": "https://store.shopware.com/shopdoktor.html",
+            "en-GB": "https://store.shopware.com/en/shopdoktor.html"
+        },
+        "supportLink": {
+            "de-DE": "https://lenz-ebusiness.de",
+            "en-GB": "https://lenz-ebusiness.de"
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Lenz\\GoogleShopping\\": "src/"
+        }
+    }
+}

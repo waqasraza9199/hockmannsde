@@ -1,0 +1,34 @@
+{
+    "cogi-tags": {
+        "general": {
+            "mainMenuItemGeneral": "Etiquetas",
+            "descriptionTextModule": "Editar etiquetas"
+        },
+        "list": {
+            "addButtonText": "Añadir etiqueta",
+            "id": "ID",
+            "labelName": "Nombre",
+            "labelCreatedAt": "Fecha de creación",
+            "contextMenuEdit": "Editar",
+            "contextMenuDelete": "Borrar",
+            "messageAddedSuccess": "La etiqueta se ha añadido correctamente.",
+            "messageDeleteSuccess": "La etiqueta se ha eliminado con éxito.",
+            "messageAlreadyExistsError": "La etiqueta se ha eliminado con éxito.",
+            "messageDeleteError": "La etiqueta sigue vinculada a los elementos.",
+            "refreshButtonText": "Actualización",
+            "exportCSVButtonText": "Exportar como CSV"
+        },
+        "modal": {
+            "confirmTitle": "Eliminar la etiqueta",
+            "confirmText" : "¿Realmente quieres borrar esta etiqueta?",
+            "buttonCancel": "Cancelar",
+            "buttonDelete": "Borrar"
+        },
+        "detail": {
+            "nameLabel": "Nombre",
+            "cancelButtonText": "Cancelar",
+            "saveButtonText": "Guardar",
+            "errorTitle": "Error al guardar la etiqueta"
+        }
+    }
+}

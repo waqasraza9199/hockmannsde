@@ -1,0 +1,11 @@
+{
+    "sw-cms": {
+        "component": {
+            "sw-cms-slot": {
+                "title": "CMS Element - Animationen",
+                "buttonTitle": "Animationen",
+                "animationsHint": "Hier können Sie Animationen für das Element aktivieren. Lassen Sie Elemente beispielsweise langsam einblenden, sobald sie für den Kunden sichtbar sind.<br><br><b>Wichtig:</b><br>Wenn Sie die Moori Foundation Erweiterung aktiviert haben, sollten Sie die Animationen nicht an 2 Stellen pflegen, da sich Einstellungen sonst ggf. überschneiden."
+            }
+        }
+    }
+}

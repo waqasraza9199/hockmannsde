@@ -1,0 +1,117 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <!-- Component -->
+        <service id="EmcgnNoVariantPreselection\Component\CheckConfig">
+            <argument type="service" id="Shopware\Core\System\SystemConfig\SystemConfigService"/>
+        </service>
+
+        <service id="EmcgnNoVariantPreselection\Component\CheckId"/>
+
+        <service id="EmcgnNoVariantPreselection\Component\ConfiguratorReset">
+            <argument type="service" id="Shopware\Core\Content\Seo\SeoUrlPlaceholderHandlerInterface"/>
+        </service>
+
+        <service id="EmcgnNoVariantPreselection\Component\HighestUnitPrice">
+            <argument type="service" id="service_container"/>
+        </service>
+
+        <service id="EmcgnNoVariantPreselection\Component\MasterProduct">
+            <argument type="service" id="service_container"/>
+            <argument type="service" id="Shopware\Core\Content\Category\Service\CategoryBreadcrumbBuilder"/>
+            <argument type="service" id="event_dispatcher"/>
+        </service>
+
+        <service id="EmcgnNoVariantPreselection\Component\MasterProductMeta"/>
+
+        <service id="EmcgnNoVariantPreselection\Component\MasterProductReviews">
+            <argument type="service" id="Shopware\Core\Content\Product\SalesChannel\Review\ProductReviewRoute"/>
+        </service>
+
+        <!-- Core -->
+        <service
+            id="EmcgnNoVariantPreselection\Core\Product\Cms\NvpBuyBoxCmsElementResolverDecorator"
+            decorates="Shopware\Core\Content\Product\Cms\BuyBoxCmsElementResolver"
+        >
+            <tag name="shopware.cms.data_resolver" priority="50"/>
+            <argument type="service" id="EmcgnNoVariantPreselection\Core\Product\Cms\NvpBuyBoxCmsElementResolverDecorator.inner"/>
+            <argument type="service" id="EmcgnNoVariantPreselection\Core\Product\Cms\Helper\ResolverHelperService"/>
+            <argument type="service" id="Shopware\Core\Content\Product\SalesChannel\Detail\ProductConfiguratorLoader"/>
+            <argument type="service" id="product_review.repository"/>
+        </service>
+
+        <service
+            id="EmcgnNoVariantPreselection\Core\Product\Cms\NvpImageGalleryTypeDataResolverDecorator"
+            decorates="Shopware\Core\Content\Media\Cms\Type\ImageGalleryTypeDataResolver"
+        >
+            <tag name="shopware.cms.data_resolver" priority="50"/>
+            <argument type="service" id="EmcgnNoVariantPreselection\Core\Product\Cms\NvpImageGalleryTypeDataResolverDecorator.inner"/>
+            <argument type="service" id="EmcgnNoVariantPreselection\Core\Product\Cms\Helper\ResolverHelperService"/>
+        </service>
+
+        <service
+            id="EmcgnNoVariantPreselection\Core\Product\Cms\NvpProductDescriptionReviewsCmsElementResolverDecorator"
+            decorates="Shopware\Core\Content\Product\Cms\ProductDescriptionReviewsCmsElementResolver"
+        >
+            <tag name="shopware.cms.data_resolver" priority="50"/>
+            <argument type="service" id="EmcgnNoVariantPreselection\Core\Product\Cms\NvpProductDescriptionReviewsCmsElementResolverDecorator.inner"/>
+            <argument type="service" id="EmcgnNoVariantPreselection\Component\MasterProductReviews"/>
+            <argument type="service" id="EmcgnNoVariantPreselection\Core\Product\Cms\Helper\ResolverHelperService"/>
+        </service>
+
+        <service
+            id="EmcgnNoVariantPreselection\Core\Product\Cms\NvpProductNameCmsElementResolverDecorator"
+            decorates="Shopware\Core\Content\Product\Cms\ProductNameCmsElementResolver"
+        >
+            <tag name="shopware.cms.data_resolver" priority="50"/>
+            <argument type="service" id="EmcgnNoVariantPreselection\Core\Product\Cms\NvpProductNameCmsElementResolverDecorator.inner"/>
+            <argument type="service" id="EmcgnNoVariantPreselection\Core\Product\Cms\Helper\ResolverHelperService"/>
+        </service>
+
+        <service id="EmcgnNoVariantPreselection\Core\Product\Cms\Helper\ResolverHelperService">
+            <argument type="service" id="EmcgnNoVariantPreselection\Component\MasterProduct"/>
+            <argument type="service" id="EmcgnNoVariantPreselection\Component\CheckId"/>
+            <argument type="service" id="EmcgnNoVariantPreselection\Component\CheckConfig"/>
+        </service>
+
+        <!-- Subscriber -->
+        <service id="EmcgnNoVariantPreselection\Subscriber\ProductCrossSellingEvent">
+            <tag name="kernel.event_subscriber"/>
+            <argument type="service" id="EmcgnNoVariantPreselection\Component\MasterProduct"/>
+            <argument type="service" id="EmcgnNoVariantPreselection\Component\CheckConfig"/>
+            <argument type="service" id="EmcgnNoVariantPreselection\Component\HighestUnitPrice"/>
+        </service>
+
+        <service id="EmcgnNoVariantPreselection\Subscriber\ProductListingSubscriber">
+            <tag name="kernel.event_subscriber"/>
+            <argument type="service" id="EmcgnNoVariantPreselection\Component\MasterProduct"/>
+            <argument type="service" id="EmcgnNoVariantPreselection\Component\CheckConfig"/>
+            <argument type="service" id="EmcgnNoVariantPreselection\Component\HighestUnitPrice"/>
+        </service>
+
+        <service id="EmcgnNoVariantPreselection\Subscriber\ProductPageSubscriber">
+            <tag name="kernel.event_subscriber"/>
+            <argument type="service" id="EmcgnNoVariantPreselection\Component\MasterProduct"/>
+            <argument type="service" id="EmcgnNoVariantPreselection\Component\MasterProductMeta"/>
+            <argument type="service" id="EmcgnNoVariantPreselection\Component\CheckId"/>
+            <argument type="service" id="EmcgnNoVariantPreselection\Component\CheckConfig"/>
+            <argument type="service" id="EmcgnNoVariantPreselection\Component\ConfiguratorReset"/>
+            <argument type="service" id="EmcgnNoVariantPreselection\Component\HighestUnitPrice"/>
+        </service>
+
+        <service id="EmcgnNoVariantPreselection\Subscriber\ProductSearchSubscriber">
+            <tag name="kernel.event_subscriber"/>
+            <argument type="service" id="EmcgnNoVariantPreselection\Subscriber\ProductListingSubscriber"/>
+        </service>
+
+        <service id="EmcgnNoVariantPreselection\Subscriber\ProductSuggestSubscriber">
+            <tag name="kernel.event_subscriber"/>
+            <argument type="service" id="EmcgnNoVariantPreselection\Subscriber\ProductListingSubscriber"/>
+        </service>
+
+    </services>
+</container>

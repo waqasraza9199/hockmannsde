@@ -1,0 +1,22 @@
+{% sw_extends '@TcinnThemeWareElectric/storefront/layout/meta.html.twig' %}
+
+{% block layout_head_stylesheet %}
+    {{ parent() }}
+    <style>
+        .twt-widget-payment{
+            display: flex;
+            flex-direction: column;
+        }
+        .is-ctl-product .product-detail-buy .twt-widget-payment{
+            display: flex;
+            flex-direction: row;
+        }
+        .twt-usp-bar-item.twt-usp-4{
+            display: none;
+        }
+        /*.is-ctl-product .twt-widget-payment .is-payment-logo img.footer-logo-image{*/
+        /*    height: 50px !important;*/
+        /*    max-height: 50px !important;*/
+        /*}*/
+    </style>
+{% endblock %}

@@ -1,0 +1,12 @@
+{% sw_extends '@TcinnThemeWareElectric/storefront/layout/footer/footer.html.twig' %}
+
+{% block layout_footer_service_menu %}
+    {# ThemeWare: Add communities #}
+    {% if twtFooterBottomElement1 == "communities" %}
+        {% block twt_layout_footer_bottom_communities_container %}
+            {{ parent() }}
+        {% endblock %}
+    {% endif %}
+
+{% endblock %}
+

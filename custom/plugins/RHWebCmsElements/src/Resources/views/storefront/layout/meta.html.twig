@@ -1,0 +1,10 @@
+{% sw_extends '@Storefront/storefront/layout/meta.html.twig' %}
+
+{% block layout_head_stylesheet %}
+    {{ parent() }}
+    {% if config('RHWebCmsElements.config.rhwebCmsBundleCustomCssActivate') %}
+        <style>
+            {{ config('RHWebCmsElements.config.rhwebCmsBundleCustomCss') | raw }}
+        </style>
+    {% endif %}
+{% endblock %}

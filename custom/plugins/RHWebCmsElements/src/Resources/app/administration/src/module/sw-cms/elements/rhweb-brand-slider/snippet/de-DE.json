@@ -1,0 +1,30 @@
+{
+    "sw-cms": {
+        "elements": {
+            "rhweb-brand-slider": {
+                "config": {
+                    "tab": {
+                        "brands": "Hersteller",
+                        "layout": "Layout"
+                    },
+                    "label": {
+                        "select": "Hersteller wählen",
+                        "rotate": "Zufällige Sortierung",
+                        "minWidth": "Min. Breite des Herstellers (in px)",
+                        "height": "Höhe des Herstellers (in px)",
+                        "useLink": "URL des Herstellers aktivieren",
+                        "onlyImages": "Nur Hersteller mit Bildern anzeigen"
+                    },
+                    "helpText": {
+                        "select": "Die ausgewählten Hersteller werden im Slider dargestellt.",
+                        "rotate": "Wenn diese Option aktiv ist, werden die Hersteller zufällig sortiert.",
+                        "minWidth": "Setzen Sie die Mindestbreite für den Hersteller. Je höher der Wert, desto weniger Hersteller werden pro Slide angezeigt.",
+                        "height": "Setzen Sie diesen Wert um die Höhe des Sliders zu steuern. Wenn die Bilder der Hersteller aktiv sind, werden die Bilder mit diesem Wert alle gleich hoch gesetzt. <br><br><b>'auto' für automatische Berechnung</b>",
+                        "useLink": "Die Hersteller können in den Shopware 6 Core Einstellungen mit einer URL versehen werden. Aktivieren Sie diese Option, um die Verlinkungen zu aktivieren.",
+                        "onlyImages": "Wenn diese Option aktiv ist, werden nur Hersteller ausgegeben, denen kein Bild zugewiesen ist."
+                    }
+                }
+            }
+        }
+    }
+}

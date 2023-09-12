@@ -1,0 +1,23 @@
+{% block lzyt_enev_select_class %}
+    <sw-single-select
+        v-model="currentValue"
+        :label="label"
+        :options="options"
+        labelProperty="name"
+        valueProperty="id"
+        :isLoading="isLoading"
+    >
+        <template #selection-label-property="{ item, labelProperty, valueProperty, searchTerm, getKey }">
+            <lzyt-enev-arrow v-if="item.id" :arrow="item"></lzyt-enev-arrow>
+            <div v-else>{{ getKey(item, labelProperty) }}</div>
+        </template>
+        <template #result-item="{ item, index, labelProperty, searchTerm, highlightSearchTerm, isSelected, setValue, getKey }">
+            <li is="sw-select-result" :selected="isSelected(item)" @item-select="setValue" v-bind="{ item, index }">
+                <template>
+                    <lzyt-enev-arrow v-if="item.id" :arrow="item"></lzyt-enev-arrow>
+                    <div v-else>{{ getKey(item, labelProperty) }}</div>
+                </template>
+            </li>
+        </template>
+    </sw-single-select>
+{% endblock %}

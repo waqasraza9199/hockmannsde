@@ -1,0 +1,127 @@
+{% block nb_articlequestions_detail %}
+    <sw-page class="nb-articlequestions-detail">
+        {% block nb_articlequestions_detail_header %}
+            <template slot="smart-bar-header">
+                <h2>{{ $tc('nb-articlequestions.detail.textHeadline') }}</h2>
+            </template>
+        {% endblock %}
+
+        {% block nb_articlequestions_detail_actions %}
+            <template slot="smart-bar-actions">
+                {% block nb_articlequestions_detail_actions_abort %}
+                    <sw-button :disabled="isLoading" :routerLink="{ name: 'nb.articlequestions.overview' }">
+                        {{ $tc('nb-articlequestions.detail.buttonCancel') }}
+                    </sw-button>
+                {% endblock %}
+
+                {% block nb_articlequestions_detail_actions_save %}
+                    <sw-button class="nb-articlequestions-detail__save-action" variant="primary" :disabled="isLoading"
+                               @click="onSave">
+                        {{ $tc('nb-articlequestions.detail.buttonSave') }}
+                    </sw-button>
+                {% endblock %}
+            </template>
+        {% endblock %}
+
+        {% block nb_articlequestions_detail_content %}
+
+
+            <sw-card-view slot="content">
+                <sw-card
+                        v-if="articlequestion"
+                        :title="$tc('nb-articlequestions.detail.cardTitlearticlequestionAdminData')"
+                        :isLoading="isLoading"
+                        class="nb-articlequestions-properties">
+                    {% block nb_articlequestions_detail_basic_info_card_description_list_productdata %}
+                        {% block nb_articlequestions_detail_description_list_productdata_item %}
+                            <sw-field type="checkbox" :label="$t('nb-articlequestions.detail.admindata.active')"
+                                      v-model="articlequestion.active" validation="required"></sw-field>
+
+                            <sw-field type="textarea"
+                                      name="nb-text-1"
+                                      :label="$tc('nb-articlequestions.detail.admindata.answer')"
+                                      v-model="articlequestion.answer">
+
+                            </sw-field>
+
+                        {% endblock %}
+                    {% endblock %}
+                </sw-card>
+
+                <sw-card
+                        v-if="articlequestion"
+                        :title="$tc('nb-articlequestions.detail.cardTitlearticlequestionCustomerQuestion')"
+                        :isLoading="isLoading"
+                        class="nb-articlequestions-properties">
+                    {% block nb_articlequestions_detail_basic_info_card_description_list_basedata %}
+
+                        {% block nb_articlequestions_detail_description_list_basedata %}
+
+                            <sw-field type="textarea"
+                                      name="nb-text-8"
+                                      :label="$tc('nb-articlequestions.detail.basedata.question')"
+                                      v-model="articlequestion.question">
+                            </sw-field>
+
+
+                            <sw-text-field
+                                    v-if="article"
+                                    name="nb-text-articlename"
+                                    :label="$tc('nb-articlequestions.detail.basedata.articleName')"
+                                    :value="article.name" disabled>
+                            </sw-text-field>
+
+                            <router-link :to="{ name: 'sw.product.detail', params: { id: articlequestion.article_id } }"
+                                         class="sw-card__quick-link">
+                                <div class="nb_aq_linktoproduct"> {{ $tc('nb-articlequestions.detail.basedata.linktoproduct') }}
+                                    <sw-icon name="default-arrow-simple-right" small></sw-icon>
+                                </div>
+                            </router-link>
+
+                            <sw-text-field
+                                    name="nb-text-2"
+                                    :label="$tc('nb-articlequestions.detail.basedata.date')"
+                                    v-model="articlequestion.created_at" disabled>
+                            </sw-text-field>
+
+                            <sw-text-field
+                                    name="nb-text-3"
+                                    :label="$tc('nb-articlequestions.detail.basedata.salutation')"
+                                    v-model="articlequestion.salutation" disabled>
+                            </sw-text-field>
+
+                            <sw-text-field
+                                    name="nb-text-4"
+                                    :label="$tc('nb-articlequestions.detail.basedata.firstname')"
+                                    v-model="articlequestion.firstname" disabled>
+                            </sw-text-field>
+
+                            <sw-text-field
+                                    name="nb-text-5"
+                                    :label="$tc('nb-articlequestions.detail.basedata.surname')"
+                                    v-model="articlequestion.surname" disabled>
+                            </sw-text-field>
+
+                            <sw-text-field
+                                    name="nb-text-6"
+                                    :label="$tc('nb-articlequestions.detail.basedata.mail')"
+                                    v-model="articlequestion.mail" disabled>
+                            </sw-text-field>
+
+                            <sw-text-field
+                                    name="nb-text-7"
+                                    :label="$tc('nb-articlequestions.detail.basedata.company')"
+                                    v-model="articlequestion.company" disabled>
+                            </sw-text-field>
+
+
+
+                        {% endblock %}
+                    {% endblock %}
+                </sw-card>
+
+
+            </sw-card-view>
+        {% endblock %}
+    </sw-page>
+{% endblock %}

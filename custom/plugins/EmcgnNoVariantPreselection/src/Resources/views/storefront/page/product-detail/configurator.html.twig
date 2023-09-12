@@ -1,0 +1,20 @@
+{% sw_extends "@Storefront/storefront/page/product-detail/configurator.html.twig" %}
+
+{# Set Configuration Variable for master product #}
+{% block page_product_detail_configurator %}
+    <div class="product-detail-configurator">
+        {% if page.product.extensions.EmcgnNoVariantPreselection.masterProduct %}
+            {% set config = {
+                url: url('frontend.detail.switch', { productId: page.product.extensions.EmcgnNoVariantPreselection.productId })
+            } %}
+        {% else %}
+            {% set config = {
+                url: url('frontend.detail.switch', { productId: page.product.parentId })
+            } %}
+        {% endif %}
+
+        {% block page_product_detail_configurator_form %}
+            {{ parent() }}
+        {% endblock %}
+    </div>
+{% endblock %}

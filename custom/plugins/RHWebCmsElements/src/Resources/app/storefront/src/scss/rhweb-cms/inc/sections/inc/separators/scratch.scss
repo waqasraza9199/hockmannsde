@@ -1,0 +1,32 @@
+.rhweb-separator-scratch-both, .rhweb-separator-scratch-top, .rhweb-separator-scratch-bottom{
+    position: relative;
+}
+
+.rhweb-separator-scratch-both, .rhweb-separator-scratch-top{
+    padding-top: 60px;
+
+    &:before{
+        top: 0;
+        position: absolute;
+        content: "";
+        height: 40px;
+        width: 100%;
+        z-index: 10;
+        background-image: url("/bundles/rhwebcmselements/assets/feature/scratch.png");
+    }
+}
+
+.rhweb-separator-scratch-both, .rhweb-separator-scratch-bottom{
+    padding-bottom: 60px;
+
+    &:after{
+        bottom: 0;
+        transform: rotate(180deg);
+        position: absolute;
+        content: "";
+        height: 40px;
+        width: 100%;
+        z-index: 10;
+        background-image: url("/bundles/rhwebcmselements/assets/feature/scratch.png");
+    }
+}

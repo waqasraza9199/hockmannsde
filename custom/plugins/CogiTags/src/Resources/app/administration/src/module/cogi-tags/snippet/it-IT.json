@@ -1,0 +1,34 @@
+{
+    "cogi-tags": {
+        "general": {
+            "mainMenuItemGeneral": "Tags",
+            "descriptionTextModule": "Modifica dei tag"
+        },
+        "list": {
+            "addButtonText": "Aggiungi tag",
+            "id": "ID",
+            "labelName": "Nome",
+            "labelCreatedAt": "Data di creazione",
+            "contextMenuEdit": "Modifica",
+            "contextMenuDelete": "Cancellare",
+            "messageAddedSuccess": "Il tag è stato aggiunto con successo.",
+            "messageDeleteSuccess": "Il tag è stato cancellato con successo.",
+            "messageAlreadyExistsError": "Un tag con questo nome esiste già.",
+            "messageDeleteError": "Il tag è ancora legato agli elementi.",
+            "refreshButtonText": "Aggiornamento",
+            "exportCSVButtonText": "Esporatazione come CSV"
+        },
+        "modal": {
+            "confirmTitle": "Elimina il tag",
+            "confirmText" : "Vuoi davvero cancellare questo tag?",
+            "buttonCancel": "Cancella",
+            "buttonDelete": "Rimuovi"
+        },
+        "detail": {
+            "nameLabel": "Nome",
+            "cancelButtonText": "Cancella",
+            "saveButtonText": "Salva",
+            "errorTitle": "Errore nel salvare il tag"
+        }
+    }
+}

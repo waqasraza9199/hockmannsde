@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service id="WebLa_IntelligentCrossSelling\Core\Content\CrossSellPropertyGroup\CrossSellPropertyGroupDefinition">
+            <tag name="shopware.entity.definition" entity="webla_intelligent_cross_selling_property_group" />
+        </service>
+        <service id="WebLa_IntelligentCrossSelling\Core\Content\CrossSellSettings\CrossSellSettingsDefinition">
+            <tag name="shopware.entity.definition" entity="webla_intelligent_cross_selling_settings" />
+        </service>
+        <service id="WebLa_IntelligentCrossSelling\Subscriber\CrossSellingLoader" decorates="Shopware\Core\Content\Product\SalesChannel\CrossSelling\CachedProductCrossSellingRoute">
+            <argument type="service" id="sales_channel.product.repository"/>
+            <argument type="service" id="webla_intelligent_cross_selling_settings.repository"/>
+            <argument type="service" id="webla_intelligent_cross_selling_property_group.repository"/>
+            <argument type="service" id="Shopware\Core\Content\Product\SalesChannel\CrossSelling\CachedProductCrossSellingRoute.inner"/>
+            <argument type="service" id="Shopware\Core\System\SystemConfig\SystemConfigService" />
+            <argument type="service" id="Shopware\Core\Content\Product\SalesChannel\ProductCloseoutFilterFactory" />
+        </service>
+    </services>
+</container>

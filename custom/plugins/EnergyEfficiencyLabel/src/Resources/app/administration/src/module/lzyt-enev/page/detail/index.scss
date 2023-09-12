@@ -1,0 +1,19 @@
+.lzyt-enev-detail {
+    .sw-product-variant-info {
+        display: inline;
+    }
+
+    .lzyt-enev-detail-upload {
+        &.sw-media-upload {
+            .sw-media-upload__preview {
+                width: 95px;
+                height: 95px;
+            }
+
+            .sw-media-upload__dropzone {
+                padding: 24px;
+                min-height: 148px;
+            }
+        }
+    }
+}

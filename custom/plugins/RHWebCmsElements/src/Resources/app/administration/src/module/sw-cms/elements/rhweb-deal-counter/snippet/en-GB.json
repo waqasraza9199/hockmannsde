@@ -1,0 +1,55 @@
+{
+    "sw-cms": {
+        "elements": {
+            "rhweb-deal-counter": {
+                "config": {
+                    "tab": {
+                        "product": "Product",
+                        "timer": "Timer",
+                        "settings": "Advanced",
+                        "customCss": "Custom CSS </>"
+                    },
+                    "label": {
+                        "productSelection": "Select product",
+                        "oldPrice": "Old price",
+                        "newPrice": "New Price",
+                        "startDateTime": "Start date",
+                        "endDateTime": "End date",
+                        "showBeforeStart": "Show timer before start",
+                        "teaserText": "Teaser text before the start",
+                        "showBadge": "Show badge",
+                        "badgeText": "Badge Text",
+                        "activateCustomDescription": "Individual product description",
+                        "customDescription": "Enter description here",
+                        "endTimerHide": "Hide timer once expired",
+                        "customCss": "Enable custom CSS"
+                    },
+                    "placeholder": {
+                        "product": "Select product",
+                        "oldPrice": "Enter old price",
+                        "newPrice": "Enter new price",
+                        "teaserText": "Enter teaser text",
+                        "badgeText": "Enter badge text",
+                        "customDescription": "Enter description"
+                    },
+                    "helpText": {
+                        "productSelection": "Select the product to be linked to the counter.",
+                        "oldPrice": "This is the price that is displayed crossed out. The field is prefilled based on the selected product. Please do not enter currency sign.",
+                        "newPrice": "This is the discounted price. The price is displayed prominently.",
+                        "startDateTime": "Set a start date when the timer will begin.",
+                        "endDateTime": "Set an end date when the timer will expire.",
+                        "showBeforeStart": "If this option is active, the timer will be displayed with a teaser text before the start date.",
+                        "teaserText": "Enter here the teaser text to be displayed before the deal starts.",
+                        "showBadge": "Activate a hint badge in the product.",
+                        "badgeText": "For example, in this badge you can output 'Discount %'.",
+                        "activateCustomDescription": "If this field is active, you can write your own product description as an alternative to the original one.",
+                        "customCss": "Here you can insert custom CSS. Note that this field is not set specifically for the element. So global classes and IDs affect the whole store.",
+                        "endTimerHide": "When the timer expires, the deal counter in the frontend will be hidden automatically."
+                    }
+                },
+                "hint": "Please select a Product"
+            }
+        }
+    }
+}
+

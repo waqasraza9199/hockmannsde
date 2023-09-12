@@ -1,0 +1,41 @@
+.lzyt-enev-arrow {
+    width: auto;
+    min-width: 50px;
+    height: 28px;
+    background-color: transparent;
+    position: relative;
+    font-size: 16px;
+    text-transform: uppercase;
+    display: inline-block;
+    cursor: default;
+
+    &:before, &:after {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: -26px;
+        width: 0;
+        height: 0;
+        border: solid transparent;
+        border-width: 14px;
+        border-left-width: 12px;
+    }
+
+    &:after {
+        right: -26px;
+        border-left-color: currentColor;
+    }
+
+    .lzyt-enev-arrow-class {
+        color: #fff;
+        padding: 4px 8px 0px 8px;
+        font-size: 18px;
+        line-height: 21px;
+        font-weight: bold;
+
+        .lzyt-enev-arrow-spectrum {
+            font-size: .7rem;
+            font-weight: normal;
+        }
+    }
+}

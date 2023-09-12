@@ -1,0 +1,13 @@
+.rhweb-custom-checkout-container, .rhweb-account .account-content-main{
+  .payment-method-description, .shipping-method-description{
+    p{
+      color:lighten($sw-text-color,10%);
+    }
+  }
+
+  .card-actions{
+    .btn-light{
+      @extend .btn-primary;
+    }
+  }
+}

@@ -1,0 +1,39 @@
+{% sw_extends '@Storefront/storefront/base.html.twig' %}
+
+{% block base_body_classes %}
+    {% if config('RHWebThemeFeatures.config.rhwebActivateCustomAccount') == 'custom' %}
+        rhweb-custom-checkout-active
+    {% endif %}
+    {{ parent() }}
+{% endblock %}
+
+{% block base_header %}
+    {% if config('RHWebThemeFeatures.config.RhwebThemeFeaturesActivateCountdown') %}
+        {% sw_include "@Storefront/rhweb-theme-features/snippets/countdown/index.html.twig" %}
+    {% endif %}
+
+    {% if 'header' in config('RHWebThemeFeatures.config.RhwebThemeFeaturesActivateUsps') %}
+        {% sw_include "@Storefront/rhweb-theme-features/snippets/usp/index.html.twig" with {
+            location:'header'
+        } %}
+    {% endif %}
+
+    {{ parent() }}
+{% endblock %}
+
+{% block base_footer %}
+    {% if 'footer' in config('RHWebThemeFeatures.config.RhwebThemeFeaturesActivateUsps') %}
+        {% sw_include "@Storefront/rhweb-theme-features/snippets/usp/index.html.twig" with {
+            location:'footer'
+        } %}
+    {% endif %}
+    {{ parent() }}
+
+    {% if config('RHWebThemeFeatures.config.RhwebThemeFeaturesActivateExitIntent') %}
+        {% sw_include "@Storefront/rhweb-theme-features/snippets/intent-popup/index.html.twig" %}
+    {% endif %}
+
+    {% if config('RHWebThemeFeatures.config.RhwebThemeFeaturesActivateContactWidget') %}
+        {% sw_include "@Storefront/rhweb-theme-features/snippets/contact-widget/index.html.twig" %}
+    {% endif %}
+{% endblock %}

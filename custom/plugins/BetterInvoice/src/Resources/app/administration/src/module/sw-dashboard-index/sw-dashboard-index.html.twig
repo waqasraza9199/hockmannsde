@@ -1,0 +1,21 @@
+ {% block sw_dashboard_index_content_info_grid_inner %}
+
+    {% parent() %}
+
+    <div class="sw-dashboard-index__card">
+        <h2 class="sw-dashboard-index__card-title">Lizenzstatus für das Plugin <span class="lzyt-text-primary">BetterInvoice</span></h2>
+        <div class="lzyt-state-container">
+            <p class="sw-dashboard-index__card-text lzyt-text-no-bottom-space lzyt-text-no-top-space">Gültig bis <span class="lzyt-text-bold" :style="{ color: isBILicenseValid ? '#37d046' : '#de294c'}" v-text="biLicenseDuration"></span></p>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" height="13" class="lzyt-space-left" style="color:#37d046" v-if="isBILicenseValid"><path fill="currentColor" d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" height="13" viewBox="0 0 448 512" class="lzyt-space-left" style="color:#de294c" v-if="!isBILicenseValid"><path fill="currentColor" d="M368 128c0 44.4-25.4 83.5-64 106.4V256c0 17.7-14.3 32-32 32H176c-17.7 0-32-14.3-32-32V234.4c-38.6-23-64-62.1-64-106.4C80 57.3 144.5 0 224 0s144 57.3 144 128zM168 176a32 32 0 1 0 0-64 32 32 0 1 0 0 64zm144-32a32 32 0 1 0 -64 0 32 32 0 1 0 64 0zM3.4 273.7c7.9-15.8 27.1-22.2 42.9-14.3L224 348.2l177.7-88.8c15.8-7.9 35-1.5 42.9 14.3s1.5 35-14.3 42.9L295.6 384l134.8 67.4c15.8 7.9 22.2 27.1 14.3 42.9s-27.1 22.2-42.9 14.3L224 419.8 46.3 508.6c-15.8 7.9-35 1.5-42.9-14.3s-1.5-35 14.3-42.9L152.4 384 17.7 316.6C1.9 308.7-4.5 289.5 3.4 273.7z"/></svg>
+        </div>
+        <p class="sw-dashboard-index__card-text lzyt-text-no-top-space">Fragen und Lizenz bei ins8ne@exploit.im</p>
+        <div class="lzyt-relative">
+            <sw-button @click="onSyncBILicense" :block="true" :disabled="false" :square="false" :block="false" :isLoading="false" class="lzyt-w-100">
+                Lizenz prüfen
+            </sw-button>
+            <sw-loader size="15px" v-if="biIsFetchingLicense"></sw-loader>
+        </div>
+    </div>
+
+ {% endblock %}

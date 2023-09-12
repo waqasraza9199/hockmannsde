@@ -1,0 +1,7 @@
+{% block component_lzyt_enev_label %}
+    {% if enev.media %}
+        {% block component_lzyt_enev_label_media %}
+            {% sw_thumbnails 'cart-item-img-thumbnails' with {media: enev.media, sizes: {'default': '100px'}} %}
+        {% endblock %}
+    {% endif %}
+{% endblock %}

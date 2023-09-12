@@ -1,0 +1,55 @@
+{
+    "sw-cms": {
+        "elements": {
+            "rhweb-deal-counter": {
+                "config": {
+                    "tab": {
+                        "product": "Produkt",
+                        "timer": "Timer",
+                        "settings": "Erweitert",
+                        "customCss": "Individuelles CSS </>"
+                    },
+                    "label": {
+                        "productSelection": "Produkt wählen",
+                        "oldPrice": "Alter Preis",
+                        "newPrice": "Neuer Preis",
+                        "startDateTime": "Startdatum",
+                        "endDateTime": "Enddatum",
+                        "showBeforeStart": "Timer vor dem Start anzeigen",
+                        "teaserText": "Teaser-Text vor dem Start",
+                        "showBadge": "Badge anzeigen",
+                        "badgeText": "Badge Text",
+                        "activateCustomDescription": "Individuelle Produktbeschreibung",
+                        "customDescription": "Beschreibung hier eintragen",
+                        "endTimerHide": "Timer ausblenden, sobald abgelaufen",
+                        "customCss": "Individuelles CSS aktivieren"
+                    },
+                    "placeholder": {
+                        "product": "Produkt wählen",
+                        "oldPrice": "Alten Preis eingeben",
+                        "newPrice": "Neuen Preis eingeben",
+                        "teaserText": "Teaser Text eingeben",
+                        "badgeText": "Badge Text eingeben",
+                        "customDescription": "Beschreibung eingeben"
+                    },
+                    "helpText": {
+                        "productSelection": "Wählen Sie das Produkt, das mit dem Counter verknüpft werden soll.",
+                        "oldPrice": "Dies ist der Preis, der durchgestrichen angezeigt wird. Das Feld wird anhand des ausgewählten Produktes vorausgefüllt. Währungsszeichen bitte nicht eintragen.",
+                        "newPrice": "Das ist der rabattierte Preis. Der Preis wird prominent dargestellt.",
+                        "startDateTime": "Legen Sie ein Startdatum fest, an dem der Timer beginnt.",
+                        "endDateTime": "Legen Sie ein Enddatum fest, an dem der Timer ausläuft.",
+                        "showBeforeStart": "Wenn diese Option aktiv ist, wird der Timer mit einem Teaser Text vor dem Startdatum angezeigt.",
+                        "teaserText": "Geben Sie hier den Teaser-Text ein, der vor dem Start des Deals angezeigt werden soll.",
+                        "showBadge": "Aktivieren Sie einen Hinweisbadge im Produkt.",
+                        "badgeText": "In diesem Badge können Sie beispielsweise 'Rabatt %' ausgeben.",
+                        "activateCustomDescription": "Wenn dieses Feld aktiv ist, können Sie alternativ zur original Produktbeschreibung eine eigene verfassen.",
+                        "customCss": "Hier können Sie individuelles CSS einfügen. Beachten Sie, dass dieses Feld nicht spezifisch für das Element gesetzt wird. Globale Klassen und IDs beeinflussen also den gesamten Shop.",
+                        "endTimerHide": "Wenn der Timer abgelaufen ist, wird der Dealcounter im Frontend automatisch ausgeblendet."
+                    }
+                },
+                "hint": "Bitte Produkt auswählen"
+            }
+        }
+    }
+}
+

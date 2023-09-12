@@ -1,0 +1,15 @@
+{% sw_extends '@Storefront/storefront/page/checkout/checkout-item.html.twig' %}
+
+{% block page_checkout_item_info_ordernumber %}
+    {{ parent() }}
+
+    {% block page_checkout_lzyt_enev %}
+        {% for lzytEnev in  lineItem.extensions.lzytEnev %}
+            {% block page_checkout_lzyt_enev_arrow %}
+                <div class="lzyt-enev minimal">
+                    {% sw_include '@Storefront/storefront/component/lzyt-enev/arrow-minimal.html.twig' with {enev: lzytEnev, showMedia: true} %}
+                </div>
+            {% endblock %}
+        {% endfor %}
+    {% endblock %}
+{% endblock %}

@@ -1,0 +1,24 @@
+.rhweb-account{
+  .account-content-aside{
+    .account-aside-list-group{
+      gap:5px;
+      padding: 2px 0 5px 0;
+
+      .list-group-item{
+        background: $sw-background-color;
+        border-radius: $border-radius;
+        margin:0;
+
+        &.is-active{
+          background: #fff;
+          border:1px solid $sw-border-color;
+          @extend .shadow-sm;
+        }
+      }
+    }
+
+    .account-aside-footer{
+      border-width: 3px;
+    }
+  }
+}

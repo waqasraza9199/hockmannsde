@@ -1,0 +1,15 @@
+{% sw_extends 'administration/index.html.twig' %}
+
+{# ThemeWare: Add styles to administration  #}
+{% block administration_stylesheets %}
+    {{ parent() }}
+
+    <link rel="stylesheet" href="{{ asset('bundles/tcinnthemewareelectric/administration/css/tcinn-theme-ware-electric.css') }}">
+{% endblock %}
+
+{# ThemeWare: Add scripts to administration  #}
+{% block administration_scripts %}
+    {{ parent() }}
+
+    <script type="text/javascript" src="{{ asset('bundles/tcinnthemewareelectric/administration/js/tcinn-theme-ware-electric.js') }}"></script>
+{% endblock %}

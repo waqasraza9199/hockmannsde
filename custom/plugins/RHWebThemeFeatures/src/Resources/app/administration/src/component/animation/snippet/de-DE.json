@@ -1,0 +1,28 @@
+{
+  "rhweb-animation": {
+    "title": "Element Animation",
+    "label": {
+      "active": "Aktiv",
+      "add": "Neue Animation hinzufügen",
+      "delete": "Animation löschen",
+      "cssSelector": "CSS Selektor",
+      "name": {
+        "in": "Animate in",
+        "out": "Animate out",
+        "hover": "Animate hover"
+      },
+      "duration": "Länge (ms)",
+      "delay": "Verzögerung (ms)",
+      "condition": "Bedingung",
+      "isLoaded": "Wenn geladen",
+      "isOverBottom": "Unterer Rand",
+      "isInViewport": "Im Viewport"
+    },
+    "helpText": {
+      "name": "Hier kannst du Option auswählen, wann die Animation ausgelöst werden soll."
+    },
+    "placeholder": {
+      "cssSelector": "#el-id, .el-class, [el-attribute]"
+    }
+  }
+}

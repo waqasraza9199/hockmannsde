@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="../../../../../../platform/src/Core/System/SystemConfig/Schema/config.xsd">
+
+    <card>
+        <title>License</title>
+        <title lang="de-DE">Lizenz</title>
+
+        <input-field>
+            <name>license</name>
+            <copyable>true</copyable>
+            <required>true</required>
+            <label>Lizenz</label>
+        </input-field>
+    </card>
+
+    <card>
+        <title>Service</title>
+        <title lang="de-DE">Service</title>
+
+        <input-field type="single-select">
+            <name>service</name>
+            <options>
+                <option>
+                    <id>mailgun</id>
+                    <name>Mailgun</name>
+                </option>
+                <option>
+                    <id>external</id>
+                    <name>LAZY SMTP</name>
+                </option>
+            </options>
+        </input-field>
+
+        <input-field type="bool">
+            <name>disablemails</name>
+            <defaultValue>true</defaultValue>
+            <label>Deaktiviere den Standard SW6 Mailversand</label>
+            <helpText>Sende nur E-Mails über die konfigurierte API und deaktiviere den standard Mailversand von SW6</helpText>
+        </input-field>
+    </card>
+
+    <card>
+        <title>Mailgun</title>
+        <title lang="de-DE">Mailgun</title>
+
+        <input-field>
+            <name>apikey</name>
+            <copyable>true</copyable>
+            <required>false</required>
+            <label>API Key</label>
+        </input-field>
+
+        <input-field>
+            <name>baseurl</name>
+            <copyable>true</copyable>
+            <required>false</required>
+            <label>Basis URL</label>
+         </input-field>
+    </card>
+
+    <card>
+        <title>LAZY SMTP</title>
+        <title lang="de-DE">LAZY SMTP</title>
+
+        <input-field>
+            <name>lazyip</name>
+            <copyable>true</copyable>
+            <required>false</required>
+            <label>Server-IP</label>
+        </input-field>
+    </card>
+</config>

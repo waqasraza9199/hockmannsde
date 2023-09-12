@@ -1,0 +1,17 @@
+{% set columns = 3 %}
+{% set id = element.id %}
+
+{% set element = block.slots.getSlot('one') %}
+<div class="col-md-4{% if isInSidebar %} mb-3{% else %} mb-3 mb-md-0{% endif %}" data-cms-element-id="{{ id }}">
+    {% sw_include "@Storefront/storefront/element/cms-element-" ~ element.type ~ ".html.twig" ignore missing %}
+</div>
+
+{% set element = block.slots.getSlot('two') %}
+<div class="col-md-4{% if isInSidebar %} mb-3{% else %} mb-3 mb-md-0{% endif %}" data-cms-element-id="{{ id }}">
+    {% sw_include "@Storefront/storefront/element/cms-element-" ~ element.type ~ ".html.twig" ignore missing %}
+</div>
+
+{% set element = block.slots.getSlot('three') %}
+<div class="col-md-4" data-cms-element-id="{{ id }}">
+    {% sw_include "@Storefront/storefront/element/cms-element-" ~ element.type ~ ".html.twig" ignore missing %}
+</div>

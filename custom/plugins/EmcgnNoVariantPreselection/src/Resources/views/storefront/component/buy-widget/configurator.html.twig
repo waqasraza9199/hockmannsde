@@ -1,0 +1,28 @@
+{% sw_extends "@Storefront/storefront/component/buy-widget/configurator.html.twig" %}
+
+{# Set Configuration Variable for master product #}
+{% block buy_widget_configurator %}
+    <div class="product-detail-configurator">
+        {% if elementId is defined and elementId is not null and pageType != 'product_detail' %}
+            {% set config = {
+                url: url('frontend.cms.buybox.switch', { productId: product.parentId }),
+                elementId: elementId,
+                pageType: pageType
+            } %}
+        {% elseif element.data.extensions.EmcgnNoVariantPreselection.masterProduct %}
+            {% set config = {
+                url: url('frontend.detail.switch', { productId: element.data.extensions.EmcgnNoVariantPreselection.productId }),
+                pageType: pageType
+            } %}
+        {% else %}
+            {% set config = {
+                url: url('frontend.detail.switch', { productId: product.parentId }),
+                pageType: pageType
+            } %}
+        {% endif %}
+
+        {% block buy_widget_configurator_form %}
+            {{ parent() }}
+        {% endblock %}
+    </div>
+{% endblock %}

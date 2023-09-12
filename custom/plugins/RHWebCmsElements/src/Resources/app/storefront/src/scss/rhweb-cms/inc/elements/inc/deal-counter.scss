@@ -1,0 +1,59 @@
+.cms-element-rhweb-deal-counter {
+    .deal-counter-img{
+        position: relative;
+
+        img{
+            max-width: 100%;
+            border-radius: $border-radius;
+        }
+
+        .deal-counter-badge{
+            position: absolute;
+            top: 10px;
+            padding: 5px 15px;
+            font-weight: bold;
+        }
+    }
+
+    .deal-counter-rating{
+        color:#fedc70;
+        margin-bottom: 15px;
+    }
+
+    .deal-counter-price{
+        margin-bottom:15px;
+
+        .deal-counter-price-new{
+            color:$primary;
+            font-size: 1.6em;
+            font-weight: bold;
+            margin-right: 15px;
+        }
+
+        .deal-counter-price-old{
+            text-decoration: line-through;
+            font-size: 1.3em;
+        }
+    }
+
+    .deal-counter-description{
+        font-size: 1.1em;
+        margin-bottom: 15px;
+    }
+
+    .deal-counter-countdown{
+        display: flex;
+        font-weight: bold;
+        font-size: 1.6em;
+
+        .deal-counter-countdown-item{
+            padding: 0px 10px;
+            margin-right:10px;
+            background-color:#f2f2f2;
+
+            &:last-child{
+                margin-right:0;
+            }
+        }
+    }
+}

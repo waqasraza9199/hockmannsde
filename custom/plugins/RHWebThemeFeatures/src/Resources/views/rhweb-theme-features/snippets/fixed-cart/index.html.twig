@@ -1,0 +1,60 @@
+{% block rhweb_fixed_cart_container %}
+    {% set product = page.product %}
+    {% set price = product.calculatedPrice %}
+
+    {% block rhweb_fixed_cart_config %}
+        {% if product.parentId %}
+            {% set config = {
+                url: url('frontend.detail.switch', { productId: product.parentId })
+            } %}
+        {% endif %}
+    {% endblock %}
+
+    {% block rhweb_fixed_cart_container_inner %}
+        <div class="rhweb-fixed-cart-container" data-rhweb-fixed-cart="true">
+            <div class="container">
+                <div class="row">
+                    {% block rhweb_fixed_cart_container_inner_elements %}
+                        <div class="{% if page.configuratorSettings.elements %}col-sm-6 col-lg-4{% else %} col-lg-8{% endif %} text-center text-lg-left">
+                            <div class="row align-items-center">
+                                {% block rhweb_fixed_cart_container_inner_thumbnail %}
+                                    <div class="col-auto">
+                                        {% sw_thumbnails 'product-image-thumbnails' with {
+                                            media: product.cover.media,
+                                            sizes: {
+                                                'default': '120px'
+                                            },
+                                            attributes: {
+                                                'class': 'rhweb-fixed-cart-image',
+                                                'alt': product.translated.name,
+                                                'title': product.translated.name
+                                            }
+                                        } %}
+                                    </div>
+                                {% endblock %}
+                                {% block rhweb_fixed_cart_container_inner_caption %}
+                                    <div class="col-auto">
+                                        {{ block('page_product_detail_name', '@Storefront/storefront/page/product-detail/headline.html.twig') }}
+                                        {{ block('buy_widget_price_content', '@Storefront/storefront/component/buy-widget/buy-widget-price.html.twig') }}
+                                    </div>
+                                {% endblock %}
+                            </div>
+                        </div>
+                        {% block rhweb_fixed_cart_container_inner_configurator %}
+                            {% if page.configuratorSettings.elements %}
+                                <div class="col-sm-6 col-lg-4">
+                                    {{ block('page_product_detail_configurator_form', '@Storefront/storefront/page/product-detail/configurator.html.twig') }}
+                                </div>
+                            {% endif %}
+                        {% endblock %}
+                        {% block rhweb_fixed_cart_container_inner_buyform %}
+                            <div class="col-lg-4 mt-2 mt-lg-0">
+                                {{ block('buy_widget_buy_form_inner', '@Storefront/storefront/component/buy-widget/buy-widget-form.html.twig') }}
+                            </div>
+                        {% endblock %}
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+    {% endblock %}
+{% endblock %}

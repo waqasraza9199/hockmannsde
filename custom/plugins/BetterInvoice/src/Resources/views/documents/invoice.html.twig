@@ -1,0 +1,186 @@
+{% sw_extends '@Framework/documents/invoice.html.twig' %}
+
+{% block letter_header %}
+
+    <div class="letter-header">
+        <table class="letter-header-table">
+            <tr>
+                <td>
+                    <img src="{{ config.logo.url }}" class="logo"/>
+                </td>
+                <td align="right">
+                    <div>
+                        <span class="overdue-badge">Zahlung<br />ausstehend</span>
+                    </div>
+                </td>
+                <td class="title-header-container" align="center">
+                    <span>Rechnung</span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <div class="recipient-address-container">
+                        {% block document_recipient %}
+                            <span class="sender-address-small">
+                                {% block document_recipient_sender %}
+                                    {{ config.companyAddress }}<br><br>
+                                {% endblock %}
+                            </span>
+                            {% if billingAddress.company %}
+                                {{ billingAddress.company }}<br>
+                            {% endif %}
+                            {% if billingAddress.salutation and billingAddress.salutation.id is not same as(constant('Shopware\\Core\\Defaults::SALUTATION')) %}{{ billingAddress.salutation.letterName ~ ' ' }}{% endif %}{{ billingAddress.firstName }} {{ billingAddress.lastName }}<br>
+                            {{ billingAddress.street }}<br>
+                            {% if billingAddress.additionalAddressLine1 %}
+                                {{ billingAddress.additionalAddressLine1 }}<br>
+                            {% endif %}
+                            {% if billingAddress.additionalAddressLine2 %}
+                                {{ billingAddress.additionalAddressLine2 }}<br>
+                            {% endif %}
+                            {{ billingAddress.zipcode }} {{ billingAddress.city }}<br>
+                            {{ billingAddress.country.name }}<br>
+                        {% endblock %}
+                    </div>
+                </td>
+                <td class="document-side-info">
+                    {% block document_side_info %}
+                        <table>
+                            {% block document_side_info_contents %}
+                                {% block document_side_info_order_number %}
+                                    <tr>
+                                        <td class="col-ordernumber">
+                                            {{ 'document.orderNumber'|trans({'%orderNumber%': order.orderNumber })|sw_sanitize }}
+                                        </td>
+                                    </tr>
+                                {% endblock %}
+                                {% block document_side_info_invoice_number %}
+                                    <tr>
+                                        <td class="col-invoicenumber">
+                                            Rechnungs-Nr.: {{ config.custom.invoiceNumber }}
+                                        </td>
+                                    </tr>
+                                {% endblock %}
+                                {% block document_side_info_date %}
+                                    <tr>
+                                        <td>
+                                            {{ 'document.date'|trans({'%date%': config.documentDate|format_date('medium', locale=locale)})|sw_sanitize }}
+                                        </td>
+                                    </tr>
+                                {% endblock %}
+                                {% block document_side_info_customer_number %}
+                                    <tr>
+                                        <td>
+                                            {{ 'document.customerNumber'|trans({'%customerNumber%': customer.customerNumber})|sw_sanitize }}
+                                        </td>
+                                    </tr>
+                                {% endblock %}
+                                {% block document_side_info_order_date %}
+                                    <tr>
+                                        <td>
+                                            {{ 'document.orderDate'|trans({'%orderDate%': order.orderDateTime|format_date('medium', locale=locale)})|sw_sanitize }}
+                                        </td>
+                                    </tr>
+                                {% endblock %}
+                            {% endblock %}
+                        </table><br/>
+                    {% endblock %}
+                </td>
+            </tr>
+        </table>
+
+    </div>
+
+{% endblock %}
+
+{% block document_payment %}
+    <div class="block">
+        <strong>Gewählte Zahlungsart</strong><br />
+        {{ order.transactions.last.paymentMethod.name }}
+    </div>
+{% endblock %}
+
+{% block document_shipping %}
+    <div class="block">
+        <strong>Gewählte Versandart</strong><br />
+        {{ order.deliveries.first.shippingMethod.name }}
+    </div>
+{% endblock %}
+
+{% block footer %}
+
+    {{ parent() }}
+
+    <div class="footer-line"></div>
+
+{% endblock %}
+
+{% block comment %}
+
+    <div class="clear"></div>
+
+    <div class="comment-section">
+        {{ parent() }}
+
+        <table class="comment-body-table">
+            <tr>
+                <td class="body-column">
+                    {{ config('BetterInvoice.config.customtext')|raw|nl2br }}
+                </td>
+                <td class="qr-column">
+                    <div>
+                        <img src="{{ extensions.sepaQr }}" widt="150" height="150" />
+                    </div>
+                </td>
+            </tr>
+        </table>
+
+    </div>
+
+{% endblock %}
+
+{% block document_footer_bank_name %}
+    {% if extensions.drop %}
+        <li>Empfänger: {{ extensions.drop.bank }}</li>
+    {% elseif config.bankIban %}
+        <li>Empfänger: {{ config.bankName }}</li>
+    {% endif %}
+{% endblock %}
+
+{% block document_footer_bank_iban %}
+    {% if extensions.drop %}
+        <li>{{ 'document.bankIban'|trans({'%bankIban%': extensions.drop.iban})|sw_sanitize }}</li>
+    {% elseif config.bankIban %}
+        <li>{{ 'document.bankIban'|trans({'%bankIban%': config.bankIban})|sw_sanitize }}</li>
+    {% endif %}
+{% endblock %}
+
+{% block document_footer_bank_bic %}
+    {% if extensions.drop %}
+        <li>{{ 'document.bankBic'|trans({'%bankBic%': extensions.drop.bic})|sw_sanitize }}</li>
+    {% elseif config.bankBic %}
+        <li>{{ 'document.bankBic'|trans({'%bankBic%': config.bankBic})|sw_sanitize }}</li>
+    {% endif %}
+{% endblock %}
+
+{% block document_footer_company_name %}
+    {{ parent() }}
+    <li>{{ config.companyAddress }}</li>
+{% endblock %}
+
+{% block document_footer_fourth_column %}
+    <ul>
+        {% if config.companyPhone %}
+            {% block document_footer_ceo %}
+                <li class="bold">Kundenservice</li>
+            {% endblock %}
+            {% block document_footer_ceo_name %}
+                <li>{{ config.companyPhone }}</li>
+            {% endblock %}
+        {% endif %}
+    </ul>
+{% endblock %}
+
+{% block logo %}{% endblock %}
+{% block document_headline %}{% endblock %}
+{% block document_payment_shipping_additional %}{% endblock %}
+{% block document_payment_shipping_service_date_notice %}{% endblock %}

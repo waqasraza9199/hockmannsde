@@ -1,0 +1,34 @@
+{# ThemeWare "Announcement banner" content #}
+
+{# TODO: Blöcke prüfen... #}
+
+{# ---------------- START: SET TEMPLATE VARS ---------------- #}
+
+{# ThemeWare: Set theme variables #}
+{% set twtAnnoncementBannerLink = theme_config('twt-annoncement-banner-link') %}
+
+{# ---------------- END: SET TEMPLATE VARS ---------------- #}
+
+{% block twt_announcement_banner_container %}
+    <div class="row">
+
+        {% block twt_announcement_banner_content %}
+            {% if twtAnnoncementBannerLink == 2 %}
+                <a class="content is-link" href="{{ "twt.extension.announcementBanner.link"|trans }}" rel="nofollow noopener">
+                    {{ "twt.extension.announcementBanner.content"|trans|raw }}
+                </a>
+            {% else %}
+                <p class="content">
+                    {{ "twt.extension.announcementBanner.content"|trans|raw }}
+                </p>
+            {% endif %}
+        {% endblock %}
+
+        {% if close == 'true' %}
+            <div class="close">
+                {% sw_icon 'x' %}
+            </div>
+        {% endif %}
+
+    </div>
+{% endblock %}

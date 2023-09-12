@@ -1,0 +1,36 @@
+{
+    "sw-cms": {
+        "elements": {
+            "rhweb-manufacturer-list": {
+                "config": {
+                    "tab": {
+                        "general": "General",
+                        "layout": "Layout"
+                    },
+                    "label": {
+                        "activateNav": "Activate navigation",
+                        "activateUrls": "Activate links to manufacturers",
+                        "activateUrlsNewTab": "Open links in new tab",
+                        "activateImages": "Show manufacturer logos",
+                        "imageHeight": "Logo - maximum height",
+                        "imageMaxWidth": "Logo - maximum width",
+                        "manufacturerBackground": "Manufacturer - background color",
+                        "manufacturerColor": "Manufacturer - text color",
+                        "navAnchorPrefix": "Navigation - Anchor Prefix"
+                    },
+                    "helpText": {
+                        "activateNav": "Activate the navigation above the manufacturer tab.<br><br>The navigation elements are provided with jump labels to the respective section.",
+                        "activateUrls": "If you have added a link to the respective manufacturer, it will be set.<br><br><b>Tip:</b><br>You can also add a search term as a link and use the link quasi as a 'filter' to products of the manufacturer.",
+                        "activateUrlsNewTab": "The manufacturer links point to a new tab in the browser window.",
+                        "activateImages": "If you have attached a logo to the respective manufacturer, this will be output in the storefront instead of the manufacturer name.<br><br>The manufacturer name will still be included as a 'title' attribute.",
+                        "imageHeight": "To ensure that the logos are aligned uniformly, it is recommended to set a maximum height with this field.",
+                        "imageMaxWidth": "A maximum width is also important so that your manufacturer logos look uniform.",
+                        "manufacturerBackground": "Each manufacturer is technically output in a 'box'.<br><br>With this field you can determine the background color.",
+                        "manufacturerColor": "If you have not added any logos, the manufacturer name will be displayed.<br><br>Use this field to specify the <b>font color</b>.",
+                        "navAnchorPrefix": "The anchor link of the navigation needs a unique identifier. This will also be visible in the address bar of the browser when clicking on a navigation point.<br><br><b>Tip:</b><br>If you do not want to personalize, you can leave the field as it is."
+                    }
+                }
+            }
+        }
+    }
+}

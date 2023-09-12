@@ -1,0 +1,118 @@
+{% block lzyt_enev_page_list %}
+    <sw-page class="lzyt-enev-list">
+        {% block lzyt_enev_page_list_header %}
+            <template slot="smart-bar-header">
+                <h2>{{ $tc('lzyt-enev.headers.list') }}</h2>
+            </template>
+        {% endblock %}
+
+        {% block lzyt_enev_page_list_search %}
+            <template slot="search-bar">
+                <sw-search-bar :initialSearchType="$tc('lzyt-enev.search.list')"
+                               :initialSearch="term"
+                               :placeholder="$tc('lzyt-enev.placeholder.search')"
+                               class="lzyt-color"
+                               @search="onSearch">
+                </sw-search-bar>
+            </template>
+        {% endblock %}
+
+        {% block lzyt_enev_page_list_actions %}
+            <template slot="smart-bar-actions">
+                <sw-button variant="primary"
+                           :routerLink="{ name: 'lzyt.enev.create' }">{{ $tc('lzyt-enev.buttons.add') }}</sw-button>
+            </template>
+        {% endblock %}
+
+        {% block lzyt_enev_page_list_content %}
+            <template slot="content">
+                <sw-entity-listing
+                    v-if="records"
+                    :items="records"
+                    :repository="repository"
+                    :columns="columns"
+                    detailRoute="lzyt.enev.detail"
+                    :sortBy="sortBy"
+                >
+
+                    {% block lzyt_enev_page_list_content_productnumber %}
+                        <template #column-productNumber="{ item, isInlineEdit }">
+                            {% block lzyt_enev_page_list_content_productnumber_inline_edit %}
+                                <template v-if="isInlineEdit">
+                                    <div class="sw-block-field sw-field--small">
+                                        <div class="sw-block-field__block">
+                                            <input type="text"
+                                                   v-model="item.product.productNumber"
+                                                   @focus="onFocus"
+                                                   readonly
+                                            />
+                                        </div>
+                                    </div>
+                                </template>
+                            {% endblock %}
+
+                            {% block lzyt_enev_page_list_content_productnumber_content %}
+                                <template v-else>
+                                    <router-link
+                                        :to="getProductLink(item)">
+                                        {{ item.product.productNumber }}
+                                    </router-link>
+                                </template>
+                            {% endblock %}
+                        </template>
+                    {% endblock %}
+
+                    {% block lzyt_enev_page_list_content_color %}
+                        <template #column-color="{ item, isInlineEdit, compact }">
+                            <lzyt-enev-arrow :arrow="item"></lzyt-enev-arrow>
+                        </template>
+                    {% endblock %}
+
+                    {% block lzyt_enev_page_list_content_active %}
+                        <template #column-active="{ item, isInlineEdit }">
+                            {% block lzyt_enev_page_list_content_active_inline_edit %}
+                                <template v-if="isInlineEdit">
+                                    <sw-checkbox-field v-model="item.active"></sw-checkbox-field>
+                                </template>
+                            {% endblock %}
+
+                            {% block lzyt_enev_page_list_content_active_content %}
+                                <template v-else>
+                                    <sw-icon v-if="item.active" name="small-default-checkmark-line-medium" small
+                                             class="is--active"></sw-icon>
+                                    <sw-icon v-else name="small-default-x-line-medium" small
+                                             class="is--inactive"></sw-icon>
+                                </template>
+                            {% endblock %}
+                        </template>
+                    {% endblock %}
+
+                    {% block lzyt_enev_page_list_grid_columns_actions %}
+                        <template #more-actions="{ item }">
+                            <sw-context-menu-item
+                                v-if="item.product"
+                                class="sw-product-list-grid__duplicate-action"
+                                @click="onDuplicate(item)">
+                                {{ $tc('sw-product.list.buttonDuplicate') }}
+                            </sw-context-menu-item>
+                            <sw-context-menu-item
+                                v-if="item.product"
+                                class="sw-product-list-grid__productlink-action"
+                                @click="onProductLink(item)">
+                                {{ $tc('sw-order.createBase.contextMenuShowProduct') }}
+                            </sw-context-menu-item>
+                        </template>
+                    {% endblock %}
+                </sw-entity-listing>
+
+                {% block lzyt_enev_page_list_content_clone_modal %}
+                    <lzyt-enev-clone-modal :record="record"
+                                            v-if="cloning"
+                                            @clone-finish="onDuplicateFinish"
+                                            @clone-cancel="onDuplicateCancel"
+                    ></lzyt-enev-clone-modal>
+                {% endblock %}
+            </template>
+        {% endblock %}
+    </sw-page>
+{% endblock %}

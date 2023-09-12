@@ -1,0 +1,38 @@
+.rhweb-separator-waves-both,
+.rhweb-separator-waves-top,
+.rhweb-separator-waves-bottom {
+  position: relative;
+}
+
+.rhweb-separator-waves-both, .rhweb-separator-waves-top {
+  &:before {
+    top: -1px;
+    position: absolute;
+    content: "";
+    height: 100%;
+    width: 100%;
+    z-index: 10;
+    bottom: -1px;
+    mask-image: url("/bundles/rhwebcmselements/assets/feature/waves.svg");
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-size: 100%;
+    -webkit-mask-position: bottom;
+
+    transform: rotate(180deg);
+  }
+}
+
+.rhweb-separator-waves-both, .rhweb-separator-waves-bottom {
+  &:after {
+    bottom: -1px;
+    position: absolute;
+    content: "";
+    height: 100%;
+    width: 100%;
+    z-index: 10;
+    mask-image: url("/bundles/rhwebcmselements/assets/feature/waves.svg");
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-size: 100%;
+    -webkit-mask-position: bottom;
+  }
+}

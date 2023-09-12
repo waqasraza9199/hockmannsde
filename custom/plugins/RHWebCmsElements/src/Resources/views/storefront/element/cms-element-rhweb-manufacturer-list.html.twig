@@ -1,0 +1,122 @@
+{% block element_rhweb_manufacturer_list %}
+    <div class="cms-element-{{ element.type }}">
+        {% set manufacturerListGroup = element.data.manufacturerListGroups %}
+        {% set productManufacturers = element.data.productManufacturers %}
+        {% set config = element.config %}
+
+        {% block element_rhweb_manufacturer_list_navigation %}
+            {% if config.activateNav.value %}
+                <div class="rhwb-manufacturer-list-navigation">
+                    {% for navigatorItem in manufacturerListGroup %}
+                        {% block element_rhweb_manufacturer_list_navigation_item %}
+                            {% if navigatorItem.productManufacturers.elements %}
+                                <a class="rhweb-manufacturer-nav-item" href="#{{ config.navAnchorPrefix.value }}-{{ navigatorItem.title }}">{{ navigatorItem.title }}</a>
+                            {% endif %}
+                        {% endblock %}
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endblock %}
+
+        {% block element_rhweb_manufacturer_list_content %}
+            <div class="rhwb-manufacturer-list-content">
+            {% if config.activateNav.value %}
+                {% for navigatorItem in manufacturerListGroup %}
+                    {% if navigatorItem.productManufacturers.elements %}
+                        {% block element_rhweb_manufacturer_list_content_row %}
+                            <div id="{{ config.navAnchorPrefix.value }}-{{ navigatorItem.title }}" class="row rhweb-manufacturer-row">
+                                {% block element_rhweb_manufacturer_list_sidebar_item %}
+                                    <div class="col-lg-1">
+                                        <div class="rhweb-manufacturer-sidebar-item">
+                                            {{ navigatorItem.title }}
+                                        </div>
+                                    </div>
+                                {% endblock %}
+                                {% block element_rhweb_manufacturer_list_content_main %}
+                                    <div class="col-lg-11 mt-1">
+                                        <div class="row">
+                                            {% for navigatorManufacturers in navigatorItem.productManufacturers %}
+                                                {% set manufacturerLink = navigatorManufacturers.link %}
+                                                {% block element_rhweb_manufacturer_list_content_main_item %}
+                                                    <div class="col-md-3 col-sm-6">
+                                                        <div class="rhweb-manufacturer-item" style="{% if config.manufacturerBackground.value %}background-color:{{ config.manufacturerBackground.value }};{% endif %}{% if config.manufacturerColor.value %}color:{{ config.manufacturerColor.value }};{% endif %}{% if config.imageHeight.value %}max-height: {{ config.imageHeight.value }};{% endif %}">
+                                                            {% block element_rhweb_manufacturer_list_content_main_item_link %}
+                                                                {% if config.activateUrls.value and navigatorManufacturers.link %}
+                                                                    <a href="{{ manufacturerLink }}"{% if config.activateUrlsNewTab.value %} target="_blank"{% endif %}>
+                                                                {% endif %}
+                                                            {% endblock %}
+                                                            {% block element_rhweb_manufacturer_list_content_main_item_media %}
+                                                                {% if config.activateImages.value and navigatorManufacturers.media %}
+                                                                    {% sw_thumbnails 'rhweb-manufacturer-list-thumbnail' with {
+                                                                        media: navigatorManufacturers.media,
+                                                                        sizes: {
+                                                                            'default': config.imageMaxWidth.value
+                                                                        },
+                                                                        attributes: {
+                                                                            'alt': navigatorManufacturers.translated.name,
+                                                                            'title': navigatorManufacturers.translated.name
+                                                                        }
+                                                                    } %}
+                                                                {% else %}
+                                                                    {{ navigatorManufacturers.translated.name }}
+                                                                {% endif %}
+                                                                {% if config.activateUrls.value and navigatorManufacturers.link %}
+                                                                    </a>
+                                                                {% endif %}
+                                                            {% endblock %}
+                                                        </div>
+                                                    </div>
+                                                {% endblock %}
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                {% endblock %}
+                            </div>
+                        {% endblock %}
+                    {% endif %}
+                {% endfor %}
+            {% else %}
+                {% block element_rhweb_manufacturer_list_content_aleternate_row %}
+                    <div class="row rhweb-manufacturer-row">
+                    {% for navigatorManufacturers in productManufacturers %}
+                        {% set manufacturerLink = navigatorManufacturers.link %}
+                            <div class="col-md-3 col-sm-6">
+                                {% block element_rhweb_manufacturer_list_content_aleternate_item %}
+                                    <div class="rhweb-manufacturer-item" style="{% if config.manufacturerBackground.value %}background-color:{{ config.manufacturerBackground.value }};{% endif %}{% if config.manufacturerColor.value %}color:{{ config.manufacturerColor.value }};{% endif %}{% if config.imageHeight.value %}max-height: {{ config.imageHeight.value }};{% endif %}">
+                                        {% block element_rhweb_manufacturer_list_content_aleternate_item_link_start %}
+                                            {% if config.activateUrls.value and navigatorManufacturers.link %}
+                                                <a href="{{ manufacturerLink }}"{% if config.activateUrlsNewTab.value %} target="_blank"{% endif %}>
+                                            {% endif %}
+                                        {% endblock %}
+                                        {% block element_rhweb_manufacturer_list_content_aleternate_item_media %}
+                                            {% if config.activateImages.value and navigatorManufacturers.media %}
+                                                {% sw_thumbnails 'rhweb-manufacturer-list-thumbnail' with {
+                                                    media: navigatorManufacturers.media,
+                                                    sizes: {
+                                                        'default': config.imageMaxWidth.value
+                                                    },
+                                                    attributes: {
+                                                        'alt': navigatorManufacturers.translated.name,
+                                                        'title': navigatorManufacturers.translated.name
+                                                    }
+                                                } %}
+                                            {% else %}
+                                                {{ navigatorManufacturers.translated.name }}
+                                            {% endif %}
+                                        {% endblock %}
+                                        {% block element_rhweb_manufacturer_list_content_aleternate_item_link_end %}
+                                            {% if config.activateUrls.value and navigatorManufacturers.link %}
+                                                </a>
+                                            {% endif %}
+                                        {% endblock %}
+                                    </div>
+                                {% endblock %}
+                             </div>
+                    {% endfor %}
+                </div>
+                {% endblock %}
+            {% endif %}
+        </div>
+        {% endblock %}
+    </div>
+{% endblock %}

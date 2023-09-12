@@ -1,0 +1,19 @@
+{
+  "name": "zaiba/notify-admin-if-smtp-not-working",
+  "description": "Notify Admin If SMTP Not tWorking",
+  "type": "shopware-platform-plugin",
+  "version": "1.0.1",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "ZaibaNotifyAdminIfSMTPNotWorking\\": "src/"
+    }
+  },
+  "extra": {
+    "shopware-plugin-class": "ZaibaNotifyAdminIfSMTPNotWorking\\ZaibaNotifyAdminIfSMTPNotWorking",
+    "label": {
+      "de-DE": "Notify Admin If SMTP Not tWorking",
+      "en-GB": "Notify Admin If SMTP Not tWorking"
+    }
+  }
+}

@@ -1,0 +1,51 @@
+{
+    "rhwebThemeFeatures": {
+        "footer": {
+            "copyrightText": "Individuelles Copyright von <a href='https://google.com' target='_blank' rel='noopener'>Muster GmbH</a>"
+        },
+        "usp": {
+            "one": {
+                "iconClass": "fa fa-truck",
+                "title": "Versandkostenfrei ab 30€"
+            },
+            "two": {
+                "iconClass": "fa fa-check",
+                "title": "100% Geld-Zurück-Garantie"
+            },
+            "three": {
+                "iconClass": "fa fa-phone",
+                "title": "24/7 Telefonsupport"
+            },
+            "four": {
+                "iconClass": "fa fa-envelope",
+                "title": "24/7 Mailsupport"
+            }
+        },
+        "contactWidget": {
+            "title": "Schnellkontakt Widget",
+            "email": "info@example.com",
+            "phone": "022321/129239",
+            "fax": "+1 323 555 1234",
+            "googleMaps": "Anfahrt bei Google Maps"
+        },
+        "countdown": {
+            "title": "Sparen Sie bis zu 20% auf alle Produkte!",
+            "days": "Tage",
+            "hours": "Stunden",
+            "minutes": "Minuten",
+            "seconds": "Sekunden"
+        },
+        "cookie": {
+            "googleFonts": {
+                "title": "Google Fonts (Schriftarten)",
+                "description": "Diese Funktion aktiviert die vom Shop vorgegebenen Schriftarten. Wenn Sie sich dagegen entscheiden, kann es zu einer unschönen Darstellung führen."
+            }
+        },
+        "account": {
+            "logout": {
+                "hint": "Eingeloggt als <b>%firstName% %lastName%</b>",
+                "cta": "Jetzt ausloggen"
+            }
+        }
+    }
+}

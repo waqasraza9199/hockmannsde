@@ -1,0 +1,24 @@
+.cms-element-rhweb-placeholder {
+  width: 100%;
+
+  .rhweb-preview-dashed-box{
+    border:2px dashed #BCC1C7FF;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+    border-radius: $border-radius;
+
+    .icon{
+      width: 24px;
+      height: 24px;
+      color:#9AA1A8FF;
+    }
+
+    .label{
+      color: #9AA1A8FF;
+    }
+  }
+}

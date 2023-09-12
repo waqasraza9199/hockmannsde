@@ -1,0 +1,116 @@
+{% block element_rhweb_deal_counter %}
+    {% set config = element.config %}
+    {% set product = element.data.product %}
+    {% set endTimerHide = config.endTimerHide.value %}
+    {% set timerEnd = date() > date(config.endDateTime.value) %}
+
+    {% if endTimerHide == true and timerEnd == true %}
+    {% else %}
+        {% block element_rhweb_deal_counter_customcss %}
+            {% if config.activateCustomCss.value %}
+                <style>
+                    {{ config.customCss.value | raw }}
+                </style>
+            {% endif %}
+        {% endblock %}
+
+        {% block element_rhweb_deal_counter_container %}
+            <div class="cms-element-{{ element.type }} {% if isInSidebar %}rhweb-sidebar-element{% else %}rhweb-no-sidebar-element{% endif %}"
+                    {% block element_rhweb_deal_counter_date_times %}
+                        data-start-date-time="{{ config.startDateTime.value }}"
+                        data-end-date-time="{{ config.endDateTime.value }}"
+                    {% endblock %}
+            >
+                <div class="row align-items-center">
+                    <div class="{% if isInSidebar %}col-12{% else %}col-md-5{% endif %}">
+                        <div class="deal-counter-img mb-3 mb-md-0">
+                            {% block element_rhweb_deal_counter_media %}
+                                {% if product.cover.media.url %}
+                                    <a href="{% if product.id %}{{ seoUrl('frontend.detail.page', {'productId': product.id}) }}{% endif %}">
+                                        {% sw_thumbnails 'cart-item-img-thumbnails' with {
+                                            media: product.cover.media,
+                                            attributes: {
+                                                'alt': (product.translated.name ?: ''),
+                                                'title': (product.translated.name ?: '')
+                                            }
+                                        } %}
+                                    </a>
+                                {% else %}
+                                    {% sw_icon 'placeholder' style {'size': 'fluid'} %}
+                                {% endif %}
+
+                                {% block element_rhweb_deal_counter_badge %}
+                                    {% if config.showBadge.value and element.translated.config.badgeText.value %}
+                                        <div class="deal-counter-badge bg-primary text-white">
+                                            {{ element.translated.config.badgeText.value }}
+                                        </div>
+                                    {% endif %}
+                                {% endblock %}
+                            {% endblock %}
+                        </div>
+                    </div>
+                    <div class="{% if isInSidebar %}col-12{% else %}col-md-7{% endif %}">
+                        {% block element_rhweb_deal_counter_content_container %}
+                            <div class="deal-counter-content-container">
+                                <div class="deal-counter-content">
+                                    {% block element_rhweb_deal_counter_content_title %}
+                                        <a href="{% if product.id %}{{ seoUrl('frontend.detail.page', {'productId': product.id}) }}{% endif %}">
+                                            <h3 class="deal-counter-title">{{ product.translated.name }}</h3>
+                                        </a>
+                                    {% endblock %}
+
+                                    {% block element_rhweb_deal_counter_content_rating %}
+                                        {% if product.ratingAverage %}
+                                            <div class="deal-counter-rating">
+                                                {% for index in 1..5 %}
+                                                    {% if index > product.ratingAverage %}
+                                                        <i class="fa fa-star-o"></i>
+                                                    {% else %}
+                                                        <i class="fa fa-star"></i>
+                                                    {% endif %}
+                                                {% endfor %}
+                                            </div>
+                                        {% endif %}
+                                    {% endblock %}
+
+                                    {% block element_rhweb_deal_counter_content_price %}
+                                        <div class="deal-counter-price">
+                                            <span class="deal-counter-price-new">{{ config.newPrice.value|currency }}{{ "general.star"|trans|sw_sanitize }}</span>
+                                            <span class="deal-counter-price-old">{{ config.oldPrice.value|currency }}{{ "general.star"|trans|sw_sanitize }}</span>
+                                        </div>
+                                    {% endblock %}
+
+
+                                    {% block element_rhweb_deal_counter_content_description %}
+                                        <div class="deal-counter-description">
+                                            {% if config.activateCustomDescription.value %}
+                                                {{ config.customDescription.value | raw }}
+                                            {% else %}
+                                                {{ product.translated.description|striptags|length > 300 ? product.translated.description|striptags|slice(0, 300) ~ '...' : product.translated.description|striptags  }}
+                                            {% endif %}
+                                        </div>
+                                    {% endblock %}
+
+                                    {% block element_rhweb_deal_counter_countdown %}
+                                        <div class="deal-counter-countdown">
+                                            {% if date() < date(config.startDateTime.value) %}
+                                                <div class="deal-counter-countdown-item">{{ element.translated.config.teaserText.value }} {{ config.startDateTime.value | date("d.m.Y") }}</div>
+                                            {% elseif timerEnd == false %}
+                                                <div class="deal-counter-countdown-item">00</div>
+                                                <div class="deal-counter-countdown-item">00</div>
+                                                <div class="deal-counter-countdown-item">00</div>
+                                                <div class="deal-counter-countdown-item">00</div>
+                                            {% endif %}
+                                        </div>
+                                    {% endblock %}
+                                </div>
+                            </div>
+                        {% endblock %}
+                    </div>
+                </div>
+            </div>
+
+        {% endblock %}
+
+    {% endif %}
+{% endblock %}

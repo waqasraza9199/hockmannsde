@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/shopware/platform/master/src/Core/System/SystemConfig/Schema/config.xsd">
+
+    <card>
+        <title>General</title>
+        <title lang="de-DE">Einstellungen</title>
+        <title lang="es-ES">Ajustes</title>
+        <title lang="it-IT">Impostazioni</title>
+        <title lang="nl-NL">Instellingen</title>
+        <title lang="fr-FR">Paramètres</title>
+
+        <input-field type="bool">
+            <name>showStorefrontTags</name>
+            <label>Show tags on product detail-pages in the storefront</label>
+            <label lang="de-DE">Tags auf Produktdetailseiten in der Storefront anzeigen</label>
+            <label lang="es-ES">Mostrar las etiquetas en las páginas de detalles de los productos en el escaparate</label>
+            <label lang="it-IT">Mostra i tag nelle pagine di dettaglio dei prodotti nello storefront</label>
+            <label lang="nl-NL">Toon tags op product detailpagina's in de winkelpui</label>
+            <label lang="fr-FR">Afficher les balises sur les pages de détail des produits dans la vitrine</label>
+            <defaultValue>false</defaultValue>
+        </input-field>
+        <input-field type="single-select">
+            <name>tagAppearance</name>
+            <label>Appearance</label>
+            <label lang="de-DE">Erscheinungsbild</label>
+            <label lang="es-ES">Apariencia</label>
+            <label lang="it-IT">Aspetto</label>
+            <label lang="nl-NL">Uiterlijk</label>
+            <label lang="fr-FR">Apparition</label>
+            <defaultValue>primary</defaultValue>
+            <helpText>Sets the design of tags in the storefront, if activated.</helpText>
+            <helpText lang="de-DE">Das Design der Tags in der Storefront, falls aktiviert.</helpText>
+            <helpText lang="es-ES">El diseño de las etiquetas en el escaparate, si está activado.</helpText>
+            <helpText lang="it-IT">Il design dei tag nella vetrina, se abilitato.</helpText>
+            <helpText lang="nl-NL">Het ontwerp van de tags in de etalage, indien ingeschakeld.</helpText>
+            <helpText lang="fr-FR">Le design des balises dans la vitrine, s'il est activé.</helpText>
+            <options>
+                <option>
+                    <id>primary</id>
+                    <name>Default</name>
+                    <name lang="de-DE">Standard</name>
+                    <name lang="es-ES">Estándar</name>
+                    <name lang="it-IT">Standard</name>
+                    <name lang="nl-NL">Standaard</name>
+                    <name lang="fr-FR">Standard</name>
+                </option>
+                <option>
+                    <id>info</id>
+                    <name>Information</name>
+                    <name lang="de-DE">Info</name>
+                    <name lang="es-ES">Información</name>
+                    <name lang="it-IT">Informazioni</name>
+                    <name lang="nl-NL">Informatie</name>
+                    <name lang="fr-FR">Information</name>
+                </option>
+                <option>
+                    <id>success</id>
+                    <name>Success</name>
+                    <name lang="de-DE">Erfolg</name>
+                    <name lang="es-ES">Éxito</name>
+                    <name lang="it-IT">Successo</name>
+                    <name lang="nl-NL">Succes</name>
+                    <name lang="fr-FR">Succès</name>
+                </option>
+                <option>
+                    <id>warning</id>
+                    <name>Notice</name>
+                    <name lang="de-DE">Warnung</name>
+                    <name lang="es-ES">Advertencia</name>
+                    <name lang="it-IT">Attenzione</name>
+                    <name lang="nl-NL">Waarschuwing</name>
+                    <name lang="fr-FR">Avertissement</name>
+                </option>
+                <option>
+                    <id>danger</id>
+                    <name>Error</name>
+                    <name lang="de-DE">Dringend</name>
+                    <name lang="es-ES">Urgente</name>
+                    <name lang="it-IT">Urgente</name>
+                    <name lang="nl-NL">Dringend</name>
+                    <name lang="fr-FR">Urgent</name>
+                </option>
+                <option>
+                    <id>dark</id>
+                    <name>Dark</name>
+                    <name lang="de-DE">Dunkel</name>
+                    <name lang="es-ES">Oscuro</name>
+                    <name lang="it-IT">Scuro</name>
+                    <name lang="nl-NL">Dark</name>
+                    <name lang="fr-FR">Dark</name>
+                </option>
+            </options>
+        </input-field>
+    </card>
+</config>

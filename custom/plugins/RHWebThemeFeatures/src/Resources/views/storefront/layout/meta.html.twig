@@ -1,0 +1,40 @@
+{% sw_extends '@Storefront/storefront/layout/meta.html.twig' %}
+
+{% block layout_head_stylesheet %}
+    {% block rhweb_meta_fontawesome %}
+        <link rel="stylesheet" href="//assets.rh-webdesign.com/css/font-awesome-4-min.css">
+    {% endblock %}
+
+    {{ parent() }}
+
+    {% block rhweb_meta_animation %}
+        {% block rhweb_meta_animation_stylesheet %}
+            {% if config('RHWebThemeFeatures.config.animate') %}
+                <link rel="stylesheet" href="{{ asset('bundles/rhwebthemefeatures/storefront/css/animate.css') }}">
+            {% endif %}
+        {% endblock %}
+        {% block rhweb_meta_animation_script %}
+            {% if config('RHWebThemeFeatures.config.rhwebAnimation') %}
+                <script type="application/javascript">window.rhwebAnimation = {{ config('RHWebThemeFeatures.config.rhwebAnimation')|json_encode|raw }};</script>
+            {% endif %}
+        {% endblock %}
+    {% endblock %}
+
+    {% block rhweb_meta_googlefonts %}
+        {% if config('RHWebThemeFeatures.config.rhwebActivateGoogleFonts') %}
+            {% set googleFontsCode = config('RHWebThemeFeatures.config.rhwebGoogleFontsCode') %}
+            {% block rhweb_meta_googlefonts_cookies %}
+                {% if config('RHWebThemeFeatures.config.rhwebActivateGoogleFontsCookie') %}
+                    {% if (app.request.cookies.get('google-fonts')) == 1 %}
+                        {{ googleFontsCode | raw}}
+                    {% endif %}
+                {% else %}
+                    {{ googleFontsCode | raw}}
+                {% endif %}
+            {% endblock %}
+        {% endif %}
+    {% endblock %}
+{% endblock %}
+
+
+

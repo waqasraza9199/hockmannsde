@@ -1,0 +1,36 @@
+{
+    "sw-cms": {
+        "elements": {
+            "rhweb-testimonial": {
+                "config": {
+                    "tab": {
+                        "general": "General",
+                        "image": "Image/Upload",
+                        "color": "Color Settings"
+                    },
+                    "label": {
+                        "customer": "Name of the customer",
+                        "company": "Client company",
+                        "quote": "Display text of the customer",
+                        "rating": "Customer review",
+                        "ratingMax": "Max. Rating",
+                        "boxColor": "Text color",
+                        "boxHighlightColor": "Highlight color",
+                        "boxBackground": "Background color of the element",
+                        "upload": "Upload picture of the customer"
+                    },
+                    "helpText": {
+                        "customer": "This is the name of the customer that will be output in the storefront.",
+                        "company": "This field determines the company of the customer.",
+                        "quote": "In this field you can enter the review that the customer has given.",
+                        "rating": "This field determines the number of stars.",
+                        "ratingMax": "This field determines the maximum number of stars possible.",
+                        "boxColor": "Set the text color with this field.",
+                        "boxHighlightColor": "The element uses a color to highlight certain elements. Set the color here.",
+                        "boxBackground": "The element uses a background color depending on the theme. Set this color here."
+                    }
+                }
+            }
+        }
+    }
+}

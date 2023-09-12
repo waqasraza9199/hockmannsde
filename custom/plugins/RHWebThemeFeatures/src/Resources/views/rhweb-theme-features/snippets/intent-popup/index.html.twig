@@ -1,0 +1,39 @@
+{% block rhweb_intent_popup_container %}
+    {% set cmsPageExitIntent = page.header.RHWebCmsPage %}
+    {% set exitIntentHeader = config('RHWebThemeFeatures.config.RhwebThemeFeaturesActivateExitIntentHeader') %}
+    {% set exitIntentSize = config('RHWebThemeFeatures.config.RhwebThemeFeaturesExitIntentSize') %}
+    {% set exitIntentCenter = config('RHWebThemeFeatures.config.RhwebThemeFeaturesExitIntentCenter') %}
+
+    <div class="modal" id="intentPopup" data-rhweb-exit-intent="true" tabindex="-1" data-backdrop="static" role="dialog" aria-labelledby="{{ cmsPageExitIntent.translated.name }}" aria-hidden="true">
+        <div class="modal-dialog{% if exitIntentSize != 'regular' %} modal-{{ exitIntentSize }}{% endif %}{% if exitIntentCenter %} modal-dialog-centered{% endif %}" role="document">
+            <div class="modal-content">
+                {% block rhweb_intent_popup_container_header %}
+                    {% if exitIntentHeader %}
+                        <div class="modal-header">
+                            {% block rhweb_intent_popup_container_header_inner %}
+                                <div class="modal-title">{{ cmsPageExitIntent.translated.name }}</div>
+                                {% block rhweb_intent_popup_container_header_button %}
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                {% endblock %}
+                            {% endblock %}
+                        </div>
+                    {% else %}
+                        {% block rhweb_intent_popup_container_header_button_no_header %}
+                            <button type="button" class="close no-header" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        {% endblock %}
+                    {% endif %}
+                {% endblock %}
+
+                {% block rhweb_intent_popup_container_body %}
+                    <div class="modal-body">
+                        {% sw_include "@Storefront/storefront/page/content/detail.html.twig" with {cmsPage: cmsPageExitIntent } %}
+                    </div>
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

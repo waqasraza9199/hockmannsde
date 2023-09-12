@@ -1,0 +1,545 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="../../../../../../platform/src/Core/System/SystemConfig/Schema/config.xsd">
+
+    <card>
+        <title>License</title>
+        <title lang="de-DE">Lizenz</title>
+
+        <input-field>
+            <name>license</name>
+            <copyable>true</copyable>
+            <required>true</required>
+            <label>Lizenz</label>
+        </input-field>
+    </card>
+
+    <card>
+        <title>Basic Configuration</title>
+        <title lang="de-DE">Grundeinstellungen</title>
+
+        <input-field>
+            <name>customtext</name>
+            <type>textarea</type>
+            <copyable>true</copyable>
+            <required>false</required>
+            <label>Zusätzlicher Rechnungstext</label>
+        </input-field>
+
+        <input-field>
+            <name>primarycolor</name>
+            <copyable>true</copyable>
+            <required>false</required>
+            <label>Primäre Farbe (HEX)</label>
+            <defaultValue>#ff0033</defaultValue>
+        </input-field>
+
+        <input-field>
+            <name>secondarycolor</name>
+            <copyable>true</copyable>
+            <required>false</required>
+            <label>Sekundäre Farbe (HEX)</label>
+            <defaultValue>#E9E9E9</defaultValue>
+        </input-field>
+
+        <input-field type="bool">
+            <name>finishdrop</name>
+            <defaultValue>true</defaultValue>
+            <label>Drop am Ende des Checkouts anzeigen</label>
+        </input-field>
+
+    </card>
+
+    <card>
+        <title>Order Confirmation Template</title>
+        <title lang="de-DE">Bestellbestätigung</title>
+
+        <input-field>
+            <name>mailTemplateText</name>
+            <type>textarea</type>
+            <copyable>false</copyable>
+            <required>false</required>
+            <label>Text</label>
+            <defaultValue><![CDATA[{% set currencyIsoCode = order.currency.isoCode %}
+Hallo {% if order.orderCustomer.salutation %}{{ order.orderCustomer.salutation.translated.letterName ~ ' ' }}{% endif %}{{ order.orderCustomer.firstName }} {{ order.orderCustomer.lastName }},
+
+Ihre Bestellung ist am {{ order.orderDateTime|format_datetime('medium', 'short', locale='de-DE') }} bei uns eingegangen.
+
+Bestellnummer: {{ order.orderNumber }}
+
+Sobald ein Zahlungseingang erfolgt ist, erhalten Sie eine separate Benachrichtigung und Ihre Bestellung wird verarbeitet.
+
+Den aktuellen Status Ihrer Bestellung können Sie jederzeit über diesen Link abrufen: {{ rawUrl('frontend.account.order.single.page', { 'deepLinkCode': order.deepLinkCode }, salesChannel.domains|first.url) }}
+Über diesen Link können Sie auch die Bestellung bearbeiten, die Zahlungsart wechseln oder nachträglich eine Zahlung durchführen.
+
+Informationen zu Ihrer Bestellung:
+
+Pos.   Artikel-Nr.			Produktbild(Alt-Text) 			Beschreibung			Menge			Preis			Summe
+
+{% for lineItem in order.lineItems %}
+{{ loop.index }}      {% if lineItem.payload.productNumber is defined %}{{ lineItem.payload.productNumber|u.wordwrap(80) }}{% endif %}      {% if nestedItem.cover is defined and nestedItem.cover is not null %}{{ lineItem.cover.alt }}{% endif %}        {{ lineItem.label|u.wordwrap(80) }}{% if lineItem.payload.options is defined and lineItem.payload.options|length >= 1 %}, {% for option in lineItem.payload.options %}{{ option.group }}: {{ option.option }}{% if lineItem.payload.options|last != option %}{{ " | " }}{% endif %}{% endfor %}{% endif %}{% if lineItem.payload.features is defined and lineItem.payload.features|length >= 1 %}{% set referencePriceFeatures = lineItem.payload.features|filter(feature => feature.type == 'referencePrice') %}{% if referencePriceFeatures|length >= 1 %}{% set referencePriceFeature = referencePriceFeatures|first %}, {{ referencePriceFeature.value.purchaseUnit }} {{ referencePriceFeature.value.unitName }}({{ referencePriceFeature.value.price|currency(currencyIsoCode) }}* / {{ referencePriceFeature.value.referenceUnit }} {{ referencePriceFeature.value.unitName }}){% endif %}{% endif %}
+    {{ lineItem.quantity }}			{{ lineItem.unitPrice|currency(currencyIsoCode) }}			{{ lineItem.totalPrice|currency(currencyIsoCode) }}
+{% endfor %}
+
+{% set delivery = order.deliveries.first %}
+
+{% set displayRounded = order.totalRounding.interval != 0.01 or order.totalRounding.decimals != order.itemRounding.decimals %}
+{% set decimals = order.totalRounding.decimals %}
+{% set total = order.price.totalPrice %}
+{% if displayRounded %}
+    {% set total = order.price.rawTotal %}
+    {% set decimals = order.itemRounding.decimals %}
+{% endif %}
+
+{% for shippingCost in order.deliveries %}
+    Versandkosten: {{ shippingCost.shippingCosts.totalPrice|currency(currencyIsoCode) }}<br>
+{% endfor %}
+Gesamtkosten Netto: {{ order.amountNet|currency(currencyIsoCode) }}
+{% for calculatedTax in order.price.calculatedTaxes %}
+{% if order.taxStatus is same as('net') %}zzgl.{% else %}inkl.{% endif %} {{ calculatedTax.taxRate }}% MwSt. {{ calculatedTax.tax|currency(currencyIsoCode) }}
+{% endfor %}
+Gesamtkosten Brutto: {{ total|currency(currencyIsoCode,decimals=decimals) }}
+{% if displayRounded %}
+Gesamtkosten Brutto gerundet: {{ order.price.totalPrice|currency(currencyIsoCode,decimals=order.totalRounding.decimals) }}
+{% endif %}
+
+Gewählte Versandart: {{ delivery.shippingMethod.translated.name }}
+{{ delivery.shippingMethod.translated.description }}
+
+{% set billingAddress = order.addresses.get(order.billingAddressId) %}
+Rechnungsadresse:
+{{ billingAddress.company }}
+{{ billingAddress.firstName }} {{ billingAddress.lastName }}
+{{ billingAddress.street }}
+{{ billingAddress.zipcode }} {{ billingAddress.city }}
+{{ billingAddress.country.translated.name }}
+
+Lieferadresse:
+{{ delivery.shippingOrderAddress.company }}
+{{ delivery.shippingOrderAddress.firstName }} {{ delivery.shippingOrderAddress.lastName }}
+{{ delivery.shippingOrderAddress.street }}
+{{ delivery.shippingOrderAddress.zipcode}} {{ delivery.shippingOrderAddress.city }}
+{{ delivery.shippingOrderAddress.country.translated.name }}
+
+{% if order.orderCustomer.vatIds %}
+Ihre Umsatzsteuer-ID: {{ order.orderCustomer.vatIds|first }}
+Bei erfolgreicher Prüfung und sofern Sie aus dem EU-Ausland
+bestellen, erhalten Sie Ihre Ware umsatzsteuerbefreit.
+{% endif %}
+
+{% if lzyt_drop %}
+Unsere Bankverbindung:
+Empfänger: {{ lzyt_drop.bank }}
+IBAN: {{ lzyt_drop.iban }}
+BIC: {{ lzyt_drop.bic }}
+{% endif %}
+
+Den aktuellen Status Ihrer Bestellung können Sie auch jederzeit auf unserer Webseite im  Bereich "Mein Konto" - "Meine Bestellungen" abrufen: {{ rawUrl('frontend.account.order.single.page', { 'deepLinkCode': order.deepLinkCode }, salesChannel.domains|first.url) }}
+Für Rückfragen stehen wir Ihnen jederzeit gerne zur Verfügung.]]></defaultValue>
+        </input-field>
+
+        <input-field>
+            <name>mailTemplateHtml</name>
+            <type>textarea</type>
+            <copyable>false</copyable>
+            <required>false</required>
+            <label>HTML</label>
+            <defaultValue><![CDATA[<div style="font-family:arial; font-size:12px;">
+
+{% set currencyIsoCode = order.currency.isoCode %}
+
+Hallo {% if order.orderCustomer.salutation %}{{ order.orderCustomer.salutation.translated.letterName ~ ' ' }}{% endif %}{{ order.orderCustomer.firstName }} {{ order.orderCustomer.lastName }},<br>
+<br>
+Ihre Bestellung ist am {{ order.orderDateTime|format_datetime('medium', 'short', locale='de-DE') }} bei uns eingegangen.<br>
+<br>
+Bestellnummer: {{ order.orderNumber }}<br>
+<br>
+Sobald ein Zahlungseingang erfolgt ist, erhalten Sie eine separate Benachrichtigung und Ihre Bestellung wird verarbeitet.<br>
+<br>
+Den aktuellen Status Ihrer Bestellung können Sie jederzeit über diesen Link abrufen: {{ rawUrl('frontend.account.order.single.page', { 'deepLinkCode': order.deepLinkCode }, salesChannel.domains|first.url) }}<br>
+Über diesen Link können Sie auch die Bestellung bearbeiten, die Zahlungsart wechseln oder nachträglich eine Zahlung durchführen.<br>
+<br>
+<strong>Informationen zu Ihrer Bestellung:</strong><br>
+<br>
+
+<table border="0" style="font-family:Arial, Helvetica, sans-serif; font-size:12px;">
+    <tr>
+        <td bgcolor="#F7F7F2" style="border-bottom:1px solid #cccccc;"><strong>Produkt-Nr.</strong></td>
+        <td bgcolor="#F7F7F2" style="border-bottom:1px solid #cccccc;"><strong>Produktbild</strong></td>
+        <td bgcolor="#F7F7F2" style="border-bottom:1px solid #cccccc;"><strong>Bezeichnung</strong></td>
+        <td bgcolor="#F7F7F2" style="border-bottom:1px solid #cccccc;"><strong>Menge</strong></td>
+        <td bgcolor="#F7F7F2" style="border-bottom:1px solid #cccccc;"><strong>Preis</strong></td>
+        <td bgcolor="#F7F7F2" style="border-bottom:1px solid #cccccc;"><strong>Summe</strong></td>
+    </tr>
+
+    {% for lineItem in order.nestedLineItems %}
+        {% set nestingLevel = 0 %}
+        {% set nestedItem = lineItem %}
+        {% block lineItem %}
+            <tr>
+                <td>{% if nestedItem.payload.productNumber is defined %}{{ nestedItem.payload.productNumber|u.wordwrap(80) }}{% endif %}</td>
+                <td>{% if nestedItem.cover is defined and nestedItem.cover is not null %}<img src="{{ nestedItem.cover.url }}" width="75" height="auto"/>{% endif %}</td>
+                <td>
+                    {% if nestingLevel > 0 %}
+                        {% for i in 1..nestingLevel %}
+                            <span style="position: relative;">
+                                <span style="display: inline-block;
+                                    position: absolute;
+                                    width: 6px;
+                                    height: 20px;
+                                    top: 0;
+                                    border-left:  2px solid rgba(0, 0, 0, 0.15);
+                                    margin-left: {{ i * 10 }}px;"></span>
+                            </span>
+                        {% endfor %}
+                    {% endif %}
+
+                    <div{% if nestingLevel > 0 %} style="padding-left: {{ (nestingLevel + 1) * 10 }}px"{% endif %}>
+                        {{ nestedItem.label|u.wordwrap(80) }}
+                    </div>
+
+                    {% if nestedItem.payload.options is defined and nestedItem.payload.options|length >= 1 %}
+                        <div>
+                            {% for option in nestedItem.payload.options %}
+                                {{ option.group }}: {{ option.option }}
+                                {% if nestedItem.payload.options|last != option %}
+                                    {{ " | " }}
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+
+                    {% if nestedItem.payload.features is defined and nestedItem.payload.features|length >= 1 %}
+                        {% set referencePriceFeatures = nestedItem.payload.features|filter(feature => feature.type == 'referencePrice') %}
+                        {% if referencePriceFeatures|length >= 1 %}
+                            {% set referencePriceFeature = referencePriceFeatures|first %}
+                            <div>
+                                {{ referencePriceFeature.value.purchaseUnit }} {{ referencePriceFeature.value.unitName }}
+                                ({{ referencePriceFeature.value.price|currency(currencyIsoCode) }}* / {{ referencePriceFeature.value.referenceUnit }} {{ referencePriceFeature.value.unitName }})
+                            </div>
+                        {% endif %}
+                    {% endif %}
+                </td>
+                <td style="text-align: center">{{ nestedItem.quantity }}</td>
+                <td>{{ nestedItem.unitPrice|currency(currencyIsoCode) }}</td>
+                <td>{{ nestedItem.totalPrice|currency(currencyIsoCode) }}</td>
+            </tr>
+
+            {% if nestedItem.children.count > 0 %}
+                {% set nestingLevel = nestingLevel + 1 %}
+                {% for lineItem in nestedItem.children %}
+                    {% set nestedItem = lineItem %}
+                    {{ block('lineItem') }}
+                {% endfor %}
+            {% endif %}
+        {% endblock %}
+    {% endfor %}
+</table>
+
+{% set delivery = order.deliveries.first %}
+
+{% set displayRounded = order.totalRounding.interval != 0.01 or order.totalRounding.decimals != order.itemRounding.decimals %}
+{% set decimals = order.totalRounding.decimals %}
+{% set total = order.price.totalPrice %}
+{% if displayRounded %}
+    {% set total = order.price.rawTotal %}
+    {% set decimals = order.itemRounding.decimals %}
+{% endif %}
+<p>
+    <br>
+    <br>
+    {% for shippingCost in order.deliveries %}
+        Versandkosten: {{ shippingCost.shippingCosts.totalPrice|currency(currencyIsoCode) }}<br>
+    {% endfor %}
+    Gesamtkosten Netto: {{ order.amountNet|currency(currencyIsoCode) }}<br>
+        {% for calculatedTax in order.price.calculatedTaxes %}
+            {% if order.taxStatus is same as('net') %}zzgl.{% else %}inkl.{% endif %} {{ calculatedTax.taxRate }}% MwSt. {{ calculatedTax.tax|currency(currencyIsoCode) }}<br>
+        {% endfor %}
+    {% if not displayRounded %}<strong>{% endif %}Gesamtkosten Brutto: {{ total|currency(currencyIsoCode,decimals=decimals) }}{% if not displayRounded %}</strong>{% endif %}<br>
+    {% if displayRounded %}
+        <strong>Gesamtkosten Brutto gerundet: {{ order.price.totalPrice|currency(currencyIsoCode,decimals=order.totalRounding.decimals) }}</strong><br>
+    {% endif %}
+    <br>
+
+    <strong>Gewählte Versandart:</strong> {{ delivery.shippingMethod.translated.name }}<br>
+    {{ delivery.shippingMethod.translated.description }}<br>
+    <br>
+
+    {% set billingAddress = order.addresses.get(order.billingAddressId) %}
+    <strong>Rechnungsadresse:</strong><br>
+    {{ billingAddress.company }}<br>
+    {{ billingAddress.firstName }} {{ billingAddress.lastName }}<br>
+    {{ billingAddress.street }} <br>
+    {{ billingAddress.zipcode }} {{ billingAddress.city }}<br>
+    {{ billingAddress.country.translated.name }}<br>
+    <br>
+
+    <strong>Lieferadresse:</strong><br>
+    {{ delivery.shippingOrderAddress.company }}<br>
+    {{ delivery.shippingOrderAddress.firstName }} {{ delivery.shippingOrderAddress.lastName }}<br>
+    {{ delivery.shippingOrderAddress.street }} <br>
+    {{ delivery.shippingOrderAddress.zipcode}} {{ delivery.shippingOrderAddress.city }}<br>
+    {{ delivery.shippingOrderAddress.country.translated.name }}<br>
+    <br>
+    {% if order.orderCustomer.vatIds %}
+        Ihre Umsatzsteuer-ID: {{ order.orderCustomer.vatIds|first }}
+        Bei erfolgreicher Prüfung und sofern Sie aus dem EU-Ausland
+        bestellen, erhalten Sie Ihre Ware umsatzsteuerbefreit. <br>
+    {% endif %}
+    <br/>
+    {% if lzyt_drop %}
+    <strong>Unsere Bankverbindung:</strong><br />
+    Empfänger: {{ lzyt_drop.bank }}<br />
+    IBAN: {{ lzyt_drop.iban }}<br />
+    BIC: {{ lzyt_drop.bic }}<br />
+    <br />
+    {% endif %}
+    Den aktuellen Status Ihrer Bestellung können Sie auch jederzeit auf unserer Webseite im  Bereich "Mein Konto" - "Meine Bestellungen" abrufen: {{ rawUrl('frontend.account.order.single.page', { 'deepLinkCode': order.deepLinkCode }, salesChannel.domains|first.url) }}
+    </br>
+    Für Rückfragen stehen wir Ihnen jederzeit gerne zur Verfügung.
+</p>
+<br>
+</div>]]></defaultValue>
+        </input-field>
+
+    </card>
+
+    <card>
+        <title>Invoice Confirmation Template</title>
+        <title lang="de-DE">Rechnung</title>
+
+        <input-field>
+            <name>invoiceMailTemplateText</name>
+            <type>textarea</type>
+            <copyable>false</copyable>
+            <required>false</required>
+            <label>Text</label>
+            <defaultValue><![CDATA[{% set currencyIsoCode = order.currency.isoCode %} {% if order.orderCustomer.salutation %}{{ order.orderCustomer.salutation.translated.letterName ~ ' ' }}{% endif %}{{ order.orderCustomer.firstName }} {{ order.orderCustomer.lastName }},
+
+Im Anhang dieser E-Mail finden Sie die Rechnung für Ihre Bestellung mit der Nummer: {{ order.orderNumber }}
+
+Informationen zu Ihrer Bestellung:
+
+Pos.   Artikel-Nr.			Produktbild(Alt-Text) 			Beschreibung			Menge			Preis			Summe
+
+{% for lineItem in order.lineItems %}
+{{ loop.index }}      {% if lineItem.payload.productNumber is defined %}{{ lineItem.payload.productNumber|u.wordwrap(80) }}{% endif %}      {% if nestedItem.cover is defined and nestedItem.cover is not null %}{{ lineItem.cover.alt }}{% endif %}        {{ lineItem.label|u.wordwrap(80) }}{% if lineItem.payload.options is defined and lineItem.payload.options|length >= 1 %}, {% for option in lineItem.payload.options %}{{ option.group }}: {{ option.option }}{% if lineItem.payload.options|last != option %}{{ " | " }}{% endif %}{% endfor %}{% endif %}{% if lineItem.payload.features is defined and lineItem.payload.features|length >= 1 %}{% set referencePriceFeatures = lineItem.payload.features|filter(feature => feature.type == 'referencePrice') %}{% if referencePriceFeatures|length >= 1 %}{% set referencePriceFeature = referencePriceFeatures|first %}, {{ referencePriceFeature.value.purchaseUnit }} {{ referencePriceFeature.value.unitName }}({{ referencePriceFeature.value.price|currency(currencyIsoCode) }}* / {{ referencePriceFeature.value.referenceUnit }} {{ referencePriceFeature.value.unitName }}){% endif %}{% endif %}
+    {{ lineItem.quantity }}			{{ lineItem.unitPrice|currency(currencyIsoCode) }}			{{ lineItem.totalPrice|currency(currencyIsoCode) }}
+{% endfor %}
+
+{% set delivery = order.deliveries.first %}
+
+{% set displayRounded = order.totalRounding.interval != 0.01 or order.totalRounding.decimals != order.itemRounding.decimals %}
+{% set decimals = order.totalRounding.decimals %}
+{% set total = order.price.totalPrice %}
+{% if displayRounded %}
+    {% set total = order.price.rawTotal %}
+    {% set decimals = order.itemRounding.decimals %}
+{% endif %}
+
+{% for shippingCost in order.deliveries %}
+    Versandkosten: {{ shippingCost.shippingCosts.totalPrice|currency(currencyIsoCode) }}<br>
+{% endfor %}
+Gesamtkosten Netto: {{ order.amountNet|currency(currencyIsoCode) }}
+{% for calculatedTax in order.price.calculatedTaxes %}
+{% if order.taxStatus is same as('net') %}zzgl.{% else %}inkl.{% endif %} {{ calculatedTax.taxRate }}% MwSt. {{ calculatedTax.tax|currency(currencyIsoCode) }}
+{% endfor %}
+Gesamtkosten Brutto: {{ total|currency(currencyIsoCode,decimals=decimals) }}
+{% if displayRounded %}
+Gesamtkosten Brutto gerundet: {{ order.price.totalPrice|currency(currencyIsoCode,decimals=order.totalRounding.decimals) }}
+{% endif %}
+
+Gewählte Versandart: {{ delivery.shippingMethod.translated.name }}
+{{ delivery.shippingMethod.translated.description }}
+
+{% set billingAddress = order.addresses.get(order.billingAddressId) %}
+Rechnungsadresse:
+{{ billingAddress.company }}
+{{ billingAddress.firstName }} {{ billingAddress.lastName }}
+{{ billingAddress.street }}
+{{ billingAddress.zipcode }} {{ billingAddress.city }}
+{{ billingAddress.country.translated.name }}
+
+Lieferadresse:
+{{ delivery.shippingOrderAddress.company }}
+{{ delivery.shippingOrderAddress.firstName }} {{ delivery.shippingOrderAddress.lastName }}
+{{ delivery.shippingOrderAddress.street }}
+{{ delivery.shippingOrderAddress.zipcode}} {{ delivery.shippingOrderAddress.city }}
+{{ delivery.shippingOrderAddress.country.translated.name }}
+
+{% if order.orderCustomer.vatIds %}
+Ihre Umsatzsteuer-ID: {{ order.orderCustomer.vatIds|first }}
+Bei erfolgreicher Prüfung und sofern Sie aus dem EU-Ausland
+bestellen, erhalten Sie Ihre Ware umsatzsteuerbefreit.
+{% endif %}
+
+{% if lzyt_drop %}
+Unsere Bankverbindung:
+Empfänger: {{ lzyt_drop.bank }}
+IBAN: {{ lzyt_drop.iban }}
+BIC: {{ lzyt_drop.bic }}
+{% endif %}
+
+Den aktuellen Status Ihrer Bestellung können Sie auch jederzeit auf unserer Webseite im  Bereich "Mein Konto" - "Meine Bestellungen" abrufen: {{ rawUrl('frontend.account.order.single.page', { 'deepLinkCode': order.deepLinkCode }, salesChannel.domains|first.url) }}
+
+Sollten Sie Fragen haben, zögern Sie nicht, uns zu kontaktieren.]]></defaultValue>
+        </input-field>
+
+        <input-field>
+            <name>invoiceMailTemplateHtml</name>
+            <type>textarea</type>
+            <copyable>false</copyable>
+            <required>false</required>
+            <label>HTML</label>
+            <defaultValue><![CDATA[<div style="font-family:arial; font-size:12px;">
+    {% set currencyIsoCode = order.currency.isoCode %}
+    {% if order.orderCustomer.salutation %}{{ order.orderCustomer.salutation.translated.letterName ~ ' ' }}{% endif %}{{ order.orderCustomer.firstName }} {{ order.orderCustomer.lastName }},<br>
+    <br>
+    Im Anhang dieser E-Mail finden Sie die Rechnung für Ihre Bestellung mit der Nummer: {{ order.orderNumber }}<br>
+    <br>
+<strong>Informationen zu Ihrer Bestellung:</strong><br>
+<br>
+
+<table border="0" style="font-family:Arial, Helvetica, sans-serif; font-size:12px;">
+    <tr>
+        <td bgcolor="#F7F7F2" style="border-bottom:1px solid #cccccc;"><strong>Produkt-Nr.</strong></td>
+        <td bgcolor="#F7F7F2" style="border-bottom:1px solid #cccccc;"><strong>Produktbild</strong></td>
+        <td bgcolor="#F7F7F2" style="border-bottom:1px solid #cccccc;"><strong>Bezeichnung</strong></td>
+        <td bgcolor="#F7F7F2" style="border-bottom:1px solid #cccccc;"><strong>Menge</strong></td>
+        <td bgcolor="#F7F7F2" style="border-bottom:1px solid #cccccc;"><strong>Preis</strong></td>
+        <td bgcolor="#F7F7F2" style="border-bottom:1px solid #cccccc;"><strong>Summe</strong></td>
+    </tr>
+
+    {% for lineItem in order.nestedLineItems %}
+        {% set nestingLevel = 0 %}
+        {% set nestedItem = lineItem %}
+        {% block lineItem %}
+            <tr>
+                <td>{% if nestedItem.payload.productNumber is defined %}{{ nestedItem.payload.productNumber|u.wordwrap(80) }}{% endif %}</td>
+                <td>{% if nestedItem.cover is defined and nestedItem.cover is not null %}<img src="{{ nestedItem.cover.url }}" width="75" height="auto"/>{% endif %}</td>
+                <td>
+                    {% if nestingLevel > 0 %}
+                        {% for i in 1..nestingLevel %}
+                            <span style="position: relative;">
+                                <span style="display: inline-block;
+                                    position: absolute;
+                                    width: 6px;
+                                    height: 20px;
+                                    top: 0;
+                                    border-left:  2px solid rgba(0, 0, 0, 0.15);
+                                    margin-left: {{ i * 10 }}px;"></span>
+                            </span>
+                        {% endfor %}
+                    {% endif %}
+
+                    <div{% if nestingLevel > 0 %} style="padding-left: {{ (nestingLevel + 1) * 10 }}px"{% endif %}>
+                        {{ nestedItem.label|u.wordwrap(80) }}
+                    </div>
+
+                    {% if nestedItem.payload.options is defined and nestedItem.payload.options|length >= 1 %}
+                        <div>
+                            {% for option in nestedItem.payload.options %}
+                                {{ option.group }}: {{ option.option }}
+                                {% if nestedItem.payload.options|last != option %}
+                                    {{ " | " }}
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+
+                    {% if nestedItem.payload.features is defined and nestedItem.payload.features|length >= 1 %}
+                        {% set referencePriceFeatures = nestedItem.payload.features|filter(feature => feature.type == 'referencePrice') %}
+                        {% if referencePriceFeatures|length >= 1 %}
+                            {% set referencePriceFeature = referencePriceFeatures|first %}
+                            <div>
+                                {{ referencePriceFeature.value.purchaseUnit }} {{ referencePriceFeature.value.unitName }}
+                                ({{ referencePriceFeature.value.price|currency(currencyIsoCode) }}* / {{ referencePriceFeature.value.referenceUnit }} {{ referencePriceFeature.value.unitName }})
+                            </div>
+                        {% endif %}
+                    {% endif %}
+                </td>
+                <td style="text-align: center">{{ nestedItem.quantity }}</td>
+                <td>{{ nestedItem.unitPrice|currency(currencyIsoCode) }}</td>
+                <td>{{ nestedItem.totalPrice|currency(currencyIsoCode) }}</td>
+            </tr>
+
+            {% if nestedItem.children.count > 0 %}
+                {% set nestingLevel = nestingLevel + 1 %}
+                {% for lineItem in nestedItem.children %}
+                    {% set nestedItem = lineItem %}
+                    {{ block('lineItem') }}
+                {% endfor %}
+            {% endif %}
+        {% endblock %}
+    {% endfor %}
+</table>
+
+{% set delivery = order.deliveries.first %}
+
+{% set displayRounded = order.totalRounding.interval != 0.01 or order.totalRounding.decimals != order.itemRounding.decimals %}
+{% set decimals = order.totalRounding.decimals %}
+{% set total = order.price.totalPrice %}
+{% if displayRounded %}
+    {% set total = order.price.rawTotal %}
+    {% set decimals = order.itemRounding.decimals %}
+{% endif %}
+<p>
+    <br>
+    <br>
+    {% for shippingCost in order.deliveries %}
+        Versandkosten: {{ shippingCost.shippingCosts.totalPrice|currency(currencyIsoCode) }}<br>
+    {% endfor %}
+    Gesamtkosten Netto: {{ order.amountNet|currency(currencyIsoCode) }}<br>
+        {% for calculatedTax in order.price.calculatedTaxes %}
+            {% if order.taxStatus is same as('net') %}zzgl.{% else %}inkl.{% endif %} {{ calculatedTax.taxRate }}% MwSt. {{ calculatedTax.tax|currency(currencyIsoCode) }}<br>
+        {% endfor %}
+    {% if not displayRounded %}<strong>{% endif %}Gesamtkosten Brutto: {{ total|currency(currencyIsoCode,decimals=decimals) }}{% if not displayRounded %}</strong>{% endif %}<br>
+    {% if displayRounded %}
+        <strong>Gesamtkosten Brutto gerundet: {{ order.price.totalPrice|currency(currencyIsoCode,decimals=order.totalRounding.decimals) }}</strong><br>
+    {% endif %}
+    <br>
+
+    <strong>Gewählte Versandart:</strong> {{ delivery.shippingMethod.translated.name }}<br>
+    {{ delivery.shippingMethod.translated.description }}<br>
+    <br>
+
+    {% set billingAddress = order.addresses.get(order.billingAddressId) %}
+    <strong>Rechnungsadresse:</strong><br>
+    {{ billingAddress.company }}<br>
+    {{ billingAddress.firstName }} {{ billingAddress.lastName }}<br>
+    {{ billingAddress.street }} <br>
+    {{ billingAddress.zipcode }} {{ billingAddress.city }}<br>
+    {{ billingAddress.country.translated.name }}<br>
+    <br>
+
+    <strong>Lieferadresse:</strong><br>
+    {{ delivery.shippingOrderAddress.company }}<br>
+    {{ delivery.shippingOrderAddress.firstName }} {{ delivery.shippingOrderAddress.lastName }}<br>
+    {{ delivery.shippingOrderAddress.street }} <br>
+    {{ delivery.shippingOrderAddress.zipcode}} {{ delivery.shippingOrderAddress.city }}<br>
+    {{ delivery.shippingOrderAddress.country.translated.name }}<br>
+    {% if order.orderCustomer.vatIds %}
+        <br>
+        Ihre Umsatzsteuer-ID: {{ order.orderCustomer.vatIds|first }}
+        Bei erfolgreicher Prüfung und sofern Sie aus dem EU-Ausland
+        bestellen, erhalten Sie Ihre Ware umsatzsteuerbefreit. <br>
+    {% endif %}
+    <br/>
+    {% if lzyt_drop %}
+    <strong>Unsere Bankverbindung:</strong><br/>
+    Empfänger: {{ lzyt_drop.bank }}<br/>
+    IBAN: {{ lzyt_drop.iban }}<br/>
+    BIC: {{ lzyt_drop.bic }}<br/>
+    <br/>
+    {% endif %}
+    Den aktuellen Status Ihrer Bestellung können Sie auch jederzeit auf unserer Webseite im  Bereich "Mein Konto" - "Meine Bestellungen" abrufen: {{ rawUrl('frontend.account.order.single.page', { 'deepLinkCode': order.deepLinkCode }, salesChannel.domains|first.url) }}
+    </br>
+    Für Rückfragen stehen wir Ihnen jederzeit gerne zur Verfügung.
+</p>
+<br>
+</div>]]></defaultValue>
+        </input-field>
+
+    </card>
+
+</config>

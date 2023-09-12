@@ -1,0 +1,59 @@
+{
+  "nb-articlequestions": {
+    "config": {
+      "message": {
+        "titlesuccess": "Success",
+        "messagesuccess": "Recaptcha is working!",
+        "titlefail": "Error"
+      },
+      "testbutton": {
+        "title": "Test reCaptcha"
+      }
+    },
+    "detail": {
+      "cardTitlearticlequestionCustomerQuestion": "Customer Question & Data",
+      "cardTitlearticlequestionAdminData": "Admin response",
+      "basedata": {
+        "date": "Date",
+        "salutation": "Salutation",
+        "firstname": "Firstname",
+        "surname": "Surname",
+        "mail": "E-Mail",
+        "company": "Company",
+        "question": "Question",
+        "articleName": "Article name",
+        "linktoproduct": "Go to product"
+      },
+      "admindata": {
+        "active": "Question & answer visible in store?",
+        "answer": "Answer"
+      },
+      "buttonCancel": "Back",
+      "buttonSave": "Save",
+      "textHeadline": "Article question",
+      "successMessage": {
+        "noti_title": "Saved",
+        "noti_message": "Data saved.",
+        "mail_noti_title": "Mail send",
+        "mail_noti_message": "Send answer E-Mail to customer."
+      },
+      "mailsubject": "Answer on your queston regarding a article",
+      "mailsender": "Article questions"
+    },
+    "list": {
+      "column_created_at": "Date",
+      "column_active": "Active",
+      "column_salutation": "Salutation",
+      "column_firstname": "Firstname",
+      "column_surname": "Surname",
+      "column_mail": "E-Mail",
+      "column_company": "Company",
+      "column_question": "Question",
+      "column_answer": "Answer",
+      "headline": "Article questions"
+    },
+    "menu": {
+      "label": "Article questions"
+    }
+  }
+}

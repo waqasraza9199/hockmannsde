@@ -1,0 +1,169 @@
+$rhweb-contact-widget-width:380px;
+$rhweb-contact-widget-ease:0.2s;
+
+.rhweb-contact-widget-container{
+    width:100%;
+    position: fixed;
+    bottom:0;
+    z-index: 100;
+    &.x-right{
+        right:0;
+    }
+
+    &.x-left{
+        left:0;
+    }
+
+    @include media-breakpoint-up(sm){
+        width:$rhweb-contact-widget-width;
+
+        &.x-right{
+            right:95px;
+        }
+
+        &.x-left{
+            left:95px;
+        }
+    }
+
+    .rhweb-contact-widget-opener{
+        width:100%;
+        font-size:1.2em;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+
+    .rhweb-contact-widget-content{
+        max-height: 0;
+        width:100%;
+        background-color: #ffffff;
+        transition: max-height $rhweb-contact-widget-ease ease-in;
+
+        img{
+            max-width:100%;
+        }
+
+        .contact-row{
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            overflow: hidden;
+            margin-bottom: 5px;
+
+            &:last-child{
+                margin-bottom:0;
+            }
+
+            .contact-icon{
+                display: inline-flex;
+
+                .icon{
+                    width: 13px;
+                    height: 13px;
+                    color:$sw-text-color;
+
+                    svg{
+                        top:0;
+                    }
+                }
+            }
+        }
+
+        .rhweb-contact-widget-social-media{
+            display: flex;
+            flex-wrap: nowrap;
+            justify-content: center;
+
+            .rhweb-contact-widget-social-icon{
+                width: 35px;
+                display: flex;
+                height: 35px;
+                align-items: center;
+                justify-content: center;
+                margin-right:10px;
+                border-radius: $border-radius;
+
+                .icon{
+                    color: #fff;
+
+                    svg{
+                        top:0;
+                    }
+                }
+
+                &:hover{
+                    text-decoration: none;
+                }
+
+                &:last-child{
+                    margin-right: 0;
+                }
+
+                &.facebook{
+                    background-color: #4267B2;
+
+                    &:hover{
+                        background-color:darken(#4267B2,10%);
+                    }
+                }
+
+                &.twitter{
+                    background-color: #1da1f2;
+
+                    &:hover{
+                        background-color:darken(#1da1f2,10%);
+                    }
+                }
+
+                &.instagram{
+                    background-color: #E1306C;
+
+                    &:hover{
+                        background-color:darken(#E1306C,10%);
+                    }
+                }
+
+                &.whatsapp{
+                    background-color: #25d366;
+
+                    &:hover{
+                        background-color:darken(#25d366,10%);
+                    }
+                }
+
+                &.youtube{
+                    background-color: #FF0000;
+
+                    &:hover{
+                        background-color:darken(#FF0000,10%);
+                    }
+                }
+
+                &.linkedin{
+                    background-color: #007bb5;
+
+                    &:hover{
+                        background-color:darken(#007bb5,10%);
+                    }
+                }
+
+                &.xing{
+                    background-color: #cfdc00;
+
+                    &:hover{
+                        background-color:darken(#cfdc00,10%);
+                    }
+                }
+
+            }
+        }
+    }
+
+    &:hover{
+        .rhweb-contact-widget-content{
+            max-height: 500px;
+            transition: max-height $rhweb-contact-widget-ease ease-in;
+        }
+    }
+}

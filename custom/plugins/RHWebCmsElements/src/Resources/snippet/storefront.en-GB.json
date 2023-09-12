@@ -1,0 +1,14 @@
+{
+    "CmsElements": {
+        "callToAction": {
+            "elementError" : "This Element is not available for the sidebar. Please select another <p class='h5 my-2'>Call to Action</p> for your Sidebar."
+        },
+        "shopTheLook": {
+            "totalDiscount": "Savings:",
+            "addAllProducts": "Add Products to shopping cart"
+        },
+        "placeholder": {
+            "label": "Replace element"
+        }
+    }
+}

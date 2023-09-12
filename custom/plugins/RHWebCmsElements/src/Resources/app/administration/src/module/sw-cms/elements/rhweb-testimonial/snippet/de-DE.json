@@ -1,0 +1,36 @@
+{
+    "sw-cms": {
+        "elements": {
+            "rhweb-testimonial": {
+                "config": {
+                    "tab": {
+                        "general": "Allgemein",
+                        "image": "Bild/Upload",
+                        "color": "Farbeinstellungen"
+                    },
+                    "label": {
+                        "customer": "Name des Kunden",
+                        "company": "Unternehmen des Kunden",
+                        "quote": "Anzeigetext des Kunden",
+                        "rating": "Kundenbewertung",
+                        "ratingMax": "Max. Bewertung",
+                        "boxColor": "Textfarbe",
+                        "boxHighlightColor": "Farbe der Hervorhebung",
+                        "boxBackground": "Hintergrundfarbe des Elements",
+                        "upload": "Bild des Kunden hochladen"
+                    },
+                    "helpText": {
+                        "customer": "Das ist der Name des Kunden, der in der Storefront ausgegeben wird.",
+                        "company": "Dieses Feld bestimmt das Unternehmen des Kunden.",
+                        "quote": "In diesem Feld können Sie die Rezension eintragen, die der Kunde abgegeben hat.",
+                        "rating": "Dieses Feld bestimmt die Anzahl an Sternen.",
+                        "ratingMax": "Dieses Feld bestimmt, wie viele Sterne maximal möglich sind.",
+                        "boxColor": "Bestimmen Sie die Textfarbe mit diesem Feld.",
+                        "boxHighlightColor": "Das Element nutzt eine Farbe zum Highlighten bestimmter Elemente. Setzen Sie die Farbe hier.",
+                        "boxBackground": "Das Element nutzt je nach Theme eine Hntergrundfarbe. Setzen Sie diese Farbe hier."
+                    }
+                }
+            }
+        }
+    }
+}

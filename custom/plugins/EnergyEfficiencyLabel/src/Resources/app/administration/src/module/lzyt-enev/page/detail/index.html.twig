@@ -1,0 +1,207 @@
+{% block lzyt_enev_page_detail %}
+    <sw-page class="lzyt-enev-detail">
+
+        {% block lzyt_enev_page_detail_header %}
+            <template slot="smart-bar-header">
+                <h2 v-if="bundle && !createPage">
+                    {{ bundle.product.productNumber }}
+                </h2>
+                <h2 v-else-if="createPage">
+                    {{ $tc('lzyt-enev.headers.create') }}
+                </h2>
+            </template>
+        {% endblock %}
+
+        {% block lzyt_enev_page_detail_language_switch %}
+            <template slot="language-switch">
+                <sw-language-switch
+                    @on-change="onChangeLanguage"
+                    :saveChangesFunction="saveOnLanguageChange">
+                </sw-language-switch>
+            </template>
+        {% endblock %}
+
+        {% block lzyt_enev_page_detail_actions %}
+            <template slot="smart-bar-actions">
+
+                {% block lzyt_enev_page_detail_actions_cancel %}
+                    <sw-button
+                        :routerLink="{ name: 'lzyt.enev.list' }">{{ $tc('lzyt-enev.buttons.cancel') }}</sw-button>
+                {% endblock %}
+
+                {% block lzyt_enev_page_detail_actions_save %}
+                    <sw-button-process
+                        :isLoading="isLoading"
+                        :processSuccess="isSaveSuccessful"
+                        variant="primary"
+                        @process-finish="saveFinish"
+                        @click.prevent="onClickSave">
+                        {{ $tc('lzyt-enev.buttons.save') }}
+                    </sw-button-process>
+                {% endblock %}
+            </template>
+        {% endblock %}
+
+        {% block lzyt_enev_page_detail_content %}
+            <template slot="content">
+                <sw-card-view>
+                    <sw-card v-if="bundle" :title="$tc('lzyt-enev.fieldsets.general')" :isLoading="isLoading">
+                        <sw-container columns="1fr 1fr" gap="0px 15px">
+                            {% block lzyt_enev_page_detail_content_product %}
+                                <sw-entity-single-select
+                                    ref="lzytEnevProductSelection"
+                                    :label="$tc('lzyt-enev.elements.product')"
+                                    :placeholder="$tc('sw-cms.elements.productBox.config.placeholder.selection')"
+                                    entity="product"
+                                    :context="productSelectContext"
+                                    @input="onProductChange"
+                                    v-model="bundle.productId"
+                                    class="sw-field"
+                                    required>
+                                    <template #selection-label-property="{ item }">
+                                        <slot name="selection-label-property" v-bind="{ item }">
+                                            <sw-product-variant-info :variations="item.variation">
+                                                {{ item.translated.name || item.name }} {{ item.productNumber }}
+                                            </sw-product-variant-info>
+                                        </slot>
+                                    </template>
+                                    <template #result-item="{ item, index }">
+                                        <slot name="result-item" v-bind="{ item, index }">
+                                            <li is="sw-select-result" v-bind="{ item, index }">
+                                                <sw-product-variant-info :variations="item.variation">
+                                                    {{ item.translated.name || item.name }} {{ item.productNumber }}
+                                                </sw-product-variant-info>
+                                            </li>
+                                        </slot>
+                                    </template>
+                                </sw-entity-single-select>
+                            {% endblock %}
+
+                            {% block lzyt_enev_page_detail_content_position %}
+                                <sw-number-field :label="$tc('lzyt-enev.elements.position')" :digits="0"
+                                                 v-model="bundle.position"></sw-number-field>
+                            {% endblock %}
+
+                            <sw-container columns="1fr 1fr" gap="0px 15px">
+                                {% block lzyt_enev_page_detail_content_active %}
+                                    <sw-switch-field :label="$tc('lzyt-enev.elements.active')"
+                                                     :bordered="true"
+                                                     v-model="bundle.active"></sw-switch-field>
+                                {% endblock %}
+                            </sw-container>
+                        </sw-container>
+                    </sw-card>
+
+                    <sw-card v-if="bundle" :title="$tc('lzyt-enev.fieldsets.values')" :isLoading="isLoading">
+                        <sw-container columns="1fr 1fr" gap="0px 15px">
+                            {% block lzyt_enev_page_detail_content_class %}
+                                <lzyt-enev-select-class
+                                    class="sw-field"
+                                    :label="$tc('lzyt-enev.elements.class')"
+                                    :placeholder="$tc('global.sw-single-select.valuePlaceholder')"
+                                    :value="bundle.class"
+                                    required
+                                    @change="onChangeClass"
+                                ></lzyt-enev-select-class>
+                            {% endblock %}
+
+                            {% block lzyt_enev_page_detail_content_color %}
+                                <lzyt-enev-select-color
+                                    class="sw-field"
+                                    :label="$tc('lzyt-enev.elements.color')"
+                                    :placeholder="$tc('global.sw-single-select.valuePlaceholder')"
+                                    :value="bundle.color"
+                                    pluginConfig="lzytEnev.config"
+                                    pluginConfigKey="color"
+                                    pluginConfigDefault="006c38;018c3b;abd602;ffdf01;ff8c08;fe1d01;ee0012"
+                                    labelProperty="name"
+                                    valueProperty="id"
+                                    required
+                                    @change="onChangeColor"
+                                ></lzyt-enev-select-color>
+                            {% endblock %}
+
+                            {% block lzyt_enev_page_detail_content_spectrumfrom %}
+                                <lzyt-enev-select-class
+                                    class="sw-field"
+                                    :label="$tc('lzyt-enev.elements.spectrumFrom')"
+                                    :placeholder="$tc('global.sw-single-select.valuePlaceholder')"
+                                    :value="bundle.spectrumFrom"
+                                    @change="onChangeSpectrumFrom"
+                                ></lzyt-enev-select-class>
+                            {% endblock %}
+
+                            {% block lzyt_enev_page_detail_content_spectrumto %}
+                                <lzyt-enev-select-class
+                                    class="sw-field"
+                                    :label="$tc('lzyt-enev.elements.spectrumTo')"
+                                    :placeholder="$tc('global.sw-single-select.valuePlaceholder')"
+                                    :value="bundle.spectrumTo"
+                                    @change="onChangeSpectrumTo"
+                                ></lzyt-enev-select-class>
+                            {% endblock %}
+                        </sw-container>
+                    </sw-card>
+
+                    <sw-card v-if="bundle" :title="$tc('lzyt-enev.fieldsets.media')" :isLoading="isLoading">
+                        <sw-container columns="1fr 1fr" gap="0px 15px">
+                            {% block lzyt_enev_page_detail_content_media %}
+                                <sw-media-compact-upload-v2
+                                    :source="bundle.mediaId"
+                                    class="sw-field lzyt-enev-detail-upload"
+                                    :uploadTag="mediaUploadTag"
+                                    :label="$tc('lzyt-enev.elements.madia')"
+                                    :defaultFolder="bundleStore.entityName"
+                                    :allowMultiSelect="false"
+                                    @media-upload-remove-image="remove('media')"
+                                    @selection-change="setMediaItem">
+                                </sw-media-compact-upload-v2>
+                                <sw-upload-listener
+                                    :uploadTag="mediaUploadTag"
+                                    autoUpload
+                                    @media-upload-finish="setMediaItem">
+                                </sw-upload-listener>
+                            {% endblock %}
+
+                            {% block lzyt_enev_page_detail_content_datasheet %}
+                                <sw-media-compact-upload-v2
+                                    :source="bundle.datasheetId"
+                                    class="sw-field lzyt-enev-detail-upload"
+                                    :uploadTag="datasheetUploadTag"
+                                    :label="$tc('lzyt-enev.elements.datasheet')"
+                                    :defaultFolder="bundleStore.entityName"
+                                    :allowMultiSelect="false"
+                                    @media-upload-remove-image="remove('datasheet')"
+                                    @selection-change="setDatasheetItem">
+                                </sw-media-compact-upload-v2>
+                                <sw-upload-listener
+                                    :uploadTag="datasheetUploadTag"
+                                    autoUpload
+                                    @media-upload-finish="setDatasheetItem">
+                                </sw-upload-listener>
+                            {% endblock %}
+
+                            {% block lzyt_enev_page_detail_content_icon %}
+                                <sw-media-compact-upload-v2
+                                    :source="bundle.iconId"
+                                    class="sw-field lzyt-enev-detail-upload"
+                                    :uploadTag="iconUploadTag"
+                                    :label="$tc('lzyt-enev.elements.icon')"
+                                    :defaultFolder="bundleStore.entityName"
+                                    :allowMultiSelect="false"
+                                    @media-upload-remove-image="remove('icon')"
+                                    @selection-change="setIconItem">
+                                </sw-media-compact-upload-v2>
+                                <sw-upload-listener
+                                    :uploadTag="iconUploadTag"
+                                    autoUpload
+                                    @media-upload-finish="setIconItem">
+                                </sw-upload-listener>
+                            {% endblock %}
+                        </sw-container>
+                    </sw-card>
+                </sw-card-view>
+            </template>
+        {% endblock %}
+    </sw-page>
+{% endblock %}

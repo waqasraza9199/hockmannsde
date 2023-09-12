@@ -1,0 +1,29 @@
+{
+    "name": "lzyt8/api-mailer",
+    "description": "Send mails via an external api",
+    "version": "1.2.6",
+    "type": "shopware-platform-plugin",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "LZYT8"
+        }
+    ],
+    "require": {
+        "shopware/core": "6.4.*"
+    },
+    "extra": {
+        "shopware-plugin-class": "LZYT8\\ApiMailer\\ApiMailer",
+        "label": {
+            "de-DE": "API Mailversand"
+        },
+        "description": {
+            "de-DE": "Mails über eine externe API versenden."
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "LZYT8\\ApiMailer\\": "src/"
+        }
+    }
+}

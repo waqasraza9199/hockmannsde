@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/shopware/platform/trunk/src/Core/Framework/App/Manifest/Schema/manifest-1.0.xsd">
+    <meta>
+        <name>DigaQuickPriceChangeApp</name>
+        <label>Quick Price Change</label>
+        <label lang="de-DE">Quick Price Change</label>
+        <description>Change prices</description>
+        <description lang="de-DE">Preise einfach ändern</description>
+        <author>ditegra GmbH</author>
+        <copyright>(c) ditegra GmbH</copyright>
+        <version>1.2.0</version>
+        <icon>icon.png</icon>
+        <license>proprietary</license>
+    </meta>
+    <setup>
+        <registrationUrl>https://digaquickpricechangeappservice.azurewebsites.net/api/swappregistrationfunc?code=SWZfO3qmKVPxTTkfSnJsTIw4RDHYCE8Ae/riH5A4n7NwvDQcnz8aYA==</registrationUrl>
+    </setup>
+    <webhooks>
+        <webhook name="app-deleted" url="https://digaquickpricechangeappservice.azurewebsites.net/api/swappdeletedfunc?code=ldyfOHYeE1jCa5waaSlHZmGFVLb1M0XaC2mcyPgpeQ5zl/XtAeCJ/w==" event="app.deleted"/>   
+    </webhooks>
+    <permissions>        
+        <!-- this is to work with the products -->
+        <read>product</read>
+        <update>product</update>
+        <read>seo_url</read>
+        <read>tax</read>
+        <read>category</read>
+        <read>product_manufacturer</read>
+        <read>product_stream</read>
+        <read>property_group</read>
+        <read>property_group_option</read>
+        <read>product_visibility</read>
+        <read>tag</read>
+        <read>product_tag</read>
+        <read>currency</read>
+        <read>sales_channel</read>
+        <read>sales_channel_currency</read>
+    </permissions>
+    <admin>
+        <module name="changePrices"
+                source="https://apps.ditegra.de/quickpricechangeserviceui/index.html"
+                parent="sw-catalogue"
+                position="50"
+        >
+            <label>Quick Price Change (free)</label>
+            <label lang="de-DE">Quick Price Change (free)</label>
+        </module>
+    </admin>
+</manifest>

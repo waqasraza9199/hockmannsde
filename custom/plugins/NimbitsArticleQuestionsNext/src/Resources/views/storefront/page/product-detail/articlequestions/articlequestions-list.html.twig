@@ -1,0 +1,13 @@
+{% block page_product_detail_articlequestions_list %}
+    {% if page.product.extensions.nimbitsArticleQuestions.questions|length > 0 and page.extensions.nimbitsArticleQuestions.showInSalesChannel is same as (true) %}
+        {% for question in page.product.extensions.nimbitsArticleQuestions.questions %}
+            {% if question.active %}
+                {% sw_include '@Storefront/storefront/page/product-detail/articlequestions/articlequestions-item.html.twig' %}
+            {% endif %}
+        {% endfor %}
+    {% else %}
+        <div class="nb_articlequestions_empty pb-3">
+            {{ 'nimbits-articlequestions.list.none'|trans }}
+        </div>
+    {% endif %}
+{% endblock %}

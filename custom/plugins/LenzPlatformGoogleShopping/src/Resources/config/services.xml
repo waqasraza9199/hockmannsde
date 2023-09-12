@@ -1,0 +1,41 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <!-- Entity -->
+        <service id="Lenz\GoogleShopping\Core\Content\GoogleShopping\Taxonomy\TaxonomyDefinition">
+            <tag name="shopware.entity.definition" entity="lenz_google_shopping_taxonomy" />
+        </service>
+
+        <service id="Lenz\GoogleShopping\Core\Content\GoogleShopping\Taxonomy\TaxonomyTranslation\TaxonomyTranslationDefinition">
+            <tag name="shopware.entity.definition" entity="lenz_google_shopping_taxonomy_translation" />
+        </service>
+
+        <service id="Lenz\GoogleShopping\Service\GoogleShoppingTaxonomyCommand">
+            <argument type="service" id="Lenz\GoogleShopping\Service\GoogleShoppingTaxonomyService"/>
+            <tag name="console.command"/>
+        </service>
+
+        <service id="Lenz\GoogleShopping\Service\GoogleShoppingTaxonomyService">
+            <argument type="service" id="lenz_google_shopping_taxonomy.repository"/>
+            <argument type="service" id="language.repository"/>
+        </service>
+
+        <!-- Controller -->
+        <service id="Lenz\GoogleShopping\Controller\GoogleShoppingTaxonomyApiController" public="true">
+            <argument type="service" id="Lenz\GoogleShopping\Service\GoogleShoppingTaxonomyService"/>
+
+            <call method="setContainer">
+                <argument type="service" id="service_container"/>
+            </call>
+        </service>
+
+        <service id="Lenz\GoogleShopping\Subscriber\ProductExportChangeEncodingEventSubscriber">
+            <tag name="kernel.event_subscriber" />
+        </service>
+
+    </services>
+</container>

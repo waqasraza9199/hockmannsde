@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/shopware/platform/master/src/Core/System/SystemConfig/Schema/config.xsd">
+    <card>
+        <title>Config</title>
+        <component name="sw-entity-single-select">
+            <name>mailTemplateID</name>
+            <entity>mail_template</entity>
+            <valueProperty>id</valueProperty>
+            <labelProperty>id</labelProperty>
+            <label>Choose mail template ID for valid order</label>
+        </component>
+    </card>
+</config>

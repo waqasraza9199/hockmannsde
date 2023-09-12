@@ -1,0 +1,24 @@
+.rhweb-account{
+  .account-content-main{
+    .account-welcome{
+      padding-top: 0;
+    }
+
+    .card, .account-orders-main{
+      border-radius: $border-radius;
+      background-color: #fff;
+      padding:20px;
+      border:1px solid $sw-border-color;
+      @extend .shadow-sm;
+    }
+
+    .table{
+      &.order-table{
+        border-top:0;
+        border-left:5px solid $sw-color-brand-primary;
+        border-right:0;
+        border-bottom:0;
+      }
+    }
+  }
+}

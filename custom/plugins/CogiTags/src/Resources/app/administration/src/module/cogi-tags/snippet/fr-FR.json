@@ -1,0 +1,34 @@
+{
+    "cogi-tags": {
+        "general": {
+            "mainMenuItemGeneral": "Balises",
+            "descriptionTextModule": "Balises d'édition"
+        },
+        "list": {
+            "addButtonText": "Ajouter une balise",
+            "id": "ID",
+            "labelName": "Nom",
+            "labelCreatedAt": "Date de création",
+            "contextMenuEdit": "Modifier",
+            "contextMenuDelete": "Supprimer",
+            "messageAddedSuccess": "La balise a été ajoutée avec succès.",
+            "messageDeleteSuccess": "La balise a été supprimée avec succès.",
+            "messageAlreadyExistsError": "Une balise portant ce nom existe déjà.",
+            "messageDeleteError": "La balise est toujours liée aux éléments.",
+            "refreshButtonText": "Mise à jour",
+            "exportCSVButtonText": "Exportation en CSV"
+        },
+        "modal": {
+            "confirmTitle": "Supprimer le balise",
+            "confirmText" : "Voulez-vous vraiment supprimer ce balise ?",
+            "buttonCancel": "Annuler",
+            "buttonDelete": "Supprimer"
+        },
+        "detail": {
+            "nameLabel": "Nom",
+            "cancelButtonText": "Annuler",
+            "saveButtonText": "Sauvez",
+            "errorTitle": "Erreur de sauvegarde de la balise"
+        }
+    }
+}

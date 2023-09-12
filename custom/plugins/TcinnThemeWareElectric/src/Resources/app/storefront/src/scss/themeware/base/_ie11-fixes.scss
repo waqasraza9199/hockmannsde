@@ -1,0 +1,124 @@
+/*
+   _____ _  _ ___ __  __ _____      ___   ___ ___
+  |_   _| || | __|  \/  | __\ \    / /_\ | _ \ __| (R)
+    | | | __ | _|| |\/| | _| \ \/\/ / _ \|   / _|
+    |_| |_||_|___|_|  |_|___| \_/\_/_/ \_\_|_\___|
+
+    Copyright (c) TC-Innovations GmbH
+
+    ThemeWare: IE11 fixes
+    ==================================================
+    Contains specific browser fixes which are only applied in IE.
+*/
+
+html.is-ie {
+    // ThemeWare: Restore default iconset on IE
+    @if $twt-iconset != "default" {
+        // ThemeWare: Home icon (home)
+        .home-link {
+            .icon-home {
+                background-color: transparent;
+
+                svg {
+                    display: block;
+                }
+            }
+        }
+
+        // ThemeWare: Wishlist icon
+        .header-wishlist {
+            .icon-heart {
+                background-color: transparent;
+
+                svg {
+                    display: block;
+                }
+            }
+        }
+
+        // ThemeWare: Account menu (user)
+        .account-menu {
+            .icon-avatar {
+                background-color: transparent;
+
+                svg {
+                    display: block;
+                }
+            }
+        }
+
+        // ThemeWare: Cart icon (cart)
+        .header-cart {
+            .icon-bag {
+                background-color: transparent;
+
+                svg {
+                    display: block;
+                }
+            }
+        }
+
+        // ThemeWare: Search icon (search)
+        .header-search-icon {
+            .icon-search {
+                background-color: transparent;
+
+                svg {
+                    display: block;
+                }
+            }
+        }
+
+        // ThemeWare: Flyout search (search)
+        .header-search-toggle-icon {
+            .icon-search {
+                background-color: transparent;
+
+                svg {
+                    display: block;
+                }
+            }
+
+            .icon-x {
+                background-color: transparent;
+
+                svg {
+                    display: block;
+                }
+            }
+        }
+
+        // ThemeWare: Newsletter submit (envelope)
+        .footer-column-newsletter {
+            .icon-arrow-head-right {
+                background-color: transparent;
+
+                svg {
+                    display: block;
+                }
+            }
+        }
+
+        // ThemeWare: Hamburger navigation (menu)
+        .nav-main-toggle-btn {
+            .icon-stack {
+                background-color: transparent;
+
+                svg {
+                    display: block;
+                }
+            }
+        }
+
+        // ThemeWare: Service-Menu (help)
+        .top-bar-nav-btn {
+            .icon-help {
+                background-color: transparent;
+
+                svg {
+                    display: block;
+                }
+            }
+        }
+    }
+}

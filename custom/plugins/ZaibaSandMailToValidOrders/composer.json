@@ -1,0 +1,19 @@
+{
+  "name": "zaiba/sand-mail-to-valid-orders",
+  "description": "Sand Email to valid orders",
+  "type": "shopware-platform-plugin",
+    "version": "1.0.1",
+    "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "ZaibaSandMailToValidOrders\\": "src/"
+    }
+  },
+  "extra": {
+    "shopware-plugin-class": "ZaibaSandMailToValidOrders\\ZaibaSandMailToValidOrders",
+    "label": {
+      "de-DE": "Sand Email to valid orders",
+      "en-GB": "Sand Email to valid orders"
+    }
+  }
+}

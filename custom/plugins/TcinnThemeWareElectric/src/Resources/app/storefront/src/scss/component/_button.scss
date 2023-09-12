@@ -1,0 +1,72 @@
+/*
+    _____ _                __      __
+   |_   _| |_  ___ _ __  __\ \    / /_ _ _ _ ___  (R)
+     | | | ' \/ -_) '  \/ -_) \/\/ / _` | '_/ -_)
+     |_| |_||_\___|_|_|_\___|\_/\_/\__,_|_| \___|
+
+    Copyright (c) TC-Innovations GmbH
+
+    ThemeWare: Button
+    ==============================================
+    Custom skin styling for bootstrap button component.
+    https://getbootstrap.com/docs/4.3/components/buttons/
+
+    Origin: Shopware skin
+*/
+
+// ThemeWare: Customize primary button
+// Shopware: $primary: $sw-color-brand-primary !default;
+@if $twt-color-primary-button != $sw-color-brand-primary {
+  .btn-primary {
+    @include button-variant($twt-color-primary-button, $twt-color-primary-button);
+
+    // see storefront/src/scss/component/_icon.scss
+    .icon {
+      color: color-yiq($twt-color-primary-button);
+    }
+  }
+}
+
+// ThemeWare: Customize secondary button
+// Shopware: $secondary: $sw-color-brand-secondary !default;
+@if $twt-color-secondary-button != $sw-color-brand-secondary {
+  .btn-secondary {
+    @include button-variant($twt-color-secondary-button, $twt-color-secondary-button);
+
+    // see storefront/src/scss/component/_icon.scss
+    .icon {
+      color: color-yiq($twt-color-secondary-button);
+    }
+  }
+}
+
+// ThemeWare: Customize light button
+// Bootstrap: --light: #f8f9fa;
+// Shopware: --light: #f9f9f9;
+// $gray-100: #f9f9f9 !default;
+// $light: $gray-100 !default;
+@if $twt-color-light-button != "#f9f9f9" {
+  .btn-light {
+    @include button-variant($twt-color-light-button, $twt-color-light-button);
+
+    // see storefront/src/scss/component/_icon.scss
+    .icon {
+      color: color-yiq($twt-color-light-button);
+    }
+  }
+}
+
+// ThemeWare: Customize details button
+// Bootstrap: --light: #f8f9fa;
+// Shopware: --light: #f9f9f9;
+// $gray-100: #f9f9f9 !default;
+// $light: $gray-100 !default;
+.product-action {
+  .btn-light {
+    @extend .btn-lg; // ThemeWare: Align size with buy-btn
+
+    @if $twt-color-details-button != "#f9f9f9" {
+      @include button-variant($twt-color-details-button, $twt-color-details-button);
+    }
+  }
+}

@@ -1,0 +1,51 @@
+{% block component_lzyt_enev_arrow %}
+    <div class="lzyt-enev-arrow-wrapper">
+        <div data-lzyt-enev-arrow="true"
+             {% block component_lzyt_enev_arrow_param_spectrum %}{% if enev.spectrumFrom and enev.spectrumTo %}data-lzyt-enev-spectrum="true"{% endif %}{% endblock %}
+            {% block component_lzyt_enev_arrow_param_icon %}{% if enev.icon %}data-lzyt-enev-icon="true"{% endif %}{% endblock %}
+             data-color="#{{ enev.color }}"
+            {% if enev.media %}
+                data-toggle="tooltip"
+                data-html="true"
+                data-trigger="hover"
+                data-template='<div class="tooltip lzyt-enev-tooltip" role="tooltip"><div class="arrow"></div><div class="tooltip-inner rounded"></div></div>'
+                {% block component_lzyt_enev_arrow_param_media %}title='{% sw_include '@Storefront/storefront/component/lzyt-enev/label.html.twig' %}'{% endblock %}
+            {% else %}
+                title="{{ enev.class|upper }}"
+            {% endif %}
+             class="lzyt-enev-arrow"
+             style="background-color: #{{ enev.color }}; color: #{{ enev.color }};"
+        >
+            {% block component_lzyt_enev_arrow_class %}
+                <div class="lzyt-enev-arrow-class">
+                    {% block component_lzyt_enev_arrow_class_inner %}
+                        {{ enev.class }}
+                    {% endblock %}
+                    {% block component_lzyt_enev_arrow_spectrum %}
+                        {% if enev.spectrumFrom and enev.spectrumTo %}
+                            <div class="lzyt-enev-arrow-spectrum">
+                                {% block component_lzyt_enev_arrow_spectrum_inner %}
+                                    {% if enev.spectrumTo %}{{ enev.spectrumTo }}{% sw_icon 'arrow-up' %}{{ enev.spectrumFrom }}{% endif %}
+                                {% endblock %}
+                            </div>
+                        {% endif %}
+                    {% endblock %}
+                </div>
+            {% endblock %}
+        </div>
+        {% block component_lzyt_enev_arrow_icon %}
+            {% if enev.icon %}
+                <div class="lzyt-enev-arrow-icon" style="background-image: url({{ enev.icon.url }})"></div>
+            {% endif %}
+        {% endblock %}
+    </div>
+    {% block component_lzyt_enev_arrow_datasheet %}
+        {% if enev.datasheet %}
+            <a href="{% if enev.datasheet %}{{ enev.datasheet.url }}{% endif %}" class="lzyt-enev-datasheet ml-3" target="_blank">
+                {% block component_lzyt_enev_arrow_datasheet_inner %}
+                    Produktdatenblatt (PDF)
+                {% endblock %}
+            </a>
+        {% endif %}
+    {% endblock %}
+{% endblock %}

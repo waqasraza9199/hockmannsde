@@ -1,0 +1,33 @@
+{
+    "name": "lzyt/enev",
+    "description": "Energieeinsparverordnung (EnEV)",
+    "version": "1.0.2",
+    "type": "shopware-platform-plugin",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "lzyt"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "LZYT\\Enev\\": "src/"
+        }
+    },
+    "require": {
+        "shopware/core": "~6.4.0",
+        "shopware/administration": "~6.4.0",
+        "shopware/storefront": "~6.4.0"
+    },
+    "extra": {
+        "shopware-plugin-class": "LZYT\\Enev\\LzytEnev",
+        "label": {
+            "de-DE": "Energieeinsparverordnung (EnEV)",
+            "en-GB": "Energy Saving Ordinance (EnEV)"
+        },
+        "description": {
+            "de-DE": "Pflegen Sie alle rechtlich vorgeschriebenen Informationen für Elektroartikel (EU-Energielabel)",
+            "en-GB": "Maintains all legally required information for electrical items (EU Energy label)."
+        }
+    }
+}

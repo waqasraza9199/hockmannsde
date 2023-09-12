@@ -1,0 +1,14 @@
+{% sw_extends '@Storefront/storefront/page/product-detail/buy-widget.html.twig' %}
+
+{% block page_product_detail_tax %}
+    {{ parent() }}
+
+    {% block cogi_tags_product_detail_tags %}
+        {% if config('CogiTags.config.showStorefrontTags') and page.product.extension('cogi-tags')|length %}
+            {% set tagAppearance = config('CogiTags.config.tagAppearance') ? config('CogiTags.config.tagAppearance') : 'primary' %}
+            {% for tag in page.product.extension('cogi-tags') %}
+                <span class="badge badge-{{ tagAppearance }}">{{ tag.name }}</span>
+            {% endfor %}
+        {% endif %}
+    {% endblock %}
+{% endblock %}

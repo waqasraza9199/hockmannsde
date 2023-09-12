@@ -1,0 +1,650 @@
+<div>
+    <sw-card
+        :title="$tc('lenz-google-shopping.detail.baseDataCardTitle')"
+        :isLoading="isLoading"
+        v-if="!isLoading && product.customFields != null"
+    >
+
+        <sw-inherit-wrapper v-if="!isLoading"
+                            v-model="activeValue"
+                            :inheritedValue="parentProduct !== undefined && parentProduct.customFields ? parentActiveValue : null"
+                            :hasParent="!!parentProduct.id"
+                            :label="$t('lenz-google-shopping.detail.activeLabel')"
+                            v-on:change="onChangeActiveState"
+        >
+            <template #content="{ currentValue, isInherited, updateCurrentValue }">
+
+                <sw-checkbox-field
+                    :value="currentValue"
+                    :disabled="isInherited"
+                    @change="updateCurrentValue"
+                ></sw-checkbox-field>
+            </template>
+        </sw-inherit-wrapper>
+
+        <sw-inherit-wrapper v-if="!isLoading"
+                            v-model="product.customFields.lenz_google_shopping_title"
+                            :inheritedValue="parentProduct.customFields ? parentProduct.customFields.lenz_google_shopping_title : null"
+                            :hasParent="!!parentProduct.id"
+                            :label="$t('lenz-google-shopping.detail.titleLabel')"
+                            >
+            <template #content="{ currentValue, isInherited, updateCurrentValue }">
+                <sw-text-field
+                    :value="currentValue"
+                    :disabled="isInherited"
+                    @change="updateCurrentValue"
+                >
+                </sw-text-field>
+            </template>
+        </sw-inherit-wrapper>
+
+        <sw-inherit-wrapper v-if="!isLoading"
+                            v-model="googleTaxonomyValue"
+                            :inheritedValue="parentProduct.customFields ? parentGoogleTaxonomyValue : null"
+                            :hasParent="!!parentProduct.id"
+                            :label="$t('lenz-google-shopping.detail.taxonomyLabel')"
+                            v-on:change="onChangeGoogleTaxonomy"
+        >
+            <template #content="{ currentValue, isInherited, updateCurrentValue }">
+                <sw-entity-single-select
+                    v-model="currentValue"
+                    :disabled="isInherited"
+                    entity="lenz_google_shopping_taxonomy"
+                    labelProperty="name"
+                    :placeholder="$t('lenz-google-shopping.detail.taxonomyPlaceholder')"
+                    @change="updateCurrentValue"
+                >
+                </sw-entity-single-select>
+            </template>
+        </sw-inherit-wrapper>
+
+
+
+        <sw-inherit-wrapper v-if="!isLoading"
+                            v-model="product.customFields.lenz_google_shopping_description"
+                            :inheritedValue="parentProduct.customFields ? parentProduct.customFields.lenz_google_shopping_description : null"
+                            :hasParent="!!parentProduct.id"
+                            :label="$t('lenz-google-shopping.detail.descriptionLabel')"
+        >
+            <template #content="{ currentValue, isInherited, updateCurrentValue }">
+                <sw-textarea-field
+                    :value="currentValue"
+                    :disabled="isInherited"
+                    @change="updateCurrentValue"
+                ></sw-textarea-field>
+            </template>
+        </sw-inherit-wrapper>
+
+        <sw-inherit-wrapper v-if="!isLoading"
+                            v-model="product.customFields.lenz_google_shopping_condition"
+                            :inheritedValue="parentProduct.customFields ? parentProduct.customFields.lenz_google_shopping_condition : null"
+                            :hasParent="!!parentProduct.id"
+                            :label="$t('lenz-google-shopping.detail.conditionLabel')"
+        >
+            <template #content="{ currentValue, isInherited, updateCurrentValue }">
+                <sw-select-field
+                    :value="currentValue"
+                    :disabled="isInherited"
+                    @change="updateCurrentValue"
+                    :options="conditionOptions"
+                ></sw-select-field>
+            </template>
+        </sw-inherit-wrapper>
+
+    </sw-card>
+
+    <sw-card
+        :title="$tc('lenz-google-shopping.detail.electronicCardTitle')"
+        :isLoading="isLoading"
+        v-if="!isLoading && product.customFields != null"
+    >
+
+        <sw-container columns="repeat(auto-fit, minmax(250px, 1fr))" gap="0px 30px">
+
+            <sw-inherit-wrapper v-if="!isLoading"
+                                v-model="product.customFields.lenz_google_shopping_energy_efficiency_class"
+                                :inheritedValue="parentProduct !== undefined && parentProduct.customFields ? parentProduct.customFields.lenz_google_shopping_energy_efficiency_class : null"
+                                :hasParent="!!parentProduct.id"
+                                :label="$t('lenz-google-shopping.detail.energyEfficiencyClassLabel')"
+            >
+                <template #content="{ currentValue, isInherited, updateCurrentValue }">
+                    <sw-select-field
+                        :value="currentValue"
+                        :disabled="isInherited"
+                        @change="updateCurrentValue"
+                        :options="energyEfficiencyClassOptions">
+                    </sw-select-field>
+                </template>
+            </sw-inherit-wrapper>
+
+            <br>
+
+            <sw-inherit-wrapper v-if="!isLoading"
+                                v-model="product.customFields.lenz_google_shopping_min_energy_efficiency_class"
+                                :inheritedValue="parentProduct !== undefined && parentProduct.customFields ? parentProduct.customFields.lenz_google_shopping_min_energy_efficiency_class : null"
+                                :hasParent="!!parentProduct.id"
+                                :label="$t('lenz-google-shopping.detail.minEnergyEfficiencyClassLabel')"
+            >
+                <template #content="{ currentValue, isInherited, updateCurrentValue }">
+                    <sw-select-field
+                        :value="currentValue"
+                        :disabled="isInherited"
+                        @change="updateCurrentValue"
+                        :options="minEnergyEfficiencyClassOptions">
+                    </sw-select-field>
+                </template>
+            </sw-inherit-wrapper>
+
+            <sw-inherit-wrapper v-if="!isLoading"
+                                v-model="product.customFields.lenz_google_shopping_max_energy_efficiency_class"
+                                :inheritedValue="parentProduct !== undefined && parentProduct.customFields ? parentProduct.customFields.lenz_google_shopping_max_energy_efficiency_class : null"
+                                :hasParent="!!parentProduct.id"
+                                :label="$t('lenz-google-shopping.detail.maxEnergyEfficiencyClassLabel')"
+            >
+                <template #content="{ currentValue, isInherited, updateCurrentValue }">
+                    <sw-select-field
+                        :value="currentValue"
+                        :disabled="isInherited"
+                        @change="updateCurrentValue"
+                        :options="maxEnergyEfficiencyClassOptions">
+                    </sw-select-field>
+                </template>
+            </sw-inherit-wrapper>
+
+        </sw-container>
+
+    </sw-card>
+
+
+
+    <sw-card
+        :title="$tc('lenz-google-shopping.detail.textileCardTitle')"
+        :isLoading="isLoading"
+        v-if="!isLoading && product.customFields != null"
+    >
+
+        <sw-container columns="repeat(auto-fit, minmax(250px, 1fr))" gap="0px 30px">
+
+            <sw-inherit-wrapper v-if="!isLoading"
+                                v-model="product.customFields.lenz_google_shopping_age_group"
+                                :inheritedValue="parentProduct !== undefined && parentProduct.customFields ? parentProduct.customFields.lenz_google_shopping_age_group : null"
+                                :hasParent="!!parentProduct.id"
+                                :label="$t('lenz-google-shopping.detail.ageGroupLabel')"
+            >
+                <template #content="{ currentValue, isInherited, updateCurrentValue }">
+                    <sw-select-field
+                        :value="currentValue"
+                        :disabled="isInherited"
+                        @change="updateCurrentValue"
+                        :options="ageGroupOptions">
+                    </sw-select-field>
+                </template>
+            </sw-inherit-wrapper>
+
+            <sw-inherit-wrapper v-if="!isLoading"
+                                v-model="product.customFields.lenz_google_shopping_gender"
+                                :inheritedValue="parentProduct !== undefined && parentProduct.customFields ? parentProduct.customFields.lenz_google_shopping_gender : null"
+                                :hasParent="!!parentProduct.id"
+                                :label="$t('lenz-google-shopping.detail.genderLabel')"
+            >
+                <template #content="{ currentValue, isInherited, updateCurrentValue }">
+                    <sw-select-field
+                        :value="currentValue"
+                        :disabled="isInherited"
+                        @change="updateCurrentValue"
+                        :options="genderOptions">
+                    </sw-select-field>
+                </template>
+            </sw-inherit-wrapper>
+
+            <sw-inherit-wrapper v-if="!isLoading"
+                                v-model="product.customFields.lenz_google_shopping_color"
+                                :inheritedValue="parentProduct !== undefined && parentProduct.customFields ? parentProduct.customFields.lenz_google_shopping_color : null"
+                                :hasParent="!!parentProduct.id"
+                                :label="$t('lenz-google-shopping.detail.colorLabel')"
+            >
+                <template #content="{ currentValue, isInherited, updateCurrentValue }">
+                    <sw-text-field
+                        :value="currentValue"
+                        :disabled="isInherited"
+                        @change="updateCurrentValue"
+                    ></sw-text-field>
+                </template>
+            </sw-inherit-wrapper>
+
+
+            <sw-inherit-wrapper v-if="!isLoading"
+                                v-model="product.customFields.lenz_google_shopping_material"
+                                :inheritedValue="parentProduct !== undefined && parentProduct.customFields ? parentProduct.customFields.lenz_google_shopping_material : null"
+                                :hasParent="!!parentProduct.id"
+                                :label="$t('lenz-google-shopping.detail.materialLabel')"
+            >
+                <template #content="{ currentValue, isInherited, updateCurrentValue }">
+                    <sw-text-field
+                        :value="currentValue"
+                        :disabled="isInherited"
+                        @change="updateCurrentValue"
+                    ></sw-text-field>
+                </template>
+            </sw-inherit-wrapper>
+
+            <sw-inherit-wrapper v-if="!isLoading"
+                                v-model="product.customFields.lenz_google_shopping_pattern"
+                                :inheritedValue="parentProduct !== undefined && parentProduct.customFields ? parentProduct.customFields.lenz_google_shopping_pattern : null"
+                                :hasParent="!!parentProduct.id"
+                                :label="$t('lenz-google-shopping.detail.patternLabel')"
+            >
+                <template #content="{ currentValue, isInherited, updateCurrentValue }">
+                    <sw-text-field
+                        :value="currentValue"
+                        :disabled="isInherited"
+                        @change="updateCurrentValue"
+                    ></sw-text-field>
+                </template>
+            </sw-inherit-wrapper>
+
+            <sw-inherit-wrapper v-if="!isLoading"
+                                v-model="product.customFields.lenz_google_shopping_size"
+                                :inheritedValue="parentProduct !== undefined && parentProduct.customFields ? parentProduct.customFields.lenz_google_shopping_size : null"
+                                :hasParent="!!parentProduct.id"
+                                :label="$t('lenz-google-shopping.detail.sizeLabel')"
+            >
+                <template #content="{ currentValue, isInherited, updateCurrentValue }">
+                    <sw-text-field
+                        :value="currentValue"
+                        :disabled="isInherited"
+                        @change="updateCurrentValue"
+                    ></sw-text-field>
+                </template>
+            </sw-inherit-wrapper>
+
+
+            <sw-inherit-wrapper v-if="!isLoading"
+                                v-model="product.customFields.lenz_google_shopping_size_type"
+                                :inheritedValue="parentProduct !== undefined && parentProduct.customFields ? parentProduct.customFields.lenz_google_shopping_size_type : null"
+                                :hasParent="!!parentProduct.id"
+                                :label="$t('lenz-google-shopping.detail.sizeTypeLabel')"
+            >
+                <template #content="{ currentValue, isInherited, updateCurrentValue }">
+                    <sw-select-field
+                        :value="currentValue"
+                        :disabled="isInherited"
+                        @change="updateCurrentValue"
+                        :options="sizeTypeOptions"
+                    ></sw-select-field>
+                </template>
+            </sw-inherit-wrapper>
+
+            <sw-inherit-wrapper v-if="!isLoading"
+                                v-model="product.customFields.lenz_google_shopping_size_system"
+                                :inheritedValue="parentProduct !== undefined && parentProduct.customFields ? parentProduct.customFields.lenz_google_shopping_size_system : null"
+                                :hasParent="!!parentProduct.id"
+                                :label="$t('lenz-google-shopping.detail.sizeSystemLabel')"
+            >
+                <template #content="{ currentValue, isInherited, updateCurrentValue }">
+                    <sw-select-field
+                        :value="currentValue"
+                        :disabled="isInherited"
+                        @change="updateCurrentValue"
+                        :options="sizeSystemOptions"
+                    ></sw-select-field>
+                </template>
+            </sw-inherit-wrapper>
+
+        </sw-container>
+
+    </sw-card>
+
+
+
+    <sw-card
+        :title="$tc('lenz-google-shopping.detail.shippingTaxCardTitle')"
+        :isLoading="isLoading"
+        v-if="!isLoading && product.customFields != null"
+    >
+
+        <sw-container columns="repeat(auto-fit, minmax(250px, 1fr))" gap="0px 30px">
+
+            <sw-inherit-wrapper v-if="!isLoading"
+                                v-model="product.customFields.lenz_google_shopping_included_destination"
+                                :inheritedValue="parentProduct !== undefined && parentProduct.customFields ? parentProduct.customFields.lenz_google_shopping_included_destination : null"
+                                :hasParent="!!parentProduct.id"
+                                :label="$t('lenz-google-shopping.detail.includedDestinationLabel')"
+            >
+                <template #content="{ currentValue, isInherited, updateCurrentValue }">
+                    <sw-select-field
+                        :value="currentValue"
+                        :disabled="isInherited"
+                        @change="updateCurrentValue"
+                        :options="destinationOptions"
+                    ></sw-select-field>
+                </template>
+            </sw-inherit-wrapper>
+
+            <sw-inherit-wrapper v-if="!isLoading"
+                                v-model="product.customFields.lenz_google_shopping_excluded_destination"
+                                :inheritedValue="parentProduct !== undefined && parentProduct.customFields ? parentProduct.customFields.lenz_google_shopping_excluded_destination : null"
+                                :hasParent="!!parentProduct.id"
+                                :label="$t('lenz-google-shopping.detail.excludedDestinationLabel')"
+            >
+                <template #content="{ currentValue, isInherited, updateCurrentValue }">
+                    <sw-select-field
+                        :value="currentValue"
+                        :disabled="isInherited"
+                        @change="updateCurrentValue"
+                        :options="destinationOptions"
+                    ></sw-select-field>
+                </template>
+            </sw-inherit-wrapper>
+
+
+            <sw-inherit-wrapper v-if="!isLoading"
+                                v-model="product.customFields.lenz_google_shopping_shipping_label"
+                                :inheritedValue="parentProduct !== undefined && parentProduct.customFields ? parentProduct.customFields.lenz_google_shopping_shipping_label : null"
+                                :hasParent="!!parentProduct.id"
+                                :label="$t('lenz-google-shopping.detail.shippingLabelLabel')"
+            >
+                <template #content="{ currentValue, isInherited, updateCurrentValue }">
+                    <sw-text-field
+                        :value="currentValue"
+                        :disabled="isInherited"
+                        @change="updateCurrentValue"
+                    ></sw-text-field>
+                </template>
+            </sw-inherit-wrapper>
+
+            <sw-inherit-wrapper v-if="!isLoading"
+                                v-model="product.customFields.lenz_google_shopping_transit_time_label"
+                                :inheritedValue="parentProduct !== undefined && parentProduct.customFields ? parentProduct.customFields.lenz_google_shopping_transit_time_label : null"
+                                :hasParent="!!parentProduct.id"
+                                :label="$t('lenz-google-shopping.detail.transitTimeLabelLabel')"
+            >
+                <template #content="{ currentValue, isInherited, updateCurrentValue }">
+                    <sw-text-field
+                        :value="currentValue"
+                        :disabled="isInherited"
+                        @change="updateCurrentValue"
+                    ></sw-text-field>
+                </template>
+            </sw-inherit-wrapper>
+
+            <sw-inherit-wrapper v-if="!isLoading"
+                                v-model="product.customFields.lenz_google_shopping_min_handling_time"
+                                :inheritedValue="parentProduct !== undefined && parentProduct.customFields ? parentProduct.customFields.lenz_google_shopping_min_handling_time : null"
+                                :hasParent="!!parentProduct.id"
+                                :label="$t('lenz-google-shopping.detail.minHandlingTimeLabel')"
+            >
+                <template #content="{ currentValue, isInherited, updateCurrentValue }">
+                    <sw-text-field
+                        :value="currentValue"
+                        :disabled="isInherited"
+                        @change="updateCurrentValue"
+                    ></sw-text-field>
+                </template>
+            </sw-inherit-wrapper>
+
+
+            <sw-inherit-wrapper v-if="!isLoading"
+                                v-model="product.customFields.lenz_google_shopping_max_handling_time"
+                                :inheritedValue="parentProduct !== undefined && parentProduct.customFields ? parentProduct.customFields.lenz_google_shopping_max_handling_time : null"
+                                :hasParent="!!parentProduct.id"
+                                :label="$t('lenz-google-shopping.detail.maxBearbeitungszeitLabel')"
+            >
+                <template #content="{ currentValue, isInherited, updateCurrentValue }">
+                    <sw-text-field
+                        :value="currentValue"
+                        :disabled="isInherited"
+                        @change="updateCurrentValue"
+                    ></sw-text-field>
+                </template>
+            </sw-inherit-wrapper>
+
+            <sw-inherit-wrapper v-if="!isLoading"
+                                v-model="product.customFields.lenz_google_shopping_tax_category"
+                                :inheritedValue="parentProduct !== undefined && parentProduct.customFields ? parentProduct.customFields.lenz_google_shopping_tax_category : null"
+                                :hasParent="!!parentProduct.id"
+                                :label="$t('lenz-google-shopping.detail.taxCategoryLabel')"
+            >
+                <template #content="{ currentValue, isInherited, updateCurrentValue }">
+                    <sw-text-field
+                        :value="currentValue"
+                        :disabled="isInherited"
+                        @change="updateCurrentValue"
+                    ></sw-text-field>
+                </template>
+            </sw-inherit-wrapper>
+
+        </sw-container>
+
+    </sw-card>
+
+
+
+    <sw-card
+        :title="$tc('lenz-google-shopping.detail.additionalInformationCardTitle')"
+        :isLoading="isLoading"
+        v-if="!isLoading && product.customFields != null"
+    >
+
+        <sw-container>
+
+            <sw-inherit-wrapper v-if="!isLoading"
+                                v-model="product.customFields.lenz_google_shopping_adult"
+                                :inheritedValue="parentProduct !== undefined && parentProduct.customFields ? parentProduct.customFields.lenz_google_shopping_adult : null"
+                                :hasParent="!!parentProduct.id"
+                                :label="$t('lenz-google-shopping.detail.adultLabel')"
+            >
+                <template #content="{ currentValue, isInherited, updateCurrentValue }">
+                    <sw-checkbox-field
+                        :value="currentValue"
+                        :disabled="isInherited"
+                        @change="updateCurrentValue"
+                    ></sw-checkbox-field>
+                </template>
+            </sw-inherit-wrapper>
+
+
+            <sw-inherit-wrapper v-if="!isLoading"
+                                v-model="product.customFields.lenz_google_shopping_is_bundle"
+                                :inheritedValue="parentProduct !== undefined && parentProduct.customFields ? parentProduct.customFields.lenz_google_shopping_is_bundle : null"
+                                :hasParent="!!parentProduct.id"
+                                :label="$t('lenz-google-shopping.detail.isBundleLabel')"
+            >
+                <template #content="{ currentValue, isInherited, updateCurrentValue }">
+                    <sw-checkbox-field
+                        :value="currentValue"
+                        :disabled="isInherited"
+                        @change="updateCurrentValue"
+                    ></sw-checkbox-field>
+                </template>
+            </sw-inherit-wrapper>
+
+
+        </sw-container>
+
+        <sw-container columns="repeat(auto-fit, minmax(250px, 1fr))" gap="0px 30px">
+
+
+            <sw-inherit-wrapper v-if="!isLoading"
+                                v-model="product.customFields.lenz_google_shopping_multipack"
+                                :inheritedValue="parentProduct !== undefined && parentProduct.customFields ? parentProduct.customFields.lenz_google_shopping_multipack : null"
+                                :hasParent="!!parentProduct.id"
+                                :label="$t('lenz-google-shopping.detail.multipackLabel')"
+            >
+                <template #content="{ currentValue, isInherited, updateCurrentValue }">
+                    <sw-text-field
+                        :value="currentValue"
+                        :disabled="isInherited"
+                        @change="updateCurrentValue"
+                    ></sw-text-field>
+                </template>
+            </sw-inherit-wrapper>
+
+            <sw-inherit-wrapper v-if="!isLoading"
+                                v-model="product.customFields.lenz_google_shopping_expiration_date"
+                                :inheritedValue="parentProduct !== undefined && parentProduct.customFields ? parentProduct.customFields.lenz_google_shopping_expiration_date : null"
+                                :hasParent="!!parentProduct.id"
+                                :label="$t('lenz-google-shopping.detail.expirationDateLabel')"
+            >
+                <template #content="{ currentValue, isInherited, updateCurrentValue }">
+                    <sw-datepicker
+                        :value="currentValue"
+                        :disabled="isInherited"
+                        @input="updateCurrentValue"
+                    ></sw-datepicker>
+                </template>
+            </sw-inherit-wrapper>
+
+
+            <sw-inherit-wrapper v-if="!isLoading"
+                                v-model="product.customFields.lenz_google_shopping_item_group_id"
+                                :inheritedValue="parentProduct !== undefined && parentProduct.customFields ? parentProduct.customFields.lenz_google_shopping_item_group_id : null"
+                                :hasParent="!!parentProduct.id"
+                                :label="$t('lenz-google-shopping.detail.itemGroupIdLabel')"
+            >
+                <template #content="{ currentValue, isInherited, updateCurrentValue }">
+                    <sw-text-field
+                        :value="currentValue"
+                        :disabled="isInherited"
+                        @change="updateCurrentValue"
+                    ></sw-text-field>
+                </template>
+            </sw-inherit-wrapper>
+
+            <sw-inherit-wrapper v-if="!isLoading"
+                                v-model="product.customFields.lenz_google_shopping_promotion_id"
+                                :inheritedValue="parentProduct !== undefined && parentProduct.customFields ? parentProduct.customFields.lenz_google_shopping_promotion_id : null"
+                                :hasParent="!!parentProduct.id"
+                                :label="$t('lenz-google-shopping.detail.promotionIdLabel')"
+            >
+                <template #content="{ currentValue, isInherited, updateCurrentValue }">
+                    <sw-text-field
+                        :value="currentValue"
+                        :disabled="isInherited"
+                        @change="updateCurrentValue"
+                    ></sw-text-field>
+                </template>
+            </sw-inherit-wrapper>
+
+            <sw-inherit-wrapper v-if="!isLoading"
+                                v-model="product.customFields.lenz_google_shopping_availability_date"
+                                :inheritedValue="parentProduct !== undefined && parentProduct.customFields ? parentProduct.customFields.lenz_google_shopping_availability_date : null"
+                                :hasParent="!!parentProduct.id"
+                                :label="$t('lenz-google-shopping.detail.availabilityDate')"
+            >
+                <template #content="{ currentValue, isInherited, updateCurrentValue }">
+                    <sw-datepicker
+                            :value="currentValue"
+                            :disabled="isInherited"
+                            @input="updateCurrentValue"
+                    ></sw-datepicker>
+                </template>
+            </sw-inherit-wrapper>
+
+        </sw-container>
+
+        <sw-inherit-wrapper v-if="!isLoading"
+                            v-model="product.customFields.lenz_google_shopping_product_highlight"
+                            :inheritedValue="parentProduct !== undefined && parentProduct.customFields ? parentProduct.customFields.lenz_google_shopping_product_highlight : null"
+                            :hasParent="!!parentProduct.id"
+                            :label="$t('lenz-google-shopping.detail.productHighlightLabel')"
+        >
+            <template #content="{ currentValue, isInherited, updateCurrentValue }">
+                <sw-textarea-field
+                        :value="currentValue"
+                        :disabled="isInherited"
+                        @change="updateCurrentValue"
+                ></sw-textarea-field>
+            </template>
+        </sw-inherit-wrapper>
+
+    </sw-card>
+
+    <sw-card
+        :title="$tc('lenz-google-shopping.detail.customLabelsCardTitle')"
+        :isLoading="isLoading"
+        v-if="!isLoading && product.customFields != null"
+    >
+
+        <sw-container columns="repeat(auto-fit, minmax(250px, 1fr))" gap="0px 30px">
+            <sw-inherit-wrapper v-if="!isLoading"
+                                v-model="product.customFields.lenz_google_shopping_custom_label0"
+                                :inheritedValue="parentProduct !== undefined && parentProduct.customFields ? parentProduct.customFields.lenz_google_shopping_custom_label0 : null"
+                                :hasParent="!!parentProduct.id"
+                                :label="$t('lenz-google-shopping.detail.customLabel0Label')"
+            >
+                <template #content="{ currentValue, isInherited, updateCurrentValue }">
+                    <sw-text-field
+                        :value="currentValue"
+                        :disabled="isInherited"
+                        @change="updateCurrentValue"
+                    ></sw-text-field>
+                </template>
+            </sw-inherit-wrapper>
+
+            <sw-inherit-wrapper v-if="!isLoading"
+                                v-model="product.customFields.lenz_google_shopping_custom_label1"
+                                :inheritedValue="parentProduct !== undefined && parentProduct.customFields ? parentProduct.customFields.lenz_google_shopping_custom_label1 : null"
+                                :hasParent="!!parentProduct.id"
+                                :label="$t('lenz-google-shopping.detail.customLabel1Label')"
+            >
+                <template #content="{ currentValue, isInherited, updateCurrentValue }">
+                    <sw-text-field
+                        :value="currentValue"
+                        :disabled="isInherited"
+                        @change="updateCurrentValue"
+                    ></sw-text-field>
+                </template>
+            </sw-inherit-wrapper>
+
+            <sw-inherit-wrapper v-if="!isLoading"
+                                v-model="product.customFields.lenz_google_shopping_custom_label2"
+                                :inheritedValue="parentProduct !== undefined && parentProduct.customFields ? parentProduct.customFields.lenz_google_shopping_custom_label2 : null"
+                                :hasParent="!!parentProduct.id"
+                                :label="$t('lenz-google-shopping.detail.customLabel2Label')"
+            >
+                <template #content="{ currentValue, isInherited, updateCurrentValue }">
+                    <sw-text-field
+                        :value="currentValue"
+                        :disabled="isInherited"
+                        @change="updateCurrentValue"
+                    ></sw-text-field>
+                </template>
+            </sw-inherit-wrapper>
+
+
+            <sw-inherit-wrapper v-if="!isLoading"
+                                v-model="product.customFields.lenz_google_shopping_custom_label3"
+                                :inheritedValue="parentProduct !== undefined && parentProduct.customFields ? parentProduct.customFields.lenz_google_shopping_custom_label3 : null"
+                                :hasParent="!!parentProduct.id"
+                                :label="$t('lenz-google-shopping.detail.customLabel3Label')"
+            >
+                <template #content="{ currentValue, isInherited, updateCurrentValue }">
+                    <sw-text-field
+                        :value="currentValue"
+                        :disabled="isInherited"
+                        @change="updateCurrentValue"
+                    ></sw-text-field>
+                </template>
+            </sw-inherit-wrapper>
+
+            <sw-inherit-wrapper v-if="!isLoading"
+                                v-model="product.customFields.lenz_google_shopping_custom_label4"
+                                :inheritedValue="parentProduct !== undefined && parentProduct.customFields ? parentProduct.customFields.lenz_google_shopping_custom_label4 : null"
+                                :hasParent="!!parentProduct.id"
+                                :label="$t('lenz-google-shopping.detail.customLabel4Label')"
+            >
+                <template #content="{ currentValue, isInherited, updateCurrentValue }">
+                    <sw-text-field
+                        :value="currentValue"
+                        :disabled="isInherited"
+                        @change="updateCurrentValue"
+                    ></sw-text-field>
+                </template>
+            </sw-inherit-wrapper>
+
+
+        </sw-container>
+
+    </sw-card>
+</div>

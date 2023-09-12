@@ -1,0 +1,14 @@
+@import "~scss/variables";
+
+$color-crimson: $color-crimson-500;
+$color-emerald: $color-emerald-500;
+
+.lzyt-enev-list {
+  .is--inactive {
+    color: $color-crimson;
+  }
+
+  .is--active {
+    color: $color-emerald;
+  }
+}

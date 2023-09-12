@@ -1,0 +1,104 @@
+$rhweb-cta-banner-padding:15px;
+$rhweb-cta-banner-padding-overlay:15px;
+
+.cms-element-rhweb-cta-banner {
+    padding:$rhweb-cta-banner-padding;
+    border-radius: $border-radius;
+
+    @include media-breakpoint-down(sm){
+        height: auto !important;
+    }
+
+    @include media-breakpoint-down(lg){
+        .overlay{
+            max-width: unset !important;
+        }
+    }
+
+    &.usp-active{
+        padding:0 !important;
+
+        .overlay{
+            padding:0 !important;
+        }
+
+        .container-content{
+            display:flex;
+
+            p{
+                margin:0;
+            }
+
+            i{
+                margin-right: 25px;
+                font-size: 1.6em;
+                padding: 5px 0px;
+            }
+
+            &.center{
+                display: block;
+
+                i{
+                    margin-right: 0;
+                    margin-bottom:25px;
+                }
+            }
+
+            &.left{
+                &.usp-no-text{
+                    i{
+                        padding:0;
+                        display: inline-flex;
+                        align-items: center;
+                    }
+
+                    h4{
+                        margin-bottom:0;
+                        line-height: unset !important;
+                    }
+                }
+            }
+        }
+    }
+
+    &.video-active{
+        padding:0;
+        overflow:hidden;
+
+        .video{
+            width:100%;
+            position:relative;
+        }
+
+        .overlay{
+            position:absolute;
+        }
+    }
+
+    &.bg-fixed{
+        background-attachment: fixed;
+    }
+
+    .overlay{
+        padding: $rhweb-cta-banner-padding-overlay;
+    }
+
+    &.rhweb-sidebar-element{
+        &.video-active{
+            padding:0;
+            overflow: hidden;
+            position:relative;
+
+            .video{
+                height:100%;
+                width:auto;
+                position:relative;
+            }
+
+            .overlay{
+                position:absolute;
+            }
+        }
+    }
+}
+

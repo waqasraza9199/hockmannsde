@@ -1,0 +1,15 @@
+@import "~scss/variables";
+
+$cross-sell-matrix-list-color-success: $color-emerald-500;
+
+.cross-sell-matrix-list {
+    .is--active {
+        color: $cross-sell-matrix-list-color-success;
+    }
+}
+
+.cross-selling-wrapper{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}

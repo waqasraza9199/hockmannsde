@@ -1,0 +1,82 @@
+ {
+        "lenz-google-shopping": {
+            "product": {
+                "detail": {
+                    "googleShoppingTabLabel": "Google Shopping (Export)",
+                    "googleShoppingCardLabel": "Google Shopping Produktdatenspezifikation"
+                }
+            },
+            "detail": {
+                "baseDataCardTitle": "Stammdaten",
+                "customLabelsCardTitle": "Custom Labels",
+                "electronicCardTitle": "Elektronik",
+                "shippingTaxCardTitle": "Versand & Steuern",
+                "textileCardTitle": "Textil / Größe & Beschaffenheit",
+                "additionalInformationCardTitle": "Zusätzliche Informationen",
+                "activeLabel": "Aktiv",
+                "titleLabel": "Titel",
+                "taxonomyLabel": "Kategorie / Taxonomie",
+                "taxonomyPlaceholder": "Google Kategorie wählen..",
+                "descriptionLabel": "Beschreibung",
+                "expirationDateLabel": "Ablauf",
+                "conditionLabel": "Zustand",
+                "adultLabel": "Nicht jugendfrei",
+                "multipackLabel": "Multipack",
+                "isBundleLabel": "Gehört zu Set",
+                "energyEfficiencyClassLabel": "Energieeffizienzklasse",
+                "minEnergyEfficiencyClassLabel": "Min. Energieeffizienzklasse",
+                "maxEnergyEfficiencyClassLabel": "Max. Energieeffizienzklasse",
+                "ageGroupLabel": "Altersgruppe",
+                "colorLabel": "Farbe",
+                "genderLabel": "Geschlecht",
+                "materialLabel": "Material",
+                "patternLabel": "Muster",
+                "sizeLabel": "Größe",
+                "sizeTypeLabel": "Größentyp",
+                "sizeSystemLabel": "Größensystem",
+                "itemGroupIdLabel": "Artikelgruppen ID",
+                "productHighlightLabel": "Produkthighlights (1 pro Zeile)",
+                "customLabel0Label": "Benutzerdefiniertes Label 0",
+                "customLabel1Label": "Benutzerdefiniertes Label 1",
+                "customLabel2Label": "Benutzerdefiniertes Label 2",
+                "customLabel3Label": "Benutzerdefiniertes Label 3",
+                "customLabel4Label": "Benutzerdefiniertes Label 4",
+                "promotionIdLabel": "Angebots ID",
+                "availabilityDate": "Verfügbarkeitsdatum",
+                "excludedDestinationLabel": "Ausgeschlossenes Ziel",
+                "includedDestinationLabel": "Eingeschlossenes Ziel",
+                "shippingLabelLabel": "Versandlabel",
+                "transitTimeLabelLabel": "Lieferzeitenlabel",
+                "maxBearbeitungszeitLabel": "Maximale Bearbeitungszeit",
+                "minHandlingTimeLabel": "Minimale Bearbeitungszeit",
+                "taxCategoryLabel": "Steuerkategorie",
+                "conditionNewName": "Neu",
+                "conditionRefurbishedName": "Generalüberholt",
+                "conditionUsedName": "Gebraucht",
+                "ageGroupNewbornName": "Neugeborene",
+                "ageGroupInfantName": "Säuglinge",
+                "ageGroupToddlerName": "Kleinkinder",
+                "ageGroupKidsName": "Kinder",
+                "ageGroupAdultName": "Erwachsene",
+                "genderMaleName": "Herren",
+                "genderFameleName": "Damen",
+                "genderUnisexName": "Unisex",
+                "sizeTypeRegularName": "Normalgröße",
+                "sizeTypePetiteName": "Petite-Größe",
+                "sizeTypeOversizeName": "Übergröße",
+                "sizeTypeMaternityName": "Umstandsgröße",
+                "destinationShoppingAdvertName": "Shopping - Anzeigen",
+                "destinationShoppingActionsName": "Shopping Actions",
+                "destinationDisplayAdsName": "Displayanzeigen",
+                "destinationAdsWithLocalInventoryName": "Anzeigen mit lokalem Inventar",
+                "destinationGooglePlatformsName": "Google-Plattformen",
+                "destinationLocalGooglePlatformsName": "Lokale Google-Plattformen",
+                "unsetValueName": "(keine Auswahl)"
+            }
+        }
+ }
+
+
+
+
+

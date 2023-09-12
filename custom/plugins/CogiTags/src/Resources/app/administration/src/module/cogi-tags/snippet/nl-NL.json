@@ -1,0 +1,34 @@
+{
+    "cogi-tags": {
+        "general": {
+            "mainMenuItemGeneral": "Tags",
+            "descriptionTextModule": "Tags bewerken"
+        },
+        "list": {
+            "addButtonText": "Tag toevoegen",
+            "id": "ID",
+            "labelName": "Naam",
+            "labelCreatedAt": "Aanmaakdatum",
+            "contextMenuEdit": "Bewerken",
+            "contextMenuDelete": "Delete",
+            "messageAddedSuccess": "De tag is succesvol toegevoegd.",
+            "messageDeleteSuccess": "De tag is succesvol verwijderd.",
+            "messageAlreadyExistsError": "Er bestaat al een tag met deze naam.",
+            "messageDeleteError": "De tag is nog steeds gekoppeld aan elementen.",
+            "refreshButtonText": "Update",
+            "exportCSVButtonText": "Exporteren als CSV"
+        },
+        "modal": {
+            "confirmTitle": "Verwijder tag",
+            "confirmText" : "Wil je deze tag echt verwijderen?",
+            "buttonCancel": "Annuleren",
+            "buttonDelete": "Delete"
+        },
+        "detail": {
+            "nameLabel": "Naam",
+            "cancelButtonText": "Annuleren",
+            "saveButtonText": "Save",
+            "errorTitle": "Fout bij het opslaan van de tag"
+        }
+    }
+}

@@ -1,0 +1,87 @@
+{% block page_product_detail_articlequestions_form %}
+    <form class="needs-validation"
+          method="post"
+          data-form-csrf-handler="true"
+          data-form-validation="true"
+          action="{{ path('frontend.action.nimbits.article-questions-request') }}">
+
+        {{ sw_csrf('frontend.action.nimbits.article-questions-request') }}
+
+
+
+        <input name="nb_articlequestion_form_lineitems" type="hidden"/>
+
+        <input name="nbaq_saleschannellanguageid" value="{{ context.context.languageIdChain.0 }}" type="hidden"
+               id="articleQuestionsFormSCLanguageIdHidden">
+        <input name="nbaq_product_id" value="{{ page.product.id }}" type="hidden"
+               id="articleQuestionsFormProductIdHidden">
+        <input name="nbaq_product_url" value="{{ seoUrl('frontend.detail.page', {'productId': page.product.id}) }}"
+               type="hidden" id="articleQuestionsFormProductUrlHidden">
+
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <select name="nbaq_salutation" class="form-control" id="articleQuestionsFormSalutation">
+                        <option hidden>{{ 'nimbits-articlequestions.form.salutation'|trans }} {{ 'nimbits-articlequestions.form.optional'|trans }}</option>
+                        <option>{{ 'nimbits-articlequestions.form.genderw'|trans }}</option>
+                        <option>{{ 'nimbits-articlequestions.form.genderm'|trans }}</option>
+                        <option>{{ 'nimbits-articlequestions.form.gendern'|trans }}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <input name="nbaq_company" type="text" class="form-control" id="articleQuestionsFormCompany"
+                           placeholder="{{ 'nimbits-articlequestions.form.company'|trans }} {{ 'nimbits-articlequestions.form.optional'|trans }}">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <input name="nbaq_firstname" type="text" class="form-control" id="articleQuestionsFormForename"
+                           placeholder="{{ 'nimbits-articlequestions.form.name'|trans }} {{ 'nimbits-articlequestions.form.optional'|trans }}">
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <input name="nbaq_surname" type="text" class="form-control" id="articleQuestionsFormSurname"
+                           placeholder="{{ 'nimbits-articlequestions.form.surname'|trans }} {{ 'nimbits-articlequestions.form.optional'|trans }}">
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <input name="nbaq_mail" type="email" class="form-control" id="articleQuestionsFormMail"
+                   placeholder="{{ 'nimbits-articlequestions.form.mail'|trans }} {{ 'nimbits-articlequestions.form.required'|trans }}"
+                   required>
+            <div class="invalid-feedback">
+                {{ 'nimbits-articlequestions.form.entervalidmail'|trans }}
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="articleQuestionsFormMessage">{{ 'nimbits-articlequestions.form.question'|trans }} {{ 'nimbits-articlequestions.form.required'|trans }}</label>
+            <textarea name="nbaq_question" class="form-control" id="articleQuestionsFormMessage" rows="3"
+                      required></textarea>
+            <div class="invalid-feedback">
+                {{ 'nimbits-articlequestions.form.entervalidquestion'|trans }}
+            </div>
+        </div>
+        <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="articleQuestionsCheck" required>
+            <label class="custom-control-label"
+                   for="articleQuestionsCheck">{{ 'nimbits-articlequestions.form.dataprivacytext'|trans|raw }}{{ 'nimbits-articlequestions.form.required'|trans }}</label>
+        </div>
+
+        {% sw_include '@Storefront/storefront/component/captcha/base.html.twig' with { preCheck: true }  %}
+
+
+        <div class="form-group mt-2">
+            {{ 'nimbits-articlequestions.form.requiredtext'|trans }}
+        </div>
+
+
+        <button type="submit"
+                class="btn btn-primary nimbits-ask-question-button">{{ 'nimbits-articlequestions.form.askquestionbutton'|trans }}</button>
+
+    </form>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% sw_extends '@Storefront/storefront/page/account/_page.html.twig' %}
+
+{% block page_account %}
+    {% if config('RHWebThemeFeatures.config.rhwebActivateCustomAccount') == 'custom' %}
+        <div class="rhweb-account rhweb-account-content">
+            <div class="row">
+                <div class="col-lg-4">
+                    {% block page_account_sidebar %}
+                        {{ parent() }}
+                    {% endblock %}
+                </div>
+                <div class="col-lg-8">
+                    {% block page_account_main %}
+                        {{ parent() }}
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+    {% else %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}
+
+
+
+

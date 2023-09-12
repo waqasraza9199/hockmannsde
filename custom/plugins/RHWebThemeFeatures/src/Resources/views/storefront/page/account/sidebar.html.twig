@@ -1,0 +1,44 @@
+{% sw_extends '@Storefront/storefront/page/account/sidebar.html.twig' %}
+
+{% block page_account_sidebar_header %}
+    {% if config('RHWebThemeFeatures.config.rhwebActivateCustomAccount') == 'shopware' %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}
+
+{% block page_account_sidebar_logout %}
+    {% if config('RHWebThemeFeatures.config.rhwebActivateCustomAccount') == 'custom' %}
+        <p>{{ "rhwebThemeFeatures.account.logout.hint" | trans({
+                '%firstName%': context.customer.firstName,
+                '%lastName%': context.customer.LastName
+            }) | raw }}
+        </p>
+        <div class="rhweb-custom-logout-cta">
+            <a href="{{ path('frontend.account.logout.page') }}">
+                {% sw_icon 'arrow-left' %}{{ "rhwebThemeFeatures.account.logout.cta" | trans }}
+            </a>
+        </div>
+    {% else %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}
+
+{% block page_account_sidebar_guest_abort %}
+    {% if config('RHWebThemeFeatures.config.rhwebActivateCustomAccount') == 'custom' %}
+        <div class="rhweb-custom-logout-cta">
+            {{ parent() }}
+        </div>
+    {% else %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}
+
+{% block page_account_sidebar_menu_inner %}
+    {% if config('RHWebThemeFeatures.config.rhwebActivateCustomAccount') == 'custom' %}
+        {% if context.customer %}
+            {{ parent() }}
+        {% endif %}
+    {% else %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}

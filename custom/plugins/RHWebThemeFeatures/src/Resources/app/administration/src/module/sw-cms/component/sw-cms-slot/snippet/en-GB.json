@@ -1,0 +1,11 @@
+{
+    "sw-cms": {
+        "component": {
+            "sw-cms-slot": {
+                "title": "CMS Element - Animations",
+                "buttonTitle": "Animations",
+                "animationsHint": "Here you can enable animations for the element. For example, have elements slowly fade in as soon as they are visible to the customer.<br><br><b>Important:</b><br>If you have enabled the Moori Foundation extension, you should not maintain the animations in 2 places, otherwise settings may overlap."
+            }
+        }
+    }
+}

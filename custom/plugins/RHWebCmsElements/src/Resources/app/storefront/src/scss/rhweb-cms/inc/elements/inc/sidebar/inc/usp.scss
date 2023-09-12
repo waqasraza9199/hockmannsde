@@ -1,0 +1,18 @@
+.has--sidebar{
+  .usp-active{
+    .overlay{
+      max-width: unset !important;
+      width: 100%;
+    }
+
+    .container-content{
+      display: grid;
+      grid-template-columns: 60px 1fr;
+
+      i{
+        margin:0;
+        text-align: center;
+      }
+    }
+  }
+}

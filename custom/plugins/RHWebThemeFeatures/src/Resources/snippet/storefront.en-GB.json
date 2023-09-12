@@ -1,0 +1,51 @@
+{
+    "rhwebThemeFeatures": {
+        "footer": {
+            "copyrightText": "Custom Company Copyright by <a href='https://google.com' target='_blank' rel='noopener'>Company GmbH</a>"
+        },
+        "usp": {
+            "one": {
+                "iconClass": "fa fa-truck",
+                "title": "Free shipping from 30€"
+            },
+            "two": {
+                "iconClass": "fa fa-check",
+                "title": "100% Money Back Guarantee"
+            },
+            "three": {
+                "iconClass": "fa fa-phone",
+                "title": "24/7 Phone support"
+            },
+            "four": {
+                "iconClass": "fa fa-envelope",
+                "title": "24/7 Mail support"
+            }
+        },
+        "contactWidget": {
+            "title": "Quick Contact Widget",
+            "email": "info@beispiel.com",
+            "phone": "022321/129239",
+            "fax": "+1 323 555 1234",
+            "googleMaps": "Show on Google Maps"
+        },
+        "countdown": {
+            "title": "Save up to 20% on all products!",
+            "days": "Days",
+            "hours": "Hours",
+            "minutes": "Minutes",
+            "seconds": "Seconds"
+        },
+        "cookie": {
+            "googleFonts": {
+                "title": "Google Fonts",
+                "description": "This function activates the fonts specified by the store. If you choose not to, it may result in an unattractive display."
+            }
+        },
+        "account": {
+            "logout": {
+                "hint": "Logged in as <b>%firstName% %lastName%</b>",
+                "cta": "Logout now"
+            }
+        }
+    }
+}

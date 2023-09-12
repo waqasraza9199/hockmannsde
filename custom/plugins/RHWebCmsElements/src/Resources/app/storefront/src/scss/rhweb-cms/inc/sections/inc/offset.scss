@@ -1,0 +1,44 @@
+.cms-sections{
+    overflow: hidden;
+}
+
+@include media-breakpoint-up(lg) {
+    [class*='rhweb-offset-']{
+        overflow: visible;
+
+        [class*='cms-section-']{
+            position: relative;
+            z-index: 20;
+        }
+    }
+
+    .cms-section{
+        overflow: visible;
+
+        &.rhweb-offset-50-top{
+            [class*='cms-section-']{
+                top:-50px;
+            }
+        }
+
+        &.rhweb-offset-100-top{
+            [class*='cms-section-']{
+                top:-100px;
+            }
+        }
+
+        &.rhweb-offset-150-top{
+            [class*='cms-section-']{
+                top:-150px;
+            }
+        }
+
+        &.rhweb-offset-200-top{
+            [class*='cms-section-']{
+                top:-200px;
+            }
+        }
+    }
+}
+
+

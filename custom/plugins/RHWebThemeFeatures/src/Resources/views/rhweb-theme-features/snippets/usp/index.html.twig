@@ -1,0 +1,38 @@
+{% block rhweb_theme_features_header_usp_bar_index %}
+
+    {% set location = location %}
+
+    {% if activeRoute|lower == 'frontend.home.page' and 'home' in config('RHWebThemeFeatures.config.RhwebThemeFeaturesConversionSelectPages') %}
+        {% sw_include "@Storefront/rhweb-theme-features/snippets/usp/snippets/usps.html.twig" with {
+            location:location
+        } %}
+    {% endif %}
+    {% if activeRoute|lower == 'frontend.navigation.page' and 'categories' in config('RHWebThemeFeatures.config.RhwebThemeFeaturesConversionSelectPages') %}
+        {% sw_include "@Storefront/rhweb-theme-features/snippets/usp/snippets/usps.html.twig" with {
+            location:location
+        } %}
+    {% endif %}
+    {% if activeRoute|lower == 'frontend.detail.page' and 'product' in config('RHWebThemeFeatures.config.RhwebThemeFeaturesConversionSelectPages') %}
+        {% sw_include "@Storefront/rhweb-theme-features/snippets/usp/snippets/usps.html.twig" with {
+            location:location
+        } %}
+    {% endif %}
+    {% if controllerName|lower == 'checkout' and 'cart' in config('RHWebThemeFeatures.config.RhwebThemeFeaturesConversionSelectPages') %}
+        {% sw_include "@Storefront/rhweb-theme-features/snippets/usp/snippets/usps.html.twig" with {
+            location:location
+        } %}
+    {% endif %}
+
+    {% if controllerName|lower == 'wishlist' and 'wishlist' in config('RHWebThemeFeatures.config.RhwebThemeFeaturesConversionSelectPages') %}
+        {% sw_include "@Storefront/rhweb-theme-features/snippets/usp/snippets/usps.html.twig" with {
+            location:location
+        } %}
+    {% endif %}
+
+    {% if 'frontend.account' in activeRoute|lower and 'account' in config('RHWebThemeFeatures.config.RhwebThemeFeaturesConversionSelectPages') %}
+        {% sw_include "@Storefront/rhweb-theme-features/snippets/usp/snippets/usps.html.twig" with {
+            location:location
+        } %}
+    {% endif %}
+
+{% endblock %}

@@ -1,0 +1,119 @@
+{% block cogi_tags_list %}
+    <sw-page class="cogi-tags-list">
+        {% block cogi_tags_list_smart_bar_actions %}
+        <template slot="smart-bar-actions">
+            <sw-button variant="primary" @click="onShowTagAddModal()">
+                {{ $tc('cogi-tags.list.addButtonText') }}
+            </sw-button>
+        </template>
+        {% endblock %}
+
+        {% block cogi_tags_list_sidebar %}
+        <sw-sidebar slot="sidebar">
+            <sw-sidebar-item icon="default-arrow-360-left"
+                             :title="$t('cogi-tags.list.refreshButtonText')"
+                             @click="getList"></sw-sidebar-item>
+            </sw-sidebar-item>
+            <sw-sidebar-item icon="default-action-circle-download"
+                             :title="$t('cogi-tags.list.exportCSVButtonText')"
+                             @click="onExportToCSV"></sw-sidebar-item>
+            </sw-sidebar-item>
+        </sw-sidebar>
+        {% endblock %}
+
+        <template slot="content">
+            {% block cogi_tags_list_content %}
+                <sw-entity-listing
+                    v-if="tags"
+                    :items="tags"
+                    :repository="tagRepository"
+                    :showSelection="false"
+                    :columns="columns"
+                    detailRoute="cogi.tags.detail">
+                        <template #column-createdAt="{item}">
+                            <span>{{ item.createdAt | date({hour: '2-digit', minute: '2-digit', second: '2-digit'}) }}</span>
+                        </template>
+
+                        {% block cogi_tags_list_actions %}
+                        <template #actions="{ item }">
+                            {% block cogi_tags_list_actions_edit %}
+                            <sw-context-menu-item
+                                :routerLink="{ name: 'cogi.tags.detail', params: { id: item.id } }">
+                                {{ $tc('cogi-tags.list.contextMenuEdit') }}
+                            </sw-context-menu-item>
+                            {% endblock %}
+
+                            {% block cogi_tags_list_actions_delete %}
+                            <sw-context-menu-item variant="danger"
+                                                  @click="onStartTagDelete(item)">
+                                {{ $tc('cogi-tags.list.contextMenuDelete') }}
+                            </sw-context-menu-item>
+                            {% endblock %}
+                        </template>
+                        {% endblock %}
+
+                        {% block cogi_tags_list_actions_modals %}
+                        <template #action-modals="{ item }">
+                            {% block cogi_tags_list_modal_delete %}
+                            <sw-modal v-if="showTagDeleteModal"
+                                      @modal-close="onCancelTagDelete"
+                                      variant="small"
+                                      :title="$tc('cogi-tags.modal.confirmTitle')"
+                                      class="cogi-tags-list-modal">
+                                {% block cogi_tags_list_modal_delete_text %}
+                                <p>
+                                    {{ $tc('cogi-tags.modal.confirmText') }}
+                                </p>
+                                {% endblock %}
+
+                                {% block cogi_tags_list_modal_delete_footer %}
+                                <template slot="modal-footer">
+                                    {% block cogi_tags_list_modal_delete_action_cancel %}
+                                    <sw-button @click="onCancelTagDelete" size="small">
+                                        {{ $tc('cogi-tags.modal.buttonCancel') }}
+                                    </sw-button>
+                                    {% endblock %}
+
+                                    {% block cogi_tags_list_modal_delete_action_delete %}
+                                    <sw-button @click="onConfirmTagDelete" size="small" variant="danger"
+                                               class="cogi-tags-list-delete-button">
+                                        {{ $tc('cogi-tags.modal.buttonDelete') }}
+                                    </sw-button>
+                                    {% endblock %}
+                                </template>
+                                {% endblock %}
+                            </sw-modal>
+                            {% endblock %}
+                        </template>
+                        {% endblock %}
+                </sw-entity-listing>
+            {% endblock %}
+
+            {% block cogi_tags_list_add_modal %}
+                <sw-modal v-if="showTagAddModal"
+                          @modal-close="onCloseTagAddModal"
+                          :title="$t('cogi-tags.list.addButtonText')"
+                          variant="default">
+
+                    <sw-field v-model="newTag"
+                              :label="$tc('cogi-tags.detail.nameLabel')"
+                              :placeholder="$tc('cogi-tags.detail.nameLabel')"
+                              type="text">
+                    </sw-field>
+
+                    <template #modal-footer>
+                        <sw-button @click="onCloseTagAddModal" size="small">
+                            {{ $tc('cogi-tags.modal.buttonCancel') }}
+                        </sw-button>
+                        <sw-button @click="onSaveNewTag"
+                                   variant="primary"
+                                   :disabled="newTag < 1"
+                                   size="small">
+                            {{ $tc('cogi-tags.detail.saveButtonText') }}
+                        </sw-button>
+                    </template>
+                </sw-modal>
+            {% endblock %}
+        </template>
+    </sw-page>
+{% endblock %}

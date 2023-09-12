@@ -1,0 +1,39 @@
+{% sw_extends "@Storefront/storefront/component/product/card/price-unit.html.twig" %}
+
+{# Set price for master product #}
+{% block component_product_box_price %}
+    {% if product.extensions.EmcgnNoVariantPreselection.masterProduct %}
+        {% set highest = product.extensions.EmcgnNoVariantPreselection.highestUnitPrice %}
+        {% set isListPrice = real.listPrice.percentage > 0 %}
+
+        <div class="product-price-wrapper">
+            <div class="product-cheapest-price"></div>
+
+            {% if displayFrom or cheapest.unitPrice < highest %}
+                {{ "listing.listingTextFrom"|trans|sw_sanitize }}
+            {% endif %}
+
+            <span class="product-price{% if isListPrice and cheapest.unitPrice >= highest %} with-list-price{% endif %}">
+                <span class="product-cheapest-price-price"> {{ cheapest.unitPrice|currency }}{{ "general.star"|trans|sw_sanitize }}</span>
+
+                {% if isListPrice and cheapest.unitPrice >= highest %}
+                    {% set afterListPriceSnippetExists = "listing.afterListPrice"|trans|length > 0 %}
+                    {% set beforeListPriceSnippetExists = "listing.beforeListPrice"|trans|length > 0 %}
+                    {% set hideStrikeTrough = beforeListPriceSnippetExists or afterListPriceSnippetExists %}
+
+                    <span class="list-price{% if hideStrikeTrough %} list-price-no-line-through{% endif %}">
+                            {% if beforeListPriceSnippetExists %}{{ "listing.beforeListPrice"|trans|trim|sw_sanitize }}{% endif %}
+
+                            <span class="list-price-price">{{ real.listPrice.price|currency }}{{ "general.star"|trans|sw_sanitize }}</span>
+
+                            {% if afterListPriceSnippetExists %}{{ "listing.afterListPrice"|trans|trim|sw_sanitize }}{% endif %}
+
+                            <span class="list-price-percentage">{{ "detail.listPricePercentage"|trans({'%price%': real.listPrice.percentage })|sw_sanitize }}</span>
+                        </span>
+                {% endif %}
+            </span>
+        </div>
+    {% else %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}

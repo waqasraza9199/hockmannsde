@@ -1,0 +1,45 @@
+{
+  "name": "emcgn/no-variant-preselection",
+  "description": "No Variant Preselection",
+  "type": "shopware-platform-plugin",
+  "license": "proprietary",
+  "version": "1.5.0",
+  "authors": [
+    {
+      "name": "e-nitio mediasign GmbH & Co. KG",
+      "email": "info@e-nitio.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "EmcgnNoVariantPreselection\\": "src/"
+    }
+  },
+  "require": {
+    "shopware/core": ">=6.4.0",
+    "shopware/storefront": ">=6.4.0"
+  },
+  "conflict": {
+    "mega/parent-product-listing": ">=1.0.0"
+  },
+  "extra": {
+    "shopware-plugin-class": "EmcgnNoVariantPreselection\\EmcgnNoVariantPreselection",
+    "label": {
+      "de-DE": "Keine Variantenvorauswahl",
+      "en-GB": "No Variant Preselection"
+    },
+    "description": {
+      "de-DE": "Keine Varianten auf der Kategorie- und Produktseite, nur der Stammartikel ist zu sehen.",
+      "en-GB": "No variants on the category and product page, only the master article is visible."
+    },
+    "manufacturerLink": {
+      "de-DE": "https://www.e-nitio.com/",
+      "en-GB": "https://www.e-nitio.com/"
+    },
+    "supportLink": {
+      "de-DE": "https://www.e-nitio.com/kontakt.html",
+      "en-GB": "https://www.e-nitio.com/kontakt.html"
+    },
+    "plugin-icon": "src/Resources/config/plugin.png"
+  }
+}

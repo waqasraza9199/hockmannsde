@@ -1,0 +1,166 @@
+/*
+    _____ _                __      __
+   |_   _| |_  ___ _ __  __\ \    / /_ _ _ _ ___  (R)
+     | | | ' \/ -_) '  \/ -_) \/\/ / _` | '_/ -_)
+     |_| |_||_\___|_|_|_\___|\_/\_/\__,_|_| \___|
+
+    Copyright (c) TC-Innovations GmbH
+
+	ThemeWare: Cookie permission
+	==============================================
+	Shows a cookie permission alert at the bottom of the page.
+
+	Origin: Shopware base
+*/
+
+// ThemeWare: Cookie permission adjustments
+// TODO: Shopware Vererbung prüfen...
+@if $twt-cookie-permission-show == 2 {
+	.cookie-permission-container {
+		background-color: $twt-cookie-permission-background-color;
+		padding: null-pixel-unit($twt-cookie-permission-padding);
+		/* offset-x | offset-y | blur-radius | spread-radius | color
+		 * box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+		 */
+		box-shadow: $twt-cookie-permission-box-shadow $twt-cookie-permission-box-shadow-color;
+
+		// Buttons
+		.btn {
+			outline: none;
+			//-webkit-transition: none;
+			transition: none;
+		}
+
+		.js-cookie-permission-button {
+			// ThemeWare: Fix missing Shopware spacing
+			// TODO: check if already necessary
+			display: inline-block;
+			padding: 3px 1px;
+
+			.btn {
+				// TODO: @include button-variant(..., ...);
+				color: color-yiq($twt-cookie-permission-deny-btn-background-color);
+				background-color: $twt-cookie-permission-deny-btn-background-color;
+				border-color: $twt-cookie-permission-deny-btn-background-color;
+
+				&:hover {
+					color: color-yiq($twt-cookie-permission-deny-btn-background-color);
+					background-color: darken($twt-cookie-permission-deny-btn-background-color, 7.5%);
+					border-color: darken($twt-cookie-permission-deny-btn-background-color, 10%);
+				}
+
+				/*&.btn-secondary {
+					color: color-yiq($twt-cookie-permission-deny-btn-background-color);
+					background-color: $twt-cookie-permission-deny-btn-background-color;
+					border-color: $twt-cookie-permission-deny-btn-background-color;
+
+					&:hover {
+						color: color-yiq($twt-cookie-permission-deny-btn-background-color);
+						background-color: darken($twt-cookie-permission-deny-btn-background-color, 7.5%);
+						border-color: darken($twt-cookie-permission-deny-btn-background-color, 10%);
+					}
+				}*/
+
+				/*&.btn-outline-danger {
+					color: $twt-cookie-permission-deny-btn-background-color;
+					background-color: transparent;
+					border-color: $twt-cookie-permission-deny-btn-background-color;
+
+					&:hover {
+						color: color-yiq($twt-cookie-permission-deny-btn-background-color);
+						background-color: $twt-cookie-permission-deny-btn-background-color;
+						border-color: $twt-cookie-permission-deny-btn-background-color;
+					}
+				}*/
+			}
+		}
+
+		.js-cookie-configuration-button {
+			// ThemeWare: Fix missing Shopware spacing
+			// TODO: check if already necessary
+			display: inline-block;
+			padding: 3px 1px;
+
+			.btn {
+				// TODO: @include button-variant(..., ...);
+				color: color-yiq($twt-cookie-permission-configuration-btn-background-color);
+				background-color: $twt-cookie-permission-configuration-btn-background-color;
+				border-color: $twt-cookie-permission-configuration-btn-background-color;
+
+				&:hover {
+					color: color-yiq($twt-cookie-permission-configuration-btn-background-color);
+					background-color: darken($twt-cookie-permission-configuration-btn-background-color, 7.5%);
+					border-color: darken($twt-cookie-permission-configuration-btn-background-color, 10%);
+				}
+			}
+		}
+
+		.js-cookie-accept-all-button {
+			// ThemeWare: Fix missing Shopware spacing
+			// TODO: check if already necessary
+			display: inline-block;
+			padding: 3px 1px;
+
+			.btn {
+				// TODO: @include button-variant(..., ...);
+				color: color-yiq($twt-cookie-permission-accept-all-btn-background-color);
+				background-color: $twt-cookie-permission-accept-all-btn-background-color;
+				border-color: $twt-cookie-permission-accept-all-btn-background-color;
+
+				&:hover {
+					color: color-yiq($twt-cookie-permission-accept-all-btn-background-color);
+					background-color: darken($twt-cookie-permission-accept-all-btn-background-color, 7.5%);
+					border-color: darken($twt-cookie-permission-accept-all-btn-background-color, 10%);
+				}
+			}
+		}
+
+		
+		@if $twt-cookie-permission-position == 2 {
+			top: 0; 
+			border-bottom: 1px solid $twt-cookie-permission-border-color;
+			border-top: none;
+			bottom: inherit;
+		}
+
+		@if $twt-cookie-permission-position == 3 {
+			//display: inline-block; @deprecated
+			left: auto;
+			max-width: auto-pixel-unit($twt-cookie-permission-max-width);
+			bottom: null-pixel-unit($twt-cookie-permission-bottom);
+			right: null-pixel-unit($twt-cookie-permission-right);
+			border: 1px solid $twt-cookie-permission-border-color;
+		}
+
+		.container {
+			@if $twt-cookie-permission-width == 2 {
+				max-width: inherit;
+			}
+
+			.cookie-permission-content {
+				color: $twt-cookie-permission-color;
+
+				@if $twt-cookie-permission-position == 3 {
+					padding-bottom: 10px;
+				}
+
+				a {
+					color: $twt-cookie-permission-color;
+					text-decoration: underline;
+
+					&:hover {
+						text-decoration: none;
+						opacity: 0.9;
+					}
+				}
+
+				.col,
+				.col-md-auto {
+					padding-left: 0;
+					padding-right: 0;
+				}
+			}
+			
+		}
+	}
+}

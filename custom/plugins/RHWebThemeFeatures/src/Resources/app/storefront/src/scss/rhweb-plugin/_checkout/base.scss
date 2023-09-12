@@ -1,0 +1,59 @@
+$tmp-rhweb-custom-checkout-spacing:50px;
+
+@import "header";
+@import "steps";
+@import "signup";
+@import "aside";
+@import "finish";
+@import "cards";
+
+.rhweb-custom-checkout-container{
+    .container-main{
+        padding:0;
+
+        .checkout{
+            padding:0;
+            margin:0;
+
+            .flashbags{
+                .alert{
+                    margin:0;
+                }
+            }
+
+            .checkout-main{
+                flex: unset;
+                width: 100%;
+                max-width: unset;
+                padding: 0;
+                margin:0;
+                border:none !important;
+
+                @include media-breakpoint-up(xl){
+                    display: grid;
+                    grid-template-columns: 2fr minmax(540px, 1fr);
+                }
+
+                > [class*=rhweb-checkout-content]{
+                    padding-top:$tmp-rhweb-custom-checkout-spacing;
+                    padding-bottom:$tmp-rhweb-custom-checkout-spacing;
+                    @include media-breakpoint-up(xl){
+                        min-height: 100vh;
+                    }
+                }
+
+                .rhweb-checkout-content-aside{
+                    @extend .shadow;
+                    background: #fff;
+                    border-left: 1px solid $sw-border-color;
+                }
+
+                .rhweb-checkout-content-main{
+                    > .container{
+                        max-width: 900px;
+                    }
+                }
+            }
+        }
+    }
+}

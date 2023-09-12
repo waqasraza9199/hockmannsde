@@ -1,0 +1,109 @@
+{
+    "lzyt-enev": {
+        "menu": {
+            "main": "Energieeinsparverordnungen",
+            "description": "Energieeinsparverordnung (EnEV)"
+        },
+        "headers": {
+            "list": "Energieeinsparverordnungen (EnEV)",
+            "create": "Neue Energieeinsparverordnung"
+        },
+        "buttons": {
+            "add": "Hinzufügen",
+            "save": "Speichern",
+            "cancel": "Abbrechen",
+            "import": "Importieren",
+            "oldRegulation": "Alte Verordnung"
+        },
+        "elements": {
+            "class": "Effizienzklasse",
+            "spectrumFrom": "Spektrum von",
+            "spectrumTo": "Spektrum bis",
+            "color": "Farbe",
+            "product": "Produkt",
+            "energyEfficiency": "Energieeffizienz",
+            "madia": "Energielabel",
+            "datasheet": "Datenblatt",
+            "icon": "Icon",
+            "position": "Position",
+            "name": "Name",
+            "description": "Beschreibung",
+            "active": "Aktiv",
+            "eprelId": "EPREL Registrationsnummer",
+            "eprelGroup": "EPREL Gruppe"
+        },
+        "fieldsets": {
+            "general": "Stammdaten",
+            "eprel": "EPREL",
+            "values": "Kennzeichnung",
+            "media": "Medien"
+        },
+        "options": {
+            "eprelGroup": {
+                "washerdriers2019": "Haushaltswaschtrockner",
+                "dishwashers2019": "Haushaltsgeschirrspüler",
+                "washingmachines2019": "Haushaltswaschmaschinen",
+                "refrigeratingappliances2019": "Kühlgeräte",
+                "refrigeratingappliancesdirectsalesfunction": "Kühlgeräte mit Direktverkaufsfunktion",
+                "lightsources": "Lichtquellen",
+                "electronicdisplays": "Elektronische Displays",
+                "tyres": "Reifen",
+                "airconditioners": "Klimaanlagen",
+                "ovens": "Haushaltsbacköfen",
+                "rangehoods": "Dunstabzugshauben",
+                "tumbledriers": "Haushaltswäschetrockner",
+                "localspaceheaters": "Einzelraumheizgeräte",
+                "professionalrefrigeratedstoragecabinets": "Gewerbliche Kühllagerschränke",
+                "residentialventilationunits": "Wohnraumlüftungsanlagen",
+                "solidfuelboilers": "Festbrennstoffkessel",
+                "solidfuelboilerpackages": "Verbundanlagen mit einem Festbrennstoffkessel",
+                "spaceheaters": "Raumheizgeräte/Kombiheizgeräte",
+                "spaceheaterpackages": "Verbundanlagen aus Raumheizgeräten/Kombiheizgeräten",
+                "spaceheatertemperaturecontrol": "Temperaturregler für Raumheizgeräte",
+                "spaceheatersolardevice": "Solareinrichtungen für Raumheizgeräte",
+                "waterheaters": "Warmwasserbereiter",
+                "waterheaterpackages": "Verbundanlagen mit Warmwasserbereiter",
+                "hotwaterstoragetanks": "Warmwasserspeicher für Warmwasserbereiter",
+                "waterheatersolardevices": "Solareinrichtungen für Warmwasserbereiter",
+                "lamps": "Elektrische Lampen (Alte Vorschrift)",
+                "washerdriers": "Kombinierte Haushalts-Wasch-Trockenautomaten (Alte Vorschrift)",
+                "dishwashers": "Haushaltsgeschirrspüler (Alte Vorschrift)",
+                "refrigeratingappliances": "Haushaltskühlgeräte (Alte Vorschrift)",
+                "washingmachines": "Haushaltswaschmaschinen (Alte Vorschrift)",
+                "televisions": "Fernsehgeräte (Alte Vorschrift)"
+            }
+        },
+        "search": {
+            "list": "EnEV"
+        },
+        "placeholder": {
+            "search": "Durchsuche alle Energieeinsparverordnungen ...",
+            "name": "Bezeichnung der Kennzeichnung"
+        },
+        "help": {
+            "name": "Dient zur Orientierung bei mehrfacher Kennzeichnung"
+        },
+        "descriptions": {
+            "eprel": "Mit den Angaben \"Registrationsnummer\" und \"Gruppe\" können Sie sich die Kennzeichnung aus der EPREL Datenbank importieren. Im Storefront werden die Medien für \"Energielabel\" und \"Datenblatt\" per EPREL-Link eingebunden und nicht in den Mediamanger importiert. Die Zuweisung der Farbe kann ungenau sein, bitte kontrollieren Sie die importieren Daten und speichern Sie Ihre Anpassungen."
+        },
+        "component": {
+            "spectrum": "Spektrum",
+            "from": "von",
+            "to": "bis",
+            "empty": "Leer"
+        },
+        "notification": {
+            "errorSave": "Der Eintrage konnte nicht gespeichert werden.",
+            "successEprel": "EPREL Daten importiert",
+            "successEprelMessage": "Die EPREL Daten wurden importiert. Kontrollieren Sie die Daten bevor Sie speichern.",
+            "errorEprel": "Die EPREL Daten konnte nicht importiert werden",
+            "errorEprelMessage": "Registrationsnummer oder Gruppe könnte falsch sein."
+        },
+        "modal": {
+            "duplicate": {
+                "title": "Eintrage duplizieren",
+                "text": "Wählen Sie das Produkt aus, in dem die Werte dupliziert werden sollen."
+            }
+        }
+    }
+}

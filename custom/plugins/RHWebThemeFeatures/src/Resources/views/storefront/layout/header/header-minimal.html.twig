@@ -1,0 +1,65 @@
+{% sw_extends '@Storefront/storefront/layout/header/header-minimal.html.twig' %}
+
+{% block layout_header %}
+    {% if customCheckout %}
+        <div class="header-checkout">
+
+            {% block layout_header_minimal_logo %}
+                {{ parent() }}
+            {% endblock %}
+
+            {% set checkoutSteps = [
+                {
+                    "route": "frontend.checkout.cart.page",
+                    "title": "checkout.cartHeader",
+                    "url": seoUrl('frontend.checkout.cart.page')
+                },
+                {
+                    "route": "frontend.checkout.register.page",
+                    "title": "account.loginSubmit",
+                    "url": null
+                },
+                {
+                    "route": "frontend.checkout.confirm.page",
+                    "title": "checkout.confirmHeader",
+                    "url": null
+                }
+            ] %}
+
+            {% if not customCheckoutFinish %}
+                <div class="header-checkout-steps">
+
+                    {% set completed = true %}
+                    {% set classAttr = "" %}
+
+                    {% for item in checkoutSteps %}
+                        {% if completed %}
+                            {% set classAttr = "completed" %}
+                        {% endif %}
+
+                        {% if activeRoute == item.route %}
+                            {% set classAttr = "active" %}
+
+                            {% set completed = false %}
+                        {% endif %}
+
+                        <div class="step-item {{ classAttr }}">
+                            <div class="step-indicator"></div>
+                            <div class="step-label">
+                                {% if item.url %}
+                                    <a href="{{ item.url }}">{{ item.title | trans }}</a>
+                                {% else %}
+                                    {{ item.title | trans }}
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        {% set classAttr = "" %}
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+    {% else %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}

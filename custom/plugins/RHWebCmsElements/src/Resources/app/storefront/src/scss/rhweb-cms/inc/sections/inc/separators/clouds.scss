@@ -1,0 +1,32 @@
+.rhweb-separator-clouds-both, .rhweb-separator-clouds-top, .rhweb-separator-clouds-bottom{
+  position: relative;
+}
+
+.rhweb-separator-clouds-both, .rhweb-separator-clouds-top{
+  padding-top: 60px;
+
+  &:before{
+    top: 0;
+    position: absolute;
+    content: "";
+    height: 100px;
+    width: 100%;
+    z-index: 10;
+    background-image: url("/bundles/rhwebcmselements/assets/feature/clouds.png");
+  }
+}
+
+.rhweb-separator-clouds-both, .rhweb-separator-clouds-bottom{
+  padding-bottom: 60px;
+
+  &:after{
+    bottom: 0;
+    transform: rotate(180deg);
+    position: absolute;
+    content: "";
+    height: 100px;
+    width: 100%;
+    z-index: 10;
+    background-image: url("/bundles/rhwebcmselements/assets/feature/clouds.png");
+  }
+}

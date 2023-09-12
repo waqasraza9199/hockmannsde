@@ -1,0 +1,48 @@
+{% block element_rhweb_testimonial %}
+    {%  set config = element.fieldConfig.elements %}
+    <div class="cms-element-{{ element.type }} {% if isInSidebar %} rhweb-sidebar-element{% endif %} mb-4">
+        {% block element_rhweb_testimonial_inner %}
+            <div class="profile" style="background: {{ config.boxBackground.value }}; color: {{ config.boxColor.value }};">
+                {% block element_rhweb_testimonial_thumbnail %}
+                    {% sw_thumbnails 'cms-image-thumbnails' with {
+                        media: element.data.media,
+                        attributes: {
+                            'alt': 'Testimonial',
+                        }
+                    } %}
+                {% endblock %}
+
+                {% block element_rhweb_testimonial_rating %}
+                    {% if config.rating.value > 0 %}
+                        <div class="rating" style="color: {{ config.boxHighlightColor.value }};">
+                            {% for i in 1..config.ratingMax.value %}
+                                {% if config.rating.value >= i %}
+                                    <i class="fa fa-star"></i>
+                                {% else %}
+                                    <i class="fa fa-star-o"></i>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                {% endblock %}
+
+                {% block element_rhweb_testimonial_quote %}
+                    <blockquote style="--style-color: {{ config.boxHighlightColor.value }};">
+                        {{ config.quote.value }}
+                    </blockquote>
+                {% endblock %}
+
+                {% block element_rhweb_testimonial_company %}
+                    <h3 style="color: {{ config.boxHighlightColor.value }};">
+                        {% block element_rhweb_testimonial_company_customer %}
+                            {{ config.customer.value }}
+                        {% endblock %}
+                        {% block element_rhweb_testimonial_company_name %}
+                            <span style="color: {{ config.boxColor.value }};">{{ config.company.value }}</span>
+                        {% endblock %}
+                    </h3>
+                {% endblock %}
+            </div>
+        {% endblock %}
+    </div>
+{% endblock %}

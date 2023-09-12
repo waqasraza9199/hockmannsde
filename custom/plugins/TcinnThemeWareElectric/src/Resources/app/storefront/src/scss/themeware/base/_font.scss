@@ -1,0 +1,48 @@
+/*
+   _____ _  _ ___ __  __ _____      ___   ___ ___  (R)
+  |_   _| || | __|  \/  | __\ \    / /_\ | _ \ __|
+    | | | __ | _|| |\/| | _| \ \/\/ / _ \|   / _|
+    |_| |_||_|___|_|  |_|___| \_/\_/_/ \_\_|_\___|
+
+    Copyright (c) TC-Innovations GmbH
+
+    ThemeWare Fonts
+    ==================================================
+    Adds theme specific @font-face (Electric)
+*/
+
+@if $twt-google-font-import == 1 {
+  @if (str-index(#{$sw-font-family-base}, "Titillium Web") != null) or (str-index(#{$sw-font-family-headline}, "Titillium Web") != null) {
+    @font-face {
+      font-family: 'Titillium Web';
+      src: url('#{$app-css-relative-asset-path}/font/TitilliumWeb/TitilliumWeb-Light.ttf');
+      font-style: normal;
+      font-weight: 300;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: 'Titillium Web';
+      src: url('#{$app-css-relative-asset-path}/font/TitilliumWeb/TitilliumWeb-Regular.ttf');
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: 'Titillium Web';
+      src: url('#{$app-css-relative-asset-path}/font/TitilliumWeb/TitilliumWeb-SemiBold.ttf');
+      font-style: normal;
+      font-weight: 600;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: 'Titillium Web';
+      src: url('#{$app-css-relative-asset-path}/font/TitilliumWeb/TitilliumWeb-Bold.ttf');
+      font-style: normal;
+      font-weight: 700;
+      font-display: swap;
+    }
+  }
+}

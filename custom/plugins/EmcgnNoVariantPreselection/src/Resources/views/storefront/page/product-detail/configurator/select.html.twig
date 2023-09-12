@@ -1,0 +1,26 @@
+{% sw_extends "@Storefront/storefront/page/product-detail/configurator/select.html.twig" %}
+
+{# Set option "Please Select" for master product #}
+{% block page_product_detail_configurator_select %}
+    <select name="{{ group.id }}" id="{{ group.id }}" class="custom-select product-detail-configurator-select-input">
+
+        {% if page.product.extensions.EmcgnNoVariantPreselection.masterProduct %}
+            <option value="" selected disabled>
+                {{ 'emcgn.noVariantPreselection.product-detail.configurator.select'|trans }}
+            </option>
+        {% endif %}
+
+        {% for option in group.options %}
+
+            {% set selected = false %}
+
+            {% if option.id in page.product.optionIds %}
+                {% set selected = true %}
+            {% endif %}
+
+            {% block page_product_detail_configurator_select_option %}
+                {{ parent() }}
+            {% endblock %}
+        {% endfor %}
+    </select>
+{% endblock %}

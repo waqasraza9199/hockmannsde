@@ -1,0 +1,73 @@
+.cms-element-rhweb-testimonial {
+  width: 100%;
+  .profile {
+    text-align: center;
+    padding: 70px 10px 10px;
+    margin: 60px 0 0;
+    background-color: $light;
+    color: $card-color;
+    img {
+      top: 0;
+      position: absolute;
+      left: calc(50% - 60px);
+      border: 10px solid $body-bg;
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    .rating {
+      color: $primary;
+      margin-bottom: 10px;
+    }
+    h3 {
+      font-size: 20px;
+      margin-top: 15px;
+      color: $primary;
+      span {
+        font-size: 12px;
+        color: $card-color;
+      }
+    }
+    blockquote {
+      font-size: 16px;
+      line-height: 30px;
+      --style-color: $primary;
+      &:before {
+        content: open-quote;
+        font-size: 50px;
+        position: relative;
+        color: var(--style-color);
+        line-height: 20px;
+        bottom: -15px;
+      }
+      &:after {
+        content: close-quote;
+        font-size: 50px;
+        position: relative;
+        color: var(--style-color);
+        line-height: 20px;
+        bottom: -15px;
+      }
+    }
+  }
+}
+
+.cms-block-rhweb-testimonial-five-slider, .cms-block-rhweb-testimonial-four-slider, .cms-block-rhweb-testimonial-three-slider, .cms-block-rhweb-testimonial-two-slider{
+
+  &.rhweb-sidebar-element{
+    .tns-nav{
+      width:100%;
+      text-align: center;
+      transform:none;
+      left:0;
+
+      button{
+        padding: 7px
+      }
+    }
+  }
+
+
+
+}

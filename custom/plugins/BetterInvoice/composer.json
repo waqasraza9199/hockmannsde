@@ -1,0 +1,29 @@
+{
+    "name": "lzyt8/better-invoice",
+    "description": "Customizable Invoice",
+    "version": "2.2.2",
+    "type": "shopware-platform-plugin",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "LZYT8"
+        }
+    ],
+    "require": {
+        "shopware/core": "6.4.*"
+    },
+    "extra": {
+        "shopware-plugin-class": "LZYT8\\BetterInvoice\\BetterInvoice",
+        "label": {
+            "de-DE": "Better Invoice"
+        },
+        "description": {
+            "de-DE": "Modern and customizable invoices with dynamic drops."
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "LZYT8\\BetterInvoice\\": "src/"
+        }
+    }
+}

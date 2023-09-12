@@ -1,0 +1,253 @@
+/* arrow */
+@mixin arrow2021{
+    -webkit-clip-path: polygon(0% 0%, 75% 0%, 94% 50%, 75% 100%, 0% 100%);
+    clip-path: polygon(0% 0%, 75% 0%, 94% 50%, 75% 100%, 0% 100%);
+}
+.lzyt-enev {
+    margin-bottom: $grid-gutter-width/2;
+    position: relative;
+
+    .lzyt-enev-arrow-wrapper {
+        display: flex;
+        grid-gap: $grid-gutter-width/2;
+        align-items: center;
+    }
+
+    .lzyt-enev-arrow {
+        width: 100px;
+        min-width: 50px;
+        height: 38px;
+        background-color: transparent;
+        position: relative;
+        font-size: 16px;
+        text-transform: uppercase;
+        display: inline-block;
+        cursor: default;
+    }
+
+    &:not(.lzyt-enev-arrowOld){
+        .lzyt-enev-arrow {
+            width: 80px;
+            height: 44px;
+            @include arrow2021;
+
+            &:not([data-lzyt-enev-spectrum="true"]){
+                .lzyt-enev-arrow-class {
+                    margin-left: -16px;
+                }
+            }
+
+            &:before, &:after {
+                content: '';
+                background-color: currentColor;
+                @include arrow2021;
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+                z-index: -1;
+            }
+
+            &:before {
+                width: 96%;
+                height: 96%;
+                left: 2%;
+                top: 2%;
+            }
+
+            &:after {
+                background-color: #000;
+                z-index: -2;
+            }
+
+            .lzyt-enev-arrow-class {
+                height: 96%;
+                color: #fff;
+                -webkit-text-stroke: 1px #000;
+                font-size: 24px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                position: relative;
+                overflow: hidden;
+                top: 2%;
+                font-weight: 700;
+
+                .lzyt-enev-arrow-spectrum {
+                    position: absolute;
+                    top: 0;
+                    left: 1px;
+                    height: 100%;
+                    width: 16px;
+                    background: #fff;
+                    color: #000;
+                    -webkit-text-stroke: initial;
+                    text-align: center;
+                    line-height: 15px;
+                    font-size: 12px;
+
+                    .icon-arrow-up {
+                        color: #000;
+                        display: block;
+                        width: auto;
+                        height: 12px;
+                        top: -2px;
+                        position: relative;
+
+                        svg {
+                            top: 0;
+                        }
+                    }
+                }
+            }
+        }
+
+        .lzyt-enev-arrow-icon {
+            background: transparent no-repeat;
+            background-size: cover;
+            width: 38px;
+            height: 44px;
+        }
+    }
+
+    &.lzyt-enev-arrowOld {
+        .lzyt-enev-arrow {
+            &:before, &:after {
+                content: '';
+                position: absolute;
+                top: 0;
+                right: -26px;
+                width: 0;
+                height: 0;
+                border: solid transparent;
+                border-width: 19px;
+                border-left-width: 12px;
+            }
+
+            &:after {
+                right: -31px;
+                border-left-color: currentColor;
+            }
+
+            .lzyt-enev-arrow-class {
+                color: #fff;
+                padding: 10px 8px 0 8px;
+                font-size: 18px;
+                line-height: 21px;
+                font-weight: bold;
+
+                .lzyt-enev-arrow-spectrum {
+                    font-size: .8rem;
+                    font-weight: normal;
+                }
+            }
+
+            &[data-lzyt-enev-icon="true"] {
+                margin-right: $grid-gutter-width * 2;
+            }
+
+            &[data-lzyt-enev-spectrum="true"] {
+                height: 76px;
+
+                &:after {
+                    right: -15px;
+                    border-width: 38px 0 38px 15px;
+                }
+
+                .FriedmEnev_anchor {
+                    line-height: 29px;
+                }
+
+                .lzyt-enev-arrow-spectrum {
+                    font-size: 0.7rem;
+                    border-top: #fff solid 1px;
+                    line-height: 16px;
+                    padding-top: 5px;
+                    margin-top: 2px;
+                }
+            }
+
+            .lzyt-enev-arrow-icon {
+                background: transparent no-repeat;
+                background-size: cover;
+                width: 38px;
+                height: 38px;
+                position: absolute;
+                top: 0;
+                left: 124px;
+            }
+        }
+
+        &.minimal {
+            margin-bottom: 10px;
+
+            .lzyt-enev-arrow {
+                width: auto;
+                margin-right: 0;
+            }
+        }
+    }
+
+    .lzyt-enev-datasheet {
+        display: block;
+    }
+}
+
+/* badge */
+.badge-lzyt-enev {
+    display: block;
+    height: fit-content !important;
+    padding: 0;
+    text-align: left;
+
+    .lzyt-enev {
+        margin: 0 0 8px;
+    }
+
+    .lzyt-enev-datasheet {
+        font-size: 0.7rem;
+        line-height: 20px;
+    }
+}
+
+/* tooltip */
+.lzyt-enev-tooltip {
+    opacity: 1 !important;
+
+    .arrow::before {
+        border-bottom-color: $gray-300;
+    }
+
+    &.bs-tooltip-top {
+        .arrow::before {
+            border-top-color: $gray-300;
+        }
+    }
+
+    .tooltip-inner {
+        max-width: inherit;
+        padding: .5rem;
+        background-color: #fff;
+        border: 1px solid $gray-300;
+
+        img {
+            width: 100%;
+            max-width: inherit;
+
+            @media screen and (min-width: 321px) {
+                max-width: 300px;
+            }
+        }
+    }
+
+    &.show {
+        width: 97%;
+        transition-duration: 350ms !important;
+        animation-duration: 350ms !important;
+
+        @media screen and (min-width: 321px) {
+            width: inherit;
+        }
+    }
+}

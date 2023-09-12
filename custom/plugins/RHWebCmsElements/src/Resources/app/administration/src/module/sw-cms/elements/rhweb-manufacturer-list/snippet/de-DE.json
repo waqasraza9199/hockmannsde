@@ -1,0 +1,36 @@
+{
+    "sw-cms": {
+        "elements": {
+            "rhweb-manufacturer-list": {
+                "config": {
+                    "tab": {
+                        "general": "General",
+                        "layout": "Layout"
+                    },
+                    "label": {
+                        "activateNav": "Navigation aktivieren",
+                        "activateUrls": "Links zu Herstellern aktivieren",
+                        "activateUrlsNewTab": "Links in neuem Tab öffnen",
+                        "activateImages": "Hersteller Logos anzeigen",
+                        "imageHeight": "Logo - Maximalhöhe",
+                        "imageMaxWidth": "Logo - Maximalbreite",
+                        "manufacturerBackground": "Hersteller - Hintergrundfarbe",
+                        "manufacturerColor": "Hersteller - Textfarbe",
+                        "navAnchorPrefix": "Navigation - Anker Prefix"
+                    },
+                    "helpText": {
+                        "activateNav": "Aktivieren Sie die Navigation über dem Hersteller Register.<br><br>Die Navigationselemente sind mit Sprungmarken zum jeweiligen Abschnitt versehen.",
+                        "activateUrls": "Wenn Sie dem jeweiligen Hersteller eine Verlinkung hinzugefügt haben, wird diese gesetzt.<br><br><b>Tipp:</b><br>Sie können auch einen Suchterm als Verlinkung beifügen und die Verlinkung quasi als 'Filter' zu Produkten des Herstellers nutzen.",
+                        "activateUrlsNewTab": "Die Herstellerlinks verweisen auf einen neuen Tab im Browserfenster.",
+                        "activateImages": "Wenn Sie dem jeweiligen Hersteller ein Logo beigefügt haben, wird dieses in der Storefront statt dem Herstellernamen ausgegeben.<br><br>Der Herstellername wird weiterhin als 'title' - Attribut mitgegeben.",
+                        "imageHeight": "Damit die Logos einheitlich ausgerichtet sind, empfiehlt es sich mit diesem Feld eine Maximalhöhe festzusetzen.",
+                        "imageMaxWidth": "Eine maximale Breite ist ebenfalls wichtig, damit Ihre Herstellerlogos gleichmäßig aussehen.",
+                        "manufacturerBackground": "Jeder Hersteller wird technisch in einer 'Box' ausgegeben.<br><br>Mit diesem Feld können Sie die Hintergrundfarbe bestimmen.",
+                        "manufacturerColor": "Wenn Sie keine Logos hinzugefügt haben, wird der Herstellername angezeigt.<br><br>Mit diesem Feld bestimmen Sie die <b>Schriftfarbe</b>.",
+                        "navAnchorPrefix": "Die Ankerverlinkung der Navigation benötigt einen eindeutigen Identifier. Dieser wird auch in der Adresszeile des Browsers bei Klick auf einen Navigationspunkt sichtbar.<br><br><b>Tipp:</b><br>Wenn Sie nicht personalisieren möchten, können Sie das Feld so lassen."
+                    }
+                }
+            }
+        }
+    }
+}

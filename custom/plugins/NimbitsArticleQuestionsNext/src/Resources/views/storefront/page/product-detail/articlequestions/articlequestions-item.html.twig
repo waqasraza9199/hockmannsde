@@ -1,0 +1,17 @@
+{% block page_product_detail_articlequestions_item %}
+    <div class="nb-question-item">
+        <div class="card border p-3 mb-3">
+            <div class="card-body pt-0">
+                <h5 class="card-title">{{ "nimbits-articlequestions.list.question"|trans }}
+                    : {% if question.question %}{{ question.question }}{% endif %}
+                </h5>
+                <h6 class="card-subtitle mb-2 text-muted">{{ "nimbits-articlequestions.list.questionsender"|trans }}
+                    : {{ "nimbits-articlequestions.list.questionowner"|trans }}</h6>
+                <p class="card-text"><b>{{ "nimbits-articlequestions.list.answer"|trans }}:</b><br>
+                    {% if question.answer %}
+                        {{ question.answer|e('html')|replace({ ("\n"): "</br>" })|raw }}
+                    {% endif %}</p>
+            </div>
+        </div>
+    </div>
+{% endblock %}

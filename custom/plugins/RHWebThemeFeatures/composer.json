@@ -1,0 +1,44 @@
+{
+    "name": "rhweb/themefeatures",
+    "description": "THEME FEATURES | Extension for the Theme",
+    "type": "shopware-platform-plugin",
+    "license": "proprietary",
+    "version": "v2.2.02",
+    "authors": [
+        {
+            "name": "RH-Webdesign",
+            "homepage": "https://rh-webdesign.com",
+            "email": "shopware@rh-webdesign.com",
+            "role": "Manufacturer"
+        }
+    ],
+    "require": {
+        "shopware/core": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "RHWeb\\ThemeFeatures\\": "src/"
+        }
+    },
+    "extra": {
+        "shopware-plugin-class": "RHWeb\\ThemeFeatures\\RHWebThemeFeatures",
+        "plugin-icon": "src/Resources/public/icon.png",
+        "copyright": "(c) by RH-Webdesign",
+        "label": {
+            "de-DE": "THEME FEATURES | Erweiterung des Themes",
+            "en-GB": "THEME FEATURES | Extension for the Theme"
+        },
+        "description": {
+            "de-DE": "\uD83E\uDC12 Support von www.rh-webdesign.com",
+            "en-GB": "\uD83E\uDC12 Support by www.rh-webdesign.com"
+        },
+        "manufacturerLink": {
+            "de-DE": "https://rh-webdesign.com",
+            "en-GB": "https://rh-webdesign.com/en"
+        },
+        "supportLink": {
+            "de-DE": "https://rh-webdesign.com",
+            "en-GB": "https://rh-webdesign.com/en"
+        }
+    }
+}

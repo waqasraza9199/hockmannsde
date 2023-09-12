@@ -1,0 +1,55 @@
+{% sw_extends '@Storefront/storefront/utilities/offcanvas.html.twig' %}
+
+{% block utilities_offcanvas_content %}
+    {% block page_product_detail_review_container %}
+        <div class="product-detail-articlquestions tab-pane-container">
+            {% block page_product_detail_articlquestions_tab_pane %}
+                <div class="accordion" id="accordionExample">
+                    <div class="card mb-3 border">
+                        <div class="card-header border-bottom" id="headingOne">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                                        data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    {{ 'nimbits-articlequestions.form.formTitle'|trans }}
+                                </button>
+                            </h2>
+                        </div>
+
+                        <div id="collapseOne" class="collapse" aria-labelledby="headingOne"
+                             data-parent="#accordionExample">
+                            <div class="card-body p-3">
+                                {% block page_product_detail_articlquestions_tab_questionsform_wrapper %}
+                                    <div class="product-detail-articlquestions-questionsform">
+                                        {% sw_include '@Storefront/storefront/page/product-detail/articlequestions/articlequestions-form.html.twig' %}
+                                    </div>
+                                {% endblock %}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card border">
+                        <div class="card-header border-bottom" id="headingTwo">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                                        data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    {{ "nimbits-articlequestions.list.headline"|trans }}
+                                </button>
+                            </h2>
+                        </div>
+                        <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo"
+                             data-parent="#accordionExample">
+                            <div class="card-body pl-3 pr-3 pt-4 pb-1">
+
+                                {% block page_product_detail_articlquestions_tab_questionslist_wrapper %}
+                                    <div class="product-detail-articlquestions-questionslist">
+                                        {% sw_include '@Storefront/storefront/page/product-detail/articlequestions/articlequestions-list.html.twig' %}
+                                    </div>
+                                {% endblock %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endblock %}
+        </div>
+    {% endblock %}
+{% endblock %}

@@ -1,0 +1,57 @@
+{% block lzyt_enev_clone_edit_modal %}
+    <sw-modal class="lzyt_enev_clone_edit_modal"
+              :title="$tc('lzyt-enev.modal.duplicate.title')"
+              :isLoading="isLoading"
+              :closable="false"
+              @modal-close="onCancel">
+        {% block lzyt_enev_clone_edit_modal_text %}
+            <p>
+                {{ $tc('lzyt-enev.modal.duplicate.text') }}<br><br>
+            </p>
+        {% endblock %}
+        {% block lzyt_enev_clone_edit_modal_general %}
+            <sw-entity-single-select
+                ref="lzytEnevProductSelection"
+                :label="$tc('lzyt-enev.elements.product')"
+                :placeholder="$tc('sw-cms.elements.productBox.config.placeholder.selection')"
+                entity="product"
+                @input="onProductChange"
+                v-model="productId"
+                class="sw-field"
+                required>
+                <template #selection-label-property="{ item }">
+                    <slot name="selection-label-property" v-bind="{ item }">
+                        <sw-product-variant-info :variations="item.variation">
+                            {{ item.translated.name || item.name }} {{ item.productNumber }}
+                        </sw-product-variant-info>
+                    </slot>
+                </template>
+                <template #result-item="{ item, index }">
+                    <slot name="result-item" v-bind="{ item, index }">
+                        <li is="sw-select-result" v-bind="{ item, index }">
+                            <sw-product-variant-info :variations="item.variation">
+                                {{ item.translated.name || item.name }} {{ item.productNumber }}
+                            </sw-product-variant-info>
+                        </li>
+                    </slot>
+                </template>
+            </sw-entity-single-select>
+        {% endblock %}
+
+        {% block lzyt_enev_clone_edit_modal_footer %}
+            <template #modal-footer>
+                {% block lzyt_enev_clone_edit_modal_footer_cancel %}
+                    <sw-button size="small" :disabled="isLoading" @click="onCancel">
+                        {{ $tc('global.sw-modal.labelClose') }}
+                    </sw-button>
+                {% endblock %}
+
+                {% block lzyt_enev_clone_edit_modal_footer_save %}
+                    <sw-button variant="primary" size="small" :disabled="disabledSave" @click="onSave">
+                        {{ $tc('global.default.save') }}
+                    </sw-button>
+                {% endblock %}
+            </template>
+        {% endblock %}
+    </sw-modal>
+{% endblock %}

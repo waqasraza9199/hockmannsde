@@ -1,0 +1,41 @@
+{
+    "name": "webla_intelligentcrossselling/webla_intelligentcrossselling",
+    "description": "Shopware 6 Plugin für Intelligentes Cross-Selling",
+    "type": "shopware-platform-plugin",
+    "license": "proprietary",
+    "version": "1.0.12",
+    "authors": [
+        {
+            "name": "Web Labels Webdesign GmbH"
+        },
+        {
+            "name": "BuildIT Consulting"
+        }
+    ],
+    "extra": {
+        "shopware-plugin-class": "WebLa_IntelligentCrossSelling\\WebLa_IntelligentCrossSelling",
+        "author": "Web Labels Webdesign GmbH & BuildIT Consulting",
+        "label": {
+            "de-DE": "Shopware 6 Plugin für Intelligentes Cross-Selling",
+            "en-GB": "Shopware 6 plugin for intelligent cross-selling"
+        },
+        "manufacturerLink": {
+            "de-DE": "https://store.shopware.com/web-labels-webdesign-gmbh.html",
+            "en-GB": "https://store.shopware.com/web-labels-webdesign-gmbh.html"
+        }
+    },
+    "require": {
+        "shopware/core": "^6.3.5.3"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~8.3.4",
+        "phpstan/phpstan": "^0.12.18",
+        "shopware/core": "*",
+        "shopware/storefront": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "WebLa_IntelligentCrossSelling\\": "src/"
+        }
+    }
+}

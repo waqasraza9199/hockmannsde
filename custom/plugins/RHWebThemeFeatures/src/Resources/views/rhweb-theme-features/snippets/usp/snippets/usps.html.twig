@@ -1,0 +1,55 @@
+{% block rhweb_theme_features_header_usp_bar %}
+
+    {% set uspWidth = config('RHWebThemeFeatures.config.RhwebThemeFeaturesConversionWidth') %}
+    {% set uspActivateMobile = config('RHWebThemeFeatures.config.RhwebThemeFeaturesConversionActivateLagerScreens') %}
+    {% set uspBackgroundColor = config('RHWebThemeFeatures.config.RhwebThemeFeaturesConversionBackgroundColor') %}
+    {% set uspTextColor = config('RHWebThemeFeatures.config.RhwebThemeFeaturesConversionTextColor') %}
+    {% set uspIconColor = config('RHWebThemeFeatures.config.RhwebThemeFeaturesConversionIconColor') %}
+
+    <div class="{% if uspActivateMobile %}d-none d-lg-block {% endif %}rhweb-usp-bar py-2 {{ location }}" style="background-color:{{ uspBackgroundColor }}; color:{{ uspTextColor }}">
+        <div class="{% if uspWidth == 'full' %}container-fluid{% else %}container{% endif %}">
+            <div class="row rhweb-usp-container">
+                <div class="col-md-6 col-lg-3 rhweb-usp-box">
+                    <div class="rhweb-usp-content">
+                        <div class="usp-icon" style="color:{{ uspIconColor }}">
+                            <i class="{{ 'rhwebThemeFeatures.usp.one.iconClass'|trans|raw }}" aria-hidden="true"></i>
+                        </div>
+                        <div class="usp-title">
+                            {{ 'rhwebThemeFeatures.usp.one.title'|trans|raw }}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 rhweb-usp-box">
+                    <div class="rhweb-usp-content">
+                        <div class="usp-icon" style="color:{{ uspIconColor }}">
+                            <i class="{{ 'rhwebThemeFeatures.usp.two.iconClass'|trans|raw }}" aria-hidden="true"></i>
+                        </div>
+                        <div class="usp-title">
+                            {{ 'rhwebThemeFeatures.usp.two.title'|trans|raw }}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 rhweb-usp-box">
+                    <div class="rhweb-usp-content">
+                        <div class="usp-icon" style="color:{{ uspIconColor }}">
+                            <i class="{{ 'rhwebThemeFeatures.usp.three.iconClass'|trans|raw }}" aria-hidden="true"></i>
+                        </div>
+                        <div class="usp-title">
+                            {{ 'rhwebThemeFeatures.usp.three.title'|trans|raw }}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 rhweb-usp-box">
+                    <div class="rhweb-usp-content">
+                        <div class="usp-icon" style="color:{{ uspIconColor }}">
+                            <i class="{{ 'rhwebThemeFeatures.usp.four.iconClass'|trans|raw }}" aria-hidden="true"></i>
+                        </div>
+                        <div class="usp-title">
+                            {{ 'rhwebThemeFeatures.usp.four.title'|trans|raw }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

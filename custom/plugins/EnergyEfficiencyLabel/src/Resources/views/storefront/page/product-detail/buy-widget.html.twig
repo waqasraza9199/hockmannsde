@@ -1,0 +1,9 @@
+{% sw_extends '@Storefront/storefront/page/product-detail/buy-widget.html.twig' %}
+
+{% block page_product_detail_ordernumber_container %}
+    {{ parent() }}
+
+    {% block page_product_detail_lzyt_enev_arrow %}
+        {% sw_include '@Storefront/storefront/component/lzyt-enev/product-detail.html.twig' %}
+    {% endblock %}
+{% endblock %}

@@ -1,0 +1,24 @@
+{
+    "sw-cms": {
+        "elements": {
+            "rhweb-shop-the-look": {
+                "config": {
+                    "tab": {
+                        "products": "Products",
+                        "image": "Image/Upload"
+                    },
+                    "label": {
+                        "selectProducts": "Select Products",
+                        "leftMargin": "Left Margin (in px or %)",
+                        "topMargin": "Top Margin (in px or %)"
+                    },
+                    "helpText": {
+                        "selectProducts": "Select the products that you want as display points above the image.",
+                        "leftMargin": "Select here the distance of the display point from the left edge of the image.",
+                        "topMargin": "Select here the distance of the display point from the top of the image."
+                    }
+                }
+            }
+        }
+    }
+}

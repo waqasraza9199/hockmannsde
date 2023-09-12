@@ -1,0 +1,19 @@
+.cross-sell-matrix-detail {
+    position: relative;
+
+    .sw-field {
+        margin-bottom: 0;
+    }
+
+    .sw-field--switch {
+        margin-bottom: 0;
+    }
+
+    .cross-sell-matrix-detail__switches {
+        display: flex;
+
+        .sw-field {
+            margin-right: 20px;
+        }
+    }
+}

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services https://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+
+        <service id="LZYT8\BetterInvoice\Service\ConfigurationService" autowire="true">
+            <argument type="service" id="Shopware\Core\System\SystemConfig\SystemConfigService"/>
+            <tag name="controller.service_arguments"/>
+        </service>
+
+        <service id="LZYT8\BetterInvoice\Service\LicenseService" autowire="true">
+            <argument type="service" id="sales_channel.repository"/>
+            <argument type="service" id="LZYT8\BetterInvoice\Service\ConfigurationService"/>
+            <argument type="service" id="better_invoice.filesystem.private"/>
+            <tag name="controller.service_arguments"/>
+        </service>
+
+        <service id="LZYT8\BetterInvoice\Subscriber\DocumentSubscriber">
+            <argument type="service" id="LZYT8\BetterInvoice\Service\FetchService" />
+            <tag name="kernel.event_subscriber"/>
+        </service>
+
+        <service id="LZYT8\BetterInvoice\Subscriber\CheckoutFinishSubscriber">
+            <argument type="service" id="LZYT8\BetterInvoice\Service\FetchService" />
+            <argument type="service" id="Shopware\Core\Checkout\Document\Service\DocumentConfigLoader"/>
+            <argument type="service" id="document.repository"/>
+            <tag name="kernel.event_subscriber"/>
+        </service>
+
+        <service id="LZYT8\BetterInvoice\Core\Content\CustomDrop\CustomDropDefinition">
+            <tag name="shopware.entity.definition" entity="lzyt_custom_drop" />
+        </service>
+
+        <service id="LZYT8\BetterInvoice\Core\Rule\ShopSalesRule">
+            <tag name="shopware.rule.definition" />
+        </service>
+
+        <service id="LZYT8\BetterInvoice\Service\FetchService">
+            <argument type="service" id="lzyt_custom_drop.repository" />
+            <argument type="service" id="Shopware\Core\System\SalesChannel\Context\SalesChannelContextRestorer" />
+        </service>
+
+        <service id="LZYT8\BetterInvoice\Service\AddDataToMails" decorates="Shopware\Core\Content\Mail\Service\MailService">
+            <argument type="service" id="LZYT8\BetterInvoice\Service\AddDataToMails.inner" />
+            <argument type="service" id="mail_template.repository"/>
+            <argument type="service" id="order.repository"/>
+            <argument type="service" id="media.repository"/>
+            <argument type="service" id="Shopware\Core\System\SystemConfig\SystemConfigService" />
+            <argument type="service" id="LZYT8\BetterInvoice\Service\FetchService" />
+            <argument type="service" id="LZYT8\BetterInvoice\Service\LicenseService"/>
+        </service>
+
+        <service id="LZYT8\BetterInvoice\Service\SalesChannelContextFactoryDecorator" decorates="Shopware\Core\System\SalesChannel\Context\SalesChannelContextFactory">
+            <argument type="service" id="LZYT8\BetterInvoice\Service\SalesChannelContextFactoryDecorator.inner" />
+            <argument type="service" id="order.repository" />
+        </service>
+
+        <service id="LZYT8\BetterInvoice\Controller\LicenseController" public="true">
+            <argument type="service" id="LZYT8\BetterInvoice\Service\LicenseService"/>
+            <call method="setContainer">
+                <argument type="service" id="service_container"/>
+            </call>
+        </service>
+
+    </services>
+
+</container>

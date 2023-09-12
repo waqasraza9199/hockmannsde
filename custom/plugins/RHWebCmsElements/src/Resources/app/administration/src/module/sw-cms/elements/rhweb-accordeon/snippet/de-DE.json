@@ -1,0 +1,38 @@
+{
+    "sw-cms": {
+        "elements": {
+            "rhweb-accordeon": {
+                "config": {
+                    "tab": {
+                        "general": "Allgemein",
+                        "content": "Inhalt"
+                    },
+                    "label": {
+                        "headline": "Überschrift",
+                        "description": "Beschreibung über den Einträgen",
+                        "displayMode": "Anzeigemodus",
+                        "displayModeSingle": "Nur ein Eintrag ausklappbar",
+                        "displayModeMulti": "Mehrere Einträge ausklappbar",
+                        "entry": {
+                            "add": "Neuer Eintrag",
+                            "remove": "Eintrag löschen",
+                            "headline": "Überschrift des Eintrags",
+                            "content": "Inhalt des Eintrags"
+                        }
+                    },
+                    "helpText": {
+                        "headline": "Setzen Sie hier die Überschrift des Akkordeons.<br><br>Wenn Sie dieses Feld leer lassen, wird keine Überschrift angezeigt.",
+                        "displayMode": "Hier können Sie wählen, wie das Akkordeon ausgespielt werden soll.",
+                        "verticalAlign" : "Hier können Sie einstellen, wie die vertikale Ausrichtung des Elements in der Storefront berechnet werden soll.<br><br><b>Tipp:</b><br>Wenn Sie das Akkordeon neben einem anderen, höheren Element platzieren, sieht es in der Regel schöner aus, wenn das Akkordeon vertikal zentriert ist.",
+                        "entry": {
+                            "headline": "Dies ist die anklickbare Überschrift des Eintrages.<br><br><b>Tipp:</b><br>Diese Überschrift sollte zum 'Weiterlesen' animieren, da der Inhalt erst bei Klick sichtbar wird."
+                        }
+                    },
+                    "placeholder": {
+                        "displayMode": "Anzeigemodus"
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,16 @@
+{% block component_lzyt_enev_product_detail %}
+    {% if page.product.extensions.lzytEnev.total > 0 %}
+        <div class="lzyt-enev-product-detail">
+            {% for lzytEnev in page.product.extensions.lzytEnev %}
+                {% block component_lzyt_enev_product_detail_arrow %}
+                    <div class="lzyt-enev lzyt-enev-arrow2021 d-flex align-items-center" itemprop="hasEnergyConsumptionDetails" itemtype="https://schema.org/EnergyConsumptionDetails" itemscope="">
+                        {% sw_include '@Storefront/storefront/component/lzyt-enev/arrow.html.twig' with {enev: lzytEnev} %}
+                        <meta itemprop="energyEfficiencyScaleMax" content="https://schema.org/EUEnergyEfficiencyCategory{{ lzytEnev.spectrumTo|upper  }}">
+                        <meta itemprop="energyEfficiencyScaleMin" content="https://schema.org/EUEnergyEfficiencyCategory{{ lzytEnev.spectrumFrom|upper  }}">
+                        <meta itemprop="hasEnergyEfficiencyCategory" content="https://schema.org/EUEnergyEfficiencyCategory{{ lzytEnev.class|upper  }}">
+                    </div>
+                {% endblock %}
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endblock %}

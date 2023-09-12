@@ -1,0 +1,113 @@
+{% block cross_sell_matrix_index %}
+    <sw-page class="cross-sell-matrix-list">
+
+        {% block cross_sell_matrix_list_smart_bar_actions %}
+            <template slot="smart-bar-actions">
+            {% block cross_sell_matrix_list_smart_bar_actions_save %}
+                    <sw-button class="cross-sell-matrix-list__button-save" variant="primary" @click="onSave">
+                        {{ $tc('cross-sell-matrix.list.buttonSaveCrossSellSettings') }}
+                    </sw-button>
+                {% endblock %}
+                {% block cross_sell_matrix_list_smart_bar_actions_add %}
+                    <sw-button class="cross-sell-matrix-list__button-create" variant="primary"
+                        :router-link="{ name: 'cross.sell.matrix.create' }">
+                        {{ $tc('cross-sell-matrix.list.buttonAddCrossSellWeight') }}
+                    </sw-button>
+                {% endblock %}
+            </template>
+        {% endblock %}
+
+        {% block cross_sell_matrix_list_content %}
+            <sw-card-view slot="content" v-if="!isLoading">
+                {% block cross_sell_matrix_list_settngs_card %}
+                    <sw-card v-if="!isLoading" value-identifier="cross-sell-matrix-list-settings" :title="$tc('cross-sell-matrix.list.settingsCardHeader')">
+                        <div class="cross-selling-wrapper">
+                            <sw-text-field :placeholder="$tc('cross-sell-matrix.list.labelTitle')" :copyable="true" :copyableTooltip="false" v-model="settings.title" :label="$tc('cross-sell-matrix.list.labelTitle')">
+                            </sw-text-field>
+                            <sw-number-field v-model="settings.maxProducts" numberType="int" :step="1" :min="1" :max="100" :value="null" :digits="2" :fillDigits="false" :allowEmpty="false">
+                                <template v-slot:label>{{$tc('cross-sell-matrix.list.labelMaxProducts')}}</template>
+                            </sw-number-field>
+                            <sw-switch-field v-model="settings.active" :label="$tc('cross-sell-matrix.list.labelActive')"></sw-switch-field>
+                            <sw-switch-field v-model="settings.onlyCategory" :label="$tc('cross-sell-matrix.list.labelOnlyCategory')"></sw-switch-field>
+                            <sw-switch-field v-model="settings.showTitle" :label="$tc('cross-sell-matrix.list.labelShowTitle')"></sw-switch-field>
+                        </div>
+                    </sw-card>
+                {% endblock %}
+                {% block cross_sell_matrix_list_content_card %}
+                    <sw-card value-identifier="cross-sell-matrix-list-content" :title="$tc('cross-sell-matrix.list.weightCardHeader')">
+                        <template #grid>
+                            {% block cross_sell_matrix_list_grid %}
+                                <sw-data-grid
+                                    :dataSource="dataSource"
+                                    :items="items"
+                                    :columns="columns"
+                                    :showSelection="false"
+                                    :showSettings="true"
+                                    :allowInlineEdit="true"
+                                    :repository="crossSellingPropertyGroupRepository"
+                                    :isLoading="isLoading"
+                                    :allowColumnEdit="true"
+                                    @inline-edit-save="saveItem"
+                                    >
+                                        {% block cross_sell_matrix_list_column %}
+                                            <template
+                                                slot="weight"
+                                                slot-scope="{ item, isInlineEdit }"
+                                            >
+                                                <template v-if="isInlineEdit">
+                                                   <sw-number-field numberType="int" :step="1" :min="1" :max="100" :digits="0" :fillDigits="false" :allowEmpty="false" :placeholder="$tc('cross-sell-matrix.entity.weightLabel')"
+                                                        v-model="item.weight"
+                                                        required>
+                                                </sw-number-field>
+                                                </template>
+                                                <template v-else>
+                                                    {{item.weight}}
+                                                </template>
+                                            </template>
+                                        {% endblock %}
+                                        {% block cross_sell_matrix_list_action %}
+                                            <template #actions="{item}">
+                                                <sw-context-menu-item @click="onShowDeleteModal(item)">
+                                                    Delete
+                                                </sw-context-menu-item>
+                                            </template>
+                                        {% endblock %}
+                                </sw-data-grid>
+                            {% endblock %}
+                        </template>
+                    </sw-card>
+                {% endblock %}
+                {% block cross_sell_matrix_list_confirm %}
+                    <sw-modal
+                        v-if="codeDeleteModal !== null"
+                        class="cross-sell-matrix_confirm-delete-modal"
+                        variant="small"
+                        @modal-close="onCloseDeleteModal"
+                        :title="$tc('cross-sell-matrix.form.confirmDelete')"> 
+                        {{ $tc('cross-sell-matrix.form.textDeleteConfirm', 0, { property: codeDeleteModal.property_group.translated.name}) }}
+                        <template #modal-footer>
+                                {% block cross_sell_matrix_list_confirm_cancel %}
+                                    <sw-button
+                                        @click="onCloseDeleteModal"
+                                        variant="context"
+                                        size="small">
+                                        {{ $tc('cross-sell-matrix.form.deleteButtonCancel') }}
+                                    </sw-button>
+                                {% endblock %}
+
+                                {% block cross_sell_matrix_list_confirm_delete %}
+                                    <sw-button
+                                        class="cross-sell-matrix__delete-button"
+                                        size="small"
+                                        variant="danger"
+                                        @click="deleteRule">
+                                        {{ $tc('cross-sell-matrix.form.deleteButtonDelete') }}
+                                    </sw-button>
+                                {% endblock %}
+                            </template>
+                    </sw-modal>
+                {% endblock %}
+            </sw-card-view>
+        {% endblock %}
+    </sw-page>
+{% endblock %}

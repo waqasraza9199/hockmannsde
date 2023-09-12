@@ -1,0 +1,44 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+
+        <service id="LZYT8\ApiMailer\Service\ConfigurationService" autowire="true">
+            <argument type="service" id="Shopware\Core\System\SystemConfig\SystemConfigService"/>
+            <tag name="controller.service_arguments"/>
+        </service>
+
+        <service id="LZYT8\ApiMailer\Service\LicenseService" autowire="true">
+            <argument type="service" id="sales_channel.repository"/>
+            <argument type="service" id="LZYT8\ApiMailer\Service\ConfigurationService"/>
+            <argument type="service" id="api_mailer.filesystem.private"/>
+            <tag name="controller.service_arguments"/>
+        </service>
+
+        <service id="LZYT8\ApiMailer\Service\SendService" autowire="true">
+            <argument type="service" id="LZYT8\ApiMailer\Service\ConfigurationService"/>
+            <argument id="logger" type="service" />
+            <tag name="controller.service_arguments"/>
+        </service>
+
+        <service id="LZYT8\ApiMailer\Subscriber\MailSubscriber">
+            <argument type="service" id="Shopware\Core\Content\Mail\Service\MailAttachmentsBuilder"/>
+            <argument type="service" id="document.repository" />
+            <argument type="service" id="LZYT8\ApiMailer\Service\ConfigurationService"/>
+            <argument type="service" id="LZYT8\ApiMailer\Service\LicenseService"/>
+            <argument type="service" id="LZYT8\ApiMailer\Service\SendService"/>
+            <argument id="logger" type="service" />
+            <tag name="kernel.event_subscriber"/>
+        </service>
+
+        <service id="LZYT8\ApiMailer\Controller\LicenseController" public="true">
+            <argument type="service" id="LZYT8\ApiMailer\Service\LicenseService"/>
+            <call method="setContainer">
+                <argument type="service" id="service_container"/>
+            </call>
+        </service>
+
+    </services>
+</container>

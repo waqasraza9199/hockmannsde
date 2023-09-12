@@ -1,0 +1,30 @@
+@import "separators/scratch";
+@import "separators/toothed";
+@import "separators/waves";
+@import "separators/papercut";
+@import "separators/clouds";
+@import "separators/paper-ripped";
+
+[class*="rhweb-separator-"] {
+    @each $color, $value in $theme-colors {
+        &.bg-rhweb-separator-#{$color} {
+            &:after, &:before {
+                background-color: $value;
+            }
+        }
+    }
+
+    @each $color, $value in $foundation-gradient-colors {
+        &.bg-rhweb-separator-#{$color} {
+            &:after, &:before {
+                background: $value;
+            }
+        }
+    }
+}
+
+.rhweb-section-has-background{
+    .cms-block{
+        background-color: transparent !important;
+    }
+}

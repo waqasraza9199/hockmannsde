@@ -1,0 +1,59 @@
+{
+  "nb-articlequestions": {
+    "config": {
+      "message": {
+        "titlesuccess": "Erfolg",
+        "messagesuccess": "Recaptcha funktioniert!",
+        "titlefail": "Error"
+      },
+      "testbutton": {
+        "title": "Test reCaptcha"
+      }
+    },
+    "detail": {
+      "cardTitlearticlequestionCustomerQuestion": "Kundenfrage & Daten",
+      "cardTitlearticlequestionAdminData": "Administratoren Antwort",
+      "basedata": {
+        "date": "Datum",
+        "salutation": "Anrede",
+        "firstname": "Vorname",
+        "surname": "Nachname",
+        "mail": "E-Mail",
+        "company": "Firma",
+        "question": "Frage",
+        "articleName": "Artikelname",
+        "linktoproduct": "Zum Produkt"
+      },
+      "admindata": {
+        "active": "Frage & Antwort sind im Shop sichtbar?",
+        "answer": "Antwort"
+      },
+      "buttonCancel": "Zurück",
+      "buttonSave": "Speichern",
+      "textHeadline": "Frage zum Artikel",
+      "successMessage": {
+        "noti_title": "Gespeichert",
+        "noti_message": "Daten gespeichert",
+        "mail_noti_title": "E-Mail gesendet",
+        "mail_noti_message": "Antwort E-Mail an Kunden verschickt."
+      },
+      "mailsubject": "Antwort auf Ihre Frage zum Artikel",
+      "mailsender": "Frage zum Artikel"
+    },
+    "list": {
+      "column_created_at": "Datum",
+      "column_active": "Sichtbar",
+      "column_salutation": "Anrede",
+      "column_firstname": "Vorname",
+      "column_surname": "Nachname",
+      "column_mail": "E-Mail",
+      "column_company": "Firma",
+      "column_question": "Firma",
+      "column_answer": "Antwort",
+      "headline": "Fragen zum Artikel"
+    },
+    "menu": {
+      "label": "Fragen zum Artikel"
+    }
+  }
+}

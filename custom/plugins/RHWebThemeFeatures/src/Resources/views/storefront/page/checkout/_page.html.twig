@@ -1,0 +1,33 @@
+{% sw_extends '@Storefront/storefront/page/checkout/_page.html.twig' %}
+
+{% block base_main_inner %}
+    {% if config('RHWebThemeFeatures.config.rhwebActivateCustomCheckout') == 'custom' and controllerAction != 'cartPage' %}
+        <div class="rhweb-custom-checkout-container">
+            {% block base_main_container %}
+                {{ parent() }}
+            {% endblock %}
+        </div>
+    {% else %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}
+
+{% block page_checkout_container %}
+    {% if config('RHWebThemeFeatures.config.rhwebActivateCustomCheckout') == 'custom' and controllerAction != 'cartPage' %}
+        <div class="rhweb-custom-checkout-container-inner">
+            {% block page_checkout_main %}
+                {% block base_flashbags_checkout %}
+                    {{ parent() }}
+                {% endblock %}
+
+                <div class="checkout-main">
+                    {% block page_checkout_main_content %}{% endblock %}
+                </div>
+            {% endblock %}
+        </div>
+    {% else %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}
+
+

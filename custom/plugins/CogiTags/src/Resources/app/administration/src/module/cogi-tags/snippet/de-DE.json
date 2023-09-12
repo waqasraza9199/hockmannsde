@@ -1,0 +1,34 @@
+{
+    "cogi-tags": {
+        "general": {
+            "mainMenuItemGeneral": "Tags",
+            "descriptionTextModule": "Tags bearbeiten"
+        },
+        "list": {
+            "addButtonText": "Tag hinzufügen",
+            "id": "ID",
+            "labelName": "Name",
+            "labelCreatedAt": "Erstelldatum",
+            "contextMenuEdit": "Bearbeiten",
+            "contextMenuDelete": "Löschen",
+            "messageAddedSuccess": "Das Tag wurde erfolgreich hinzugefügt.",
+            "messageDeleteSuccess": "Das Tag wurde erfolgreich gelöscht.",
+            "messageAlreadyExistsError": "Ein Tag mit dieser Bezeichnung existiert bereits.",
+            "messageDeleteError": "Das Tag ist noch mit Elementen verknüpft.",
+            "refreshButtonText": "Aktualisieren",
+            "exportCSVButtonText": "Als CSV exportieren"
+        },
+        "modal": {
+            "confirmTitle": "Tag löschen",
+            "confirmText" : "Möchten Sie dieses Tag wirklich löschen?",
+            "buttonCancel": "Abbrechen",
+            "buttonDelete": "Löschen"
+        },
+        "detail": {
+            "nameLabel": "Name",
+            "cancelButtonText": "Abbrechen",
+            "saveButtonText": "Speichern",
+            "errorTitle": "Fehler beim Speichern des Tags"
+        }
+    }
+}

@@ -1,0 +1,17 @@
+{% sw_extends '@Storefront/storefront/layout/footer/footer.html.twig' %}
+
+{% block rhweb_layout_footer_copyright %}
+    {% if config('RHWebThemeFeatures.config.RhwebThemeFeaturesActivateCopyright') %}
+        {% sw_include '@Storefront/rhweb-theme-features/snippets/footer/rhweb-copyright.html.twig' %}
+    {% else %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}
+
+{% block layout_footer_copyright %}
+    {% if config('RHWebThemeFeatures.config.RhwebThemeFeaturesActivateCopyright') %}
+        {% sw_include '@Storefront/rhweb-theme-features/snippets/copyright/index.html.twig' %}
+    {% else %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}

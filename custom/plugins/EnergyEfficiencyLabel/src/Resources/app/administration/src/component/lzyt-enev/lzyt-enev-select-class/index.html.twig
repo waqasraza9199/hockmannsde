@@ -1,0 +1,10 @@
+{% block lzyt_enev_select_class %}
+    <sw-single-select
+        v-model="currentValue"
+        :label="label"
+        :options="options"
+        labelProperty="name"
+        valueProperty="id"
+        :isLoading="isLoading"
+    ></sw-single-select>
+{% endblock %}

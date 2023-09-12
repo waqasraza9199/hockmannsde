@@ -1,0 +1,198 @@
+{% block rhweb_contact_widget_container %}
+
+    {% set hideMobile = config('RHWebThemeFeatures.config.RhwebThemeFeaturesContactWidgetHideMobile') %}
+
+    {% set xPosition = config('RHWebThemeFeatures.config.RhwebThemeFeaturesContactWidgetX') %}
+    {% set yPosition = config('RHWebThemeFeatures.config.RhwebThemeFeaturesContactWidgetY') %}
+
+    {% set actEmail = config('RHWebThemeFeatures.config.RhwebThemeFeaturesContactWidgetActivateEmail') %}
+    {% set actPhone = config('RHWebThemeFeatures.config.RhwebThemeFeaturesContactWidgetActivatePhone') %}
+    {% set actFax = config('RHWebThemeFeatures.config.RhwebThemeFeaturesContactWidgetActivateFax') %}
+    {% set actLocation = config('RHWebThemeFeatures.config.RhwebThemeFeaturesContactWidgetActivateLocation') %}
+    {% set actSocial = config('RHWebThemeFeatures.config.RhwebThemeFeaturesContactWidgetActivateSocial') %}
+
+    {% set widgetMediaId = config('RHWebThemeFeatures.config.RhwebThemeFeaturesContactWidgetMedia') %}
+    {% if widgetMediaId %}
+        {% set mediaCollection = searchMedia([widgetMediaId], context.context) %}
+        {% set widgetMedia = mediaCollection.get(widgetMediaId) %}
+    {% endif %}
+
+    {% set urlGoogleMaps = config('RHWebThemeFeatures.config.RhwebThemeFeaturesContactWidgetGoogleMapsLink') %}
+    {% set urlFacebook = config('RHWebThemeFeatures.config.RhwebThemeFeaturesContactWidgetFacebook') %}
+    {% set urlInstagram = config('RHWebThemeFeatures.config.RhwebThemeFeaturesContactWidgetInstagram') %}
+    {% set urlWhatsapp = config('RHWebThemeFeatures.config.RhwebThemeFeaturesContactWidgetWhatsapp') %}
+    {% set urlTwitter = config('RHWebThemeFeatures.config.RhwebThemeFeaturesContactWidgetTwitter') %}
+    {% set urlYoutube = config('RHWebThemeFeatures.config.RhwebThemeFeaturesContactWidgetYoutube') %}
+    {% set urlLinkedin = config('RHWebThemeFeatures.config.RhwebThemeFeaturesContactWidgetLinkedin') %}
+    {% set urlXing = config('RHWebThemeFeatures.config.RhwebThemeFeaturesContactWidgetXing') %}
+
+
+    <div class="{% if hideMobile %}d-none d-lg-block {% endif %}rhweb-contact-widget-container {% if xPosition %}x-{{ xPosition }}{% else%}x-right{% endif%} shadow">
+        <div id="rhweb-contact-widget-opener" class="btn btn-primary rhweb-contact-widget-opener">
+            {{ 'rhwebThemeFeatures.contactWidget.title'|trans|raw }}
+        </div>
+        <div class="rhweb-contact-widget-content">
+            <div class="container">
+                <div class="row align-items-center py-3{% if actSocial %} border-bottom{% endif %}">
+                    {% block rhweb_contact_widget_container_media %}
+                        {% if widgetMediaId %}
+                            <div class="col-5 px-3">
+                                <img src="{{ widgetMedia.url }}" {% if widgetMedia.translated.alt %}alt="{{ widgetMedia.translated.alt }}"{% endif %} {% if widgetMedia.translated.title %}title="{{ widgetMedia.translated.title }}"{% endif %}>
+                            </div>
+                        {% endif %}
+                    {% endblock %}
+                    {% block rhweb_contact_widget_container_contact %}
+                        {% if actEmail or actPhone or actFax %}
+                            <div class="{% if widgetMediaId %}col-7{% else %}col-12{% endif %} px-2">
+                                {% block rhweb_contact_widget_container_contact_mail %}
+                                    {% if actEmail %}
+                                        <div class="contact-row{% if not widgetMediaId %} justify-content-center{% endif %}">
+                                            <span class="contact-icon">
+                                                {% sw_icon 'envelope-solid' style {
+                                                    'namespace': 'RHWebThemeFeatures',
+                                                    'pack': 'fontawesome'
+                                                } %}
+                                            </span>
+                                            <span class="contact-text">
+                                                <a href="mailto:{{ 'rhwebThemeFeatures.contactWidget.email'|trans|raw }}">{{ 'rhwebThemeFeatures.contactWidget.email'|trans|raw }}</a>
+                                            </span>
+                                        </div>
+                                    {% endif %}
+                                {% endblock %}
+                                {% block rhweb_contact_widget_container_contact_phone %}
+                                    {% if actPhone %}
+                                        <div class="contact-row{% if not widgetMediaId %} justify-content-center{% endif %}">
+                                            <span class="contact-icon">
+                                                {% sw_icon 'phone-solid' style {
+                                                    'namespace': 'RHWebThemeFeatures',
+                                                    'pack': 'fontawesome'
+                                                } %}
+                                            </span>
+                                            <span class="contact-text">
+                                                {{ 'rhwebThemeFeatures.contactWidget.phone'|trans|raw }}
+                                            </span>
+                                        </div>
+                                    {% endif %}
+                                {% endblock %}
+                                {% block rhweb_contact_widget_container_contact_fax %}
+                                    {% if actFax %}
+                                        <div class="contact-row{% if not widgetMediaId %} justify-content-center{% endif %}">
+                                            <span class="contact-icon">
+                                                {% sw_icon 'fax-solid' style {
+                                                    'namespace': 'RHWebThemeFeatures',
+                                                    'pack': 'fontawesome'
+                                                } %}
+                                            </span>
+                                            <span class="contact-text">
+                                                {{ 'rhwebThemeFeatures.contactWidget.fax'|trans|raw }}
+                                            </span>
+                                        </div>
+                                    {% endif %}
+                                {% endblock %}
+
+                                {% block rhweb_contact_widget_container_contact_location %}
+                                    {% if actLocation %}
+                                        <div class="contact-row{% if not widgetMediaId %} justify-content-center{% endif %}">
+                                            <span class="contact-icon">
+                                                {% sw_icon 'location-dot-solid' style {
+                                                    'namespace': 'RHWebThemeFeatures',
+                                                    'pack': 'fontawesome'
+                                                } %}
+                                            </span>
+                                            <span class="contact-text">
+                                                <a href="{{ urlGoogleMaps }}" title="Google Maps" target="_blank" aria-label="Google Maps" rel="noopener">{{ 'rhwebThemeFeatures.contactWidget.googleMaps'|trans|raw }}</a>
+                                            </span>
+                                        </div>
+                                    {% endif %}
+                                {% endblock %}
+                            </div>
+                        {% endif %}
+                    {% endblock %}
+                </div>
+
+
+                {% block rhweb_contact_widget_container_social %}
+                    {% if actSocial %}
+                        <div class="rhweb-contact-widget-social-media py-3">
+                            {% block rhweb_contact_widget_container_social_facebook %}
+                                {% if urlFacebook %}
+                                    <a class="rhweb-contact-widget-social-icon facebook" aria-label="Facebook" title="Facebook" href="{{ urlFacebook }}" target="_blank" rel="noopener">
+                                        {% sw_icon 'facebook-f-brands' style {
+                                            'namespace': 'RHWebThemeFeatures',
+                                            'pack': 'fontawesome'
+                                        } %}
+                                    </a>
+                                {% endif %}
+                            {% endblock %}
+
+                            {% block rhweb_contact_widget_container_social_instagram %}
+                                {% if urlInstagram %}
+                                    <a class="rhweb-contact-widget-social-icon instagram" aria-label="Instagram" title="Instagram" href="{{ urlInstagram }}" target="_blank" rel="noopener">
+                                        {% sw_icon 'instagram-brands' style {
+                                            'namespace': 'RHWebThemeFeatures',
+                                            'pack': 'fontawesome'
+                                        } %}
+                                    </a>
+                                {% endif %}
+                            {% endblock %}
+
+                            {% block rhweb_contact_widget_container_social_whatsapp %}
+                                {% if urlWhatsapp %}
+                                    <a class="rhweb-contact-widget-social-icon whatsapp" aria-label="WhatsApp" title="WhatsApp" href="{{ urlWhatsapp }}" target="_blank" rel="noopener">
+                                        {% sw_icon 'whatsapp-brands' style {
+                                            'namespace': 'RHWebThemeFeatures',
+                                            'pack': 'fontawesome'
+                                        } %}
+                                    </a>
+                                {% endif %}
+                            {% endblock %}
+
+                            {% block rhweb_contact_widget_container_social_twitter %}
+                                {% if urlTwitter %}
+                                    <a class="rhweb-contact-widget-social-icon twitter" aria-label="Twitter" title="Twitter" href="{{ urlTwitter }}" target="_blank" rel="noopener">
+                                        {% sw_icon 'twitter-brands' style {
+                                            'namespace': 'RHWebThemeFeatures',
+                                            'pack': 'fontawesome'
+                                        } %}
+                                    </a>
+                                {% endif %}
+                            {% endblock %}
+
+                            {% block rhweb_contact_widget_container_social_youtube %}
+                                {% if urlYoutube %}
+                                    <a class="rhweb-contact-widget-social-icon youtube" aria-label="YouTube" title="YouTube" href="{{ urlYoutube }}" target="_blank" rel="noopener">
+                                        {% sw_icon 'youtube-brands' style {
+                                            'namespace': 'RHWebThemeFeatures',
+                                            'pack': 'fontawesome'
+                                        } %}
+                                    </a>
+                                {% endif %}
+                            {% endblock %}
+
+                            {% block rhweb_contact_widget_container_social_linkedin %}
+                                {% if urlLinkedin %}
+                                    <a class="rhweb-contact-widget-social-icon linkedin" aria-label="LinkedIn" title="LinkedIn" href="{{ urlLinkedin }}" target="_blank" rel="noopener">
+                                        {% sw_icon 'linkedin-in-brands' style {
+                                            'namespace': 'RHWebThemeFeatures',
+                                            'pack': 'fontawesome'
+                                        } %}
+                                    </a>
+                                {% endif %}
+                            {% endblock %}
+
+                            {% block rhweb_contact_widget_container_social_xing %}
+                                {% if urlXing %}
+                                    <a class="rhweb-contact-widget-social-icon xing" aria-label="Xing" title="Xing" href="{{ urlXing }}" target="_blank" rel="noopener">
+                                        {% sw_icon 'xing-brands' style {
+                                            'namespace': 'RHWebThemeFeatures',
+                                            'pack': 'fontawesome'
+                                        } %}</a>
+                                {% endif %}
+                            {% endblock %}
+                        </div>
+                    {% endif %}
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

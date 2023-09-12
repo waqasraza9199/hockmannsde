@@ -1,0 +1,20 @@
+{% sw_extends "@Storefront/storefront/component/review/review-form.html.twig" %}
+
+{# Fix review form for master product #}
+{% block component_review_form_forward %}
+    {% if page.product.extensions.EmcgnNoVariantPreselection.masterProduct %}
+        <input type="hidden"
+               name="forwardTo"
+               value="frontend.product.reviews">
+
+        <input type="hidden"
+               name="productId"
+               value="{{ reviews.productId }}">
+
+        <input type="hidden"
+               name="forwardParameters"
+               value='{"productId": "{{ reviews.productId }}"}'>
+    {% else %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}

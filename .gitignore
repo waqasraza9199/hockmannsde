@@ -1,0 +1,17 @@
+/.idea
+
+###> shopware/core ###
+/public/media/*
+!/public/media/.gitkeep
+!/public/theme/.gitkeep
+/public/thumbnail/*
+!/public/thumbnail/.gitkeep
+/public/assets/*
+
+/var/*
+!/var/log/.gitkeep
+!/var/cache/.gitkeep
+/auth.json
+/install.lock
+
+###< shopware/core ###

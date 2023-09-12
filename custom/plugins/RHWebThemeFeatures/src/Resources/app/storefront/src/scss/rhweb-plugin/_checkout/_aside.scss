@@ -1,0 +1,90 @@
+.rhweb-custom-checkout-container{
+
+    .rhweb-checkout-content-aside{
+        .checkout-aside-summary{
+            background-color: transparent;
+            padding-left:0;
+            padding-right:0;
+            border-top:1px solid $sw-border-color;
+            margin-top:$tmp-rhweb-custom-checkout-spacing;
+
+            .checkout-aside-summary-header{
+                @extend .h4;
+            }
+        }
+
+        .cart-table-header{
+            font-size: 1em;
+        }
+
+
+        .cart-item{
+            position: relative;
+            border:none;
+
+            .checkout-aside-item-image{
+                padding:0;
+            }
+
+            .checkout-aside-item-data{
+
+                [class*=checkout-aside-item]{
+                    font-size: .8em;
+                }
+
+                .product-feature-list-list, [class*=checkout-aside-item]{
+                    margin: 0;
+                }
+
+                .checkout-aside-item-title, .checkout-aside-item-link-price{
+                    font-size: 1em;
+                }
+
+                .checkout-aside-item-link-price{
+                    margin-top:5px;
+                }
+            }
+
+            .cart-item-details{
+                padding:0;
+            }
+
+            .cart-item-remove{
+                position: absolute;
+                flex: unset;
+                width: unset;
+                padding: 0;
+                left: -10px;
+                top:5px;
+
+                .cart-item-remove-button{
+                    @extend .btn-danger;
+                    border-radius: 100%;
+                    padding: 0;
+                    width: 20px;
+                    height: 20px;
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    .icon{
+                        color:color-yiq($sw-color-danger);
+                        width: unset;
+                        height: unset;
+
+                        svg{
+                            top:0;
+                            width: 12px;
+                            height: 12px;
+                        }
+                    }
+                }
+            }
+        }
+
+        .footer-vat{
+            text-align: left;
+            margin-top: 15px;
+        }
+    }
+}

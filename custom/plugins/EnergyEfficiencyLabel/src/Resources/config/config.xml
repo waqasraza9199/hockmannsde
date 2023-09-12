@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="../../../../../../platform/src/Core/System/SystemConfig/Schema/config.xsd">
+
+    <card>
+        <title>Basic Configuration</title>
+        <title lang="de-DE">Grundeinstellungen</title>
+
+        <input-field>
+            <name>class</name>
+            <copyable>false</copyable>
+            <required>true</required>
+            <label>Energy efficiency classes</label>
+            <label lang="de-DE">Effizienzklassen</label>
+            <defaultValue>A;B;C;D;E;F;G</defaultValue>
+            <placeholder>A;B;C;D;E;F;G</placeholder>
+            <placeholder lang="de-DE">A;B;C;D;E;F;G</placeholder>
+            <helpText>Enter the efficiency classes here. Efficiency classes are separated by semicolon.</helpText>
+            <helpText lang="de-DE">Tragen Sie hier die Effizienzklassen ein. Effizienzklassen werden durch Semikolon getrennt.</helpText>
+        </input-field>
+
+        <input-field>
+            <name>color</name>
+            <copyable>false</copyable>
+            <required>true</required>
+            <label>Colors</label>
+            <label lang="de-DE">Farben</label>
+            <defaultValue>009036;57ab27;c9d200;ffed00;fabb00;eb690b;e2001a</defaultValue>
+            <placeholder>009036;57ab27;c9d200;ffed00;fabb00;eb690b;e2001a</placeholder>
+            <placeholder lang="de-DE">009036;57ab27;c9d200;ffed00;fabb00;eb690b;e2001a</placeholder>
+            <helpText>Enter the colors here. Colors are separated by semicolon.</helpText>
+            <helpText lang="de-DE">Tragen Sie hier die Farben ein. Farben werden durch Semikolon getrennt.</helpText>
+        </input-field>
+
+        <input-field type="bool">
+            <name>allviewsDatasheet</name>
+            <defaultValue>false</defaultValue>
+            <label>Display data sheet in all views</label>
+            <label lang="de-DE">Produktdatenblatt überall anzeigen</label>
+            <helpText>This setting enables the product data sheet to be displayed in all views.</helpText>
+            <helpText lang="de-DE">Diese Einstellung ermöglicht es das Produktdatenblatt bei allen Ansichten anzuzeigen.</helpText>
+        </input-field>
+    </card>
+</config>

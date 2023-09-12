@@ -1,0 +1,62 @@
+{
+    "cross-sell-matrix": {
+        "general": {
+            "mainMenuItemGeneral": "Intelligent Cross Selling",
+            "crossSellWeightSymbol": "&#037;",
+            "placeholderSearchBar": "Search cross selling weights..."
+        },
+        "entity": {
+            "propertyGroup": "Property",
+            "propertyGroupLabel": "Property",
+            "propertyGroupPlaceholder": "Please choose",
+            "weight": "Weight",
+            "weightLabel": "Weight",
+            "weightPlaceholder": "50"
+        },
+        "list": {
+            "textHeadline": "Intelligent Cross Selling",
+            "textDeleteConfirm": "Are you sure you want to delete this cross selling weight?",
+            "columnKey": "Key",
+            "columnValue": "Value",
+            "columnWeight": "Weight",
+            "buttonAddCrossSellWeight": "Add weight rule",
+            "contextMenuEdit": "Edit",
+            "contextMenuDelete": "Delete",
+            "messageDeleteSuccess": "Intelligent Cross Selling \"{name}\" has been deleted.",
+            "buttonCancel": "Cancel",
+            "buttonDelete": "Delete",
+            "messageSaveErrorGeneral": "There was an error saving the property weight. Please check that all fields are filled and try again!",
+            "messageSaveSuccess": "The settings have been saved",
+            "messageSaveErrorLoad": "There was an error loading weights. Please check with your administrator",
+            "weightCardHeader": "Cross Selling Weights",
+            "settingsCardHeader": "Cross Selling Settings",
+            "labelTitle": "Title",
+            "labelMaxProducts": "Max products to show",
+            "labelShowTitle": "Show title above cross selling",
+            "labelActive": "Active",
+            "buttonSaveCrossSellSettings": "Save Settings",
+            "labelOnlyCategory": "Only show products from same category"
+        },
+        "create": {
+            "textHeadline": "New cross selling weight",
+            "titleCard": "Settings",
+            "buttonCancel": "Cancel",
+            "buttonSave": "Save",
+            "messageSaveError": "An error occurred while saving the cross selling weight.",
+            "messageSaveSuccess": "cross selling weight has been saved."
+        },
+        "form": {
+            "confirmDelete": "Are you sure you want to delete this entry?",
+            "deleteButtonCancel": "Cancel",
+            "deleteButtonDelete": "Delete",
+            "textDeleteConfirm": "Do you want to delete the weight for \"{property}\"?"
+        }
+    },
+    "sw-privileges": {
+        "permissions": {
+            "Intelligent Cross Selling": {
+                "label": "Intelligent Cross Selling"
+            }
+        }
+    }
+}

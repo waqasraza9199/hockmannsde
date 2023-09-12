@@ -1,0 +1,27 @@
+{% sw_extends "@Storefront/storefront/component/product/card/action.html.twig" %}
+
+{# Output Detail Button when master product #}
+{% block component_product_box_action_inner %}
+    {% set id = product.id %}
+    {% set masterProduct = product.extensions.EmcgnNoVariantPreselection.masterProduct %}
+
+    <div class="product-action">
+        {% set isAvailable = not product.isCloseout or (product.availableStock >= product.minPurchase) %}
+        {% set displayFrom = product.calculatedPrices.count > 1 %}
+        {% set displayBuyButton = isAvailable and not displayFrom and product.childCount <= 0 %}
+
+        {% if displayBuyButton and config('core.listing.allowBuyInListing') and not masterProduct %}
+            {% block component_product_box_action_buy %}
+                {{ parent() }}
+            {% endblock %}
+        {% else %}
+            {% block component_product_box_action_detail %}
+                {{ parent() }}
+            {% endblock %}
+        {% endif %}
+    </div>
+
+    {% block component_product_box_action_meta %}
+        {{ parent() }}
+    {% endblock %}
+{% endblock %}

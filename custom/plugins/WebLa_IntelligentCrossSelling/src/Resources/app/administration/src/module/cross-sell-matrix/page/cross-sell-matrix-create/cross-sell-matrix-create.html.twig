@@ -1,0 +1,51 @@
+{% block cross_sell_matrix_create %}
+<sw-page class="cross-sell-matrix-create">
+
+    {% block cross_sell_matrix_create_actions %}
+    <template slot="smart-bar-actions">
+        {% block cross_sell_matrix_create_actions_abort %}
+        <sw-button :disabled="isLoading" @click="onCancel">
+            {{ $tc('cross-sell-matrix.create.buttonCancel') }}
+        </sw-button>
+        {% endblock %}
+
+        {% block cross_sell_matrix_create_actions_save %}
+        <sw-button-process v-model="isSaveSuccessful" variant="primary"
+            :is-loading="isLoading" :disabled="isLoading" @click.prevent="onSave">
+            {{ $tc('cross-sell-matrix.create.buttonSave') }}
+        </sw-button-process>
+        {% endblock %}
+    </template>
+    {% endblock %}
+
+    {% block cross_sell_matrix_create_content %}
+    <sw-card-view slot="content">
+        <template v-if="isLoading">
+            <sw-skeleton />
+            <sw-skeleton />
+        </template>
+
+        <template v-else>
+
+            {% block cross_sell_matrix_create_content_card %}
+            <sw-card>
+                <sw-entity-single-select v-model="item.propertyGroupId" entity="property_group"
+                    :label="$tc('cross-sell-matrix.entity.propertyGroupLabel')"
+                    :placeholder="$tc('cross-sell-matrix.entity.propertyGroupPlaceholder')" required>
+                </sw-entity-single-select>
+
+                <sw-number-field numberType="int" :step="1" :min="1" :max="100" v-model="item.weight" :digits="0" :fillDigits="false" :allowEmpty="false" :placeholder="$tc('cross-sell-matrix.entity.weightLabel')">
+                    <template v-slot:prefix="{  disabled, identification  }"></template>
+                    <template v-slot:label>
+                        {{ $tc('cross-sell-matrix.entity.weightLabel') }}
+                    </template>
+                </sw-number-field>
+            </sw-card>
+            {% endblock %}
+
+        </template>
+    </sw-card-view>
+    {% endblock %}
+
+</sw-page>
+{% endblock %}

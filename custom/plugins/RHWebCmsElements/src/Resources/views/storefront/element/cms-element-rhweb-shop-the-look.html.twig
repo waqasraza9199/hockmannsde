@@ -1,0 +1,147 @@
+{% block element_rhweb_shop_the_look %}
+    {% set priceTotal = 0 %}
+    {% set discountTotal = 0 %}
+
+    <div class="cms-element-{{ element.type }} {% if isInSidebar %} rhweb-sidebar-element{% endif %}">
+        <div class="row">
+            {% block element_rhweb_shop_the_look_left %}
+                <div class="{% if isInSidebar %}col-12 mb-3{% else %}col-lg-9 mb-4 mb-lg-0{% endif %}">
+                    {% block element_rhweb_shop_the_look_hotspot_area %}
+                        <div class="hotspot-area">
+                            <div class="hotspot-area-image">
+                                <img src="{{ element.data.media.media.url }}" alt="Shop the Look">
+                                {% block element_rhweb_shop_the_look_hotspot_image_overlay %}
+                                    <div class="hotspot-area-image-overlay">
+                                        {% for product in element.data.products.products %}
+                                            <a href="{{ seoUrl('frontend.detail.page', {'productId': product.id}) }}" title="{{ product.translated.name }}">
+                                                {% block element_rhweb_shop_the_look_hotspot_image_overlay_dot %}
+                                                    <div class="hotspot-area-image-overlay-dot"
+                                                         tabindex="-1"
+                                                         style="top: {{ element.config.productMediaHotspots.value[product.id].top }}; left: {{ element.config.productMediaHotspots.value[product.id].left }}">
+
+                                                        <div class="pulse"></div>
+
+                                                        {% block element_rhweb_shop_the_look_hotspot_image_hover_card %}
+                                                            <div class="hover-card">
+                                                                {% if product.cover.media.url %}
+                                                                    {% sw_thumbnails 'cart-item-img-thumbnails' with {
+                                                                        media: product.cover.media,
+                                                                        attributes: {
+                                                                            'alt': product.translated.name,
+                                                                        }
+                                                                    } %}
+                                                                {% else %}
+                                                                    {% sw_icon 'placeholder' style {'size': 'fluid'} %}
+                                                                {% endif %}
+                                                                <h4>{{ product.translated.name }}</h4>
+                                                                {% sw_include '@Storefront/storefront/component/product/card/price-unit.html.twig' %}
+                                                            </div>
+                                                        {% endblock %}
+                                                    </div>
+                                                {% endblock %}
+                                            </a>
+                                        {% endfor %}
+                                    </div>
+                                {% endblock %}
+                            </div>
+                        </div>
+                    {% endblock %}
+                </div>
+            {% endblock %}
+            {% block element_rhweb_shop_the_look_right %}
+                <div class="{% if isInSidebar %}col-12{% else %}col-lg-3{% endif %}">
+                    {% block element_rhweb_shop_the_look_product_list %}
+                        <div class="product-list">
+                            <form action="{{ path('frontend.checkout.line-item.add') }}"
+                                  method="post"
+                                  data-add-to-cart="true">
+                                {{ sw_csrf('frontend.checkout.line-item.add') }}
+                                <input type="hidden" name="redirectTo" value="frontend.cart.offcanvas"/>
+                                <div class="product-list-content">
+                                    {% for product in element.data.products.products %}
+                                        {% set priceTotal = priceTotal + product.price.first.gross %}
+                                        {% set listPrice = product.price.first.listPrice.gross %}
+
+                                        {% if listPrice > product.price.first.gross %}
+                                            {% set discountTotal = discountTotal + (listPrice - product.price.first.gross) %}
+                                        {% endif %}
+                                        <div class="product-list-item">
+                                            {% block element_rhweb_shop_the_look_product_list_line_item_hidden %}
+                                                <input type="hidden" name="lineItems[{{ product.id }}][id]" value="{{ product.id }}">
+                                                <input type="hidden" name="lineItems[{{ product.id }}][type]" value="product">
+                                                <input type="hidden" name="lineItems[{{ product.id }}][referencedId]" value="{{ product.id }}">
+                                                <input type="hidden" name="lineItems[{{ product.id }}][stackable]" value="1">
+                                                <input type="hidden" name="lineItems[{{ product.id }}][removable]" value="1">
+                                                <input type="hidden" name="lineItems[{{ product.id }}][quantity]" value="1">
+                                            {% endblock %}
+
+                                            {% block element_rhweb_shop_the_look_product_list_line_item_content %}
+                                                <div class="product-list-content-item">
+                                                    {% block element_rhweb_shop_the_look_product_list_line_item_image %}
+                                                        <div class="product-list-image-container">
+                                                            {% if product.cover.media.url %}
+                                                                {% sw_thumbnails 'cart-item-img-thumbnails' with {
+                                                                    media: product.cover.media,
+                                                                    attributes: {
+                                                                        'alt': product.translated.name,
+                                                                    }
+                                                                } %}
+                                                            {% else %}
+                                                                {% sw_icon 'placeholder' style {'size': 'fluid'} %}
+                                                            {% endif %}
+                                                        </div>
+                                                    {% endblock %}
+                                                    {% block element_rhweb_shop_the_look_product_list_line_item_info %}
+                                                        <div class="product-list-content-item-info">
+                                                            {% block element_rhweb_shop_the_look_product_list_line_item_link %}
+                                                                <a href="{{ seoUrl('frontend.detail.page', {'productId': product.id}) }}"
+                                                                   class="product-list-title" title="{{ product.translated.name }}">
+                                                                    {{ product.translated.name }}
+                                                                </a>
+                                                            {% endblock %}
+                                                            {% block element_rhweb_shop_the_look_product_list_line_item_price %}
+                                                                {% sw_include '@Storefront/storefront/component/product/card/price-unit.html.twig' %}
+                                                            {% endblock %}
+                                                        </div>
+                                                    {% endblock %}
+                                                </div>
+                                            {% endblock %}
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                                {% block element_rhweb_shop_the_look_product_list_content_hr %}
+                                <hr>
+                                {% endblock %}
+                                {% block element_rhweb_shop_the_look_product_list_content_buy %}
+                                    <div class="product-list-buy">
+                                        {% block element_rhweb_shop_the_look_product_list_content_buy_discount %}
+                                            {% if discountTotal > 0 %}
+                                                <div class="total-discount">
+                                                    <div>{{ "CmsElements.shopTheLook.totalDiscount"|trans|sw_sanitize }}</div>
+                                                    {{ discountTotal|currency }}{{ "general.star"|trans|sw_sanitize }}
+                                                </div>
+                                            {% endif %}
+                                        {% endblock %}
+                                        {% block element_rhweb_shop_the_look_product_list_content_buy_total %}
+                                            <div class="product-list-buy-price">
+                                                <div>{{ "account.orderItemColumnTotal"|trans|sw_sanitize }}:</div>
+                                                <div class="product-list-buy-price-total">{{ priceTotal|currency }}{{ "general.star"|trans|sw_sanitize }}</div>
+                                            </div>
+                                        {% endblock %}
+                                        {% block element_rhweb_shop_the_look_product_list_content_buy_submit %}
+                                            <button class="btn btn-primary btn-block btn-buy"
+                                                    title="{{ "CmsElements.shopTheLook.addAllProducts"|trans|sw_sanitize }}"
+                                                    aria-label="{{ "CmsElements.shopTheLook.addAllProducts"|trans|sw_sanitize }}">
+                                                {{ "CmsElements.shopTheLook.addAllProducts"|trans|sw_sanitize }}
+                                            </button>
+                                        {% endblock %}
+                                    </div>
+                                {% endblock %}
+                            </form>
+                        </div>
+                    {% endblock %}
+                </div>
+            {% endblock %}
+        </div>
+    </div>
+{% endblock %}

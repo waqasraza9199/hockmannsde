@@ -1,0 +1,68 @@
+{% block element_rhweb_accordeon %}
+    {% set config = element.config %}
+    {% set translated = element.translated.config %}
+
+    <div class="cms-element-{{ element.type }}{% if config.verticalAlign.value %} has-vertical-alignment{% endif %}">
+        {% block element_rhweb_accordeon_vertical_align_start %}
+            {% if config.verticalAlign.value %}
+                <div class="cms-element-alignment{% if config.verticalAlign.value == "center" %} align-self-center{% elseif config.verticalAlign.value == "flex-end" %} align-self-end{% else %} align-self-start{% endif %}">
+            {% endif %}
+        {% endblock %}
+
+        {% block element_rhweb_accordeon_title %}
+            {% if config.name.value %}
+                <h2 class="rhweb-accordeon-title">{{ translated.name.value | raw }}</h2>
+            {% endif %}
+        {% endblock %}
+
+        {% block element_rhweb_accordeon_description %}
+            {% if config.description.value %}
+                <div class="rhweb-accordeon-description">{{ translated.description.value | raw }}</div>
+            {% endif %}
+        {% endblock %}
+
+        {% block element_rhweb_accordeon_content %}
+            <div id="rhweb-accordeon-{{ element.id }}" class="rhweb-accordeon-content">
+                {% for index, entry in config.entries.value %}
+                    {% block element_rhweb_accordeon_item %}
+                        <div class="rhweb-accordeon-item">
+                            {% block element_rhweb_accordeon_item_title %}
+                                <div id="rhweb-accordeon-{{ element.id }}-{{ index }}-heading" class="rhweb-accordeon-item-heading">
+                                    <a href="#rhweb-accordeon-{{ element.id }}-{{ index }}-content"
+                                       type="button"
+                                       data-toggle="collapse"
+                                       data-target="#rhweb-accordeon-{{ element.id }}-{{ index }}-content"
+                                       aria-expanded="false"
+                                       aria-controls="rhweb-accordeon-{{ element.id }}-{{ index }}-content">
+                                        {{ entry.name|raw }}
+                                        <span class="rhweb-accordeon-icon">
+                                            {% block element_rhweb_accordeon_item_title_icon %}
+                                                {% sw_icon 'arrow-head-down' %}
+                                            {% endblock %}
+                                        </span>
+                                    </a>
+                                </div>
+                            {% endblock %}
+                            {% block element_rhweb_accordeon_item_content %}
+                                <div id="rhweb-accordeon-{{ element.id }}-{{ index }}-content"
+                                     class="collapse"
+                                     aria-labelledby="rhweb-accordeon-{{ element.id }}-{{ index }}-heading"
+                                     {% if config.displayMode.value == 'single' %}data-parent="#rhweb-accordeon-{{ element.id }}"{% endif %}>
+                                    <div class="rhweb-accordeon-item-content">
+                                        {{ entry.content|raw }}
+                                    </div>
+                                </div>
+                            {% endblock %}
+                        </div>
+                    {% endblock %}
+                {% endfor %}
+            </div>
+        {% endblock %}
+
+        {% block element_rhweb_accordeon_vertical_align_end %}
+            {% if config.verticalAlign.value %}
+                </div>
+            {% endif %}
+        {% endblock %}
+    </div>
+{% endblock %}

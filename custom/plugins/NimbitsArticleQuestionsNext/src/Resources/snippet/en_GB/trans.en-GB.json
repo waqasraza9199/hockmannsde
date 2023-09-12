@@ -1,0 +1,46 @@
+{
+  "nimbits-articlequestions": {
+    "tab": {
+      "headline": "Article Questions"
+    },
+    "form": {
+      "optional": "(optional)",
+      "formTitle": "Ask a question",
+      "salutation": "Salutation",
+      "genderw": "Mrs",
+      "genderm": "Mr",
+      "gendern": "Mx",
+      "company": "Company",
+      "name": "Name",
+      "surname": "Surname",
+      "mail": "E-Mail adress",
+      "required": "*",
+      "question": "Your question",
+      "entervalidmail": "Please enter a valid email address.",
+      "entervalidquestion": "Please enter a valid question.",
+      "dataprivacytext": "I agree that my data will be processed to answer the question. I have taken note of the <a href=\"/privacy\" target=\"blank\"> Privacy Policy </a>and agree to the information described therein.",
+      "requiredtext": "Fields marked with * are mandatory.",
+      "closebutton": "Close",
+      "askquestionbutton": "Ask question"
+    },
+    "list": {
+      "headline": "Previously asked questions",
+      "questiontime": "Asked at",
+      "questionsender": "From",
+      "questionowner": "customer",
+      "question": "Question",
+      "answer": "Answer",
+      "none": "There aren't any asked questions yet."
+    },
+    "finish": {
+      "alert": "Question sent successfully",
+      "alerterror": "Question was not sent successfully",
+      "buttonBack": "Back to the shop"
+    },
+    "mail": {
+      "sendername": "Article Questions",
+      "sendernamecustomer": "Article Questions",
+      "sendernamecustomeranswer": "Article Questions"
+    }
+  }
+}

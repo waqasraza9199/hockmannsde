@@ -1,0 +1,59 @@
+{
+    "cross-sell-matrix": {
+        "general": {
+            "mainMenuItemGeneral": "Intelligentes Cross Selling",
+            "crossSellWeightSymbol": "&#037;",
+            "placeholderSearchBar": "Durchsuche Regeln ..."
+        },
+        "entity": {
+            "propertyGroup": "Eigenschaft",
+            "propertyGroupLabel": "Eigenschaft",
+            "propertyGroupPlaceholder": "Bitte auswählen",
+            "weight": "Gewichtung",
+            "weightLabel": "Gewichtung",
+            "weightPlaceholder": "50"
+        },
+        "list": {
+            "textHeadline": "Intelligentes Cross Selling",
+            "textDeleteConfirm": "Bist Du sicher, dass Du den Eintrag löschen möchtest?",
+            "buttonAddCrossSellWeight": "Gewichtung anlegen",
+            "contextMenuEdit": "Bearbeiten",
+            "contextMenuDelete": "Löschen",
+            "messageDeleteSuccess": "Die Cross Selling Regel wurde erfolgreich gelöscht.",
+            "buttonCancel": "Abbrechen",
+            "buttonDelete": "Löschen",
+            "messageSaveErrorGeneral": "Es gab einen Fehler, beim Speichern der Gewichtung. Bitte überprüfen Sie, ob alle Felder gefüllt sind, und versuchen Sie es erneut!",
+            "messageSaveSuccess": "Die Einstellungen wurden gespeichert",
+            "messageSaveErrorLoad": "Es gab einen Fehler, beim Laden der Gewichtung. Bitte erkundigen Sie sich bei Ihrem Administrator",
+            "weightCardHeader": "Cross Selling Gewichtungen",
+            "settingsCardHeader": "Cross Selling Einstellungen",
+            "labelTitle": "Titel",
+            "labelMaxProducts": "Anzahl der anzuzeigenden Produkte",
+            "labelShowTitle": "Titel anzeigen",
+            "labelActive": "Aktiv",
+            "buttonSaveCrossSellSettings": "Einstellungen speichern",
+            "labelOnlyCategory": "Nur Produkte aus derselben Kategorie anzeigen"
+        },
+        "create": {
+            "textHeadline": "Neue Cross Selling Regel",
+            "titleCard": "Einstellungen",
+            "buttonCancel": "Abbrechen",
+            "buttonSave": "Speichern",
+            "messageSaveError": "Fehler beim Speichern der Cross Selling Regel.",
+            "messageSaveSuccess": "Cross Selling Regel gespeichert."
+        },
+        "form": {
+            "confirmDelete": "Möchten Sie diesen Eintrag wirklich löschen?",
+            "deleteButtonCancel": "Abbrechen",
+            "deleteButtonDelete": "Löschen",
+            "textDeleteConfirm": "Möchten Sie die Gewichtung für \"{property}\" löschen?"
+        }
+    },
+    "sw-privileges": {
+        "permissions": {
+            "cross-sell": {
+                "label": "Intelligentes Cross Selling"
+            }
+        }
+    }
+}

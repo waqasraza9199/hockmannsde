@@ -1,0 +1,15 @@
+{% sw_extends '@Storefront/storefront/component/lzyt-enev/arrow.html.twig' %}
+
+{% block component_lzyt_enev_arrow_param_icon %}{% endblock %}
+{% block component_lzyt_enev_arrow_icon %}{% endblock %}
+{% block component_lzyt_enev_arrow_datasheet %}
+    {% if config('lzytEnev.config.allviewsDatasheet') %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}
+
+{% block component_lzyt_enev_arrow_param_media %}
+    {% if showMedia and enev.media %}
+        title='{% sw_include '@Storefront/storefront/component/lzyt-enev/label.html.twig' %}'
+    {% endif %}
+{% endblock %}

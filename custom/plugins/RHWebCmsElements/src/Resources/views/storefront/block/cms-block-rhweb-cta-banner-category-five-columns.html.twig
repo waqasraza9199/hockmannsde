@@ -1,0 +1,31 @@
+{% set columns = 5 %}
+{% set id = element.id %}
+
+<div class="col-xl-5">
+    <div class="row">
+        {% set element = block.slots.getSlot('one') %}
+        <div class="col-sm-6 {% if isInSidebar %} mb-3{% else %} mb-3 mb-xl-0{% endif %}" data-cms-element-id="{{ id }}">
+            {% sw_include "@Storefront/storefront/element/cms-element-" ~ element.type ~ ".html.twig" ignore missing %}
+        </div>
+        {% set element = block.slots.getSlot('two') %}
+        <div class="col-sm-6 {% if isInSidebar %} mb-3{% else %} mb-3 mb-xl-0{% endif %}" data-cms-element-id="{{ id }}">
+            {% sw_include "@Storefront/storefront/element/cms-element-" ~ element.type ~ ".html.twig" ignore missing %}
+        </div>
+    </div>
+</div>
+<div class="col-xl-7">
+    <div class="row">
+        {% set element = block.slots.getSlot('three') %}
+        <div class="col-sm-6 col-md-4 {% if isInSidebar %} mb-3{% else %} mb-3 mb-xl-0{% endif %}" data-cms-element-id="{{ id }}">
+            {% sw_include "@Storefront/storefront/element/cms-element-" ~ element.type ~ ".html.twig" ignore missing %}
+        </div>
+        {% set element = block.slots.getSlot('four') %}
+        <div class="col-sm-6 col-md-4 {% if isInSidebar %} mb-3{% else %} mb-3 mb-xl-0{% endif %}" data-cms-element-id="{{ id }}">
+            {% sw_include "@Storefront/storefront/element/cms-element-" ~ element.type ~ ".html.twig" ignore missing %}
+        </div>
+        {% set element = block.slots.getSlot('five') %}
+        <div class="col-sm-6 col-md-4" data-cms-element-id="{{ id }}">
+            {% sw_include "@Storefront/storefront/element/cms-element-" ~ element.type ~ ".html.twig" ignore missing %}
+        </div>
+    </div>
+</div>

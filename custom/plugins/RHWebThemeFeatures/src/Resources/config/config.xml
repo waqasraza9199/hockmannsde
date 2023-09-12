@@ -1,0 +1,592 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/shopware/platform/master/src/Core/System/SystemConfig/Schema/config.xsd">
+
+    <card>
+        <title>Google Fonts</title>
+        <title lang="de-DE">Google Fonts</title>
+
+        <input-field type="bool">
+            <name>rhwebActivateGoogleFonts</name>
+            <label>Embed Google Fonts</label>
+            <label lang="de-DE">Google Fonts einbinden</label>
+            <helpText>With this setting you insert a Google Font Snippet in code of the page. This way you can easily use all fonts.</helpText>
+            <helpText lang="de-DE">Mit dieser Einstellung fügst du ein Google Font Snippet in den Code der Seite ein. So kannst du ganz einfach alle Schriften nutzen.</helpText>
+            <defaultValue>false</defaultValue>
+        </input-field>
+        <input-field type="bool">
+            <name>rhwebActivateGoogleFontsCookie</name>
+            <label>Enable cookie notice for Google Fonts</label>
+            <label lang="de-DE">Cookie Hinweis für Google Fonts aktivieren</label>
+            <helpText>According to the GDPR, it is controversial whether a cookie notice must be set. Decide for yourself whether you want to insert the cookie into the manager or not.</helpText>
+            <helpText lang="de-DE">Laut der DSGVO ist es umstritten, ob ein Cookie Hinweis gesetzt werden muss. Entscheide selbst, ob du den Cookie in den Manager einfügst, oder nicht.</helpText>
+            <defaultValue>false</defaultValue>
+        </input-field>
+
+        <component name="sw-code-editor">
+            <name>rhwebGoogleFontsCode</name>
+            <label>Google Fonts - Code Snippet</label>
+            <label lang="de-DE">Google Fonts - Code Snippet</label>
+            <helpText>Please enter the Google code snippet here. Type: Link (not @import)</helpText>
+            <helpText lang="de-DE">Trage hier den Google Code Snippet ein. Typ: Link (nicht @import)</helpText>
+        </component>
+
+        <component name="sw-snippet-field">
+            <name>rhwebSnippetConfigGoogleFontsTitle</name>
+            <label>Cookie Manager - Title</label>
+            <label lang="de-DE">Cookie Manager - Titel</label>
+            <snippet>rhwebThemeFeatures.cookie.googleFonts.title</snippet>
+        </component>
+        <component name="sw-snippet-field">
+            <name>rhwebSnippetConfigGoogleFontsDescription</name>
+            <label>Cookie Manager - Description</label>
+            <label lang="de-DE">Cookie Manager - Beschreibung</label>
+            <snippet>rhwebThemeFeatures.cookie.googleFonts.description</snippet>
+        </component>
+    </card>
+
+    <card>
+        <title>Copyright Settings</title>
+        <title lang="de-DE">Copyright Einstellungen</title>
+        <input-field type="bool">
+            <name>RhwebThemeFeaturesActivateCopyright</name>
+            <label>Custom copyright text in footer</label>
+            <label lang="de-DE">Individueller Copyright Text im Footer</label>
+            <helpText>Set your own copyright - text snippet in the footer of the store.</helpText>
+            <helpText lang="de-DE">Setze ein eigenes Copyright - Textsnippet im Footer des Shops.</helpText>
+            <devaultValue>true</devaultValue>
+        </input-field>
+
+        <component name="sw-snippet-field">
+            <name>rhwebSnippetConfigCopyright</name>
+            <label>Copryright - Text</label>
+            <label lang="de-DE">Copyright - Text</label>
+            <snippet>rhwebThemeFeatures.footer.copyrightText</snippet>
+        </component>
+    </card>
+
+    <card>
+        <title>Animations</title>
+        <title lang="de-DE">Animationen</title>
+
+        <input-field type="bool">
+            <name>animate</name>
+            <label>Activate animations</label>
+            <label lang="de-DE">Animationen aktivieren</label>
+            <helpText><![CDATA[With this function you have the possibility to animate every selector of your store. <br><br>Inform yourself beforehand about <strong>IDs, Classes und attribute-dependent selectors</strong> and how you read them.]]></helpText>
+            <helpText lang="de-DE"><![CDATA[Mit dieser Funktion hast du die Möglichkeit, jeden Selektor deines Shops zu animieren. <br><br>Informiere dich vorher über <strong>IDs, Klassen und attributsabhängige Selektoren</strong> und wie du diese ausliest.]]></helpText>
+            <defaultValue>true</defaultValue>
+        </input-field>
+
+        <component name="rhweb-animation">
+            <name>rhwebAnimation</name>
+        </component>
+    </card>
+
+    <card>
+        <title>Product Detail - Page</title>
+        <title lang="de-DE">Produkt Detailseite</title>
+
+        <input-field type="bool">
+            <name>rhwebActivateStickyCart</name>
+            <label>Fixed shopping cart on product detail page</label>
+            <label lang="de-DE">Fixierter Warenkorb auf Produktdetailseite</label>
+            <helpText><![CDATA[Activate the fixed shopping cart button when scrolling through the product detail page. <br><br>This way the button is always visible. <br><br>Note that the button is displayed only when the original button leaves the browser window. So the page must contain enough content.]]></helpText>
+            <helpText lang="de-DE"><![CDATA[Aktiviere den fixierten Warenkorb - Button beim Scrollen durch die Produktdetailseite. <br><br>Somit ist der Button immer sichtbar. <br><br>Beachte, dass der Button nur angezeigt wird, wenn der originale Button das Browserfenster verlässt. Die Seite muss also ausreichend Content beinhalten.]]></helpText>
+            <defaultValue>true</defaultValue>
+        </input-field>
+    </card>
+
+    <card>
+        <title>Checkout / Account</title>
+        <title lang="de-DE">Checkout / Accountbreich</title>
+
+        <input-field type="single-select">
+            <name>rhwebActivateCustomCheckout</name>
+            <label>Choose Checkout - Type</label>
+            <label lang="de-DE">Checkout - Typ wählen</label>
+            <helpText>The extension offers you an optimized version for the checkout process of your customers. Here you can select the type.</helpText>
+            <helpText lang="de-DE">Die Erweiterung bietet dir eine optimierte Version für den Checkout - Prozess deiner Kunden. Hier kannst du den Typ auswählen.</helpText>
+            <placeholder>Choose ...</placeholder>
+            <placeholder lang="de-DE">Wählen ...</placeholder>
+            <options>
+                <option>
+                    <id>shopware</id>
+                    <name>Shopware 6 Default - Checkout</name>
+                    <name lang="de-DE">Shopware 6 Standard - Checkout</name>
+                </option>
+                <option>
+                    <id>custom</id>
+                    <name>Theme Features - Checkout</name>
+                    <name lang="de-DE">Theme Features - Checkout</name>
+                </option>
+            </options>
+            <defaultValue>shopware</defaultValue>
+        </input-field>
+
+        <input-field type="single-select">
+            <name>rhwebActivateCustomAccount</name>
+            <label>Choose Account - Type</label>
+            <label lang="de-DE">Accountbereich - Typ wählen</label>
+            <helpText>The extension offers you an optimized version for the account area of your customers. Here you can select the type.</helpText>
+            <helpText lang="de-DE">Die Erweiterung bietet dir eine optimierte Version für den Accountbereich deiner Kunden. Hier kannst du den Typ auswählen.</helpText>
+            <placeholder>Choose ...</placeholder>
+            <placeholder lang="de-DE">Wählen ...</placeholder>
+            <options>
+                <option>
+                    <id>shopware</id>
+                    <name>Shopware 6 Default - Account</name>
+                    <name lang="de-DE">Shopware 6 Standard - Accountbereich</name>
+                </option>
+                <option>
+                    <id>custom</id>
+                    <name>Theme Features - Account</name>
+                    <name lang="de-DE">Theme Features - Accountbereich</name>
+                </option>
+            </options>
+            <defaultValue>shopware</defaultValue>
+        </input-field>
+    </card>
+
+    <card>
+        <title>Exit Intent Popup</title>
+        <title lang="de-DE">Popup bevor Seite verlassen wird</title>
+        <input-field type="bool">
+            <name>RhwebThemeFeaturesActivateExitIntent</name>
+            <label>Activate a popup before the customer leaves the page</label>
+            <label lang="de-DE">Aktiviere ein Popup, bevor der Kunde die Seite verlässt</label>
+            <helpText>Before the customer leaves the store, a popup is displayed. You can define an experience page for the content of the popup.</helpText>
+            <helpText lang="de-DE">Bevor der Kunde den Shop verlässt, wird ein Popup angezeigt. Du kannst eine Erlebniswelten-Seite für den Inhalt des Popups definieren.</helpText>
+            <devaultValue>true</devaultValue>
+        </input-field>
+
+        <input-field type="bool">
+            <name>RhwebThemeFeaturesActivateExitIntentHeader</name>
+            <label>Activate the Header</label>
+            <label lang="de-DE">Aktiviere den Header</label>
+            <helpText>Activate the one heading for the popup. This is set based on the name of the CMS page. Sometimes it is nicer if the title is not displayed.</helpText>
+            <helpText lang="de-DE">Aktiviere die eine Überschrift für das Popup. Dieser wird anhand des Namens der CMS-Seite gesetzt. Manchmal ist es schöner, wenn der Titel nicht angezeigt wird.</helpText>
+            <devaultValue>false</devaultValue>
+        </input-field>
+
+        <component name="sw-entity-single-select">
+            <name>RhwebThemeFeaturesExitIntentCmsPageId</name>
+            <entity>cms_page</entity>
+            <label>Choose a Page from the Shopping Experiences to show in the Popup.</label>
+            <label lang="de-DE">Wähle eine Seite aus den Erlebniswelten, die im Popup angezeigt werden soll.</label>
+        </component>
+
+        <input-field type="single-select">
+            <name>RhwebThemeFeaturesExitIntentSize</name>
+            <label>Select Popup Size</label>
+            <label lang="de-DE">Popup Größe wählen</label>
+            <helpText>Here you decide how big the popup should be. The respective CMS page is limited to the width of the popup.</helpText>
+            <helpText lang="de-DE">Hier entscheidest du, wie groß das Popup sein soll. Die jeweilige CMS - Seite wird auf die Breite des Popups begrenzt.</helpText>
+            <placeholder>Choose ...</placeholder>
+            <placeholder lang="de-DE">Wählen ...</placeholder>
+            <options>
+                <option>
+                    <id>sm</id>
+                    <name>Small</name>
+                    <name lang="de-DE">Klein</name>
+                </option>
+                <option>
+                    <id>regular</id>
+                    <name>Regular</name>
+                    <name lang="de-DE">Normal</name>
+                </option>
+                <option>
+                    <id>lg</id>
+                    <name>Large</name>
+                    <name lang="de-DE">Groß</name>
+                </option>
+                <option>
+                    <id>xl</id>
+                    <name>Extra Large</name>
+                    <name lang="de-DE">Sehr Groß</name>
+                </option>
+            </options>
+            <defaultValue>lg</defaultValue>
+        </input-field>
+
+        <input-field type="bool">
+            <name>RhwebThemeFeaturesExitIntentCenter</name>
+            <label>Vertically Centered</label>
+            <label lang="de-DE">Vertikal zentriert</label>
+            <helpText>When active, the popup is centered vertically in relation to the browser window.</helpText>
+            <helpText lang="de-DE">Wenn aktiv, wird das Popup im Verhältnis zum Browserfenster vertikal zentriert.</helpText>
+            <defaultValue>true</defaultValue>
+        </input-field>
+    </card>
+
+    <card>
+        <title>Contact Widget Settings</title>
+        <title lang="de-DE">Kontakt Widget Einstellungen</title>
+
+        <input-field type="bool">
+            <name>RhwebThemeFeaturesActivateContactWidget</name>
+            <label>Enable fixed Contact Widget</label>
+            <label lang="de-DE">Aktiviere das fixierte Kontakt Widget</label>
+            <helpText>A quick contact widget that stays fixed while scrolling and navigating through the store.</helpText>
+            <helpText lang="de-DE">Ein Schnellkontakt-Widget, das beim Scrollen und Navigieren durch den Shop fixiert bleibt.</helpText>
+        </input-field>
+
+        <component name="sw-media-field">
+            <name>RhwebThemeFeaturesContactWidgetMedia</name>
+            <label>Upload an image to show in the Contact Widget</label>
+            <label lang="de-DE">Wähle ein Bild das im Kontakt Widget angezeigt wird</label>
+            <helpText>A little tip: A smile speaks to your customers!</helpText>
+            <helpText lang="de-DE">Kleiner Tipp: Ein Lächeln spricht deine Kunden an!</helpText>
+        </component>
+
+        <input-field type="bool">
+            <name>RhwebThemeFeaturesContactWidgetHideMobile</name>
+            <label>Hide on mobile devices</label>
+            <label lang="de-DE">Auf mobilen Geräten deaktivieren</label>
+        </input-field>
+
+        <input-field type="single-select">
+            <name>RhwebThemeFeaturesContactWidgetX</name>
+            <label>Select Fixed Position</label>
+            <label lang="de-DE">Fixierte Position wählen</label>
+            <helpText>Choose where you want to fix the widget.</helpText>
+            <helpText lang="de-DE">Wähle aus, wo das Widget fixiert werden soll.</helpText>
+            <placeholder>Choose ...</placeholder>
+            <placeholder lang="de-DE">Wählen ...</placeholder>
+            <options>
+                <option>
+                    <id>left</id>
+                    <name>Bottom Left</name>
+                    <name lang="de-DE">Unten Links</name>
+                </option>
+                <option>
+                    <id>right</id>
+                    <name>Bottom Right</name>
+                    <name lang="de-DE">Unten Rechts</name>
+                </option>
+            </options>
+            <defaultValue>right</defaultValue>
+        </input-field>
+
+
+        <input-field type="bool">
+            <name>RhwebThemeFeaturesContactWidgetActivateEmail</name>
+            <label>Enable E-Mail Adress</label>
+            <label lang="de-DE">E-Mail Adresse aktivieren</label>
+        </input-field>
+
+        <component name="sw-snippet-field">
+            <name>rhwebSnippetConfigWidgetEmail</name>
+            <label>Enter E-Mail Adress</label>
+            <label lang="de-DE">E-Mail Adresse eintragen</label>
+            <snippet>rhwebThemeFeatures.contactWidget.email</snippet>
+        </component>
+
+        <input-field type="bool">
+            <name>RhwebThemeFeaturesContactWidgetActivatePhone</name>
+            <label>Enable Phone Number</label>
+            <label lang="de-DE">Telefonnummer aktivieren</label>
+        </input-field>
+
+        <component name="sw-snippet-field">
+            <name>rhwebSnippetConfigWidgetPhone</name>
+            <label>Enter Phone Number</label>
+            <label lang="de-DE">Telefonummer eintragen</label>
+            <snippet>rhwebThemeFeatures.contactWidget.phone</snippet>
+        </component>
+
+        <input-field type="bool">
+            <name>RhwebThemeFeaturesContactWidgetActivateFax</name>
+            <label>Enable Fax</label>
+            <label lang="de-DE">Fax aktivieren</label>
+        </input-field>
+
+        <component name="sw-snippet-field">
+            <name>rhwebSnippetConfigWidgetFax</name>
+            <label>Fax Number</label>
+            <label lang="de-DE">Fax eintragen</label>
+            <snippet>rhwebThemeFeatures.contactWidget.fax</snippet>
+        </component>
+
+        <input-field type="bool">
+            <name>RhwebThemeFeaturesContactWidgetActivateLocation</name>
+            <label>Activate Google Maps Link</label>
+            <label lang="de-DE">Google Maps Link aktivieren</label>
+        </input-field>
+
+        <input-field type="url">
+            <name>RhwebThemeFeaturesContactWidgetGoogleMapsLink</name>
+            <label>Google Maps URL</label>
+            <label lang="de-DE">Google Maps URL</label>
+            <placeholder>https://goo.gl/maps/3BnsNcCkgLaZau5J7</placeholder>
+            <placeholder lang="de-DE">https://goo.gl/maps/3BnsNcCkgLaZau5J7</placeholder>
+        </input-field>
+
+        <input-field type="bool">
+            <name>RhwebThemeFeaturesContactWidgetActivateSocial</name>
+            <label>Activate Social Media</label>
+            <label lang="de-DE">Social Media aktivieren</label>
+        </input-field>
+
+        <input-field type="url">
+            <name>RhwebThemeFeaturesContactWidgetFacebook</name>
+            <label>Facebook URL</label>
+            <label lang="de-DE">Facebook URL</label>
+            <placeholder>https://facebook.com</placeholder>
+            <placeholder lang="de-DE">URL eingeben ...</placeholder>
+            <defaultValue>https://facebook.com</defaultValue>
+            <helpText>Leave field empty so that the link is not displayed.</helpText>
+            <helpText lang="de-DE">Feld leer lassen, damit die Verlinkung nicht angezeigt wird.</helpText>
+        </input-field>
+
+        <input-field type="url">
+            <name>RhwebThemeFeaturesContactWidgetInstagram</name>
+            <label>Instagram URL</label>
+            <label lang="de-DE">Instagram URL</label>
+            <placeholder>Enter URL ...</placeholder>
+            <placeholder lang="de-DE">URL eingeben ...</placeholder>
+            <defaultValue>https://instagram.com</defaultValue>
+            <helpText>Leave field empty so that the link is not displayed.</helpText>
+            <helpText lang="de-DE">Feld leer lassen, damit die Verlinkung nicht angezeigt wird.</helpText>
+        </input-field>
+
+        <input-field type="url">
+            <name>RhwebThemeFeaturesContactWidgetWhatsapp</name>
+            <label>WhatsApp URL</label>
+            <label lang="de-DE">WhatsApp URL</label>
+            <placeholder>Enter URL ...</placeholder>
+            <placeholder lang="de-DE">URL eingeben ...</placeholder>
+            <defaultValue>https://whatsapp.com</defaultValue>
+            <helpText>Leave field empty so that the link is not displayed.</helpText>
+            <helpText lang="de-DE">Feld leer lassen, damit die Verlinkung nicht angezeigt wird.</helpText>
+        </input-field>
+
+        <input-field type="url">
+            <name>RhwebThemeFeaturesContactWidgetTwitter</name>
+            <label>Twitter URL</label>
+            <label lang="de-DE">Twitter URL</label>
+            <placeholder>Enter URL ...</placeholder>
+            <placeholder lang="de-DE">URL eingeben ...</placeholder>
+            <defaultValue>https://twitter.com</defaultValue>
+            <helpText>Leave field empty so that the link is not displayed.</helpText>
+            <helpText lang="de-DE">Feld leer lassen, damit die Verlinkung nicht angezeigt wird.</helpText>
+        </input-field>
+
+        <input-field type="url">
+            <name>RhwebThemeFeaturesContactWidgetYoutube</name>
+            <label>YouTube URL</label>
+            <label lang="de-DE">YouTube URL</label>
+            <placeholder>Enter URL ...</placeholder>
+            <placeholder lang="de-DE">URL eingeben ...</placeholder>
+            <defaultValue>https://youtube.com</defaultValue>
+            <helpText>Leave field empty so that the link is not displayed.</helpText>
+            <helpText lang="de-DE">Feld leer lassen, damit die Verlinkung nicht angezeigt wird.</helpText>
+        </input-field>
+
+        <input-field type="url">
+            <name>RhwebThemeFeaturesContactWidgetLinkedin</name>
+            <label>LinkedIn URL</label>
+            <label lang="de-DE">LinkedIn URL</label>
+            <placeholder>Enter URL ...</placeholder>
+            <placeholder lang="de-DE">URL eingeben ...</placeholder>
+            <defaultValue>https://linkedin.com</defaultValue>
+            <helpText>Leave field empty so that the link is not displayed.</helpText>
+            <helpText lang="de-DE">Feld leer lassen, damit die Verlinkung nicht angezeigt wird.</helpText>
+        </input-field>
+
+        <input-field type="url">
+            <name>RhwebThemeFeaturesContactWidgetXing</name>
+            <label>Xing URL</label>
+            <label lang="de-DE">Xing URL</label>
+            <placeholder>Enter URL ...</placeholder>
+            <placeholder lang="de-DE">URL eingeben ...</placeholder>
+            <defaultValue>https://xing.com</defaultValue>
+            <helpText>Leave field empty so that the link is not displayed.</helpText>
+            <helpText lang="de-DE">Feld leer lassen, damit die Verlinkung nicht angezeigt wird.</helpText>
+        </input-field>
+    </card>
+
+    <card>
+        <title>"Back-to-Top" Button</title>
+        <title lang="de-DE">"Back-to-Top" Button</title>
+        <input-field type="bool">
+            <name>RhwebThemeFeaturesActivateBackToTop</name>
+            <label>Activate the "Back-to-Top" Button</label>
+            <label lang="de-DE">Aktiviere den "Back-to-Top" Button</label>
+            <helpText>The "Back-to-Top" Button is the Button which shows up when scrolling down on the page. If a user clicks the button, the viewport of the screen will scroll to the top of the page.</helpText>
+            <helpText lang="de-DE">Die "Back-to-Top"-Schaltfläche ist die Schaltfläche, die angezeigt wird, wenn auf der Seite nach unten gescrollt wird. Wenn ein Benutzer auf die Schaltfläche klickt, wird das Ansichtsfenster des Bildschirms an den Anfang der Seite gescrollt.</helpText>
+            <devaultValue>true</devaultValue>
+        </input-field>
+    </card>
+
+    <card>
+        <title>Conversion Bar (USPs)</title>
+        <title lang="de-DE">Conversion Bar (USPs)</title>
+
+        <input-field type="multi-select">
+            <name>RhwebThemeFeaturesActivateUsps</name>
+            <options>
+                <option>
+                    <id>header</id>
+                    <name>Above the Header</name>
+                    <name lang="de-DE">Über dem Header</name>
+                </option>
+                <option>
+                    <id>footer</id>
+                    <name>Above the Footer</name>
+                    <name lang="de-DE">Über dem Footer</name>
+                </option>
+            </options>
+            <helpText>Choose to display the USPs on the page</helpText>
+            <helpText lang="de-DE">Wähle die Anzeige der USPs in deinem Shop</helpText>
+            <label>Show in Header or/and Footer?</label>
+            <label lang="de-DE">Im Header und/oder Footer anzeigen?</label>
+        </input-field>
+
+        <input-field type="multi-select">
+            <name>RhwebThemeFeaturesConversionSelectPages</name>
+            <options>
+                <option>
+                    <id>home</id>
+                    <name>Frontpage</name>
+                    <name lang="de-DE">Startseite</name>
+                </option>
+                <option>
+                    <id>categories</id>
+                    <name>Category Page</name>
+                    <name lang="de-DE">Kategorieseite</name>
+                </option>
+                <option>
+                    <id>product</id>
+                    <name>Product Page</name>
+                    <name lang="de-DE">Produktdetailseite</name>
+                </option>
+                <option>
+                    <id>cart</id>
+                    <name>Cart Page</name>
+                    <name lang="de-DE">Warenkorb</name>
+                </option>
+                <option>
+                    <id>account</id>
+                    <name>Account Page</name>
+                    <name lang="de-DE">Account</name>
+                </option>
+                <option>
+                    <id>wishlist</id>
+                    <name>Wishlist Page</name>
+                    <name lang="de-DE">Wunschliste</name>
+                </option>
+            </options>
+            <defaultValue>home</defaultValue>
+            <helpText>Choose the pages, where you want to display the USPs.</helpText>
+            <helpText lang="de-DE">Wähle die Seiten, auf denen die USPs ausgespielt werden sollen.</helpText>
+            <label>On which pages you want to show the USPs?</label>
+            <label lang="de-DE">Auf welchen Seiten sollen die USPs ausgespielt werden?</label>
+        </input-field>
+
+        <input-field type="single-select">
+            <name>RhwebThemeFeaturesConversionWidth</name>
+            <options>
+                <option>
+                    <id>full</id>
+                    <name>Full Width</name>
+                    <name lang="de-DE">Ganze Breite</name>
+                </option>
+                <option>
+                    <id>boxed</id>
+                    <name>Boxed Layout</name>
+                    <name lang="de-DE">Boxed Layout</name>
+                </option>
+            </options>
+            <label>Width of the USP Bar</label>
+            <label lang="de-DE">Breite der USP Bar</label>
+            <defaultValue>boxed</defaultValue>
+        </input-field>
+
+        <input-field type="colorpicker">
+            <name>RhwebThemeFeaturesConversionBackgroundColor</name>
+            <label>Background Color of USP bar</label>
+            <label lang="de-DE">Hintergrundfarbe der USP Bar</label>
+            <helpText>Choose a Background Color for the USP area.</helpText>
+            <helpText lang="de-DE">Setze eine Hintergrundfarbe für den gesamten Bereich.</helpText>
+        </input-field>
+
+        <input-field type="colorpicker">
+            <name>RhwebThemeFeaturesConversionTextColor</name>
+            <label>Text Color of USP bar</label>
+            <label lang="de-DE">Schriftfarbe der USP Bar</label>
+            <helpText>Choose a Font Color for the USP area.</helpText>
+            <helpText lang="de-DE">Setze eine Schriftfarbe für den gesamten Bereich.</helpText>
+        </input-field>
+
+        <input-field type="colorpicker">
+            <name>RhwebThemeFeaturesConversionIconColor</name>
+            <label>Icon Color of USP bar</label>
+            <label lang="de-DE">Iconfarbe der USP Bar</label>
+            <helpText>Choose a Icon Color for the USP area.</helpText>
+            <helpText lang="de-DE">Setze eine Iconfarbe für den gesamten Bereich.</helpText>
+        </input-field>
+
+        <input-field type="bool">
+            <name>RhwebThemeFeaturesConversionActivateLagerScreens</name>
+            <label>Activate only for desktop PCs</label>
+            <label lang="de-DE">Nur für Desktop PCs aktivieren</label>
+            <devaultValue>true</devaultValue>
+        </input-field>
+    </card>
+
+    <card>
+        <title>Countdown Timer</title>
+        <title lang="de-DE">Countdown Timer</title>
+        <input-field type="bool">
+            <name>RhwebThemeFeaturesActivateCountdown</name>
+            <label>Activate the Countdown Timer</label>
+            <label lang="de-DE">Aktivieren Sie den Countdown Timer</label>
+            <helpText>Enable a countdown timer that presents a time based action in the shop. You can edit the Text in  the text snippets of shopware.</helpText>
+            <helpText lang="de-DE">Aktivieren Sie einen Countdown Timer, der eine zeitgeschaltete Aktion im Shop präsentiert. Ändern Sie den Text in den Textbausteinen/Snippets von Shopware 6.</helpText>
+            <devaultValue>true</devaultValue>
+        </input-field>
+
+        <input-field type="colorpicker">
+            <name>RhwebThemeFeaturesCountdownBackgroundColor</name>
+            <label>Background Color of Countdown Area</label>
+            <label lang="de-DE">Hintergrundfarbe des Countdown Bereichs</label>
+            <helpText>Choose a Background Color for the Countdown area.</helpText>
+            <helpText lang="de-DE">Setzen Sie eine Hintergrundfarbe für den Countdown Bereich.</helpText>
+        </input-field>
+
+        <input-field type="colorpicker">
+            <name>RhwebThemeFeaturesCountdownBackgroundColorHover</name>
+            <label>Background Color of Countdown Area (Hover)</label>
+            <label lang="de-DE">Hintergrundfarbe des Countdown Bereichs (Hover)</label>
+            <helpText>Choose a Background Color for the Countdown area on hover.</helpText>
+            <helpText lang="de-DE">Setzen Sie eine Hintergrundfarbe für den Countdown Bereich bei hover.</helpText>
+        </input-field>
+
+        <input-field type="colorpicker">
+            <name>RhwebThemeFeaturesCountdownTextColor</name>
+            <label>Text Color of Countdown Area</label>
+            <label lang="de-DE">Schriftfarbe des Countdown Bereichs</label>
+            <helpText>Choose a Font Color for the Countdown area.</helpText>
+            <helpText lang="de-DE">Setzen Sie eine Schriftfarbe für den Countdown Bereich.</helpText>
+        </input-field>
+
+        <input-field type="datetime">
+            <name>RhwebThemeFeaturesCountdownTimeEnd</name>
+            <label>End time of the Timer</label>
+            <label lang="de-DE">Endzeitpunkt des Timers</label>
+            <helpText>Choose the end time for the countdown. If the end time is reached, the countdown disappears automatically.</helpText>
+            <helpText lang="de-DE">Setzen Sie einen Endzeitpunkt für den Timer. Wenn der Endzeitpunkt erreicht ist, verschwindet der Countdown Timer automatisch.</helpText>
+        </input-field>
+
+        <input-field type="url">
+            <name>RhwebThemeFeaturesCountdownUrl</name>
+            <label>Countdown URL</label>
+            <label lang="de-DE">Countdown URL</label>
+            <placeholder>Enter URL ...</placeholder>
+            <placeholder lang="de-DE">URL eingeben ...</placeholder>
+            <helpText>Enter a URL to your offer</helpText>
+            <helpText lang="de-DE">Setzen Sie eine URL zu Ihrem Angebot</helpText>
+        </input-field>
+    </card>
+</config>

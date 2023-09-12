@@ -1,0 +1,41 @@
+{% block nb_articlequestions_list %}
+    <sw-page class="nb-articlequestions-list">
+        {% block nb_articlequestions_list_smart_bar_actions %}
+            <template slot="smart-bar-actions">
+
+            </template>
+        {% endblock %}
+
+        {% block nb_articlequestions_list_smart_bar_header %}
+            <template #smart-bar-header>
+                {% block nb_articlequestions_list_smart_bar_header_title %}
+                    <h2>
+                        {% block nb_articlequestions_list_smart_bar_header_title_text %}
+                            {{ $t('nb-articlequestions.list.headline') }}
+                        {% endblock %}
+
+                        {% block nb_articlequestions_list_smart_bar_header_amount %}
+                            <span v-if="!isLoading" class="sw-page__smart-bar-amount">
+								({{ items.total }})
+                            </span>
+                        {% endblock %}
+                    </h2>
+                {% endblock %}
+            </template>
+        {% endblock %}
+
+        {% block nb_articlequestions_list_content %}
+            <template slot="content">
+                <sw-entity-listing
+                        v-if="items"
+                        :items="items"
+                        :repository="repository"
+                        :showSelection="true"
+                        :columns="columns"
+                        :isLoading="isLoading"
+                        detailRoute="nb.articlequestions.detail">
+                </sw-entity-listing>
+            </template>
+        {% endblock %}
+    </sw-page>
+{% endblock %}

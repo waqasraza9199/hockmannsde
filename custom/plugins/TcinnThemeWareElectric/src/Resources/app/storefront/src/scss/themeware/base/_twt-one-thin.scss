@@ -1,0 +1,163 @@
+/*
+   _____ _  _ ___ __  __ _____      ___   ___ ___  (R)
+  |_   _| || | __|  \/  | __\ \    / /_\ | _ \ __|
+    | | | __ | _|| |\/| | _| \ \/\/ / _ \|   / _|
+    |_| |_||_|___|_|  |_|___| \_/\_/_/ \_\_|_\___|
+
+    Copyright (c) TC-Innovations GmbH
+
+	ThemeWare SCSS-Iconset
+	==================================================
+
+*/
+
+// Note: Add new icons also to /base/_ie11-fixes.scss
+
+@if $twt-iconset == "twt-one-thin" {
+  $twt-icon-cart: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNNy4yMSwxMS45M2EuNjMuNjMsMCwwLDAtLjYzLjYyVjIwYS42My42MywwLDEsMCwxLjI1LDBWMTIuNTVBLjYyLjYyLDAsMCwwLDcuMjEsMTEuOTNaIi8+PHBhdGggZD0iTTEwLjQ2LDExLjkzYS42My42MywwLDAsMC0uNjMuNjJWMjBhLjYzLjYzLDAsMSwwLDEuMjUsMFYxMi41NUEuNjIuNjIsMCwwLDAsMTAuNDYsMTEuOTNaIi8+PHBhdGggZD0iTTEzLjcxLDExLjkzYS42Mi42MiwwLDAsMC0uNjIuNjJWMjBhLjYzLjYzLDAsMSwwLDEuMjUsMFYxMi41NUEuNjMuNjMsMCwwLDAsMTMuNzEsMTEuOTNaIi8+PHBhdGggZD0iTTE3LDExLjkzYS42My42MywwLDAsMC0uNjMuNjJWMjBhLjYzLjYzLDAsMSwwLDEuMjUsMFYxMi41NUEuNjIuNjIsMCwwLDAsMTcsMTEuOTNaIi8+PHBhdGggZD0iTTIyLjQ1LDExLjI2LDIxLjgyLDEwYTEuNTEsMS41MSwwLDAsMC0xLjM1LS44MkgzLjUzQTEuNTEsMS41MSwwLDAsMCwyLjE4LDEwbC0uNjMsMS4yMmExLjUyLDEuNTIsMCwwLDAsMCwxLjM5bC40My44M0w0LDIxLjhBMS41MiwxLjUyLDAsMCwwLDUuNSwyM2gxM0ExLjUyLDEuNTIsMCwwLDAsMjAsMjEuOEwyMiwxMy40OGwuNDMtLjgzQTEuNTIsMS41MiwwLDAsMCwyMi40NSwxMS4yNlptLTEuMS44Mi0uNDcuOWEuNS41LDAsMCwwLS4wNS4xM2wtMi4wNyw4LjRhLjI2LjI2LDAsMCwxLS4yNi4ySDUuNWEuMjcuMjcsMCwwLDEtLjI2LS4ybC0yLjA3LTguNGEuNS41LDAsMCwwLDAtLjEzbC0uNDctLjlhLjI4LjI4LDAsMCwxLDAtLjI1bC42My0xLjIyYS4yNi4yNiwwLDAsMSwuMjQtLjE0SDIwLjQ3YS4yNi4yNiwwLDAsMSwuMjQuMTRsLjYzLDEuMjJBLjI4LjI4LDAsMCwxLDIxLjM1LDEyLjA4WiIvPjxwYXRoIGQ9Ik01LjMsNy44MWguMDhBLjYzLjYzLDAsMCwwLDYsNy4yN2MuMTgtMS41LDEuMTQtNSw2LTVzNS44OCwzLjQ4LDYuMDUsNWEuNjIuNjIsMCwxLDAsMS4yNC0uMTNDMTkuMTMsNS43LDE4LjE1LDEsMTIsMVM0LjkzLDUuNjksNC43Niw3LjEyQS42Mi42MiwwLDAsMCw1LjMsNy44MVoiLz48L3N2Zz4=);
+  $twt-icon-envelope: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMjEsNEgzQTEuNjIsMS42MiwwLDAsMCwxLjM4LDUuNjFWMTguM0ExLjYxLDEuNjEsMCwwLDAsMywxOS45MkgyMWExLjYyLDEuNjIsMCwwLDAsMS42My0xLjYyVjUuNjFBMS42MywxLjYzLDAsMCwwLDIxLDRabS0uNTQsMS4yNS04LjQxLDYuMjJMMy42OCw1LjI0Wk0yMSwxOC42N0gzYS4zNi4zNiwwLDAsMS0uMzctLjM3VjZsOS4wNSw2LjcyYS42NC42NCwwLDAsMCwuMzcuMTMuNjcuNjcsMCwwLDAsLjM4LS4xM2w5LTYuNjJWMTguM0EuMzcuMzcsMCwwLDEsMjEsMTguNjdaIi8+PC9zdmc+);
+  $twt-icon-heart: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMjEuMjEsNC43YTUuNDUsNS40NSwwLDAsMC00LjkyLTEuOTMsNC44OCw0Ljg4LDAsMCwwLTIuMTIsMUwxMiw1LjQxLDkuNjYsMy42YTMuNzQsMy43NCwwLDAsMC0xLS41NmMtLjk1LS4zNy0zLjQyLS45NC01LjkzLDEuN2E2LjE4LDYuMTgsMCwwLDAtMSw2QTUuOSw1LjksMCwwLDAsMy4xNSwxM2w4LjQxLDguMjhhLjc4Ljc4LDAsMCwwLC4xNS4xczAsMCwwLDBhLjYuNiwwLDAsMCwuNDgsMHMwLDAsMCwwYS43OC43OCwwLDAsMCwuMTUtLjFMMjAuODUsMTNhNS45LDUuOSwwLDAsMCwxLjQzLTIuMjVBNi4xOSw2LjE5LDAsMCwwLDIxLjIxLDQuN1ptLS4xMiw1LjYxQTQuNTUsNC41NSwwLDAsMSwyMCwxMi4wNmwtOCw3Ljg1TDQsMTIuMDZhNC41NSw0LjU1LDAsMCwxLTEuMTItMS43NSw0LjkzLDQuOTMsMCwwLDEsLjc4LTQuNzVjMS44OS0yLDMuNjYtMS43LDQuNTQtMS4zNmEzLjEzLDMuMTMsMCwwLDEsLjY3LjM5bDIuNzIsMi4xLDAsMGEuMzkuMzksMCwwLDAsLjExLjA2bC4xMSwwaC4yNGwuMTEsMGEuMzkuMzksMCwwLDAsLjExLS4wNmwwLDAsMi41NS0yQTMuNTMsMy41MywwLDAsMSwxNi40OSw0YTQuMjEsNC4yMSwwLDAsMSwzLjc4LDEuNUE1LDUsMCwwLDEsMjEuMDksMTAuMzFaIi8+PC9zdmc+);
+  $twt-icon-help: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMTQuNTIsN0EzLjM3LDMuMzcsMCwwLDAsMTIsNS45MywzLjM3LDMuMzcsMCwwLDAsOS40OCw3YTMuMzksMy4zOSwwLDAsMC0xLDIuNTEuNTguNTgsMCwwLDAsLjE5LjQ1LjYzLjYzLDAsMCwwLC45LDAsLjYxLjYxLDAsMCwwLC4xOC0uNDUsMi4yOSwyLjI5LDAsMSwxLDQuNTgsMEExLjgyLDEuODIsMCwwLDEsMTMuNiwxMWEyLjUxLDIuNTEsMCwwLDEtMS42LjUzLjYxLjYxLDAsMCwwLS40NS4xOC42LjYsMCwwLDAtLjE5LjQ1djEuNzNhLjYuNiwwLDAsMCwuMTkuNDYuNjQuNjQsMCwwLDAsLjksMCwuNTcuNTcsMCwwLDAsLjE5LS40NVYxMi43NWwuMTktLjA1YTMuODcsMy44NywwLDAsMCwyLTEuMTMsMi44OCwyLjg4LDAsMCwwLC43Ny0yLjA4QTMuMzksMy4zOSwwLDAsMCwxNC41Miw3WiIvPjxwYXRoIGQ9Ik0xMiwxNi4xOGEuOTQuOTQsMCwwLDAtLjcuMywxLDEsMCwwLDAtLjI5LjcxLDEsMSwwLDAsMCwuMjkuNjksMSwxLDAsMCwwLDEuNCwwLDEsMSwwLDAsMCwuMjktLjY5LDEsMSwwLDAsMC0uMjktLjcxQS45NC45NCwwLDAsMCwxMiwxNi4xOFoiLz48cGF0aCBkPSJNMTIsMjIuNjNBMTAuNjMsMTAuNjMsMCwxLDEsMjIuNjMsMTIsMTAuNjQsMTAuNjQsMCwwLDEsMTIsMjIuNjNabTAtMjBBOS4zOCw5LjM4LDAsMSwwLDIxLjM4LDEyLDkuMzgsOS4zOCwwLDAsMCwxMiwyLjYzWiIvPjwvc3ZnPg==);
+  $twt-icon-home: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMjIuNDUsMTEuODIsMTkuMTMsOC40VjMuODFhLjYzLjYzLDAsMCwwLTEuMjUsMHYzLjNsLTUuNDMtNS42QS42NC42NCwwLDAsMCwxMiwxLjMyYS41Ni41NiwwLDAsMC0uNDUuMkwzLjcyLDkuNzdhLjU0LjU0LDAsMCwwLS4xOC4xOWwtMiwyLjFBLjYzLjYzLDAsMCwwLDIsMTMuMTJhLjYxLjYxLDAsMCwwLC40NS0uMmwxLTF2OS4zN0ExLjU1LDEuNTUsMCwwLDAsNSwyMi44SDE4Ljg1YTEuNTUsMS41NSwwLDAsMCwxLjU2LTEuNTVWMTEuNTFsMS4xNCwxLjE4YS42NC42NCwwLDAsMCwuODksMEEuNjMuNjMsMCwwLDAsMjIuNDUsMTEuODJabS0zLjI5LTEuNTR2MTFhLjMuMywwLDAsMS0uMzEuM0g1YS4yOS4yOSwwLDAsMS0uMy0uM1YxMC41NkwxMiwyLjg1LDE4LjA3LDkuMWgwbDEuMSwxLjEzUzE5LjE2LDEwLjI2LDE5LjE2LDEwLjI4WiIvPjwvc3ZnPg==);
+  $twt-icon-menu: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMiw1LjEzSDIyYS42My42MywwLDAsMCwuNjMtLjYzQS42Mi42MiwwLDAsMCwyMiwzLjg4SDJhLjYyLjYyLDAsMCwwLS42Mi42MkEuNjMuNjMsMCwwLDAsMiw1LjEzWiIvPjxwYXRoIGQ9Ik0yMiwxMS4yOUgyYS42My42MywwLDAsMCwwLDEuMjVIMjJhLjYzLjYzLDAsMSwwLDAtMS4yNVoiLz48cGF0aCBkPSJNMjIsMTguODhIMmEuNjIuNjIsMCwwLDAtLjYyLjYyLjYzLjYzLDAsMCwwLC42Mi42M0gyMmEuNjMuNjMsMCwwLDAsLjYzLS42M0EuNjMuNjMsMCwwLDAsMjIsMTguODhaIi8+PC9zdmc+);
+  $twt-icon-search: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMjIuNDQsMjEuNywxNS43NSwxNWE4LjExLDguMTEsMCwxLDAtLjkuODdsNi43MSw2LjcxYS42My42MywwLDAsMCwuODgtLjg5Wk0yLjYzLDkuNDlhNyw3LDAsMSwxLDcsN0E3LDcsMCwwLDEsMi42Myw5LjQ5WiIvPjwvc3ZnPg==);
+  $twt-icon-user: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMTEuODMsMTNBNi4xMyw2LjEzLDAsMSwwLDUuNzEsNi45LDYuMTMsNi4xMywwLDAsMCwxMS44MywxM1ptMC0xMUE0Ljg4LDQuODgsMCwxLDEsNyw2LjksNC44OSw0Ljg5LDAsMCwxLDExLjgzLDJaIi8+PHBhdGggZD0iTTIyLjYxLDIxLjFBOS42Niw5LjY2LDAsMCwwLDIxLjA1LDE3YTYuMzYsNi4zNiwwLDAsMC01LjE0LTIuNTZIOC4xM0E2LjMyLDYuMzIsMCwwLDAsMywxNyw5LjY2LDkuNjYsMCwwLDAsMS4zOSwyMS4xLDEuNTQsMS41NCwwLDAsMCwyLjksMjIuODhIMjEuMWExLjU0LDEuNTQsMCwwLDAsMS41MS0xLjc4Wm0tMS4zLjQzYS4yOS4yOSwwLDAsMS0uMjEuMUgyLjlhLjI5LjI5LDAsMCwxLS4yMS0uMS4zLjMsMCwwLDEtLjA2LS4yNEE4LjM1LDguMzUsMCwwLDEsNCwxNy43NSw1LjA2LDUuMDYsMCwwLDEsOCwxNS43aDhhNS4wNyw1LjA3LDAsMCwxLDQuMSwyLjA1LDguMzUsOC4zNSwwLDAsMSwxLjMyLDMuNTRBLjMuMywwLDAsMSwyMS4zMSwyMS41M1oiLz48L3N2Zz4=);
+  $twt-icon-x: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMTIuODgsMTJsOS41Ni05LjU2YS42Mi42MiwwLDEsMC0uODgtLjg4TDEyLDExLjEyLDIuNDQsMS41NmEuNjIuNjIsMCwwLDAtLjg4Ljg4TDExLjEyLDEyLDEuNTYsMjEuNTZhLjYxLjYxLDAsMCwwLDAsLjg4LjYzLjYzLDAsMCwwLC40NC4xOS42My42MywwLDAsMCwuNDQtLjE5TDEyLDEyLjg4bDkuNTYsOS41NmEuNi42LDAsMCwwLC44OCwwLC42MS42MSwwLDAsMCwwLS44OFoiLz48L3N2Zz4=);
+
+  // ThemeWare: Home icon (home)
+  .home-link {
+    .icon-home {
+      @include twt-icon($twt-nav-main-icon-size);
+
+      background-color: currentColor;
+      -webkit-mask-image: $twt-icon-home;
+      mask-image: $twt-icon-home;
+      background-repeat: no-repeat;
+      -webkit-mask-size: 100%;
+      mask-size: 100%;
+    }
+  }
+
+  // ThemeWare: Wishlist icon
+  .header-wishlist {
+    .icon-heart {
+      @include twt-icon(24px);
+
+      background-color: currentColor;
+      -webkit-mask-image: $twt-icon-heart;
+      mask-image: $twt-icon-heart;
+      background-repeat: no-repeat;
+      -webkit-mask-size: 100%;
+      mask-size: 100%;
+    }
+  }
+
+  // ThemeWare: Account menu (user)
+  .account-menu {
+    .icon-avatar {
+      @include twt-icon(24px);
+
+      background-color: currentColor;
+      -webkit-mask-image: $twt-icon-user;
+      mask-image: $twt-icon-user;
+      background-repeat: no-repeat;
+      -webkit-mask-size: 100%;
+      mask-size: 100%;
+    }
+  }
+
+  // ThemeWare: Cart icon (cart)
+  .header-cart {
+    .icon-bag {
+      @include twt-icon(24px);
+
+      background-color: currentColor;
+      -webkit-mask-image: $twt-icon-cart;
+      mask-image: $twt-icon-cart;
+      background-repeat: no-repeat;
+      -webkit-mask-size: 100%;
+      mask-size: 100%;
+    }
+  }
+
+  // ThemeWare: Search icon (search)
+  .header-search-icon {
+    .icon-search {
+      @include twt-icon(24px);
+
+      background-color: currentColor;
+      -webkit-mask-image: $twt-icon-search;
+      mask-image: $twt-icon-search;
+      background-repeat: no-repeat;
+      -webkit-mask-size: 100%;
+      mask-size: 100%;
+    }
+  }
+
+  // ThemeWare: Flyout search (search)
+  .header-search-toggle-icon {
+    .icon-search {
+      @include twt-icon(24px);
+
+      background-color: currentColor;
+      -webkit-mask-image: $twt-icon-search;
+      mask-image: $twt-icon-search;
+      background-repeat: no-repeat;
+      -webkit-mask-size: 100%;
+      mask-size: 100%;
+    }
+
+    .icon-x {
+      @include twt-icon(24px);
+
+      background-color: currentColor;
+      -webkit-mask-image: $twt-icon-x;
+      mask-image: $twt-icon-x;
+      background-repeat: no-repeat;
+      -webkit-mask-size: 100%;
+      mask-size: 100%;
+    }
+  }
+
+  // ThemeWare: Newsletter submit (envelope)
+  .footer-column-newsletter {
+    .icon-arrow-head-right {
+      @include twt-icon(24px);
+
+      background-color: currentColor;
+      -webkit-mask-image: $twt-icon-envelope;
+      mask-image: $twt-icon-envelope;
+      background-repeat: no-repeat;
+      -webkit-mask-size: 100%;
+      mask-size: 100%;
+    }
+  }
+
+  // ThemeWare: Hamburger navigation (menu)
+  .nav-main-toggle-btn {
+    .icon-stack {
+      @include twt-icon(24px);
+
+      background-color: currentColor;
+      -webkit-mask-image: $twt-icon-menu;
+      mask-image: $twt-icon-menu;
+      background-repeat: no-repeat;
+      -webkit-mask-size: 100%;
+      mask-size: 100%;
+    }
+  }
+
+  // ThemeWare: Service-Menu (help)
+  .top-bar-nav-btn {
+    .icon-help {
+      @include twt-icon(24px);
+
+      background-color: currentColor;
+      -webkit-mask-image: $twt-icon-help;
+      mask-image: $twt-icon-help;
+      background-repeat: no-repeat;
+      -webkit-mask-size: 100%;
+      mask-size: 100%;
+    }
+  }
+}

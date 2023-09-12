@@ -1,0 +1,75 @@
+{% block rhweb_theme_features_time_based_container %}
+
+    {% set countdownBackgroundColor = config('RHWebThemeFeatures.config.RhwebThemeFeaturesCountdownBackgroundColor') %}
+    {% set countdownBackgroundColorHover = config('RHWebThemeFeatures.config.RhwebThemeFeaturesCountdownBackgroundColorHover') %}
+    {% set countdownTextColor = config('RHWebThemeFeatures.config.RhwebThemeFeaturesCountdownTextColor') %}
+
+    {% set dateNow = "now"| date('U') %}
+    {% set countdownEnd = config('RHWebThemeFeatures.config.RhwebThemeFeaturesCountdownTimeEnd') | date('U') %}
+    {% set countdownUrl = config('RHWebThemeFeatures.config.RhwebThemeFeaturesCountdownUrl') %}
+
+    {% if dateNow < countdownEnd %}
+        {% if countdownBackgroundColorHover %}
+            <style>
+                .rhweb-theme-features-time-based-content:hover{
+                    background-color:{{ countdownBackgroundColorHover }} !important;
+                }
+            </style>
+        {% endif %}
+
+        <a class="rhweb-theme-features-time-based-container-url" {% if countdownUrl %}href="{{ countdownUrl }}"{% endif%} rel="noopener" title="{{ 'rhwebThemeFeatures.countdown.title'|trans|raw }}" {% if countdownTextColor %}style="color:{{ countdownTextColor }}"{% endif %}>
+            <div class="rhweb-theme-features-time-based-content" {% if countdownBackgroundColor %}style="background-color:{{ countdownBackgroundColor }}"{% endif %}>
+                <div id="time-counter" class="time-counter">
+                    <div class="time-item">
+                        <span id="rhweb-days">00</span>
+                        <span class="label">{{ 'rhwebThemeFeatures.countdown.days'|trans|raw }}</span>
+                    </div>
+
+                    <div class="time-item">
+                        <span id="rhweb-hours">00</span>
+                        <span class="label">{{ 'rhwebThemeFeatures.countdown.hours'|trans|raw }}</span>
+                    </div>
+
+                    <div class="time-item">
+                        <span id="rhweb-minutes">00</span>
+                        <span class="label">{{ 'rhwebThemeFeatures.countdown.minutes'|trans|raw }}</span>
+                    </div>
+
+                    <div class="time-item">
+                        <span id="rhweb-seconds">00</span>
+                        <span class="label">{{ 'rhwebThemeFeatures.countdown.seconds'|trans|raw }}</span>
+                    </div>
+                </div>
+                <div class="time-text">
+                    {{ 'rhwebThemeFeatures.countdown.title'|trans|raw }}
+                </div>
+            </div>
+        </a>
+
+
+
+        <script>
+            const zeroPad = (num, places) => String(num).padStart(places, '0');
+            var countDownDate = new Date("{{ countdownEnd | format_datetime(locale='en') }}").getTime();
+
+            var x = setInterval(function() {
+
+                var now = new Date().getTime();
+
+                var distance = countDownDate - now;
+
+                var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                document.getElementById("rhweb-days").innerHTML = zeroPad(days,2);
+                document.getElementById("rhweb-hours").innerHTML = zeroPad(hours,2);
+                document.getElementById("rhweb-minutes").innerHTML = zeroPad(minutes,2);
+                document.getElementById("rhweb-seconds").innerHTML = zeroPad(seconds,2);
+            }, 1000);
+        </script>
+    {% endif %}
+
+
+{% endblock %}

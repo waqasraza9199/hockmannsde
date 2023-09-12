@@ -1,0 +1,100 @@
+/*
+   _____ _  _ ___ __  __ _____      ___   ___ ___  (R)
+  |_   _| || | __|  \/  | __\ \    / /_\ | _ \ __|
+    | | | __ | _|| |\/| | _| \ \/\/ / _ \|   / _|
+    |_| |_||_|___|_|  |_|___| \_/\_/_/ \_\_|_\___|
+
+    Copyright (c) TC-Innovations GmbH
+
+    ThemeWare: Extension > Announcement banner
+    ==================================================
+
+*/
+
+@if $twt-annoncement-banner-show > 1 {
+  .twt-announcement-banner {
+    @include font-size($twt-annoncement-banner-font-size);
+    font-weight: $twt-annoncement-banner-font-weight;
+    line-height: 1.5;
+    text-align: center;
+    text-transform: $twt-annoncement-banner-text-transform;
+    color: $twt-annoncement-banner-color;
+    background-color: $twt-annoncement-banner-background-color;
+
+    .container {
+      position: relative;
+      width: 100%;
+      margin: 0 auto;
+
+      .row {
+        display: -ms-grid;
+        display: grid;
+        max-width: 100%;
+        grid-template-columns: 40px auto 40px; // TODO: px > rem
+        margin: 0;
+
+        .content {
+          align-items: center;
+          margin-left: auto;
+          margin-right: auto;
+          padding: 6px 0; // TODO: px > rem
+
+          > span.label {
+            @include font-size($twt-annoncement-banner-font-size);
+            margin: 0 6px; // TODO: px > rem
+            padding: 4px 8px; // TODO: px > rem
+            font-weight: $twt-annoncement-banner-font-weight;
+            line-height: 1.5;
+            text-transform: $twt-annoncement-banner-text-transform;
+            vertical-align: baseline;
+          }
+        }
+
+        a {
+          color: $twt-annoncement-banner-color;
+          text-decoration: none;
+        }
+
+        p {
+          margin-bottom: 0;
+        }
+
+        .close {
+          position: relative;
+          cursor: pointer;
+          display: -ms-flexbox;
+          display: flex;
+          justify-content: center;
+
+          .icon {
+            color: #ffffff;
+
+            svg {
+              top: 0; // TODO: px > rem
+            }
+          }
+        }
+      }
+    }
+
+    .row {
+      >.content {
+        grid-column: 2;
+      }
+
+      >.close {
+        grid-column: 3;
+      }
+    }
+  }
+
+  @media screen and (min-width: 48em) {
+    .twt-announcement-banner {
+      .container {
+        .row {
+          grid-template-columns: 0 auto 40px; // TODO: px > rem
+        }
+      }
+    }
+  }
+}

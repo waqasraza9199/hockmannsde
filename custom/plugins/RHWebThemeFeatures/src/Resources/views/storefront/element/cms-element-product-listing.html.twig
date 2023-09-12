@@ -1,0 +1,17 @@
+{% sw_extends '@Storefront/storefront/element/cms-element-product-listing.html.twig' %}
+
+{% block element_product_listing %}
+    {% set rhwebAnimation = element.config.rhwebAnimation.value %}
+
+    {% if rhwebAnimation %}
+        {% if rhwebAnimation.in.active or rhwebAnimation.out.active or rhwebAnimation.hover.active %}
+            <div data-rhweb-animation='{{ rhwebAnimation|json_encode|raw }}'>
+                {{ parent() }}
+            </div>
+        {% else %}
+            {{ parent() }}
+        {% endif %}
+    {% else %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}

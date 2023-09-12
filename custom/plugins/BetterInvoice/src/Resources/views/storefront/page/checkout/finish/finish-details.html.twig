@@ -1,0 +1,47 @@
+{% sw_extends '@Storefront/storefront/page/checkout/finish/finish-details.html.twig' %}
+
+{% block page_checkout_finish_teaser %}
+
+    {{ parent() }}
+
+    {% set dropConfig = config('BetterInvoice') %}
+    {% if dropConfig.config.finishdrop %}
+        <div class="row mt-5">
+            <div class="col-md-6">
+                <div class="card bg-light">
+                    <div class="card-body p-3">
+                        <p class="card-title border-0">Unsere Bankverbindung</p>
+                        <p class="card-text">Bitte geben Sie im Verwendungszweck bei der Überweisung Ihre Bestell- oder Rechnungsnummer an! Nur so kann Ihre Überweisung eindeutig zugeordnet werden.</p>
+                        <div class="d-flex justify-content-between flex-wrap align-items-center">
+                            <div class="mb-3">
+                                <p class="mb-0"><span class="small font-weight-bold">BANK</span><br><span>{{ page.extensions.drop.bank }}</span></p>
+                                <div class="d-flex justify-content-between">
+                                    <p class="mb-0"><span class="small font-weight-bold">IBAN</span><br><span>{{ page.extensions.drop.iban }}</span></p>
+                                    <p class="ml-5 mb-0"><span class="small font-weight-bold">BIC</span><br><span>{{ page.extensions.drop.bic }}</span><br></p>
+                                </div>
+                                <p class="mt-2 mb-0"><span class="small font-weight-bold">Verwendungszweck</span><br><span>Bestellnr. {{ page.order.orderNumber }} {% if page.extensions.invoice %}/ Rechnungsnr. {{ page.extensions.invoice.config.documentNumber }} {% endif %}</span></p>
+                            </div>
+                            <img src="{{ page.extensions.sepaQr }}" height="120" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% if page.extensions.invoice %}
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-body p-3">
+                            <p class="card-title border-0">Ihre Rechnung</p>
+                            <p class="card-text">Sie können Ihre Rechnung direkt hier herunterladen. Sie finden diese auch in Ihrer Bestätigungs-E-Mail als Anhang.</p>
+                            <a target="_blank"
+                                href="{{ app.request.basePath }}/account/order/document/{{ page.extensions.invoice.id }}/{{ page.extensions.invoice.deepLinkCode }}"
+                                title="Rechnung herunterladen" class="btn btn-primary">
+                                Herunterladen
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    {% endif %}
+
+{% endblock %}

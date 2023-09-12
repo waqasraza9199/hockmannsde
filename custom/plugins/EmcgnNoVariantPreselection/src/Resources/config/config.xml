@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/shopware/platform/master/src/Core/System/SystemConfig/Schema/config.xsd">
+
+    <card>
+        <title>No Variant Preselection</title>
+        <title lang="de-DE">Keine Varianten Vorauswahl</title>
+        <input-field type="single-select">
+            <name>pluginMode</name>
+            <label>Mode</label>
+            <label lang="de-DE">Modus</label>
+            <helpText>Set here whether the preselection should be omitted globally for all items or whether you want to make this decision separately for each item.</helpText>
+            <helpText lang="de-DE">Stellen Sie hier ein, ob die Vorauswahl global bei allen Artikeln entfallen soll, oder ob Sie diese Entscheidung für jeden Artikel separat treffen möchten.</helpText>
+            <options>
+                <option>
+                    <id>globalMode</id>
+                    <name>Global no variants Preselection</name>
+                    <name lang="de-DE">Global keine Varianten Vorauswahl</name>
+                </option>
+                <option>
+                    <id>forEachItemMode</id>
+                    <name>Set separately for each item</name>
+                    <name lang="de-DE">Für jede Artikel separat einstellen</name>
+                </option>
+            </options>
+            <defaultValue>globalMode</defaultValue>
+        </input-field>
+    </card>
+</config>

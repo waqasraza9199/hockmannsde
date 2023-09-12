@@ -1,0 +1,10 @@
+{% sw_extends '@Storefront/storefront/page/product-detail/buy-widget.html.twig' %}
+
+{% block page_product_detail_buy_form %}
+    {{ parent() }}
+
+    {% if page.product.active and config('RHWebThemeFeatures.config.rhwebActivateStickyCart') %}
+        {% sw_include '@Storefront/rhweb-theme-features/snippets/fixed-cart/index.html.twig' %}
+    {% endif %}
+{% endblock %}
+
